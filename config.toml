@@ -1,7 +1,7 @@
-base_url = "https://madhank93.github.io/"
+base_url = "https://madhank93.github.io/personal_blog/"
 title = "Madhan"
 theme = "DeepThought"
-compile_sass = false
+compile_sass = true
 build_search_index = true # Whether to build a search index to be used later on by a JavaScript library
 default_language = "en"
 highlight_theme = "one-dark"
