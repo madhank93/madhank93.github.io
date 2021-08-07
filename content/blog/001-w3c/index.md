@@ -59,11 +59,13 @@ To interact with the API we need a tool that allows us to make HTTP requests. Fo
 
 Extract the file and run it using the command [./chromedriver](https://w3c.github.io/webdriver/#new-session). You will be given the port on which the WebDriver API is running.
 
-    $ ./chromedriver
+```bash
+$ ./chromedriver
 
-    Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch heads/3987@{#882}) on port 9515
-    Only local connections are allowed.
-    Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch heads/3987@{#882})
+on port9515 Only local connections are allowed.
+Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+```
 
 ## 1. Open the Chrome browser
 
@@ -138,6 +140,8 @@ Now let's click the search text button. This is done with an HTTP `POST` request
 To quit the driver, send the HTTP `DELETE` request to [/session/<session_id>](https://w3c.github.io/webdriver/#delete-session)
 
 <div align="center">* * * *</div>
+
+Originally published on [Medium](https://medium.com/@madhankumaravelu93/a-deep-dive-into-the-w3c-webdriver-specification-fcf0906048f9)
 
 Thanks to [Peter Thomas](https://twitter.com/ptrthomas?lang=en) creator of [Karate DSL](https://github.com/intuit/karate)
 

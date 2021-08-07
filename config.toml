@@ -1,4 +1,4 @@
-base_url = "https://madhank93.github.io/personal_blog/"
+base_url = "https://madhank93.github.io/personal_blog"
 title = "Madhan"
 theme = "DeepThought"
 compile_sass = true
