@@ -51,7 +51,7 @@ webmanifest = "/icons/site.webmanifest"
 # Author details
 [extra.author]
 name = "Madhan"
-avatar = "/images/avatar.png"
+avatar = "https://raw.githubusercontent.com/madhank93/personal_blog/main/static/images/avatar.png"
 
 # Social links
 [extra.social]
