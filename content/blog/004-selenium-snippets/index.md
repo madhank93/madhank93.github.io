@@ -4,8 +4,8 @@ description = "A curated list of the working code example in Java"
 date = 2020-04-26T01:24:33+05:30
 
 [taxonomies]
-categories = ["Cheatsheet"]
-tags = ["selenium", "cheatsheet", "testing", "automation", "java"]
+categories = ["Snippets"]
+tags = ["selenium", "snippets", "testing", "automation", "java"]
 
 [extra]
 toc = true

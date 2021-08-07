@@ -4,7 +4,6 @@ theme = "DeepThought"
 compile_sass = true
 build_search_index = true # Whether to build a search index to be used later on by a JavaScript library
 default_language = "en"
-highlight_theme = "one-dark"
 generate_feed = true
 feed_filename = "rss.xml"
 taxonomies = [
@@ -18,7 +17,7 @@ extra_syntaxes = []
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
-highlight_theme = "dracula"
+highlight_theme = "monokai"
 
 [link_checker]
 skip_prefixes = ["http://[2001:db8::]/"]
@@ -29,8 +28,8 @@ paths = "on"
 taxonomies = "on"
 anchors = "on"
 
-[extra]
 # Put all your custom variables here
+[extra]
 navbar_items = [
  { code = "en", nav_items = [
   { url = "$BASE_URL/", name = "Home" },
