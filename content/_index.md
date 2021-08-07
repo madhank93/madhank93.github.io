@@ -3,20 +3,6 @@
 
 <h2 align="center"> Hi there <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif?raw=true" width="30px"> I am Madhan </h2>
 
-<head>
-  <link rel="stylesheet" href="/css/style.min.css">
-</head>
-<body>
-    <div align="center">
-    <h5>
-        <span class="text_1">Software Development Engineer in Test</span>
-        <span class="text_2">Flutter Enthusiast</span>
-        <span class="text_3">DevSecOps Practitioner</span>
-        <span class="text_4">Cloud Native Enthusiast</span>
-    <h5>
-    </div>
-</body>
-
 <div align="center">
 <p>
 I have 5+ plus years of experience in providing information about the quality of the product under development, regardless of where in development that product is. An ambitious person who wants to be a part of all the phases in the Software development cycle.
