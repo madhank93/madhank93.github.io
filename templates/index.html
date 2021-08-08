@@ -1,0 +1,134 @@
+{% extends "DeepThought/templates/index.html" %} {% block content %}
+<style>
+  .text_1 {
+    animation: text1;
+  }
+
+  .text_2 {
+    animation: text2;
+  }
+
+  .text_3 {
+    animation: text3;
+  }
+
+  .text_4 {
+    animation: text4;
+  }
+
+  .text_1,
+  .text_2,
+  .text_3,
+  .text_4 {
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    position: relative;
+    animation-duration: 20s;
+    animation-timing-function: steps(25, end);
+    animation-iteration-count: infinite;
+  }
+
+  .text_1::after,
+  .text_2::after,
+  .text_3::after,
+  .text_4::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    animation: caret infinite;
+    animation-duration: 1s;
+    animation-timing-function: steps(1, end);
+  }
+
+  @keyframes text1 {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+      width: 0;
+    }
+    1%,
+    24% {
+      width: 19em;
+    }
+  }
+  @keyframes text2 {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+      width: 0;
+    }
+    26%,
+    49% {
+      width: 9em;
+    }
+  }
+  @keyframes text3 {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+      width: 0;
+    }
+    51%,
+    74% {
+      width: 12em;
+    }
+  }
+  @keyframes text4 {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+      width: 0;
+    }
+    76%,
+    99% {
+      width: 12em;
+    }
+  }
+  @keyframes caret {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">{{ section.title }}</h1>
+      <p class="subtitle is-4">{{ section.description }}</p>
+      {% if config.extra.author.avatar %}
+      <figure
+        class="image is-flex is-justify-content-center is-align-items-center"
+      >
+        <img
+          class="is-rounded"
+          src="{{ config.extra.author.avatar }}"
+          style="max-width: 192px"
+        />
+      </figure>
+      {% endif %} {{ macros:: social_links( social_config=config.extra.social)
+      }}
+    </div>
+    <div align="center">
+      <span class="text_1">Software Development Engineer in Test</span>
+      <span class="text_2">Flutter Enthusiast</span>
+      <span class="text_3">DevSecOps Practitioner</span>
+      <span class="text_4">Cloud Native Enthusiast</span>
+    </div>
+    <div class="content">{{ section.content | safe }}</div>
+  </div>
+</section>
+
+{% endblock %}
