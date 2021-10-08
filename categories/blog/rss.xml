@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Madhan - Blog</title>
+        <link>https://madhank93.github.io</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://madhank93.github.io/categories/blog/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sun, 05 Apr 2020 01:24:33 +0530</lastBuildDate>
+        <item>
+            <title>What are build automation tool ? And a closer look at the Maven and POM file</title>
+            <pubDate>Sun, 05 Apr 2020 01:24:33 +0530</pubDate>
+            <link>https://madhank93.github.io/blogs/002-build-tool/</link>
+            <guid>https://madhank93.github.io/blogs/002-build-tool/</guid>
+            <description>&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;7000&#x2F;1*VW7pDgspmF41A4AIZTB__g.jpeg&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Let us understand the build automation tool and it’s process through addressing the series of questions&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-are-build-automation-tool&quot;&gt;What are Build Automation Tool?&lt;&#x2F;h2&gt;
+&lt;p&gt;It is a process of automating an extensive range of tasks that one has to do in their day-to-day activity, right from source code to end-product&lt;&#x2F;p&gt;
+&lt;p&gt;The overall process includes - downloading dependencies, compiling source code into binary code (machine-readable format), packaging binary code, running automated tests, code coverage, static code analysis, creating or updating database schema (migration), packaging the code into an executable format, deploying to production&#x2F;testing&#x2F;UAT environments, generate documentation out of source code.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;different-types-of-build-tools&quot;&gt;Different types of build tools&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Java - Ant, Maven, Gradle&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Ruby - Rake&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Javascript - Gulp, Grunt, Broccoli&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;C# &#x2F; .NET - Nant, MS Build&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Language agnostic - Make, Bazel, Buck&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;what-is-maven-how-it-works&quot;&gt;What is Maven? How it works ?&lt;&#x2F;h2&gt;
+&lt;p&gt;It is one of the Build automation tool from the Java community based on POM (project object model). It is an XML file that has information about the project and configuration details used by Maven to build the project.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2304&#x2F;1*bSap54mpkjDBrzVJGXAhXw.jpeg&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Maven build Lifecycle&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Maven build lifecycle goes through a series of stages, called as build &lt;strong&gt;&lt;em&gt;phases&lt;&#x2F;em&gt;&lt;&#x2F;strong&gt;. For example, the default lifecycle is&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;Validate
+Compile
+Test
+Package
+Verify
+Install
+Deploy
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;validate&lt;&#x2F;strong&gt; — validate the project is correct and all necessary information is available. Also makes sure the dependencies are downloaded.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;compile&lt;&#x2F;strong&gt; — compile the source code of the project.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;test&lt;&#x2F;strong&gt; — runs the tests against the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;package&lt;&#x2F;strong&gt; — take the compiled code and package it in its distributable format, such as a JAR.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;verify&lt;&#x2F;strong&gt; — run any checks on results of integration tests to ensure quality criteria are met.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;install&lt;&#x2F;strong&gt; — install the package into the local repository for use as a dependency in other projects locally deployed.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;deploy&lt;&#x2F;strong&gt; — done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;There are two other Maven lifecycles of note beyond the &lt;em&gt;default&lt;&#x2F;em&gt; list above. They are&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;clean&lt;&#x2F;strong&gt;: cleans up artifacts created by prior builds&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;site&lt;&#x2F;strong&gt;: generates site documentation for this project&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;These phases executed sequentially when we run a maven build command.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;POM file&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;53f5a4c138617f221b73a0488ca13aa4.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;Let’s break this POM file&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Project:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;project&amp;gt;&lt;&#x2F;code&gt; - is the root element and has the attributes XML namespace and Maven XML schema&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;modelVersion&amp;gt;&lt;&#x2F;code&gt; - element defines the POM version, currently the only supported value is &lt;code&gt;4.0.0&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;GroupID, artifactID and version:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;groupId&amp;gt;&lt;&#x2F;code&gt; - element usually takes the unique ID of an organization, or a project. In this case I have used &lt;code&gt;io.github.madhank93&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;artifactId&amp;gt;&lt;&#x2F;code&gt; - element has the name of the project &lt;code&gt;maventraining&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;version&amp;gt;&lt;&#x2F;code&gt; - element contains the version number of the project &lt;code&gt;0.0.1-SNAPSHOT&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The above &lt;code&gt;groupId&lt;&#x2F;code&gt; and &lt;code&gt;artifactId&lt;&#x2F;code&gt; combination must be unique. Since this will be used in identifying the project in repository.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Package:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;packaging&amp;gt;&lt;&#x2F;code&gt; - which specifies the type of artifact the Maven should produce&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Properties:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Properties are serves as a placeholder. These values can be accessed anywhere within a POM file. By using the notation &lt;code&gt;${element_name}&lt;&#x2F;code&gt;or it can be used by plugins as default values&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;project.build.sourceEncoding&amp;gt;&lt;&#x2F;code&gt; - it is a property recognized by Maven.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Plugins:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Plugins are where much of the real action is performed, plugins are used to: create jar files, create war files, compile code, unit test code, create project documentation, and on and on. Almost any action that you can think of performing on a project is implemented as a Maven plugin.&lt;&#x2F;p&gt;
+&lt;p&gt;In this article I have used &lt;code&gt;maven-compiler-plugin&lt;&#x2F;code&gt; , this compiler plugin is used to compile the source code of a Maven project. By default, it compiles with Java 5. We can manage the settings in &lt;code&gt;configuration&lt;&#x2F;code&gt; element, in this case, it is instructed to build artifacts to compatible with Java 1.8.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Dependencies:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;There are two types of Maven dependencies:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Direct:&lt;&#x2F;strong&gt; These dependencies defined in your pom.xml file under the &lt;dependencies&gt; section.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Transitive:&lt;&#x2F;strong&gt; These are dependencies required by our direct dependencies&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;dependencies&amp;gt;&lt;&#x2F;code&gt; - this tag specifies the additional libraries that are needed for the project&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;scope&amp;gt;&lt;&#x2F;code&gt; - element indicates this dependency is only applicable for the testing phase of the Maven lifecycle.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;mvnrepository.com&#x2F;repos&#x2F;central&quot;&gt;Maven central repository&lt;&#x2F;a&gt; is the default location to download all the dependent libraries. One of the dependency that used is in this article is &lt;a href=&quot;https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.seleniumhq.selenium&#x2F;selenium-java&#x2F;3.141.59&quot;&gt;selenium-java&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;div align=&quot;center&quot;&gt;* * * *&lt;&#x2F;div&gt;
+&lt;p&gt;Originally published on &lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;@madhankumaravelu93&#x2F;what-are-build-automation-tool-and-a-closer-look-at-the-maven-and-pom-file-7b209a8a6c61&quot;&gt;Medium&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;references&quot;&gt;References&lt;&#x2F;h1&gt;
+&lt;p&gt;[1] &lt;a href=&quot;https:&#x2F;&#x2F;maven.apache.org&#x2F;guides&#x2F;getting-started&#x2F;index.html&quot;&gt;https:&#x2F;&#x2F;maven.apache.org&#x2F;guides&#x2F;getting-started&#x2F;index.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[2] &lt;a href=&quot;https:&#x2F;&#x2F;maven.apache.org&#x2F;guides&#x2F;introduction&#x2F;introduction-to-the-lifecycle.html&quot;&gt;https:&#x2F;&#x2F;maven.apache.org&#x2F;guides&#x2F;introduction&#x2F;introduction-to-the-lifecycle.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[3] &lt;a href=&quot;https:&#x2F;&#x2F;www.baeldung.com&#x2F;maven&quot;&gt;https:&#x2F;&#x2F;www.baeldung.com&#x2F;maven&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[4] &lt;a href=&quot;http:&#x2F;&#x2F;tutorials.jenkov.com&#x2F;maven&#x2F;maven-tutorial.html&quot;&gt;http:&#x2F;&#x2F;tutorials.jenkov.com&#x2F;maven&#x2F;maven-tutorial.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>A Deep Dive into the W3C WebDriver Specification</title>
+            <pubDate>Sat, 28 Mar 2020 01:24:33 +0530</pubDate>
+            <link>https://madhank93.github.io/blogs/001-w3c/</link>
+            <guid>https://madhank93.github.io/blogs/001-w3c/</guid>
+            <description>&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2390&#x2F;1*szv6X0IYai76AwQx17DgsA.png&quot; alt=&quot;w3c-webdriver&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Before getting into the topic lets first understand the difference between the terms WebDriver and Selenium.&lt;&#x2F;p&gt;
+&lt;p&gt;When it comes to testing, these two terms WebDriver and Selenium are interchangeably used to refer the automating the web application.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;&quot;&gt;WebDriver &lt;&#x2F;a&gt;is an HTTP based API to interact with a web browser. The standard is provided by W3C. WebDriver is a remote control interface that enables introspection and control of user agents. It provides a platform- and language-neutral wire protocol as a way for out-of-process programs to remotely instruct the behavior of web browsers.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;en&#x2F;&quot;&gt;Selenium &lt;&#x2F;a&gt;is a range of tools and libraries that enable and support the automation of web browsers. &lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;en&#x2F;webdriver&#x2F;understanding_the_components&#x2F;&quot;&gt;Selenium WebDriver&lt;&#x2F;a&gt; refers to both the language bindings and the implementations of the individual browser controlling code. This is commonly referred to as just &lt;em&gt;WebDriver&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Most of the browser vendors implements the &lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;webdriver-spec.html&quot;&gt;W3C WebDriver capabilities&lt;&#x2F;a&gt; and protocol on Selenium 3.8.0 (JSON wire protocol is &lt;em&gt;OBSOLETE&lt;&#x2F;em&gt; now) as a standalone server in a binary executable format.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;sites.google.com&#x2F;a&#x2F;chromium.org&#x2F;chromedriver&#x2F;downloads&quot;&gt;Chrome&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mozilla&#x2F;geckodriver&#x2F;releases&quot;&gt;Firefox&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;operasoftware&#x2F;operachromiumdriver&#x2F;releases&quot;&gt;Opera&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;developer.microsoft.com&#x2F;en-us&#x2F;microsoft-edge&#x2F;tools&#x2F;webdriver&#x2F;#downloads&quot;&gt;EDGE&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2440&#x2F;1*de0VdIsqiluhVWEne3NF7A.jpeg&quot; alt=&quot;selenium_architecture&quot; &#x2F;&gt; Selenium Architecture&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In this article, we are going to see &lt;strong&gt;WebDriver API in action&lt;&#x2F;strong&gt;, for that we need to download ChromeDriver and PostMan tool.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;The first step is to &lt;a href=&quot;https:&#x2F;&#x2F;sites.google.com&#x2F;a&#x2F;chromium.org&#x2F;chromedriver&#x2F;downloads&quot;&gt;download&lt;&#x2F;a&gt; the ChromeDriver executable. Download the appropriate driver version based on your OS.&lt;&#x2F;p&gt;
+&lt;p&gt;To interact with the API we need a tool that allows us to make HTTP requests. For that we need to &lt;a href=&quot;https:&#x2F;&#x2F;www.postman.com&#x2F;downloads&#x2F;&quot;&gt;download&lt;&#x2F;a&gt; the Postman tool. So that you can send and receive API requests.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-test-case-that-we-are-going-to-automate-as-follow&quot;&gt;The test case that we are going to automate as follow,&lt;&#x2F;h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Chrome browser&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigate to Google page&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Find search text box&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Send a search value&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Find the search button&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on the search button&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Quit driver&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;let-s-first-start-chromedriver-in-terminal&quot;&gt;Let’s first start ChromeDriver in Terminal&lt;&#x2F;h2&gt;
+&lt;p&gt;Extract the file and run it using the command &lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;#new-session&quot;&gt;.&#x2F;chromedriver&lt;&#x2F;a&gt;. You will be given the port on which the WebDriver API is running.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;$ .&#x2F;chromedriver
+
+Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs&#x2F;branch heads&#x2F;3987@{#882})
+on port9515 Only local connections are allowed.
+Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;1-open-the-chrome-browser&quot;&gt;1. Open the Chrome browser&lt;&#x2F;h2&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;a href=&#x27;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2540&#x2F;1*HX7JzMXo5R75qtkFTA4zhQ.png&#x27; target=&quot;_blank&quot;&gt;
+        &lt;img alt=&quot;step 1&quot; src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2540&#x2F;1*HX7JzMXo5R75qtkFTA4zhQ.png&quot; width=&quot;65%&quot;&gt;
+    &lt;&#x2F;a&gt;
+      &amp;nbsp; &amp;nbsp;
+    &lt;a href=&#x27;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*I3cVPlrRTp4_n9pylkQnRw.png&#x27; target=&quot;_blank&quot;&gt;
+        &lt;img alt=&quot;step 2&quot; src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*I3cVPlrRTp4_n9pylkQnRw.png&quot; width=&quot;30%&quot;&gt;
+    &lt;&#x2F;a&gt;
+&lt;&#x2F;p&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;a href=&#x27;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*O9gSQmtKsBafxdqHAQT0OQ.png&#x27; target=&quot;_blank&quot;&gt;
+        &lt;img alt=&quot;step 3&quot; src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*O9gSQmtKsBafxdqHAQT0OQ.png&quot; width=&quot;45%&quot;&gt;
+    &lt;&#x2F;a&gt;
+    &amp;nbsp; &amp;nbsp;
+    &lt;a href=&#x27;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*faSnhxAkGGE6RIsYbw5PyQ.png&#x27; target=&quot;_blank&quot;&gt;
+        &lt;img alt=&quot;step 4&quot; src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*faSnhxAkGGE6RIsYbw5PyQ.png&quot; width=&quot;45%&quot;&gt;
+    &lt;&#x2F;a&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;Now that the &lt;code&gt;chromedriver&lt;&#x2F;code&gt; started in the default port 9519. Let&#x27;s open the browser. This is done by creating a new session. To create a new session using the WebDriver API, make an HTTP &lt;code&gt;POST&lt;&#x2F;code&gt; request to the &lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;#new-session&quot;&gt;&#x2F;session&lt;&#x2F;a&gt; endpoint. In addition, we need to define the type of browser. This information is sent in as a JSON object in the POST body. On success, the response includes a &lt;code&gt;sessionId&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-navigate-to-google-page&quot;&gt;2. Navigate to Google page&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*tfiJOwHyAsNGBxgzgMqKUQ.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The next step is to open a URL in the browser. This is done with an HTTP &lt;code&gt;POST&lt;&#x2F;code&gt; request to &lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;#navigate-to&quot;&gt;&#x2F;session&#x2F;&amp;lt;session_id&amp;gt;&#x2F;url&lt;&#x2F;a&gt;, with the POST body including the &lt;code&gt;URL&lt;&#x2F;code&gt; that will be opened&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-find-search-text-box&quot;&gt;3. Find search text box&lt;&#x2F;h2&gt;
+&lt;img alt=&quot;step 1&quot; src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2076&#x2F;1*We5Hhw6j_bIPqCNqO_EO2w.png&quot; width=&quot;100%&quot;&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img alt=&quot;step 2&quot; src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*YqaSJkKPYOsrpxR_YMIcsw.png&quot; width=&quot;45%&quot;&gt;
+    &amp;nbsp; &amp;nbsp;
+    &lt;img alt=&quot;step 3&quot; src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*mTJcGR9zcyTUq9Z9eZKYwA.png&quot; width=&quot;45%&quot;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;Now that we have opened the Google page, let&#x27;s find the search text box. This is done with an HTTP &lt;code&gt;POST&lt;&#x2F;code&gt; request to &lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;#find-element&quot;&gt;&#x2F;session&#x2F;&amp;lt;session_id&amp;gt;&#x2F;element&lt;&#x2F;a&gt;, with the POST body including the &lt;code&gt;location strategy&lt;&#x2F;code&gt; and &lt;code&gt;selector&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;4-send-a-search-value&quot;&gt;4. Send a search value&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*bLtuBqQlixM8buEikmwFYw.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;After locating the search box, let&#x27;s send the search value. This is done with an HTTP &lt;code&gt;POST&lt;&#x2F;code&gt; request to &lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;#element-send-keys&quot;&gt;&#x2F;session&#x2F;&amp;lt;session_id&amp;gt;&#x2F;element&#x2F;&amp;lt;element_id&amp;gt;&#x2F;value&lt;&#x2F;a&gt;, with the POST body including the value in the &lt;code&gt;text&lt;&#x2F;code&gt; parameter&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;5-find-the-search-button&quot;&gt;5. Find the search button&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*C-MRw9CryoicmxbjE8Kt9Q.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img alt=&quot;step 2&quot; src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*bYRsHcSi-kgMYCpkZSRvbw.png&quot; width=&quot;45%&quot;&gt;
+    &amp;nbsp; &amp;nbsp;
+    &lt;img alt=&quot;step 3&quot; src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*HTO1qzeTEKGG8hrk7YgtTw.png&quot; width=&quot;45%&quot;&gt;
+&lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s find the search text button. This is done with an HTTP &lt;code&gt;POST&lt;&#x2F;code&gt; request to &lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;#find-element&quot;&gt;&#x2F;session&#x2F;&amp;lt;session_id&amp;gt;&#x2F;element&lt;&#x2F;a&gt;, with the POST body including the &lt;code&gt;location strategy&lt;&#x2F;code&gt; and &lt;code&gt;selector&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;6-click-on-search-button&quot;&gt;6. Click on search button&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*n-FjMiz5gfQZQDkjyGIgVQ.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Now let&#x27;s click the search text button. This is done with an HTTP &lt;code&gt;POST&lt;&#x2F;code&gt; request to &lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;#element-click&quot;&gt;&#x2F;session&#x2F;&amp;lt;session_id&amp;gt;&#x2F;element&#x2F;&amp;lt;element_id&#x2F;click&lt;&#x2F;a&gt;, with the POST body including the &lt;code&gt;empty dictionary&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;7-quit-driver&quot;&gt;7. Quit driver&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*EX3TgWgWfenwaCZIn9yQbA.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;To quit the driver, send the HTTP &lt;code&gt;DELETE&lt;&#x2F;code&gt; request to &lt;a href=&quot;https:&#x2F;&#x2F;w3c.github.io&#x2F;webdriver&#x2F;#delete-session&quot;&gt;&#x2F;session&#x2F;&amp;lt;session_id&amp;gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;div align=&quot;center&quot;&gt;* * * *&lt;&#x2F;div&gt;
+&lt;p&gt;Originally published on &lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;@madhankumaravelu93&#x2F;a-deep-dive-into-the-w3c-webdriver-specification-fcf0906048f9&quot;&gt;Medium&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks to &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;ptrthomas?lang=en&quot;&gt;Peter Thomas&lt;&#x2F;a&gt; creator of &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;intuit&#x2F;karate&quot;&gt;Karate DSL&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You can find the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;madhank93&#x2F;automation_using_chromedriver_postman&quot;&gt;GitHub Source code&lt;&#x2F;a&gt; with all of these above steps.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;references&quot;&gt;References&lt;&#x2F;h1&gt;
+&lt;p&gt;[1] &lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;en&#x2F;&quot;&gt;https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;en&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[2] &lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=IcCnzXTxFt0&amp;amp;feature=youtu.be&quot;&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=IcCnzXTxFt0&amp;amp;feature=youtu.be&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[3] &lt;a href=&quot;https:&#x2F;&#x2F;www.slideshare.net&#x2F;ptrthomas&#x2F;a-deep-dive-into-the-w3c-webdriver-specification&quot;&gt;https:&#x2F;&#x2F;www.slideshare.net&#x2F;ptrthomas&#x2F;a-deep-dive-into-the-w3c-webdriver-specification&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[4] &lt;a href=&quot;https:&#x2F;&#x2F;www.erranderr.com&#x2F;blog&#x2F;webdriver-ontology.html%5D(https:&#x2F;&#x2F;www.erranderr.com&#x2F;blog&#x2F;webdriver-ontology.html)&quot;&gt;https:&#x2F;&#x2F;www.erranderr.com&#x2F;blog&#x2F;webdriver-ontology.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[5] &lt;a href=&quot;https:&#x2F;&#x2F;sfconservancy.org&#x2F;news&#x2F;2018&#x2F;may&#x2F;31&#x2F;seleniumW3C&#x2F;&quot;&gt;https:&#x2F;&#x2F;sfconservancy.org&#x2F;news&#x2F;2018&#x2F;may&#x2F;31&#x2F;seleniumW3C&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[6] &lt;a href=&quot;https:&#x2F;&#x2F;lists.w3.org&#x2F;Archives&#x2F;Public&#x2F;public-browser-tools-testing&#x2F;2016AprJun&#x2F;0097.html&quot;&gt;https:&#x2F;&#x2F;lists.w3.org&#x2F;Archives&#x2F;Public&#x2F;public-browser-tools-testing&#x2F;2016AprJun&#x2F;0097.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+        </item>
+    </channel>
+</rss>

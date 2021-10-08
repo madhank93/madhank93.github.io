@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Madhan - Cheatsheet</title>
+        <link>https://madhank93.github.io</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://madhank93.github.io/categories/cheatsheet/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Fri, 17 Apr 2020 01:24:33 +0530</lastBuildDate>
+        <item>
+            <title>Selenium cheat sheet</title>
+            <pubDate>Fri, 17 Apr 2020 01:24:33 +0530</pubDate>
+            <link>https://madhank93.github.io/blogs/003-selenium-cheatsheet/</link>
+            <guid>https://madhank93.github.io/blogs/003-selenium-cheatsheet/</guid>
+            <description>&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2800&#x2F;1*RQZPhTEqSNHBEHAMUEJCZw.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-browser-property-setup&quot;&gt;1. Browser property setup&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Chrome&lt;&#x2F;strong&gt;:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;System&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.se­tPr­ope­rty­(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;we­bdr­ive­r.chrome.d­riv­er&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;&#x2F;path&#x2F;to&#x2F;chromedrive­r&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Firefox:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;System&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.se­tPr­ope­rty­(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;we­bdr­ive­r.g­eck­o.d­riv­er&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;&#x2F;path&#x2F;to&#x2F;geckodriver&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Edge:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;System&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.se­tPr­ope­rty­(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;we­bdr­ive­r.edge.d­riv­er&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;&#x2F;path&#x2F;to&#x2F;MicrosoftWebDriver&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;2-browser-initialization&quot;&gt;2. Browser Initialization&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Firefox&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FirefoxDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Chrome&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Internet Explorer&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;InternetExplorerDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Safari Driver&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;SafariDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;3-desired-capabilities&quot;&gt;3. Desired capabilities&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;remote&#x2F;DesiredCapabilities.html&quot;&gt;Doc link&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Chrome:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;DesiredCapabilities&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; caps &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;DesiredCapabilities&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+caps.setCapability(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;browserName&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;chrome&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+caps.setCapability(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;browserVersion&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;80.0&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+caps.setCapability(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;platformName&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;win10&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(caps); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Pass the capabilities as an argument to the driver object
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Firefox:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;DesiredCapabilities&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; caps &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;DesiredCapabilities&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+caps.setCapability(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;browserName&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;firefox&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+caps.setCapability(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;browserVersion&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;81.0&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+caps.setCapability(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;platformName&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;win10&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FirefoxDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(caps); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Pass the capabilities as an argument to the driver object
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;4-browser-options&quot;&gt;4. Browser options&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Chrome: (&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;chrome&#x2F;ChromeOptions.html&quot;&gt;Doc link&lt;&#x2F;a&gt;)&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; chromeOptions &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+chromeOptions.setBinary(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;C:Program Files(x86)&#x2F;GoogleChromeApplication&#x2F;chrome.exe&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; if chrome is not in defaultlocation
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;chromeOptions.addArguments(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;--headless&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Passing single option
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;chromeOptions.addArguments(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;--start-maximized&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;--incognito&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;--disable-notifications&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Passing multiple options
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(chromeOptions); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Pass the capabilities as an argument to the driver object
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Firefox: (&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;firefox&#x2F;FirefoxOptions.html&quot;&gt;Doc link&lt;&#x2F;a&gt;)&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FirefoxOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; firefoxOptions &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FirefoxOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+firefoxOptions.setBinary(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FirefoxBinary&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;File&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;C:ProgramFiles&#x2F;MozillaFire&#x2F;foxirefox.exe&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)));
+firefoxOptions.setHeadless(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FirefoxDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(caps); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Pass the capabilities as an argument to the driver object
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Options VS Desired capabilities&lt;&#x2F;strong&gt;:
+There are two ways to specify &lt;a href=&quot;https:&#x2F;&#x2F;sites.google.com&#x2F;a&#x2F;chromium.org&#x2F;chromedriver&#x2F;capabilities&quot;&gt;capabilities&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;ChromeOptions&#x2F;FirefoxOptions&lt;&#x2F;strong&gt; class — Recommended&lt;&#x2F;li&gt;
+&lt;li&gt;Or you can specify the capabilities directly as part of the &lt;strong&gt;DesiredCapabilities&lt;&#x2F;strong&gt; — its usage in Java is deprecated&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;5-navigation&quot;&gt;5. Navigation&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Navigate to URL — (doc &lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;WebDriver.Navigation.html&quot;&gt;link1&lt;&#x2F;a&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;WebDriver.html#get-java.lang.String-&quot;&gt;link2&lt;&#x2F;a&gt;)&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.get(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;http:&#x2F;&#x2F;google.com&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)
+driver.navigate().to(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;http:&#x2F;&#x2F;google.com&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Myth&lt;&#x2F;strong&gt; — get() method waits till the page is loaded while navigate() does not.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Referring to the selenium &lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;support&#x2F;events&#x2F;EventFiringWebDriver.html#get-java.lang.String-&quot;&gt;official doc&lt;&#x2F;a&gt;, get() method is a synonym for to() method. Both do the same thing.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Myth&lt;&#x2F;strong&gt; - get() does not store history while navigate() does.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;All the URLs loaded in the browser will be stored in history and the navigate method allows us to access it. Try executing the below code&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.get(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;http:&#x2F;&#x2F;madhank93.github.io&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+driver.get(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;www.google.com&#x2F;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+driver.navigate().back();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Refresh page&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.navigate().refresh()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Navigate forwards in the browser history&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.navigate().forward()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Navigate backward in the browser history&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.navigate().back()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;6-find-element-vs-find-elements&quot;&gt;6. Find element VS Find elements&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;WebElement.html#findElements-org.openqa.selenium.By-&quot;&gt;doc link&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;driver.findElement()&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;When no match has found (0) throws NoSuchElementException
+when 1 match found returns a WebElement instance
+when 2 matches found returns only the first matching web element
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;driver.findElements()&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;when no match has found (0) returns an empty list
+when 1 match found returns a list with one WebElement
+when 2 matches found returns a list with all matching WebElements
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;7-locator-strategy&quot;&gt;7. Locator Strategy&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;&quot;&gt;doc link&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;By id&lt;&#x2F;em&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;input &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;text&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;element &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.id(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;))
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;By Class Name&lt;&#x2F;em&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;input &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Content&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;text&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;element &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.className(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Content&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;By Name&lt;&#x2F;em&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;input &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;pswd&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;text&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;element &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.name(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;pswd&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;By Tag Name&lt;&#x2F;em&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;div &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;forgot-password&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;…&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;element &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.tagName(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;div&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;By Link Text&lt;&#x2F;em&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;href&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;#&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;News&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;element &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.linkText(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;News&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;By XPath&lt;&#x2F;em&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;form &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;action&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;&#x2F;action_page.php&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;input &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;text&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;placeholder&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Username&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;username&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&#x2F;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;input &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;text&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;placeholder&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Password&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;psw&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&#x2F;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;button &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;submit&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;Login&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;button&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;form&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java element&quot; data-lang=&quot;java element&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.findElement(By.xpath(&amp;quot;&#x2F;&#x2F;input[[@placeholder](http:&#x2F;&#x2F;twitter.com&#x2F;placeholder)=’Username’]&amp;quot;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;List of Keywords — &lt;code&gt;and&lt;&#x2F;code&gt;, &lt;code&gt;or&lt;&#x2F;code&gt;, &lt;code&gt;contains()&lt;&#x2F;code&gt;, &lt;code&gt;starts-with()&lt;&#x2F;code&gt;, &lt;code&gt;text()&lt;&#x2F;code&gt;, &lt;code&gt;last()&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;By CSS Selector&lt;&#x2F;em&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;form &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;action&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;submit&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;method&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;get&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+  Username: &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;input &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;text&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&#x2F;&amp;gt; Password: &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;input &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;password&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&#x2F;&amp;gt;
+&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;form&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;element &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.cssSelector(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;input.username&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;8-click-on-an-element&quot;&gt;8. Click on an element&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;click()&lt;&#x2F;strong&gt; — method is used to click on an element&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.className(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Content&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)).click();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;9-write-text-inside-an-element-input-and-textarea&quot;&gt;9. Write text inside an element — input and textarea&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;sendKeys()&lt;&#x2F;strong&gt; — method is used to send data&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.className(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;email&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)).sendKeys(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;abc@xyz.com&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;10-clear-text-from-the-text-box&quot;&gt;10. Clear text from the text box&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;clear()&lt;&#x2F;strong&gt; — method is used to clear text from the text area&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.xpath(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;&#x2F;&#x2F;input[[@placeholder](http:&#x2F;&#x2F;twitter.com&#x2F;placeholder)=’Username’]&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)).clear();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;11-select-a-drop-down&quot;&gt;11. Select a drop-down&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;support&#x2F;ui&#x2F;Select.html&quot;&gt;doc link&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&#x2F;&#x2F; single select option
+&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;select &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;country&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;US&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;United States&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;CA&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;Canada&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;MX&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;Mexico&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;select&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+
+&#x2F;&#x2F; multiple select option
+&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;select &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;multiple&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;fruits&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;banana&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;Banana&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;apple&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;Apple&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;orange&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;Orange&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+  &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;value&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;grape&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;Grape&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;option&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;select&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;selectByVisibleText() &#x2F; selectByValue() &#x2F; selectByIndex()&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;deselectByVisibleText() &#x2F; deselectByValue() &#x2F; deselectByIndex()&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; import statements for select class
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;org&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;openqa&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;selenium&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;support&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ui&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Select&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;;
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Single selection
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Select&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; country &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Select&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.id(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;country&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)));
+country.selectByVisibleText(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Canada&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; using **selectByVisibleText()** method
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;country.selectByValue(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;MX&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F;using **selectByValue()** method
+
+&#x2F;&#x2F;Selecting Items in a Multiple SELECT elements
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Select&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; fruits &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Select&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.id(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;fruits&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)));
+fruits.selectByVisibleText(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Banana&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+fruits.selectByIndex(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; using **selectByIndex()** method
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;12-get-methods-in-selenium&quot;&gt;12. Get methods in Selenium&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getTitle()&lt;&#x2F;strong&gt; - used to retrieve the current title of the webpage&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getCurrentUrl()&lt;&#x2F;strong&gt;— used to retrieve the current URL of the webpage&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getPageSource()&lt;&#x2F;strong&gt; — used to retrieve the current page source of the webpage&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getText()&lt;&#x2F;strong&gt; — used to retrieve the text of the specified web element&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getAttribute()&lt;&#x2F;strong&gt;— used to retrieve the value specified in the attribute&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;13-handle-alerts-web-based-alert-pop-ups&quot;&gt;13. Handle alerts: (Web-based alert pop-ups)&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.switchTO().alert.getText()&lt;&#x2F;strong&gt; — to retrieve the alert message&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.switchTO().alert.accept()&lt;&#x2F;strong&gt; — to accept the alert box&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.switchTO().alert.dismiss()&lt;&#x2F;strong&gt; — to cancel the alert box&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.switchTO().alert.sendKeys(&amp;quot;Text&amp;quot;)&lt;&#x2F;strong&gt; — to send data to the alert box&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;14-switch-frames&quot;&gt;14. Switch frames&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.switchTo.frame(int frameNumber)&lt;&#x2F;strong&gt; — mentioning the frame index number, the Driver will switch to that specific frame&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.switchTo.frame(string frameNameOrID)&lt;&#x2F;strong&gt; — mentioning the frame element or ID, the Driver will switch to that specific frame&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.switchTo.frame(WebElement frameElement)&lt;&#x2F;strong&gt; — mentioning the frame web element, the Driver will switch to that specific frame&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.switchTo().defaultContent()&lt;&#x2F;strong&gt; — Switching back to the main window&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;15-handle-multiple-windows-and-tabs&quot;&gt;15. Handle multiple windows and tabs&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getWindowHandle()&lt;&#x2F;strong&gt; — used to retrieve the handle of the current page (a unique identifier)&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;getWindowHandles()&lt;&#x2F;strong&gt; - used to retrieve a set of handles of the all the pages available&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.switchTo().window(&amp;quot;windowName&#x2F;handle&amp;quot;)&lt;&#x2F;strong&gt; — switch to a window&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;driver.close()&lt;&#x2F;strong&gt; — closes the current browser window&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;16-waits-in-selenium&quot;&gt;16. Waits in selenium&lt;&#x2F;h2&gt;
+&lt;p&gt;There are 3 types of waits in selenium,&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Implicit Wait&lt;&#x2F;strong&gt; - used to wait for a certain amount of time before throwing an exception&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().timeouts().implicitlyWait(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;TimeUnit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;SECONDS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Explicit Wait&lt;&#x2F;strong&gt; — used to wait until a certain condition occurs before executing the code.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriverWait&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; wait &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriverWait&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(driver,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+wait.until(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ExpectedConditions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.presenceOfElementLocated(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.name(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;List of explicit wait:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;alertIsPresent()
+elementSelectionStateToBe()
+elementToBeClickable()
+elementToBeSelected()
+frameToBeAvaliableAndSwitchToIt()
+invisibilityOfTheElementLocated()
+invisibilityOfElementWithText()
+presenceOfAllElementsLocatedBy()
+presenceOfElementLocated()
+textToBePresentInElement()
+textToBePresentInElementLocated()
+textToBePresentInElementValue()
+titleIs()
+titleContains()
+visibilityOf()
+visibilityOfAllElements()
+visibilityOfAllElementsLocatedBy()
+visibilityOfElementLocated()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;**Fluent Wait — **defines the maximum amount of time to wait for a certain condition to appear&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Wait&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; wait &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FluentWait&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; reference)
+.withTimeout(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Duration&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.ofSeconds(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;SECONDS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;))
+.pollingEvery(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Duration&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.ofSeconds(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;SECONDS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;))
+.ignoring(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Exception&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.class);
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebElement&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; foo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;wait.until(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Function&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebElement&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;&amp;gt;() {
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebElement &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;apply&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;driver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;) {
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.findElement(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;By&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.id(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;foo&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+    }
+});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;17-element-validation&quot;&gt;17. Element validation&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;WebElement.html#isEnabled--&quot;&gt;isEnabled()&lt;&#x2F;a&gt; — determines if an element is enabled or not, returns a boolean.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;WebElement.html#isSelected--&quot;&gt;isSelected()&lt;&#x2F;a&gt; — determines if an element is selected or not, returns a boolean.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;WebElement.html#isDisplayed--&quot;&gt;isDisplayed()&lt;&#x2F;a&gt; — determines if an element is displayed or not, returns a boolean.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;18-handling-proxy&quot;&gt;18. Handling proxy&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Chrome:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; options &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Create object Proxy class - **Approach 1**
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Proxy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; proxy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Proxy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+proxy.setHttpProxy(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;username:password.myhttpproxy:3337&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; register the proxy with options class - **Approach 1**
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;options.setCapability(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;proxy&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, proxy);
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Add a ChromeDriver-specific capability.
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(options);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Firefox:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FirefoxOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; options &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FirefoxOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Create object Proxy class - **Approach 2**
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Proxy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; proxy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Proxy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+proxy.setHttpProxy(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;myhttpproxy:3337&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+proxy.setSocksUsername(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;username&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+proxy.setSocksPassword(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;password&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; register the proxy with options class - **Approach 2**
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;options.setProxy(proxy);
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; create object to firefx driver
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FirefoxDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(options);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;19-window-management&quot;&gt;19. Window management&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Get window size:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F;Access each dimension individually
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; width &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.manage().window().getSize().getWidth();
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; height &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.manage().window().getSize().getHeight();
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F;Or store the dimensions and query them later
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Dimension&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; size &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.manage().window().getSize();
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; width1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; size.getWidth();
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; height1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; size.getHeight();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Set window size:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().window().setSize(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Dimension&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1024&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;768&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Get window position:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Access each dimension individually
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.manage().window().getPosition().getX();
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; y &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.manage().window().getPosition().getY();
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Or store the dimensions and query them later
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Point&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; position &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver.manage().window().getPosition();
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; x1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; position.getX();
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; y1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; position.getY();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Set window position:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Move the window to the top left of the primary monitor
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().window().setPosition(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Point&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Maximize window:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().window().maximize();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fullscreen window:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().window().fullscreen();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;20-page-loading-strategy&quot;&gt;20. Page loading strategy&lt;&#x2F;h2&gt;
+&lt;p&gt;The document.readyState property of a document describes the loading state of the current document. By default, WebDriver will hold off on responding to a driver.get() (or) driver.navigate().to() call until the document ready state is complete&lt;&#x2F;p&gt;
+&lt;p&gt;By default, when Selenium WebDriver loads a page, it follows the normal pageLoadStrategy.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;normal:&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; chromeOptions &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+chromeOptions.setPageLoadStrategy(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;PageLoadStrategy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;NORMAL&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(chromeOptions);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;eager:&lt;&#x2F;strong&gt; When setting to eager, Selenium WebDriver waits until &lt;a href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;Document&#x2F;DOMContentLoaded_event&quot;&gt;DOMContentLoaded&lt;&#x2F;a&gt; event fire is returned.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; chromeOptions &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+chromeOptions.setPageLoadStrategy(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;PageLoadStrategy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;EAGER&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(chromeOptions);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;none:&lt;&#x2F;strong&gt; When set to none Selenium WebDriver only waits until the initial page is downloaded.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; chromeOptions &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeOptions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;();
+chromeOptions.setPageLoadStrategy(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;PageLoadStrategy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;NONE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;WebDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;ChromeDriver&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(chromeOptions);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;21-keyboard-and-mouse-events&quot;&gt;21. Keyboard and Mouse events&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;interactions&#x2F;Actions.html&quot;&gt;Action class&lt;&#x2F;a&gt; is used to handle keyboard and mouse events&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;keyboard-events&quot;&gt;keyboard events:&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;keyDown()&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;keyUp()&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;sendKeys()&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;mouse-events&quot;&gt;Mouse events:&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;clickAndHold()&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;contextClick() — performs the mouse right-click action&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;doubleClick()&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;dragAndDrop(source,target)&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;dragAndDropBy(source,xOffset,yOffset)&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;moveByOffset(xOffset,yOffset)&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;moveByElement()&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;release()&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Actions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; builder &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Actions&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(driver);
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Action&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; actions &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; builder
+.moveToElement(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login-textbox&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)
+.click()
+.keyDown(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login-textbox&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Keys&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;SHIFT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)
+.sendKeys(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login-textbox&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;hello&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)
+.keyUp(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login-textbox&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Keys&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;SHIFT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)
+.doubleClick(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;login-textbox&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)
+.contextClick()
+.build();
+
+actions.perform();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;22-cookies&quot;&gt;22. Cookies&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;addCookie(arg)&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().addCookie(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Cookie&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;foo&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;bar&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;getCookies()&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().getCookies(); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; to get all cookies
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;getCookieNamed()&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().getCookieNamed(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;foo&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;deleteCookieNamed()&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().deleteCookieNamed(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;foo&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;deleteCookie()&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Cookie&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; cookie1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;Cookie&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;test2&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;cookie2&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+driver.manage().addCookie(cookie1);
+
+driver.manage().deleteCookie(cookie1); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; deleting cookie object
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;deleteAllCookies()&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;driver.manage().deleteAllCookies(); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; deletes all cookies
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;23-take-screenshot&quot;&gt;23. Take screenshot:&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;TakesScreenshot.html&quot;&gt;(doc link)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;getScreenshotAs&lt;&#x2F;strong&gt; - used to Capture the screenshot and store it in the specified location. This method throws WebDriverException. copy() method from the &lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;io&#x2F;FileHandler.html&quot;&gt;File Handler&lt;&#x2F;a&gt; class is used to store the screenshot in a destination folder&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;TakesScreenshot&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt; screenShot &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;TakesScreenshot&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)driver;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;FileHandler&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.copy(screenShot.getScreenshotAs(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;OutputType&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;FILE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;), &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;File&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;path&#x2F;to&#x2F;destination&#x2F;folder&#x2F;screenshot.png&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;24-execute-javascript&quot;&gt;24. Execute Javascript:&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;org&#x2F;openqa&#x2F;selenium&#x2F;JavascriptExecutor.html&quot;&gt;(doc link)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;executeAsyncScript()&lt;&#x2F;strong&gt; - executes an asynchronous piece of JavaScript&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;executeScript()&lt;&#x2F;strong&gt; - executes JavaScript&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#272822;&quot;&gt;
+&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;(driver &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;instanceof &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;JavascriptExecutor&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;) {
+((&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;JavascriptExecutor&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;)driver).executeScript(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;alert(&amp;#39;hello world&amp;#39;);&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f8f8f2;&quot;&gt;);
+}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;em&gt;Last updated on — Apr 18, 2020&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;div align=&quot;center&quot;&gt;* * * *&lt;&#x2F;div&gt;
+&lt;p&gt;Originally published on &lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;@madhankumaravelu93&#x2F;selenium-cheat-sheet-a-comprehensive-list-of-selenium-commands-fa4c5c9d11ab&quot;&gt;Medium&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;references&quot;&gt;References:&lt;&#x2F;h2&gt;
+&lt;p&gt;[1] &lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;overview-summary.html&quot;&gt;https:&#x2F;&#x2F;www.selenium.dev&#x2F;selenium&#x2F;docs&#x2F;api&#x2F;java&#x2F;overview-summary.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[2] &lt;a href=&quot;https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;en&#x2F;&quot;&gt;https:&#x2F;&#x2F;www.selenium.dev&#x2F;documentation&#x2F;en&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+        </item>
+    </channel>
+</rss>

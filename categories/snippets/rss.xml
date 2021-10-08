@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Madhan - Snippets</title>
+        <link>https://madhank93.github.io</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://madhank93.github.io/categories/snippets/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sun, 26 Apr 2020 01:24:33 +0530</lastBuildDate>
+        <item>
+            <title>Selenium code snippets</title>
+            <pubDate>Sun, 26 Apr 2020 01:24:33 +0530</pubDate>
+            <link>https://madhank93.github.io/blogs/004-selenium-snippets/</link>
+            <guid>https://madhank93.github.io/blogs/004-selenium-snippets/</guid>
+            <description>&lt;p&gt;Ever since I published the &lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;@madhankumaravelu93&#x2F;selenium-cheat-sheet-a-comprehensive-list-of-selenium-commands-fa4c5c9d11ab&quot;&gt;Selenium cheat sheet&lt;&#x2F;a&gt; people have been asking me this question.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn-images-1.medium.com&#x2F;max&#x2F;2000&#x2F;1*PSpCG8Z8i0h-JmYfzJqLuQ.jpeg&quot; alt=&quot;Source — https:&#x2F;&#x2F;imgflip.com&#x2F;&quot; &#x2F;&gt;&lt;em&gt;Source — &lt;a href=&quot;https:&#x2F;&#x2F;imgflip.com&#x2F;&quot;&gt;https:&#x2F;&#x2F;imgflip.com&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;So I have tried to put all the syntax in the experiment. For this I have used the site &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;&quot;&gt;the-internet.com&lt;&#x2F;a&gt; developed and maintained by &lt;a href=&quot;http:&#x2F;&#x2F;davehaeffner.com&#x2F;&quot;&gt;Dave Haeffner&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Let’s see the code snippets.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;&#x2F;strong&gt; — At the end of this article I have provided a link to the complete source code.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;1-a-b-testing&quot;&gt;1. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;abtest&quot;&gt;A&#x2F;B Testing&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;fd39343235618afa055c47e2c09d9625.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;2-add-remove-elements&quot;&gt;2. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;add_remove_elements&#x2F;&quot;&gt;Add&#x2F;Remove Elements&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;2e1fd5ce11127465a0916804e1433d1e.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;3-basic-auth&quot;&gt;3. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;basic_auth&quot;&gt;Basic Auth&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;5fa607129c2a020a559cf3227c2e2aab.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;4-broken-images&quot;&gt;4. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;broken_images&quot;&gt;Broken Images&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;c21c4f98c4b9c4fb857118118e33ab03.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;5-checkboxes&quot;&gt;5. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;checkboxes&quot;&gt;Checkboxes&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;a918c245133f00057c052b954096c76c.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;6-context-menu&quot;&gt;6. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;context_menu&quot;&gt;Context Menu&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;e2e675d76259ce0327a679d25eac76fe.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;7-disappearing-elements&quot;&gt;7. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;disappearing_elements&quot;&gt;Disappearing Elements&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;bd89be01461adfd3c62c7fa50fc65159.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;8-drag-and-drop&quot;&gt;8. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;drag_and_drop&quot;&gt;Drag and Drop&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;69ddc06e8b807b5404d4d9c4a876196f.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;9-dropdown&quot;&gt;9. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;dropdown&quot;&gt;Dropdown&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;edd790fdea90f88a10ae9a3a23b6c742.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;10-dynamic-content&quot;&gt;10. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;dynamic_content&quot;&gt;Dynamic Content&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;be85be1153a7933aacb3d7af1aeaf7d0.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;11-dynamic-loading&quot;&gt;11. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;dynamic_loading&quot;&gt;Dynamic Loading&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;3739aecbae005b0ac59084d5d2e4828e.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;12-entry-ad&quot;&gt;12. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;entry_ad&quot;&gt;Entry Ad&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;bba046adf79db145d7ea3d0c2d0c207b.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;13-exit-intent&quot;&gt;13. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;exit_intent&quot;&gt;Exit Intent&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;75e39512f159aaa2eed204d238f9eab1.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;14-file-download&quot;&gt;14. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;download&quot;&gt;File Download&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;4fa956999cc011c087a1f7afad56c23f.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;15-file-upload&quot;&gt;15. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;upload&quot;&gt;File Upload&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;c35aff1afe1420962d8fcb0b1fe09aab.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;16-floating-menu&quot;&gt;16. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;floating_menu&quot;&gt;Floating Menu&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;350cbc7f943a746e6f032035b1c7d2cf.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;17-forgot-password&quot;&gt;17. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;forgot_password&quot;&gt;Forgot Password&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;b484b046e58eea19b9b9b97833470ba5.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;18-geolocation&quot;&gt;18. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;geolocation&quot;&gt;Geolocation&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;438a3251419888f43926959b670ddf20.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;19-horizontal-slider&quot;&gt;19. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;horizontal_slider&quot;&gt;Horizontal Slider&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;7149267c8727ebde69a91cf02a0df4cc.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;20-hovers&quot;&gt;20. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;hovers&quot;&gt;Hovers&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;6f40641bbf62b35133b39ec97d196ada.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;21-infinite-scroll&quot;&gt;21. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;infinite_scroll&quot;&gt;Infinite Scroll&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;3e91f71343bc9dbabb11a7994ef939fb.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;22-inputs&quot;&gt;22. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;inputs&quot;&gt;Inputs&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;48edb18fa35d824c0caf82af231a91bd.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;23-javascript-alerts&quot;&gt;23. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;javascript_alerts&quot;&gt;JavaScript Alerts&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;951c39b9edd5dca2ddf237fe3ad2b4a6.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;24-javascript-onload-event-error&quot;&gt;24. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;javascript_error&quot;&gt;JavaScript onload event error&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;31d6112c5086b1f682fb6ec96003edb2.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;25-jquery-ui-menus&quot;&gt;25. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;jqueryui&#x2F;menu&quot;&gt;JQuery UI Menus&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;2767e318b6a22fb74dd2f704e2fbec42.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;26-key-presses&quot;&gt;26. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;key_presses&quot;&gt;Key Presses&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;18158cdc50b666d92fdb803aa57eb64e.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;27-login-page&quot;&gt;27. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;login&quot;&gt;Login page&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;988b7f07862cca2433192c00f4178e61.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;28-login-page-data-driven&quot;&gt;28. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;login&quot;&gt;Login page&lt;&#x2F;a&gt; — Data Driven&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;ea4998f1a1f1c1f57407ecf4e8ecdc79.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;29-multiple-windows&quot;&gt;29. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;windows&quot;&gt;Multiple Windows&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;58d630dd68f8884c1bb4cf0d627a13a7.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;30-nested-frames&quot;&gt;30. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;nested_frames&quot;&gt;Nested Frames&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;8527707032d7a7b591e839c619611954.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;31-screenshot&quot;&gt;31. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;&quot;&gt;Screenshot&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;8b26848aca5b909065a1c7b3213d42b7.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;32-status-codes&quot;&gt;32. &lt;a href=&quot;https:&#x2F;&#x2F;the-internet.herokuapp.com&#x2F;status_codes&quot;&gt;Status codes&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;div class=&quot;gist&quot;&gt;
+    &lt;script src=&quot;https:&amp;#x2F;&amp;#x2F;gist.github.com&amp;#x2F;madhank93&amp;#x2F;512fcb78ec18de15cbd1a32fe862b31f.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;div&gt;
+&lt;div align=&quot;center&quot;&gt;* * * *&lt;&#x2F;div&gt;
+&lt;p&gt;Originally published on &lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;@madhankumaravelu93&#x2F;selenium-code-snippets-a-curated-list-of-the-working-code-example-f7fbc692c2b6&quot;&gt;Medium&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;References:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[1] &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tourdedave&#x2F;elemental-selenium-tips&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;tourdedave&#x2F;elemental-selenium-tips&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[2] &lt;a href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;47396547&#x2F;how-to-set-the-geo-location-through-code&quot;&gt;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;47396547&#x2F;how-to-set-the-geo-location-through-code&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;[3] &lt;a href=&quot;https:&#x2F;&#x2F;www.notonlyanecmplace.com&#x2F;drag-and-drop-external-files-with-selenium&#x2F;&quot;&gt;https:&#x2F;&#x2F;www.notonlyanecmplace.com&#x2F;drag-and-drop-external-files-with-selenium&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+        </item>
+    </channel>
+</rss>
