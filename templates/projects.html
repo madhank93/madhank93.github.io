@@ -1,0 +1,109 @@
+{% extends "DeepThought/templates/base.html" %} {% block content %}
+
+<style>
+  .grid {
+    display: grid;
+    padding-top: 50px;
+    gap: 20px;
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  #box {
+    background-color: #f2f2f5;
+    border-radius: 1.25rem;
+    padding-bottom: 5px;
+  }
+
+  .anchor {
+    font-size: 25px;
+    font-weight: bolder;
+  }
+</style>
+
+<div class="container">
+  <div class="grid">
+    <div align="center" id="box">
+      <div align="center">
+        <img src="https://img.icons8.com/nolan/250/docker.png" alt="Docker" />
+      </div>
+      <div align="center">
+        <a
+          class="anchor"
+          href="https://github.com/madhank93/learn-docker"
+          target="_blank"
+          >Learn Docker ➡️</a
+        >
+      </div>
+    </div>
+    <div align="center" id="box">
+      <div align="center">
+        <img
+          src="https://img.icons8.com/color/250/kubernetes.png"
+          alt="kubernetes"
+        />
+      </div>
+      <div align="center">
+        <a
+          class="anchor"
+          href="https://github.com/madhank93/learn-k8s-ckad"
+          target="_blank"
+          >Learn k8s CKAD ➡️</a
+        >
+      </div>
+    </div>
+    <div align="center" id="box">
+      <div align="center">
+        <img
+          src="https://img.icons8.com/external-flat-juicy-fish/250/external-algorithm-data-science-flat-flat-juicy-fish.png"
+          alt="DSA"
+        />
+      </div>
+      <div align="center">
+        <a
+          class="anchor"
+          href="https://github.com/madhank93/learn-dsa"
+          target="_blank"
+          >Learn DSA ➡️</a
+        >
+      </div>
+    </div>
+    <div align="center" id="box">
+      <div align="center">
+        <img
+          src="https://img.icons8.com/external-parzival-1997-flat-parzival-1997/250/external-system-digital-globalization-parzival-1997-flat-parzival-1997.png"
+          alt="System Design"
+        />
+      </div>
+      <div align="center">
+        <a
+          class="anchor"
+          href="https://github.com/madhank93/learn-system-design"
+          target="_blank"
+          >Learn System Design ➡️</a
+        >
+      </div>
+    </div>
+    <div align="center" id="box">
+      <div align="center">
+        <img
+          src="https://img.icons8.com//fluency/250/javascript.png"
+          alt="Javascript"
+        />
+      </div>
+      <div align="center">
+        <a
+          class="anchor"
+          href="https://madhank93.github.io/js-mindmap/"
+          target="_blank"
+          >JS Mind map ➡️</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
