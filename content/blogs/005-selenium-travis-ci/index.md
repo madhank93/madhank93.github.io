@@ -4,7 +4,6 @@ description = "A curated list of the working code example in Java"
 date = 2020-04-26T01:24:33+05:30
 
 [taxonomies]
-categories = ["Snippets"]
 tags = ["selenium", "snippets", "testing", "automation", "java"]
 
 [extra]
@@ -87,8 +86,8 @@ Travis CI automatically recognizes that our project is built using Maven by iden
 
 By default, Travis CI automatically starts build process when the code changes have been pushed or pull request has been created.
 
-{% galleria() %} 
-{ "images": 
+{% galleria() %}
+{ "images":
 [{"src": "https://cdn-images-1.medium.com/max/2734/1*XXM8rLAprBOpU3I26gx5CQ.png","title": "Clouds & Mountains", "description": "Just hanging out with each other."}] }
 {% end %}
 

@@ -4,7 +4,6 @@ description = "It’s time to look under the hood"
 date = 2020-03-28T01:24:33+05:30
 
 [taxonomies]
-categories = ["Blog"]
 tags = ["selenium", "w3c", "webdriver"]
 
 [extra]

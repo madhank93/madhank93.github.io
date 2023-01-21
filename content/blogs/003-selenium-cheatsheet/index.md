@@ -4,7 +4,6 @@ description = "A comprehensive list of selenium commands in Java"
 date = 2020-04-17T01:24:33+05:30
 
 [taxonomies]
-categories = ["Cheatsheet"]
 tags = ["selenium", "cheatsheet", "testing", "automation", "java"]
 
 [extra]
