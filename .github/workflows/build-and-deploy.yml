@@ -10,12 +10,13 @@ on:
 name: Build and deploy GH Pages
 jobs:
   build:
+    name: Publish site
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: build_and_deploy
-        uses: shalzz/zola-deploy-action@v0.13.0
+      - name: Checkout code
+        uses: actions/checkout@v3.0.0
+      - name: Build_and_deploy
+        uses: shalzz/zola-deploy-action@v0.16.1
         env:
           # Target branch
           PAGES_BRANCH: gh-pages
