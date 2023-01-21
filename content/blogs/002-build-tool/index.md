@@ -4,7 +4,6 @@ description = "A beginner’s guide to build tools, Maven and POM file"
 date = 2020-04-05T01:24:33+05:30
 
 [taxonomies]
-categories = ["Blog"]
 tags = ["build-tools", "maven", "pom"]
 
 [extra]
