@@ -1,5 +1,5 @@
 # The base URL of the site; the only required configuration variable.
-base_url = "madhan.app"
+#base_url = "madhan.app"
 
 # The site title used in feeds by default.
 title = "Madhan"
