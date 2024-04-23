@@ -128,7 +128,11 @@ There are two types of Maven dependencies:
 
 <div align="center">* * * *</div>
 
+<center>
+
 Originally published on [Medium](https://medium.com/@madhankumaravelu93/what-are-build-automation-tool-and-a-closer-look-at-the-maven-and-pom-file-7b209a8a6c61)
+
+</center>
 
 # References
 

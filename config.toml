@@ -56,6 +56,7 @@ anchors = "on"
 
 # Put all your custom variables here
 [extra]
+galleria.enabled = true
 navbar_items = [
  { code = "en", nav_items = [
   { url = "$BASE_URL/", name = "Home" },

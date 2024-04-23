@@ -150,7 +150,15 @@ Let’s see the code snippets.
 
 <div align="center">* * * *</div>
 
+<center>
+
 Originally published on [Medium](https://medium.com/@madhankumaravelu93/selenium-code-snippets-a-curated-list-of-the-working-code-example-f7fbc692c2b6)
+
+🌟 🌟 🌟 **The source code for this blog post can be found here** 🌟🌟🌟
+
+[GitHub - madhank93/automating-internet-app](https://github.com/madhank93/automating-internet-app)
+
+</center>
 
 **References:**
 
