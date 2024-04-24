@@ -57,13 +57,15 @@ anchors = "on"
 # Put all your custom variables here
 [extra]
 galleria.enabled = true
+date_format="%d %b, %Y"
 navbar_items = [
  { code = "en", nav_items = [
   { url = "$BASE_URL/", name = "Home" },
   { url = "$BASE_URL/blogs", name = "Blogs" },
-  { url = "$BASE_URL/tags", name = "Tags" },
+  { url = "$BASE_URL/til", name = "TIL" },
   { url = "$BASE_URL/projects", name = "Projects" },
-  { url = "$BASE_URL/archive", name = "Archive" }
+  { url = "$BASE_URL/archive", name = "Archive" },
+  { url = "$BASE_URL/tags", name = "Tags" },
  ]},
 ]
 

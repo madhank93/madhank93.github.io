@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+  {{ config.title }} | {{ section.title }}
+{% endblock title %}
+{% block header %}
+  <header class="hero">
+    <div class="hero-body pb-0">
+      <div class="container">
+        <div class="has-text-centered">
+          <h1 class="title is-2">{{ section.title }}</h1>
+          <p class="subtitle" style="margin-bottom: 0.5rem;">{{ section.description }}</p>
+        </div>
+      </header>
+    {% endblock %}
+    {% block content %}
+      <section class="section pt-3">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-centered is-9">
+              {% if paginator %}
+                {% set pages = paginator.pages %}
+              {% else %}
+                {% set pages = section.pages %}
+              {% endif %}
+              {% for page in pages  %}
+                <div class="row is-full has-text-left">
+                  <div class="is-size-5 mb-5">
+                    {{ macros::til_publish_metadata(page=page) }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>  
+    {% endblock %}
