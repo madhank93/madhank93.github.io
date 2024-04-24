@@ -68,25 +68,28 @@ Please protect ports used by ChromeDriver and related test frameworks to prevent
 
 ## 1. Open the Chrome browser
 
-<p align="center">
-    <a href='https://cdn-images-1.medium.com/max/2540/1*HX7JzMXo5R75qtkFTA4zhQ.png' target="_blank">
-        <img alt="step 1" src="https://cdn-images-1.medium.com/max/2540/1*HX7JzMXo5R75qtkFTA4zhQ.png" width="65%">
-    </a>
-      &nbsp; &nbsp;
-    <a href='https://cdn-images-1.medium.com/max/2000/1*I3cVPlrRTp4_n9pylkQnRw.png' target="_blank">
-        <img alt="step 2" src="https://cdn-images-1.medium.com/max/2000/1*I3cVPlrRTp4_n9pylkQnRw.png" width="30%">
-    </a>
-</p>
-
-<p align="center">
-    <a href='https://cdn-images-1.medium.com/max/2000/1*O9gSQmtKsBafxdqHAQT0OQ.png' target="_blank">
-        <img alt="step 3" src="https://cdn-images-1.medium.com/max/2000/1*O9gSQmtKsBafxdqHAQT0OQ.png" width="45%">
-    </a>
-    &nbsp; &nbsp;
-    <a href='https://cdn-images-1.medium.com/max/2000/1*faSnhxAkGGE6RIsYbw5PyQ.png' target="_blank">
-        <img alt="step 4" src="https://cdn-images-1.medium.com/max/2000/1*faSnhxAkGGE6RIsYbw5PyQ.png" width="45%">
-    </a>
-</p>
+{% galleria() %}
+{
+"images": [
+{
+"src": "https://cdn-images-1.medium.com/max/2540/1*HX7JzMXo5R75qtkFTA4zhQ.png",
+"title": "Step 1"
+},
+{
+"src": "https://cdn-images-1.medium.com/max/2000/1*I3cVPlrRTp4_n9pylkQnRw.png",
+"title": "Step 2"
+},
+{
+"src": "https://cdn-images-1.medium.com/max/2000/1*O9gSQmtKsBafxdqHAQT0OQ.png",
+"title": "Step 3"
+},
+{
+"src": "https://cdn-images-1.medium.com/max/2000/1*faSnhxAkGGE6RIsYbw5PyQ.png",
+"title": "Step 4"
+}
+]
+}
+{% end %}
 
 Now that the `chromedriver` started in the default port 9519. Let's open the browser. This is done by creating a new session. To create a new session using the WebDriver API, make an HTTP `POST` request to the [/session](https://w3c.github.io/webdriver/#new-session) endpoint. In addition, we need to define the type of browser. This information is sent in as a JSON object in the POST body. On success, the response includes a `sessionId`.
 
@@ -98,12 +101,12 @@ The next step is to open a URL in the browser. This is done with an HTTP `POST` 
 
 ## 3. Find search text box
 
-<img alt="step 1" src="https://cdn-images-1.medium.com/max/2076/1*We5Hhw6j_bIPqCNqO_EO2w.png" width="100%">
+<img title="step 1" src="https://cdn-images-1.medium.com/max/2076/1*We5Hhw6j_bIPqCNqO_EO2w.png" width="100%">
 
 <p align="center">
-    <img alt="step 2" src="https://cdn-images-1.medium.com/max/2000/1*YqaSJkKPYOsrpxR_YMIcsw.png" width="45%">
+    <img title="step 2" src="https://cdn-images-1.medium.com/max/2000/1*YqaSJkKPYOsrpxR_YMIcsw.png" width="45%">
     &nbsp; &nbsp;
-    <img alt="step 3" src="https://cdn-images-1.medium.com/max/2000/1*mTJcGR9zcyTUq9Z9eZKYwA.png" width="45%">
+    <img title="step 3" src="https://cdn-images-1.medium.com/max/2000/1*mTJcGR9zcyTUq9Z9eZKYwA.png" width="45%">
 </p>
 
 Now that we have opened the Google page, let's find the search text box. This is done with an HTTP `POST` request to [/session/<session_id>/element](https://w3c.github.io/webdriver/#find-element), with the POST body including the `location strategy` and `selector`
@@ -116,12 +119,12 @@ After locating the search box, let's send the search value. This is done with an
 
 ## 5. Find the search button
 
-![](https://cdn-images-1.medium.com/max/2000/1*C-MRw9CryoicmxbjE8Kt9Q.png)
+<img title="step 1" src="https://cdn-images-1.medium.com/max/2000/1*C-MRw9CryoicmxbjE8Kt9Q.png" width="100%">
 
 <p align="center">
-    <img alt="step 2" src="https://cdn-images-1.medium.com/max/2000/1*bYRsHcSi-kgMYCpkZSRvbw.png" width="45%">
+    <img title="step 2" src="https://cdn-images-1.medium.com/max/2000/1*bYRsHcSi-kgMYCpkZSRvbw.png" width="45%">
     &nbsp; &nbsp;
-    <img alt="step 3" src="https://cdn-images-1.medium.com/max/2000/1*HTO1qzeTEKGG8hrk7YgtTw.png" width="45%">
+    <img title="step 3" src="https://cdn-images-1.medium.com/max/2000/1*HTO1qzeTEKGG8hrk7YgtTw.png" width="45%">
 </p>
 
 Let's find the search text button. This is done with an HTTP `POST` request to [/session/<session_id>/element](https://w3c.github.io/webdriver/#find-element), with the POST body including the `location strategy` and `selector`
@@ -140,11 +143,15 @@ To quit the driver, send the HTTP `DELETE` request to [/session/<session_id>](ht
 
 <div align="center">* * * *</div>
 
+<center>
+
 Originally published on [Medium](https://medium.com/@madhankumaravelu93/a-deep-dive-into-the-w3c-webdriver-specification-fcf0906048f9)
 
-Thanks to [Peter Thomas](https://twitter.com/ptrthomas?lang=en) creator of [Karate DSL](https://github.com/intuit/karate)
+🌟 🌟 🌟 **The source code for this blog post can be found here** 🌟🌟🌟
 
-You can find the [GitHub Source code](https://github.com/madhank93/automation_using_chromedriver_postman) with all of these above steps.
+[GitHub - madhank93/automation_using_chromedriver_postman](https://github.com/madhank93/automation_using_chromedriver_postman)
+
+</center>
 
 # References
 

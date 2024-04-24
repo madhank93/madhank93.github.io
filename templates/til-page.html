@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% block title %} {{ config.title }} | {{ page.title
+}} {% endblock %} {% block content %}
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title is-2 has-text-centered">{{ page.title }}</h1>
+          {% if page.extra.tldr %}
+          <div class="has-text-centered">
+            <strong>tl;dr: </strong>
+            {{page.extra.tldr}}
+          </div>
+          {% endif %}
+          <p class="subtitle has-text-centered">{{ page.description }}</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="content mt-2" style="max-width: 100%">
+              {{ page.content | safe }}
+            </div>
+            <div class="column is-8">
+              {{ macros::page_publish_metadata(page=page) }}
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              {{ macros::page_content_metadata(page=page) }}
+            </div>
+            <div class="column">
+              {% if page.taxonomies.categories %} {{
+              macros::render_categories(categories=page.taxonomies.categories)
+              }} {% endif %}
+            </div>
+            <div class="column has-text-right-desktop">
+              {% if page.taxonomies.tags %} {{
+              macros::render_tags(tags=page.taxonomies.tags) }} {% endif %}
+            </div>
+          </div>
+        </article>
+      </div>
+      {% if page.extra.toc %}
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            {% for h1 in page.toc %}
+            <li>
+              <a
+                id="link-{{h1.id}}"
+                class="toc is-size-7 {% if loop.first %}is-active{% endif %}"
+                href="{{ h1.permalink | safe }}"
+              >
+                {{ h1.title }}
+              </a>
+              {% if h1.children %}
+              <ul>
+                {% for h2 in h1.children %}
+                <li>
+                  <a
+                    id="link-{{h2.id}}"
+                    class="toc is-size-7"
+                    href="{{ h2.permalink | safe }}"
+                  >
+                    {{ h2.title }}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </aside>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

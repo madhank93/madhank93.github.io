@@ -1,0 +1,32 @@
+{% extends "index.html" %} {% block content %}
+<style>
+  ul {
+    margin-left: 10px;
+    list-style: disc;
+    font-size: large;
+  }
+</style>
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">Archive</h1>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-9">
+        {% set posts = get_section(path="blogs/_index.md") %} {% for year, pages
+        in posts.pages | group_by(attribute="year") %}
+        <h2 class="title">{{ year }}</h2>
+        <ul>
+          {% for post in pages %}
+          <li>
+            <a href="{{ post.permalink }}">{{ post.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <br />
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

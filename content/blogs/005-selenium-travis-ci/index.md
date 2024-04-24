@@ -1,7 +1,7 @@
 +++
 title = "Selenium DevOps series: Run your scripts in Travis CI"
-description = "A curated list of the working code example in Java"
-date = 2020-04-26T01:24:33+05:30
+description = "Aren’t you bored of running your automation scripts locally?"
+date = 2020-05-16T01:24:33+05:30
 
 [taxonomies]
 tags = ["selenium", "snippets", "testing", "automation", "java"]
@@ -9,10 +9,6 @@ tags = ["selenium", "snippets", "testing", "automation", "java"]
 [extra]
 toc = true
 +++
-
-# Selenium DevOps series: Run your scripts in Travis CI
-
-Aren’t you bored of running your automation scripts locally?
 
 ![Source — unknown](https://cdn-images-1.medium.com/max/3600/1*IbnJC_qfjBAMMQLQ1scTgg.jpeg)_Source — unknown_
 
@@ -86,10 +82,7 @@ Travis CI automatically recognizes that our project is built using Maven by iden
 
 By default, Travis CI automatically starts build process when the code changes have been pushed or pull request has been created.
 
-{% galleria() %}
-{ "images":
-[{"src": "https://cdn-images-1.medium.com/max/2734/1*XXM8rLAprBOpU3I26gx5CQ.png","title": "Clouds & Mountains", "description": "Just hanging out with each other."}] }
-{% end %}
+![](https://cdn-images-1.medium.com/max/2734/1*XXM8rLAprBOpU3I26gx5CQ.png)
 
 ## Result
 
@@ -97,8 +90,19 @@ By default, Travis CI automatically starts build process when the code changes h
 
 The Build log shows us that our tests are passed !!!
 
-- [madhank93/selenium-maven-travisci](https://github.com/madhank93/selenium-maven-travisci)
-- [Travis CI](https://travis-ci.org/github/madhank93/selenium-maven-travisci)
+<div align="center">* * * *</div>
+
+<center>
+
+Originally published on [Medium](https://medium.com/@madhankumaravelu93/selenium-devops-series-run-your-scripts-in-travis-ci-b3505aaad367)
+
+[Travis CI build](https://travis-ci.org/github/madhank93/selenium-maven-travisci)
+
+🌟 🌟 🌟 **The source code for this blog post can be found here** 🌟🌟🌟
+
+[GitHub - madhank93/selenium-maven-travisci](https://github.com/madhank93/selenium-maven-travisci)
+
+</center>
 
 **References:**
 
