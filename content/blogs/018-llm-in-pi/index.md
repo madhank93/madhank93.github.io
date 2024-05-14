@@ -4,7 +4,7 @@ description = "Provisioning the compute resource for k8s setup in AWS using Pulu
 date = 2024-04-21T01:25:33+05:30
 
 [taxonomies]
-tags = ["llm", "raspberry-pi", "cloudflare-tunnel", "ollama", "ansible", "docker"]
+tags = ["llm", "raspberry-pi", "cloudflare-tunnel", "ollama", "ansible", "docker", "self-hosting"]
 
 [extra]
 toc = true
