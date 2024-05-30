@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Monitoring Test automation: Gathering metrics — Part 1
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Monitoring Test automation: Gathering metrics — Part 1
+          </h1>
+          <p class="subtitle">Using Prometheus to gather metrics and visualizing it in Grafana</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2022-10-19T01:24:33+05:30"
+      >October 19, 2022</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>984 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/prometheus/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>prometheus</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/grafana/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>grafana</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/telegraf/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>telegraf</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/minikube/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>minikube</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/monitoring/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>monitoring</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*0sy6gcgqJ9tcjO8Jr1JRHg.png" alt="Monitoring stack" /></p>
+<p>In this article we are going to see how to add a monitoring capability to my previous work <a href="https://medium.com/testvagrant/scaling-tests-on-google-kubernetes-engine-with-cloud-build-624d955f6698">Scaling tests on Kubernetes</a>. We will use <a href="https://www.influxdata.com/time-series-platform/telegraf/">Telegraf</a> to transform selenosis metrics, <a href="https://prometheus.io/">Prometheus</a> to collect metrics and visualize it using <a href="https://grafana.com/grafana/">Grafana</a>.</p>
+<ul>
+<li>
+<p><a href="https://github.com/prometheus">Prometheus</a> is an open-source systems monitoring and alerting toolkit, stores its metrics as <a href="https://prometheus.io/docs/concepts/data_model/">time series</a> data in Time series Database (<a href="https://en.wikipedia.org/wiki/Time_series_database">TSDB</a>)</p>
+</li>
+<li>
+<p><a href="https://github.com/influxdata/telegraf">Telegraf</a> is an open-source agent for collecting, processing, aggregating, and writing metrics</p>
+</li>
+<li>
+<p><a href="https://github.com/grafana/grafana">Grafana</a> is an open-source data-visualization platform</p>
+</li>
+</ul>
+<h2 id="monitoring-setup">Monitoring Setup</h2>
+<p><img src="https://cdn-images-1.medium.com/max/6198/1*-_yQI0gJWspiWk16b3Fxyw.png" alt="Monitoring high level architecture" /></p>
+<blockquote>
+<p>To follow along with this article, do checkout the <a href="https://github.com/madhank93/monitoring-test-automation">source code</a> and
+use <a href="https://minikube.sigs.k8s.io/docs/start/">minikube</a> or <a href="https://kind.sigs.k8s.io/docs/user/quick-start/">kind</a> or any self-hosted/managed k8s cluster.</p>
+</blockquote>
+<h3 id="install-prometheus-to-collect-metrics">Install Prometheus to collect metrics</h3>
+<p>Recommended way of installing Prometheus in k8s cluster is using helm charts.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">helm</span><span> repo add prometheus-community https://prometheus-community.github.io/helm-charts
+</span><span>
+</span><span style="color:#50fa7b;">helm</span><span> repo update
+</span><span>
+</span><span style="color:#50fa7b;">helm</span><span> install prometheus prometheus-community/kube-prometheus-stack</span><span style="font-style:italic;color:#ffb86c;"> --values</span><span> infra/prometheus/values.yml
+</span></code></pre>
+<p>Once the deployments are successful, port forward to access the Prometheus UI on the browser at <a href="http://localhost:9090">http://localhost:9090</a></p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> port-forward service/prometheus-kube-prometheus-prometheus 9090:9090
+</span></code></pre>
+<h3 id="setup-selenosis-test-infrastructure">Setup Selenosis test infrastructure</h3>
+<p>Please refer to the detailed instructions of setting up test infrastructure in this <a href="https://medium.com/testvagrant/scaling-tests-on-google-kubernetes-engine-with-cloud-build-624d955f6698">article</a>. In short, execute the shell script <strong>sh infra/selenosis/script.sh</strong> from the root folder to complete the test infra setup.</p>
+<p>Once the script has been successfully executed and pods are up &amp; running, port forward to see the selenosis status at <a href="http://localhost:4000/status">http://localhost:4000/status</a>, usage of selenosis metrics is available in JSON format.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> port-forward service/selenosis 4000:4444</span><span style="font-style:italic;color:#ffb86c;"> -n</span><span> selenosis
+</span></code></pre>
+<h3 id="converting-to-prometheus-understandable-metrics">Converting to Prometheus understandable metrics</h3>
+<p>Since Selenosis is a 3rd party application and doesn’t have <strong>/metrics</strong> endpoint exposed to scrape metrics. And also, Prometheus doesn’t understand metrics that are in JSON format, so we will use Telegraf <a href="https://github.com/influxdata/telegraf/tree/master/plugins">plugins</a> to convert JSON into Prometheus understandable data format.</p>
+<blockquote>
+<p>And also there are a number of libraries and servers which help in <a href="https://prometheus.io/docs/instrumenting/exporters/">exporting existing metrics</a> from third-party systems as Prometheus metrics.</p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*afodzdmsJ54eShxxJmT9lw.png" alt="Metric conversion" /></p>
+<pre data-lang="toml" style="background-color:#282a36;color:#f8f8f2;" class="language-toml "><code class="language-toml" data-lang="toml"><span>[[inputs.http]]
+</span><span style="color:#ff79c6;">urls </span><span>= [</span><span style="color:#f1fa8c;">&quot;http://selenosis:4444/status&quot;</span><span>]
+</span><span style="color:#ff79c6;">data_format </span><span>= </span><span style="color:#f1fa8c;">&quot;json&quot;
+</span><span>
+</span><span>[[outputs.prometheus_client]]
+</span><span style="color:#ff79c6;">path </span><span>= </span><span style="color:#f1fa8c;">&quot;/metrics&quot;
+</span><span style="color:#ff79c6;">listen </span><span>= </span><span style="color:#f1fa8c;">&quot;:9273&quot;
+</span></code></pre>
+<p>Execute the below commands to apply manifests files of telegraf to setup it up in k8s cluster.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> apply</span><span style="font-style:italic;color:#ffb86c;"> -f</span><span> infra/telegraf/
+</span></code></pre>
+<p>Now apply the following k8s manifest file so that Prometheus operator can pick up telegraf <a href="https://prometheus-operator.dev/docs/user-guides/getting-started/#installing-the-operator">service monitor</a> _and add it to the scraping targets. _(Basically, operator takes cares most of creation/deletion/reload config of k8s app lifecycle, for more info refer <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/">here</a>)</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> apply</span><span style="font-style:italic;color:#ffb86c;"> -f</span><span> infra/prometheus/telegraf-svc-monitor.yml
+</span></code></pre>
+<h3 id="querying-prometheus-metrics-using-promql">Querying Prometheus metrics using PromQL</h3>
+<p>Prometheus offers the <a href="https://prometheus.io/docs/prometheus/latest/querying/basics/">PromQL</a>, using which we can select and aggregate time series data in real time.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2098/1*LI_-fZbM4jsvwbITMQFVZA.png" alt="Prometheus metrics" /></p>
+<p>Selenosis exposes <strong><em>http_selenosis_active</em></strong> , <strong><em>http_selenosis_pending</em></strong> , <strong><em>http_selenosis_total</em></strong> and these metrics are of <a href="https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge">gauge</a> type (in which metrics can go up and down). And Prometheus supports <a href="https://prometheus.io/docs/tutorials/understanding_metric_types/#types-of-metrics">four types</a> of metrics in total.</p>
+<p>Start executing the tests to see selenosis metrics usage in prometheus by executing the following command in the terminal.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> apply</span><span style="font-style:italic;color:#ffb86c;"> -f</span><span> e2e-test.yml
+</span></code></pre>
+<h3 id="visualizing-metrics-in-grafana">Visualizing metrics in Grafana</h3>
+<p>Grafana comes as part of the Prometheus helm installation, no additional setup is required and also it supports the PromQL out of the box. To access the Grafana UI, port forward the incoming request and access it on the browser at <a href="http://localhost:4000/status">http://localhost:3000/status</a></p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> port-forward deployment/prometheus-grafana 3000:3000
+</span></code></pre>
+<p><img src="https://cdn-images-1.medium.com/max/3558/1*PR41-gOkxJNjAKtNq_RP_A.png" alt="Metrics in Grafana" /></p>
+<p>From the above dashboard we track the usage metrics of Selenosis. When it started <strong><em>pending-0</em></strong> , <strong><em>active-0</em></strong> &amp; <strong><em>total-10</em></strong> remains the same and as soon as the test started executing <strong><em>active</em></strong> count increased to <strong>3</strong>. Since no. of parallel execution is set to 3 in the testing framework. Once the tests are completed, the active count drops to zero.</p>
+<p>This article shows a simple use-case of collecting and visualizing of Selenosis usage metrics. <a href="https://github.com/kubernetes/kube-state-metrics">Kube state metric</a> comes as part of the Prometheus helm installation and it currently supports about <a href="https://github.com/kubernetes/kube-state-metrics/tree/master/docs#exposed-metrics">35+ resources</a>. So, start <a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/">building</a> your dashboards in Grafana.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/monitoring-test-automation-gathering-metrics-part-1-3946d8050627">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/monitoring-test-automation">GitHub - madhank93/monitoring-test-automation</a></p>
+</center>
+<p><strong>References:</strong></p>
+<p>[1] TechWorld with Nana — Prometheus series <a href="https://www.youtube.com/watch?v=QoDqxm7ybLc">Part 1</a> <a href="https://www.youtube.com/watch?v=mLPg49b33sA&amp;t=1s">Part 2</a></p>
+<p>[2] <a href="https://prometheus.io/docs/introduction/overview/">https://prometheus.io/docs/introduction/overview/</a></p>
+<p>[3] <a href="https://docs.influxdata.com/telegraf/v1.23/">https://docs.influxdata.com/telegraf/v1.23/</a></p>
+<p>[4] <a href="https://grafana.com/docs/">https://grafana.com/docs/</a></p>
+<p>[5] <a href="https://prometheus-operator.dev/">https://prometheus-operator.dev/</a></p>
+<p>[6] <a href="https://aerokube.com/selenoid/latest/#_advanced_features">https://aerokube.com/selenoid/latest/#_advanced_features</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-monitoring-setup" class="toc is-size-7 is-active"
+                href=" /blogs/010-mointoring-tests/#monitoring-setup">
+                Monitoring Setup
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-install-prometheus-to-collect-metrics" class="toc is-size-7" href=" /blogs/010-mointoring-tests/#install-prometheus-to-collect-metrics">
+                    Install Prometheus to collect metrics
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-setup-selenosis-test-infrastructure" class="toc is-size-7" href=" /blogs/010-mointoring-tests/#setup-selenosis-test-infrastructure">
+                    Setup Selenosis test infrastructure
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-converting-to-prometheus-understandable-metrics" class="toc is-size-7" href=" /blogs/010-mointoring-tests/#converting-to-prometheus-understandable-metrics">
+                    Converting to Prometheus understandable metrics
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-querying-prometheus-metrics-using-promql" class="toc is-size-7" href=" /blogs/010-mointoring-tests/#querying-prometheus-metrics-using-promql">
+                    Querying Prometheus metrics using PromQL
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-visualizing-metrics-in-grafana" class="toc is-size-7" href=" /blogs/010-mointoring-tests/#visualizing-metrics-in-grafana">
+                    Visualizing metrics in Grafana
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;009-containerized-android-test&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Running containerized android tests in GCP using Pulumi and Selenoid
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;011-lld-parking-lot-part-1&#x2F;">
+              Low level system design — Parking Lot Design Part — I<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

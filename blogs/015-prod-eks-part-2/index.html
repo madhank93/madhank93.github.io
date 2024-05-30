@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Production-ready EKS cluster setup — Part II
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Production-ready EKS cluster setup — Part II
+          </h1>
+          <p class="subtitle">Using Terraform IaC tool to provision the AWS EKS cluster</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2023-08-20T01:25:33+05:30"
+      >August 20, 2023</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>890 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/eks/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>eks</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/aws/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>aws</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/terraform/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>terraform</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/iac/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>iac</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*hNt_R_7aZHJr9bXZU8Tc0g.png" alt="Banner" /></p>
+<p>As a continuation of my <a href="https://medium.com/@madhankumaravelu93/production-ready-eks-cluster-setup-part-i-49a4eba171cc">previous blog</a> series on production-level EKS cluster setup, in this, we are going to see how to create an <a href="https://aws.amazon.com/eks/">AWS EKS</a> cluster using <a href="https://www.terraform.io/">Terraform</a>.</p>
+<p>Terraform is an open-source infrastructure tool to provision and manage infrastructure in any cloud. In this article, we’ll make use of the following features of TF</p>
+<ul>
+<li>
+<p><a href="https://developer.hashicorp.com/terraform/language/modules">Modules</a> — Are a collection of <code>.tf</code> files and/or <code>.tf.json</code> files kept together in a directory. It is the main way to package and reuse resource configurations. For this article, we’ll make use of <a href="https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest">VPC</a> and <a href="https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest">EKS</a> created and maintained by the <a href="https://github.com/terraform-aws-modules">community</a>.</p>
+</li>
+<li>
+<p><a href="https://developer.hashicorp.com/terraform/language/state/workspaces">Workspaces</a> — Each <a href="https://developer.hashicorp.com/terraform/language/state/purpose">state file</a> (<code>.tfstate</code>) stored in the backend belongs to a workspace. Some <a href="https://developer.hashicorp.com/terraform/language/state/workspaces#backends-supporting-multiple-workspaces">backend allows</a> the creation of multiple named workspaces in this case we are using <a href="https://developer.hashicorp.com/terraform/language/settings/backends/s3">S3</a>. Initially, it creates the default workspace. And this approach might not be suitable for some cases like deployments requiring separate credentials and access controls. Use cases and limitations can be <a href="https://developer.hashicorp.com/terraform/cli/workspaces#use-cases">referred to here</a>.</p>
+</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2090/1*6gsqQOrWch_mmqp_CnHL7A.png" alt="TF — workspace flow" /></p>
+<h2 id="code-walk-through">Code walk-through</h2>
+<h3 id="1-providers">1. Providers</h3>
+<p>Terraform relies on plugins called providers to interact with cloud providers, SaaS providers, and other APIs.</p>
+<pre data-lang="t" style="background-color:#282a36;color:#f8f8f2;" class="language-t "><code class="language-t" data-lang="t"><span style="color:#bd93f9;">terraform </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">required_providers </span><span style="color:#ffffff;">{
+</span><span>    </span><span style="color:#bd93f9;">aws </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">{
+</span><span>      </span><span style="color:#bd93f9;">source  </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;hashicorp/aws&quot;
+</span><span>      </span><span style="color:#bd93f9;">version </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;~&gt; 5.7.0&quot;
+</span><span>    </span><span style="color:#ffffff;">}
+</span><span>    </span><span style="color:#bd93f9;">tls </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">{
+</span><span>      </span><span style="color:#bd93f9;">source  </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;hashicorp/tls&quot;
+</span><span>      </span><span style="color:#bd93f9;">version </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;4.0.4&quot;
+</span><span>    </span><span style="color:#ffffff;">}
+</span><span>  </span><span style="color:#ffffff;">}
+</span><span>  </span><span style="color:#bd93f9;">required_version </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;~&gt; 1.3&quot;
+</span><span>
+</span><span>  </span><span style="color:#6272a4;"># State storage
+</span><span>  </span><span style="color:#50fa7b;">backend </span><span style="color:#f1fa8c;">&quot;s3&quot; </span><span style="color:#ffffff;">{
+</span><span>    </span><span style="color:#bd93f9;">bucket </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;my-eks-cluster-01&quot;
+</span><span>    </span><span style="color:#bd93f9;">region </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;us-east-1&quot;
+</span><span>    </span><span style="color:#bd93f9;">key    </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;terraform.tfstate&quot;
+</span><span>  </span><span style="color:#ffffff;">}
+</span><span style="color:#ffffff;">}
+</span></code></pre>
+<p>In the above snippet, we are making use of <a href="https://registry.terraform.io/providers/hashicorp/tls/latest/docs">TLS</a> and <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">AWS</a> providers to interact with the resources supported by AWS. Authenticating to AWS cloud provider can be referred to <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration">here</a>.</p>
+<h3 id="2-modules-and-resources">2. Modules and Resources</h3>
+<p><a href="https://developer.hashicorp.com/terraform/language/resources">Resources</a> are the key component in Terraform, resource block describes one or more infrastructure objects, such as virtual networks, compute instances, or higher-level components such as DNS records.</p>
+<pre data-lang="t" style="background-color:#282a36;color:#f8f8f2;" class="language-t "><code class="language-t" data-lang="t"><span style="color:#6272a4;"># Creating VPC configs
+</span><span style="color:#50fa7b;">module </span><span style="color:#f1fa8c;">&quot;vpc&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">source  </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;terraform-aws-modules/vpc/aws&quot;
+</span><span>  </span><span style="color:#bd93f9;">version </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;5.0.0&quot;
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">name </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;my-vpc&quot;
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">cidr </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;10.0.0.0/16&quot;
+</span><span>  </span><span style="color:#bd93f9;">azs  </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">slice</span><span>(</span><span style="color:#bd93f9;">data</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">aws_availability_zones</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">available</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">names</span><span>, </span><span style="color:#bd93f9;">0</span><span>, </span><span style="color:#bd93f9;">3</span><span>)
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">private_subnets </span><span style="color:#ff79c6;">= </span><span>[</span><span style="color:#f1fa8c;">&quot;10.0.1.0/24&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;10.0.2.0/24&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;10.0.3.0/24&quot;</span><span>]
+</span><span>  </span><span style="color:#bd93f9;">public_subnets  </span><span style="color:#ff79c6;">= </span><span>[</span><span style="color:#f1fa8c;">&quot;10.0.4.0/24&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;10.0.5.0/24&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;10.0.6.0/24&quot;</span><span>]
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">enable_nat_gateway     </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">true
+</span><span>  </span><span style="color:#bd93f9;">single_nat_gateway     </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">true
+</span><span>  </span><span style="color:#bd93f9;">one_nat_gateway_per_az </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">false
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">enable_dns_hostnames </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">true
+</span><span>  </span><span style="color:#bd93f9;">enable_dns_support   </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">true
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">public_subnet_tags </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">{
+</span><span>    </span><span style="color:#f1fa8c;">&quot;kubernetes.io/cluster/</span><span style="color:#ff79c6;">$</span><span>{</span><span style="font-style:italic;color:#8be9fd;">local</span><span style="color:#ff79c6;">.</span><span>cluster_name}</span><span style="color:#f1fa8c;">&quot; </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;shared&quot;
+</span><span>    </span><span style="color:#f1fa8c;">&quot;kubernetes.io/role/elb&quot;                      </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">1
+</span><span>  </span><span style="color:#ffffff;">}
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">private_subnet_tags </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">{
+</span><span>    </span><span style="color:#f1fa8c;">&quot;kubernetes.io/cluster/</span><span style="color:#ff79c6;">$</span><span>{</span><span style="font-style:italic;color:#8be9fd;">local</span><span style="color:#ff79c6;">.</span><span>cluster_name}</span><span style="color:#f1fa8c;">&quot; </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;shared&quot;
+</span><span>    </span><span style="color:#f1fa8c;">&quot;kubernetes.io/role/internal-elb&quot;             </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">1
+</span><span>  </span><span style="color:#ffffff;">}
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#6272a4;"># IAM Role for EKS Cluster Group
+</span><span style="color:#50fa7b;">resource </span><span style="color:#f1fa8c;">&quot;aws_iam_role&quot; &quot;eks_cluster_role&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">name </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;</span><span style="color:#ff79c6;">$</span><span>{</span><span style="font-style:italic;color:#8be9fd;">local</span><span style="color:#ff79c6;">.</span><span>cluster_name}</span><span style="color:#f1fa8c;">-eks-cluster-role&quot;
+</span><span>    </span><span style="color:#bd93f9;">assume_role_policy </span><span style="color:#ff79c6;">= &lt;&lt;POLICY
+</span><span style="color:#f1fa8c;">    {
+</span><span style="color:#f1fa8c;">      &quot;Version&quot;: &quot;2012-10-17&quot;,
+</span><span style="color:#f1fa8c;">      &quot;Statement&quot;: [
+</span><span style="color:#f1fa8c;">        {
+</span><span style="color:#f1fa8c;">          &quot;Effect&quot;: &quot;Allow&quot;,
+</span><span style="color:#f1fa8c;">          &quot;Principal&quot;: {
+</span><span style="color:#f1fa8c;">            &quot;Service&quot;: &quot;eks.amazonaws.com&quot;
+</span><span style="color:#f1fa8c;">          },
+</span><span style="color:#f1fa8c;">          &quot;Action&quot;: &quot;sts:AssumeRole&quot;
+</span><span style="color:#f1fa8c;">        }
+</span><span style="color:#f1fa8c;">      ]
+</span><span style="color:#f1fa8c;">    }
+</span><span style="color:#ff79c6;">POLICY
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#50fa7b;">resource </span><span style="color:#f1fa8c;">&quot;aws_iam_role_policy_attachment&quot; &quot;AmazonEKSClusterPolicy&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">policy_arn </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;arn:aws:iam::aws:policy/AmazonEKSClusterPolicy&quot;
+</span><span>  </span><span style="color:#bd93f9;">role       </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">aws_iam_role</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks_cluster_role</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">name
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#6272a4;"># IAM Role for EKS Node Group
+</span><span style="color:#50fa7b;">resource </span><span style="color:#f1fa8c;">&quot;aws_iam_role&quot; &quot;eks_nodegroup_role&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">name </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;</span><span style="color:#ff79c6;">$</span><span>{</span><span style="font-style:italic;color:#8be9fd;">local</span><span style="color:#ff79c6;">.</span><span>cluster_name}</span><span style="color:#f1fa8c;">-eks-nodegroup-role&quot;
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">assume_role_policy </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">jsonencode</span><span>(</span><span style="color:#ffffff;">{
+</span><span>    </span><span style="color:#bd93f9;">Statement </span><span style="color:#ff79c6;">= </span><span>[</span><span style="color:#ffffff;">{
+</span><span>      </span><span style="color:#bd93f9;">Action </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;sts:AssumeRole&quot;
+</span><span>      </span><span style="color:#bd93f9;">Effect </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;Allow&quot;
+</span><span>      </span><span style="color:#bd93f9;">Principal </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">{
+</span><span>        </span><span style="color:#bd93f9;">Service </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;ec2.amazonaws.com&quot;
+</span><span>      </span><span style="color:#ffffff;">}
+</span><span>    </span><span style="color:#ffffff;">}</span><span>]
+</span><span>    </span><span style="color:#bd93f9;">Version </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;2012-10-17&quot;
+</span><span>  </span><span style="color:#ffffff;">}</span><span>)
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#50fa7b;">resource </span><span style="color:#f1fa8c;">&quot;aws_iam_role_policy_attachment&quot; &quot;eks-AmazonEKSWorkerNodePolicy&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">policy_arn </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy&quot;
+</span><span>  </span><span style="color:#bd93f9;">role       </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">aws_iam_role</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks_nodegroup_role</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">name
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#50fa7b;">resource </span><span style="color:#f1fa8c;">&quot;aws_iam_role_policy_attachment&quot; &quot;eks-AmazonEKS_CNI_Policy&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">policy_arn </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy&quot;
+</span><span>  </span><span style="color:#bd93f9;">role       </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">aws_iam_role</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks_nodegroup_role</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">name
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#50fa7b;">resource </span><span style="color:#f1fa8c;">&quot;aws_iam_role_policy_attachment&quot; &quot;eks-AmazonEC2ContainerRegistryReadOnly&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">policy_arn </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly&quot;
+</span><span>  </span><span style="color:#bd93f9;">role       </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">aws_iam_role</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks_nodegroup_role</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">name
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#6272a4;"># Creating EKS cluster with managedd node groups
+</span><span style="color:#50fa7b;">module </span><span style="color:#f1fa8c;">&quot;eks&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">source  </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;terraform-aws-modules/eks/aws&quot;
+</span><span>  </span><span style="color:#bd93f9;">version </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;19.15.3&quot;
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">cluster_name    </span><span style="color:#ff79c6;">= </span><span style="font-style:italic;color:#8be9fd;">local</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">cluster_name
+</span><span>  </span><span style="color:#bd93f9;">cluster_version </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;</span><span style="color:#bd93f9;">1.27</span><span style="color:#f1fa8c;">&quot;
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">vpc_id                         </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">module</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">vpc</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">vpc_id
+</span><span>  </span><span style="color:#bd93f9;">subnet_ids                     </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">module</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">vpc</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">private_subnets
+</span><span>  </span><span style="color:#bd93f9;">cluster_endpoint_public_access </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">true
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">cluster_iam_role_arn </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">aws_iam_role</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks_cluster_role</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">arn
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">eks_managed_node_group_defaults </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">{
+</span><span>    </span><span style="color:#bd93f9;">ami_type     </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;AL2_x86_64&quot;
+</span><span>    </span><span style="color:#bd93f9;">iam_role_arn </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">aws_iam_role</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks_nodegroup_role</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">iam_role_arn
+</span><span>  </span><span style="color:#ffffff;">}
+</span><span>
+</span><span>  </span><span style="color:#bd93f9;">eks_managed_node_groups </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">{
+</span><span>    </span><span style="color:#bd93f9;">one </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">{
+</span><span>      </span><span style="color:#bd93f9;">name </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;node-group-1&quot;
+</span><span>
+</span><span>      </span><span style="color:#bd93f9;">instance_types </span><span style="color:#ff79c6;">= </span><span>[</span><span style="color:#f1fa8c;">&quot;t3.small&quot;</span><span>]
+</span><span>
+</span><span>      </span><span style="color:#bd93f9;">min_size     </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">1
+</span><span>      </span><span style="color:#bd93f9;">max_size     </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">3
+</span><span>      </span><span style="color:#bd93f9;">desired_size </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">2
+</span><span>    </span><span style="color:#ffffff;">}
+</span><span>
+</span><span>    </span><span style="color:#bd93f9;">two </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">{
+</span><span>      </span><span style="color:#bd93f9;">name </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;node-group-2&quot;
+</span><span>
+</span><span>      </span><span style="color:#bd93f9;">instance_types </span><span style="color:#ff79c6;">= </span><span>[</span><span style="color:#f1fa8c;">&quot;t3.small&quot;</span><span>]
+</span><span>
+</span><span>      </span><span style="color:#bd93f9;">min_size     </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">1
+</span><span>      </span><span style="color:#bd93f9;">max_size     </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">2
+</span><span>      </span><span style="color:#bd93f9;">desired_size </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">1
+</span><span>    </span><span style="color:#ffffff;">}
+</span><span>  </span><span style="color:#ffffff;">}
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#50fa7b;">resource </span><span style="color:#f1fa8c;">&quot;aws_iam_openid_connect_provider&quot; &quot;eks&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">client_id_list  </span><span style="color:#ff79c6;">= </span><span>[</span><span style="color:#f1fa8c;">&quot;sts.amazonaws.com&quot;</span><span>]
+</span><span>  </span><span style="color:#bd93f9;">thumbprint_list </span><span style="color:#ff79c6;">= </span><span>[</span><span style="color:#bd93f9;">data</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">tls_certificate</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">certificates</span><span>[</span><span style="color:#bd93f9;">0</span><span>]</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">sha1_fingerprint</span><span>]
+</span><span>  </span><span style="color:#bd93f9;">url             </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">module</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">cluster_oidc_issuer_url
+</span><span style="color:#ffffff;">}
+</span></code></pre>
+<p>In the above snippet, we made use of the aws_iam_role and aws_iam_role_policy_attachment resources to create an IAM role and attach it to the policy that has been created.</p>
+<h3 id="3-outputs">3. Outputs</h3>
+<p>Output values print the information about the infrastructure on the command line, and can expose information for other Terraform configurations to use. It is similar to return values in programming languages.</p>
+<pre data-lang="t" style="background-color:#282a36;color:#f8f8f2;" class="language-t "><code class="language-t" data-lang="t"><span style="color:#50fa7b;">output </span><span style="color:#f1fa8c;">&quot;cluster_endpoint&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">description </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;Endpoint for EKS control plane&quot;
+</span><span>  </span><span style="color:#bd93f9;">value       </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">module</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">cluster_endpoint
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#50fa7b;">output </span><span style="color:#f1fa8c;">&quot;cluster_security_group_id&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">description </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;Security group ids attached to the cluster control plane&quot;
+</span><span>  </span><span style="color:#bd93f9;">value       </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">module</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">cluster_security_group_id
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#50fa7b;">output </span><span style="color:#f1fa8c;">&quot;region&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">description </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;AWS region&quot;
+</span><span>  </span><span style="color:#bd93f9;">value       </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">var</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">region
+</span><span style="color:#ffffff;">}
+</span><span>
+</span><span style="color:#50fa7b;">output </span><span style="color:#f1fa8c;">&quot;cluster_name&quot; </span><span style="color:#ffffff;">{
+</span><span>  </span><span style="color:#bd93f9;">description </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;Kubernetes Cluster Name&quot;
+</span><span>  </span><span style="color:#bd93f9;">value       </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">module</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">eks</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">cluster_name
+</span><span style="color:#ffffff;">}
+</span></code></pre>
+<h2 id="executing">Executing</h2>
+<p>Firstly create the workspace using <code>terraform workspace new dev</code> the command from the CLI. Then apply the terraform changes using <code>terraform apply --auto-approve</code> the command to create the resources.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3830/1*AkGeMlDYFHqMdNjmtcMvSA.png" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*3r-omqFmn-WVaJK_U8UQ9g.png" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/3840/1*G9TJl_Aqnx4aguCur9f3sw.png" alt="Terraform s3 backend, output, and EKS cluster" /></p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/production-ready-eks-cluster-setup-part-ii-f702542cde7c">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/learn-tf/tree/main/aws/provision-eks-cluster">GitHub - madhank93/learn-tf/aws/provision-eks-cluster</a></p>
+</center>
+<p><strong>Reference</strong>:</p>
+<p>[1] <a href="https://terraform.io/">https://terraform.io/</a></p>
+<p>[2] <a href="https://registry.terraform.io/">https://registry.terraform.io/</a></p>
+<p>[3] <a href="https://github.com/terraform-aws-modules">https://github.com/terraform-aws-modules</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-code-walk-through" class="toc is-size-7 is-active"
+                href=" /blogs/015-prod-eks-part-2/#code-walk-through">
+                Code walk-through
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-1-providers" class="toc is-size-7" href=" /blogs/015-prod-eks-part-2/#1-providers">
+                    1. Providers
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-2-modules-and-resources" class="toc is-size-7" href=" /blogs/015-prod-eks-part-2/#2-modules-and-resources">
+                    2. Modules and Resources
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-3-outputs" class="toc is-size-7" href=" /blogs/015-prod-eks-part-2/#3-outputs">
+                    3. Outputs
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-executing" class="toc is-size-7 "
+                href=" /blogs/015-prod-eks-part-2/#executing">
+                Executing
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;014-aws-iam&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              AWS services — Identity Access Management (IAM)
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;016-prod-eks-part-3&#x2F;">
+              Production-ready EKS cluster setup — Part III<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
