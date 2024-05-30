@@ -10,10 +10,6 @@ tags = ["linux", "debugging", "troubleshooting", "servers", "command-line"]
 toc = true
 +++
 
-## Solving Sad Servers — Part I
-
-### Unraveling server snags
-
 ![Sad Servers](https://cdn-images-1.medium.com/max/2406/1*8zl4RiXM18WjY_IOBJCk4Q.png)
 
 Recently, while finding ways to enhance my skills in troubleshooting and debugging servers, I came across [sadservers.com](https://sadservers.com/). In this article, we’ll work on resolving server issues🐞🐞🐞
