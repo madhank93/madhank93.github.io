@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Securely storing secrets — Part I
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Securely storing secrets — Part I
+          </h1>
+          <p class="subtitle">Client-side secrets management using SOPS</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2024-06-16T00:00:00+00:00"
+      >June 16, 2024</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>905 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/security/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>security</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/encryption/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>encryption</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/secrets-management/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>secrets-management</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/2000/1*xT5ZGS9vgmDehqKTuNEzRQ.png" alt="" /></p>
+<p>Secrets (passwords, tokens, keys, …etc) are critical components in software and infrastructure that provide access to sensitive data and services. So the next crucial part is securing it, secrets can be stored on the <em><strong>Client</strong></em> — on the device running the application (e.g. hardcoded passwords in your codebase) or on the <em><strong>Server</strong></em> — on the centralized application retrieving over an API call (e.g. fetching from <a href="https://aws.amazon.com/secrets-manager/">AWS secrets manager</a> or <a href="https://infisical.com/">Infisical</a> or <a href="https://www.vaultproject.io/">Hashicorp vault</a>) or using <a href="https://www.microsoft.com/en-us/security/business/security-101/what-is-openid-connect-oidc">OpenID Connect</a> (OIDC) to issue short-lived access tokens instead of managing passwords. All approaches have their pros and cons.</p>
+<p>In this blog post, we will take a look at how to store secrets on the client side securely — git using <a href="https://getsops.io/">SOPS</a> (<em><strong>S</strong></em>ecrets <em><strong>OP</strong></em>eration<em><strong>S</strong></em>), a CLI tool used for encrypting, and decrypting the files with <a href="https://aws.amazon.com/kms/">AWS KMS</a> (supports <a href="https://cloud.google.com/security/products/security-key-management?hl=en*">GCP KMS</a>, <a href="https://github.com/FiloSottile/age">Age</a>, <a href="https://azure.microsoft.com/en-us/products/key-vault">Azure Key Vault</a> ..etc).</p>
+<p>To get started install <a href="https://github.com/getsops/sops/releases">SOPS binary</a> from GitHub, complete <a href="https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-configure.html">AWS configuration</a>, and <a href="https://docs.aws.amazon.com/kms/latest/developerguide/overview.html">KMS key creation</a>.</p>
+<h3 id="how-does-it-work">How does it work?</h3>
+<p>The sops command takes a file to encrypt it along with the encryption keys and produces a decrypted file. By default, it encryps only the values leaving the keys as it is for easy readability.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*Iq-RnLSlHNDTL0jKZbQZsw.png" alt="Sops flow" /></p>
+<p>SOPS uses AWS SDK to communicate with AWS KMS. It makes use of the credentials configured from <code>~/.aws/credentials</code>.</p>
+<h3 id="sops-configuration">SOPS configuration</h3>
+<p>Configurations related to SOPS can be maintained in <code>.sops.yaml</code> file. Different sets of keys can be used in various environments to encrypt files and what files to encrypt or decrypt. And also its supports <code>encrypted_regex</code> option will only encrypt values under keys that match the supplied regular expression.</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#6272a4;"># creation rules are evaluated sequentially, the first match will be evaluated
+</span><span style="color:#ff79c6;">creation_rules</span><span>:
+</span><span>    </span><span style="color:#6272a4;"># dev encryption
+</span><span>    - </span><span style="color:#ff79c6;">path_regex</span><span>: </span><span style="color:#f1fa8c;">\.dev\.(yml|yaml)$
+</span><span>    </span><span style="color:#ff79c6;">encrypted_regex</span><span>: </span><span style="color:#f1fa8c;">&quot;^(.*[Pp]ass.*|.*[Pp]wd.*|.*[Tt]oken.*)$&quot;
+</span><span>    </span><span style="color:#ff79c6;">kms</span><span>: </span><span style="color:#f1fa8c;">&quot;arn:aws:kms:us-east-1:654654270281:key/0be9b8e7-ada8-45b3-84d8-075d66359205&quot;
+</span><span>
+</span><span>    </span><span style="color:#6272a4;"># prod encryption
+</span><span>    - </span><span style="color:#ff79c6;">path_regex</span><span>: </span><span style="color:#f1fa8c;">\.prod\.(yml|yaml)$
+</span><span>    </span><span style="color:#ff79c6;">encrypted_regex</span><span>: </span><span style="color:#f1fa8c;">&quot;^(data|stringData)$&quot;
+</span><span>    </span><span style="color:#ff79c6;">key_groups</span><span>:
+</span><span>        - </span><span style="color:#ff79c6;">kms</span><span>:
+</span><span>            - </span><span style="color:#ff79c6;">arn</span><span>: </span><span style="color:#f1fa8c;">&quot;arn:aws:kms:us-west-2:361527076523:key/5052f06a-5d3f-489e-b86c-57201e06f31e+arn:aws:iam::361527076523:role/hiera-sops-prod,arn:aws:kms:eu-central-1:361527076523:key/cb1fab90-8d17-42a1-a9d8-334968904f94+arn:aws:iam::361527076523:role/hiera-sops-prod&quot;
+</span><span>            </span><span style="color:#ff79c6;">role</span><span>: </span><span style="color:#f1fa8c;">&quot;arn:aws:iam::927034868273:role/sops-dev-xyz&quot;
+</span><span>            </span><span style="color:#ff79c6;">aws_profile</span><span>: </span><span style="color:#f1fa8c;">foo
+</span></code></pre>
+<h3 id="sops-as-an-editor">SOPS as an editor</h3>
+<p>To get started run sops new_test.dev.yaml, opens up the text editor (whatever $EDITOR is set to, or, if it's not vim is the default) which handles encryption/decryption. Delete the preconfigured ones, and add the key value (e.g. password: secret!!!) to be encrypted, save &amp; exit the editor. As soon as we exit the editor, a new file named new_test.dev.yaml created with encryption and SOPS metadata.</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">password</span><span>: </span><span style="color:#f1fa8c;">ENC[AES256_GCM,data:b08sONBNBtZO,iv:1/8nRdqE7r48PQ/9npyO8em4hP99crKyyZp8iAC2icQ=,tag:5XcTNEyB5HElpr9kacAFtg==,type:str]
+</span><span style="color:#ff79c6;">sops</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">kms</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">arn</span><span>: </span><span style="color:#f1fa8c;">arn:aws:kms:us-east-1:654654270281:key/0be9b8e7-ada8-45b3-84d8-075d66359205
+</span><span>        </span><span style="color:#ff79c6;">created_at</span><span>: </span><span style="color:#f1fa8c;">&quot;2024-06-17T02:47:48Z&quot;
+</span><span>        </span><span style="color:#ff79c6;">enc</span><span>: </span><span style="color:#f1fa8c;">AQICAHiCvIqgTXzQ2oe26RUr4Aml9dfI/ipc8iysDVNaOdrQ2AEDLJnvLUWTUB2o+gP4VdJ7AAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMqFvk+2zi/80QdnYgAgEQgDs8LszoAgJmmNWoZLGJSchLZ7dIi2DV3xvJvVwT6lP+a38BP5H7eeTbGyayeSyuBPsKwu5nqP6HElBo2g==
+</span><span>        </span><span style="color:#ff79c6;">aws_profile</span><span>: </span><span style="color:#f1fa8c;">&quot;&quot;
+</span><span>    </span><span style="color:#ff79c6;">gcp_kms</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">azure_kv</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">hc_vault</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">age</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">lastmodified</span><span>: </span><span style="color:#f1fa8c;">&quot;2024-06-17T02:48:54Z&quot;
+</span><span>    </span><span style="color:#ff79c6;">mac</span><span>: </span><span style="color:#f1fa8c;">ENC[AES256_GCM,data:Vv07a3WKh15AtMM5vpr3giT7TDPdz6P2TliZNcGBG2mlTet0LvSHp0Kum55bAtyES6snMWYFisW22mQ2znpcYaPb4g/lR7b10fLOVRf0IoDRz00QKmyIa2YAev5EMLwmKL1+lstogiL4VDlxtEzH1FfgQsiqYGe775RSYxxvhfI=,iv:pDct2OW+VM4Hi5OAxDIVw0yaKVYIEiZF5txj+SJGG+k=,tag:Nur3BmsL+P47XxW5ltaWig==,type:str]
+</span><span>    </span><span style="color:#ff79c6;">pgp</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">encrypted_regex</span><span>: </span><span style="color:#f1fa8c;">^(.*[Pp]ass.*|.*[Pp]wd.*|.*[Tt]oken.*)$
+</span><span>    </span><span style="color:#ff79c6;">version</span><span>: </span><span style="color:#bd93f9;">3.8.1
+</span></code></pre>
+<h3 id="encrypting-and-decrypting-an-existing-file">Encrypting and decrypting an existing file</h3>
+<p>To encrypt the existing file, run <code>sops -e -i db-secrets.dev.yml</code> and write the output back to the same file. To decrypt the file, run <code>sops -d -i db-secrets.dev.yml</code></p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">key</span><span>: </span><span style="color:#f1fa8c;">value
+</span><span style="color:#ff79c6;">mongo</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">username</span><span>: </span><span style="color:#f1fa8c;">admin
+</span><span>    </span><span style="color:#ff79c6;">password</span><span>: </span><span style="color:#f1fa8c;">ENC[AES256_GCM,data:ooShx+mdmdSiewDwPA8PlHFU,iv:gGcIHgqJkxEZqGgTymvbTX+uQrIzjUcIOWV+OCw6vAM=,tag:igUY1HZAZK1xk5YMZp+tEQ==,type:str]
+</span><span style="color:#ff79c6;">aws</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">us-east</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">token</span><span>: </span><span style="color:#f1fa8c;">ENC[AES256_GCM,data:1MtcUMcY2WyfCk14THO510fldbsbYtlpwsC0LKMC/g/zIyaP3L9H4DEMSgXin1LTtpx+tM3TKcEhV9cYWxf9dQ==,iv:cdz4YPQTopxt57ykPIxLm2kv/2/f8bY6JWdPnb296lU=,tag:vzkWMHpmA04QeHsZMF0uGw==,type:str]
+</span><span style="color:#ff79c6;">sops</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">kms</span><span>:
+</span><span>        - </span><span style="color:#ff79c6;">arn</span><span>: </span><span style="color:#f1fa8c;">arn:aws:kms:us-east-1:654654270281:key/0be9b8e7-ada8-45b3-84d8-075d66359205
+</span><span>            </span><span style="color:#ff79c6;">created_at</span><span>: </span><span style="color:#f1fa8c;">&quot;2024-06-17T01:55:38Z&quot;
+</span><span>            </span><span style="color:#ff79c6;">enc</span><span>: </span><span style="color:#f1fa8c;">AQICAHiCvIqgTXzQ2oe26RUr4Aml9dfI/ipc8iysDVNaOdrQ2AGUFtQshsDeNaln7oQh2ralAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMKZqrEGi/JQ1iLpk+AgEQgDtCuGzeWJLtcU1vdXOGmtXbOaOTPyzHK4Rf99NohCOL4iGBUZm5G4L0Sv5agA70Qlx/f37ev9SpHDQg9Q==
+</span><span>            </span><span style="color:#ff79c6;">aws_profile</span><span>: </span><span style="color:#f1fa8c;">&quot;&quot;
+</span><span>    </span><span style="color:#ff79c6;">gcp_kms</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">azure_kv</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">hc_vault</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">age</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">lastmodified</span><span>: </span><span style="color:#f1fa8c;">&quot;2024-06-17T01:55:38Z&quot;
+</span><span>    </span><span style="color:#ff79c6;">mac</span><span>: </span><span style="color:#f1fa8c;">ENC[AES256_GCM,data:N6KNibwZ3nNY6X7U0zpScaUiePbAlEUXbhMfe6T5a1WAtfK/tgDMcUdEcZmHKmle6XJ5Asf9Lt/+vEFOvtnqPSKjZwIEQhB7N3F8vRcQ6VvwyORqN1gx9F8ew3xPFoIPTh9k77e0+Z9hCxQUiamekXRB+G/0u5diafV5ZojZeIk=,iv:W6Q5Rn5FEjzGk1+c1GbQo9dDOoGtw9FT92Dnc+8djis=,tag:eK7YdE9fhN3+YT2D0MERvg==,type:str]
+</span><span>    </span><span style="color:#ff79c6;">pgp</span><span>: []
+</span><span>    </span><span style="color:#ff79c6;">encrypted_regex</span><span>: </span><span style="color:#f1fa8c;">^(.*[Pp]ass.*|.*[Pp]wd.*|.*[Tt]oken.*)$
+</span><span>    </span><span style="color:#ff79c6;">version</span><span>: </span><span style="color:#f1fa8c;">3.8.1Rotating keys
+</span></code></pre>
+<h3 id="key-rotation">Key Rotation</h3>
+<p>As a good practice, it is always recommended to rotate the key and re-encrypt the file with a new key using the command sops roatet -i filename.yml after updating the .sops.yaml file with a new key.</p>
+<h3 id="use-cases">Use cases</h3>
+<ul>
+<li>
+<p>Config management for applications</p>
+</li>
+<li>
+<p>Managing <a href="https://kubernetes.io/docs/concepts/configuration/secret/">Kubernetes secrets</a> and <a href="https://github.com/jkroepke/helm-secrets">helm</a></p>
+</li>
+<li>
+<p>Encrypting Terraform/Pulumi state files</p>
+</li>
+</ul>
+<h3 id="other-features">Other features</h3>
+<ul>
+<li>
+<p><a href="https://github.com/getsops/sops?tab=readme-ov-file#auditing">Audit</a>— keeps track of who accessed what files in PostgreSQL</p>
+</li>
+<li>
+<p><a href="https://github.com/getsops/sops?tab=readme-ov-file#using-the-publish-command">Publish</a>— publishes a file to a pre-configured destination like s3</p>
+</li>
+</ul>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/securely-storing-secrets-part-i-f1b5f3b56d49">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/learn-securing-secrets/tree/main/sops-part-1">GitHub - madhank93/learn-securing-secrets</a></p>
+</center>
+<p><strong>Reference</strong>:</p>
+<ul>
+<li>
+<p><a href="https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html</a></p>
+</li>
+<li>
+<p><a href="https://getsops.io/">https://getsops.io/</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jkroepke/helm-secrets/wiki/Usage">https://github.com/jkroepke/helm-secrets/wiki/Usage</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/playlist?list=PLEAHWp_qqCrKRQXPcnfEd4Cim1cL6MTjT">https://www.youtube.com/playlist?list=PLEAHWp_qqCrKRQXPcnfEd4Cim1cL6MTjT</a></p>
+</li>
+</ul>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-how-does-it-work" class="toc is-size-7 is-active"
+                href=" /blogs/022-storing-secrets-part-1/#how-does-it-work">
+                How does it work?
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-sops-configuration" class="toc is-size-7 "
+                href=" /blogs/022-storing-secrets-part-1/#sops-configuration">
+                SOPS configuration
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-sops-as-an-editor" class="toc is-size-7 "
+                href=" /blogs/022-storing-secrets-part-1/#sops-as-an-editor">
+                SOPS as an editor
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-encrypting-and-decrypting-an-existing-file" class="toc is-size-7 "
+                href=" /blogs/022-storing-secrets-part-1/#encrypting-and-decrypting-an-existing-file">
+                Encrypting and decrypting an existing file
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-key-rotation" class="toc is-size-7 "
+                href=" /blogs/022-storing-secrets-part-1/#key-rotation">
+                Key Rotation
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-use-cases" class="toc is-size-7 "
+                href=" /blogs/022-storing-secrets-part-1/#use-cases">
+                Use cases
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-other-features" class="toc is-size-7 "
+                href=" /blogs/022-storing-secrets-part-1/#other-features">
+                Other features
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;021-tailscale-geo-content&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Unlocking geo-restricted contents with Tailscale
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;023-resume-typst-template&#x2F;">
+              Streamlined Resume Design Using Typst<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
