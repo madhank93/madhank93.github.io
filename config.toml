@@ -21,12 +21,12 @@ build_search_index = true
 default_language = "en"
 
 # When set to "true", a feed is automatically generated.
-generate_feed = true
+#generate_feeds = true
 
 # The filename to use for the feed. Used as the template filename, too.
 # Defaults to "atom.xml", which has a built-in template that renders an Atom 1.0 feed.
 # There is also a built-in template "rss.xml" that renders an RSS 2.0 feed.
-feed_filename = "rss.xml"
+#feed_filenames = "rss.xml"
 
 # The taxonomies to be rendered for the site and their configuration.
 # Example:
@@ -86,9 +86,10 @@ avatar = "https://raw.githubusercontent.com/madhank93/personal_blog/main/static/
 [extra.social]
 github = "madhank93"
 medium = "madhankumaravelu93"
-googleplay = "Madhan+Kumaravelu"
+#googleplay = "Madhan+Kumaravelu"
 linkedin = "madhank93"
 stackoverflow = "5514320"
+credly = "madhank93"
 
 # To add google analytics
 [extra.analytics]
