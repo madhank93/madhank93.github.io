@@ -2,3 +2,6 @@
 	path = DeepThought
 	url = https://github.com/madhank93/DeepThought.git
 	branch = main
+[submodule "themes/DeepThought"]
+	path = themes/DeepThought
+	url = https://github.com/madhank93/DeepThought.git
