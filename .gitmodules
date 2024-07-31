@@ -1,4 +1,4 @@
 [submodule "DeepThought"]
-	path = themes/DeepThought
+	path = DeepThought
 	url = https://github.com/madhank93/DeepThought.git
 	branch = main
