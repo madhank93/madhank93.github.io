@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+      - name: Print folders and file
+        run: ls -R
       - name: Create folder and move submodule
         run: mkdir -p themes && mv DeepThought themes/
       - name: Print folders and file
