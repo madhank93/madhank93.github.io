@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+      - name: Print folders and file
+        run: ls -R
       - name: Build_and_deploy
         uses: shalzz/zola-deploy-action@v0.18.0
         env:
