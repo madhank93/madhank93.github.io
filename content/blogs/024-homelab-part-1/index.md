@@ -57,3 +57,13 @@ Insert the USB drive and boot the Dell Precision 7820. During startup, press the
 * After installation, you can access the **Proxmox web interface** by navigating to `https://<your-server-ip>:8006`.
 
 * Login with the root credentials you created during installation.
+
+
+<div align="center">* * * *</div>
+
+<center>
+
+Originally published on [Medium](https://medium.com/@madhankumaravelu93/building-a-home-lab-server-part-i-2660683a8d96)
+
+
+</center>
