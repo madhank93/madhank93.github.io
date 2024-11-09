@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Building a Home Lab server — Part I
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Building a Home Lab server — Part I
+          </h1>
+          <p class="subtitle">Cost-effective approach to building a home lab server using refurbished workstation</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2024-10-13T00:00:00+00:00"
+      >October 13, 2024</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>2 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>343 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/homelab/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>homelab</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/proxmox/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>proxmox</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/self-hosting/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>self-hosting</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/servers/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>servers</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*RI95vE6PC0kzKZd7vHcm9A.png" alt="" /></p>
+<p>Setting up a home lab server is a great way to experiment with new technologies, learn about server management, and self-host diverse range of applications.</p>
+<h2 id="what-i-have-in-my-homelab-server">What I have in my Homelab server ?</h2>
+<p>The refurbished <a href="https://www.dell.com/en-us/shop/desktop-computers/precision-7820-tower-workstation/spd/precision-7820-workstation">Dell Precision 7820</a> workstation offers robust hardware, and 2.5Gbps Ethernet Switch, making it an excellent choice for a home lab server.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*XwoVzBq6WmJHKIxj" alt="Dell Precision 7820" /></p>
+<ul>
+<li>
+<p><strong>Storage : 256GB NVMe SSD and 1TB HDD</strong></p>
+</li>
+<li>
+<p><strong>Memory : 48GB DDR4 ECC 2666MHz RAM</strong></p>
+</li>
+<li>
+<p><strong>CPU : Intel Xeon Gold 6134M (3.2 GHz, 8 cores, 16 threads)</strong></p>
+</li>
+<li>
+<p><strong>GPU : Radeon Pro WX5100 GPU</strong></p>
+</li>
+</ul>
+<h2 id="choosing-an-operating-system-os">Choosing an Operating System (OS)</h2>
+<p><a href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">Proxmox VE</a> — Proxmox is an open-source virtualization platform that supports <a href="https://linux-kvm.org/page/Main_Page">KVM-based virtualization</a> and <a href="https://linuxcontainers.org/">LXC containers</a>. It provides a user-friendly web interface, making it easier to manage VMs and containers.</p>
+<h2 id="installing-proxmox-ve">Installing Proxmox VE</h2>
+<h3 id="1-download-proxmox-ve-iso"><strong>1. Download Proxmox VE ISO</strong></h3>
+<p>Visit the <a href="https://www.proxmox.com/en/downloads">Proxmox download</a> page and download the latest Proxmox VE ISO.</p>
+<h3 id="2-create-a-bootable-usb-drive"><strong>2. Create a Bootable USB Drive</strong></h3>
+<p>Use tools like <a href="https://rufus.ie/en/">Rufus</a> or <a href="https://etcher.balena.io/">Etcher</a> to create a bootable USB drive with the downloaded ISO.</p>
+<h3 id="3-boot-from-the-usb-drive"><strong>3. Boot from the USB Drive</strong></h3>
+<p>Insert the USB drive and boot the Dell Precision 7820. During startup, press the appropriate key (usually F12) to enter the <strong>Boot Menu</strong>, and select the USB drive.</p>
+<h3 id="4-install-proxmox-ve"><strong>4. Install Proxmox VE</strong></h3>
+<ul>
+<li>
+<p>Follow the installation prompts. Choose the <strong>256GB NVMe SSD</strong> as the installation target to ensure the OS takes advantage of the high-speed storage.</p>
+</li>
+<li>
+<p>Configure the network settings, hostname, and root password.</p>
+</li>
+</ul>
+<h3 id="5-initial-setup"><strong>5. Initial Setup</strong></h3>
+<ul>
+<li>
+<p>After installation, you can access the <strong>Proxmox web interface</strong> by navigating to <code>https://&lt;your-server-ip&gt;:8006</code>.</p>
+</li>
+<li>
+<p>Login with the root credentials you created during installation.</p>
+</li>
+</ul>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/building-a-home-lab-server-part-i-2660683a8d96">Medium</a></p>
+</center>
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-what-i-have-in-my-homelab-server" class="toc is-size-7 is-active"
+                href=" /blogs/024-homelab-part-1/#what-i-have-in-my-homelab-server">
+                What I have in my Homelab server ?
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-choosing-an-operating-system-os" class="toc is-size-7 "
+                href=" /blogs/024-homelab-part-1/#choosing-an-operating-system-os">
+                Choosing an Operating System (OS)
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-installing-proxmox-ve" class="toc is-size-7 "
+                href=" /blogs/024-homelab-part-1/#installing-proxmox-ve">
+                Installing Proxmox VE
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-1-download-proxmox-ve-iso" class="toc is-size-7" href=" /blogs/024-homelab-part-1/#1-download-proxmox-ve-iso">
+                    1. Download Proxmox VE ISO
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-2-create-a-bootable-usb-drive" class="toc is-size-7" href=" /blogs/024-homelab-part-1/#2-create-a-bootable-usb-drive">
+                    2. Create a Bootable USB Drive
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-3-boot-from-the-usb-drive" class="toc is-size-7" href=" /blogs/024-homelab-part-1/#3-boot-from-the-usb-drive">
+                    3. Boot from the USB Drive
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-4-install-proxmox-ve" class="toc is-size-7" href=" /blogs/024-homelab-part-1/#4-install-proxmox-ve">
+                    4. Install Proxmox VE
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-5-initial-setup" class="toc is-size-7" href=" /blogs/024-homelab-part-1/#5-initial-setup">
+                    5. Initial Setup
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;023-resume-typst-template&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Streamlined Resume Design Using Typst
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;025-homelab-part-2&#x2F;">
+              Building a Home Lab server — Part II<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

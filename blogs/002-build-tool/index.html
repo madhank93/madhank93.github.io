@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | What are build automation tool ? And a closer look at the Maven and POM file
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            What are build automation tool ? And a closer look at the Maven and POM file
+          </h1>
+          <p class="subtitle">A beginner’s guide to build tools, Maven and POM file</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2020-04-05T01:24:33+05:30"
+      >April 05, 2020</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>820 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/build-tools/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>build-tools</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/maven/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>maven</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/pom/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>pom</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/7000/1*VW7pDgspmF41A4AIZTB__g.jpeg" alt="" /></p>
+<p>Let us understand the build automation tool and it’s process through addressing the series of questions</p>
+<h2 id="what-are-build-automation-tool">What are Build Automation Tool?</h2>
+<p>It is a process of automating an extensive range of tasks that one has to do in their day-to-day activity, right from source code to end-product</p>
+<p>The overall process includes - downloading dependencies, compiling source code into binary code (machine-readable format), packaging binary code, running automated tests, code coverage, static code analysis, creating or updating database schema (migration), packaging the code into an executable format, deploying to production/testing/UAT environments, generate documentation out of source code.</p>
+<h2 id="different-types-of-build-tools">Different types of build tools</h2>
+<ul>
+<li>
+<p>Java - Ant, Maven, Gradle</p>
+</li>
+<li>
+<p>Ruby - Rake</p>
+</li>
+<li>
+<p>Javascript - Gulp, Grunt, Broccoli</p>
+</li>
+<li>
+<p>C# / .NET - Nant, MS Build</p>
+</li>
+<li>
+<p>Language agnostic - Make, Bazel, Buck</p>
+</li>
+</ul>
+<h2 id="what-is-maven-how-it-works">What is Maven? How it works ?</h2>
+<p>It is one of the Build automation tool from the Java community based on POM (project object model). It is an XML file that has information about the project and configuration details used by Maven to build the project.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2304/1*bSap54mpkjDBrzVJGXAhXw.jpeg" alt="" /></p>
+<p><strong>Maven build Lifecycle</strong></p>
+<p>Maven build lifecycle goes through a series of stages, called as build <strong><em>phases</em></strong>. For example, the default lifecycle is</p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>Validate
+</span><span>Compile
+</span><span>Test
+</span><span>Package
+</span><span>Verify
+</span><span>Install
+</span><span>Deploy
+</span></code></pre>
+<ul>
+<li>
+<p><strong>validate</strong> — validate the project is correct and all necessary information is available. Also makes sure the dependencies are downloaded.</p>
+</li>
+<li>
+<p><strong>compile</strong> — compile the source code of the project.</p>
+</li>
+<li>
+<p><strong>test</strong> — runs the tests against the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed.</p>
+</li>
+<li>
+<p><strong>package</strong> — take the compiled code and package it in its distributable format, such as a JAR.</p>
+</li>
+<li>
+<p><strong>verify</strong> — run any checks on results of integration tests to ensure quality criteria are met.</p>
+</li>
+<li>
+<p><strong>install</strong> — install the package into the local repository for use as a dependency in other projects locally deployed.</p>
+</li>
+<li>
+<p><strong>deploy</strong> — done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.</p>
+</li>
+</ul>
+<p>There are two other Maven lifecycles of note beyond the <em>default</em> list above. They are</p>
+<ul>
+<li>
+<p><strong>clean</strong>: cleans up artifacts created by prior builds</p>
+</li>
+<li>
+<p><strong>site</strong>: generates site documentation for this project</p>
+</li>
+</ul>
+<p>These phases executed sequentially when we run a maven build command.</p>
+<p><strong>POM file</strong></p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;53f5a4c138617f221b73a0488ca13aa4.js"></script>
+</div>
+<p>Let’s break this POM file</p>
+<p><strong>Project:</strong></p>
+<p><code>&lt;project&gt;</code> - is the root element and has the attributes XML namespace and Maven XML schema</p>
+<p><code>&lt;modelVersion&gt;</code> - element defines the POM version, currently the only supported value is <code>4.0.0</code>.</p>
+<p><strong>GroupID, artifactID and version:</strong></p>
+<p><code>&lt;groupId&gt;</code> - element usually takes the unique ID of an organization, or a project. In this case I have used <code>io.github.madhank93</code></p>
+<p><code>&lt;artifactId&gt;</code> - element has the name of the project <code>maventraining</code></p>
+<p><code>&lt;version&gt;</code> - element contains the version number of the project <code>0.0.1-SNAPSHOT</code></p>
+<p>The above <code>groupId</code> and <code>artifactId</code> combination must be unique. Since this will be used in identifying the project in repository.</p>
+<p><strong>Package:</strong></p>
+<p><code>&lt;packaging&gt;</code> - which specifies the type of artifact the Maven should produce</p>
+<p><strong>Properties:</strong></p>
+<p>Properties are serves as a placeholder. These values can be accessed anywhere within a POM file. By using the notation <code>${element_name}</code>or it can be used by plugins as default values</p>
+<p><code>&lt;project.build.sourceEncoding&gt;</code> - it is a property recognized by Maven.</p>
+<p><strong>Plugins:</strong></p>
+<p>Plugins are where much of the real action is performed, plugins are used to: create jar files, create war files, compile code, unit test code, create project documentation, and on and on. Almost any action that you can think of performing on a project is implemented as a Maven plugin.</p>
+<p>In this article I have used <code>maven-compiler-plugin</code> , this compiler plugin is used to compile the source code of a Maven project. By default, it compiles with Java 5. We can manage the settings in <code>configuration</code> element, in this case, it is instructed to build artifacts to compatible with Java 1.8.</p>
+<p><strong>Dependencies:</strong></p>
+<p>There are two types of Maven dependencies:</p>
+<ul>
+<li>
+<p><strong>Direct:</strong> These dependencies defined in your pom.xml file under the <dependencies> section.</p>
+</li>
+<li>
+<p><strong>Transitive:</strong> These are dependencies required by our direct dependencies</p>
+</li>
+</ul>
+<p><code>&lt;dependencies&gt;</code> - this tag specifies the additional libraries that are needed for the project</p>
+<p><code>&lt;scope&gt;</code> - element indicates this dependency is only applicable for the testing phase of the Maven lifecycle.</p>
+<p><a href="https://mvnrepository.com/repos/central">Maven central repository</a> is the default location to download all the dependent libraries. One of the dependency that used is in this article is <a href="https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/3.141.59">selenium-java</a>.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/what-are-build-automation-tool-and-a-closer-look-at-the-maven-and-pom-file-7b209a8a6c61">Medium</a></p>
+</center>
+<h1 id="references">References</h1>
+<p>[1] <a href="https://maven.apache.org/guides/getting-started/index.html">https://maven.apache.org/guides/getting-started/index.html</a></p>
+<p>[2] <a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html">https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html</a></p>
+<p>[3] <a href="https://www.baeldung.com/maven">https://www.baeldung.com/maven</a></p>
+<p>[4] <a href="http://tutorials.jenkov.com/maven/maven-tutorial.html">http://tutorials.jenkov.com/maven/maven-tutorial.html</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-what-are-build-automation-tool" class="toc is-size-7 is-active"
+                href=" /blogs/002-build-tool/#what-are-build-automation-tool">
+                What are Build Automation Tool?
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-different-types-of-build-tools" class="toc is-size-7 "
+                href=" /blogs/002-build-tool/#different-types-of-build-tools">
+                Different types of build tools
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-what-is-maven-how-it-works" class="toc is-size-7 "
+                href=" /blogs/002-build-tool/#what-is-maven-how-it-works">
+                What is Maven? How it works ?
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-references" class="toc is-size-7 "
+                href=" /blogs/002-build-tool/#references">
+                References
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;001-w3c&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              A Deep Dive into the W3C WebDriver Specification
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;003-selenium-cheatsheet&#x2F;">
+              Selenium cheat sheet<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
