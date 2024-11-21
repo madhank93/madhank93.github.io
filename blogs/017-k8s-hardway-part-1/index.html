@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Kubernetes The Hard Way IaC — Part I
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Kubernetes The Hard Way IaC — Part I
+          </h1>
+          <p class="subtitle">Provisioning the compute resource for k8s setup in AWS using Pulumi</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2023-11-01T01:25:33+05:30"
+      >November 01, 2023</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>6 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>1090 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/aws/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>aws</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ansible/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ansible</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/pulumi/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>pulumi</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/python/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>python</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/hard-way/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>hard-way</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/iac/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>iac</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <h2 id="kubernetes-the-hard-way-iac-part-i">Kubernetes The Hard Way IaC — Part I</h2>
+<p>Provisioning the compute resource for k8s setup in AWS using Pulumi</p>
+<p><img src="https://cdn-images-1.medium.com/max/3840/1*WBkj4zrbaCOueWjAmdAa3A.jpeg" alt="" /></p>
+<p>In this series, we are going to set up the Kubernetes cluster in the hard way using Infrastructure as Code tools <a href="https://www.pulumi.com/">Pulumi</a> and <a href="https://www.ansible.com/">Ansible</a> in the <a href="https://aws.amazon.com/">AWS cloud</a> environment by following the works of Kelsey Hightower’s <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">Kubernetes-the-hard-way</a> and Prabhat Sharma’s <a href="https://github.com/prabhatsharma/kubernetes-the-hard-way-aws">Kubernetes-the-hard-way-aws</a> guides.</p>
+<p><a href="https://www.pulumi.com/">Pulumi</a> is a modern <a href="https://www.pulumi.com/what-is/what-is-infrastructure-as-code/">Infrastructure as Code</a> platform that allows you to use familiar <a href="https://www.pulumi.com/product/">programming languages</a> to create, deploy, and manage public cloud infrastructures. <a href="https://www.ansible.com/">Ansible </a>is a configuration management tool, that helps you to install and manage software on existing cloud infrastructure.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*zBkOKArqrxoX8r2LsvWpyA.png" alt="High-level architecture diagram" /></p>
+<p>Let’s begin by creating the cloud resources in AWS using Pulumi in Python language.</p>
+<h3 id="i-getting-ssh-key-content">i. Getting <code>.ssh</code> key content</h3>
+<p>Reading SSH keys and these keys will be used later to create an EC2 key pair for SSH access to the instances.</p>
+<pre data-lang="py" style="background-color:#282a36;color:#f8f8f2;" class="language-py "><code class="language-py" data-lang="py"><span>file_path </span><span style="color:#ff79c6;">= </span><span>os</span><span style="color:#ff79c6;">.</span><span>path</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">expanduser</span><span>(</span><span style="color:#f1fa8c;">&quot;~/.ssh/&quot;</span><span>)
+</span><span>public_key </span><span style="color:#ff79c6;">= </span><span style="color:#8be9fd;">open</span><span>(</span><span style="font-style:italic;color:#8be9fd;">f</span><span style="color:#f1fa8c;">&quot;</span><span>{file_path}</span><span style="color:#f1fa8c;">/id_rsa.pub&quot;</span><span>)</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">read</span><span>()
+</span><span>private_key </span><span style="color:#ff79c6;">= </span><span>pulumi</span><span style="color:#ff79c6;">.</span><span>Output</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">secret</span><span>(</span><span style="color:#8be9fd;">open</span><span>(</span><span style="font-style:italic;color:#8be9fd;">f</span><span style="color:#f1fa8c;">&quot;</span><span>{file_path}</span><span style="color:#f1fa8c;">/id_rsa&quot;</span><span>)</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">read</span><span>())
+</span></code></pre>
+<h3 id="ii-creating-a-vpc">ii. Creating a VPC</h3>
+<p>VPCs provide network isolation, security, and control over the cloud resources, allowing to define the network architecture of an application. The below code creates a Virtual Private Cloud (VPC) with a CIDR block of <code>10.0.0.0/16</code> and enables DNS support.</p>
+<pre data-lang="py" style="background-color:#282a36;color:#f8f8f2;" class="language-py "><code class="language-py" data-lang="py"><span>vpc </span><span style="color:#ff79c6;">= </span><span>ec2</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Vpc</span><span>(
+</span><span>    </span><span style="color:#f1fa8c;">&quot;vpc&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">cidr_block</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;10.0.0.0/16&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">enable_dns_hostnames</span><span style="color:#ff79c6;">=</span><span style="color:#bd93f9;">True</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">enable_dns_support</span><span style="color:#ff79c6;">=</span><span style="color:#bd93f9;">True</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">tags</span><span style="color:#ff79c6;">=</span><span>{</span><span style="color:#f1fa8c;">&quot;Name&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;kubernetes-the-hard-way&quot;</span><span>},
+</span><span>)
+</span></code></pre>
+<h3 id="iii-creating-a-subnet-in-an-availability-zone">iii. Creating a Subnet in an Availability Zone</h3>
+<p>Availability Zone is a data center or isolated location within a region. AWS has multiple AZs within each region, physically separated to provide redundancy and resiliency. A subnet is a range of IP addresses allocated from the VPC range. And subnets are associated with specific Availability Zones (AZs) in a region.</p>
+<p>It creates a subnet within this VPC range using the first availability zone returned by <code>get_availability_zones()</code> . The below <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html">CIDR</a> range of the subnet <code>10.0.0.0/16</code> can host up to <code>251</code> ec2 instances.</p>
+<pre data-lang="py" style="background-color:#282a36;color:#f8f8f2;" class="language-py "><code class="language-py" data-lang="py"><span>availability_zone </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">get_availability_zones</span><span>()</span><span style="color:#ff79c6;">.</span><span>names[</span><span style="color:#bd93f9;">0</span><span>]
+</span><span>
+</span><span>subnet </span><span style="color:#ff79c6;">= </span><span>ec2</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Subnet</span><span>(
+</span><span>    </span><span style="color:#f1fa8c;">&quot;subnet&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">availability_zone</span><span style="color:#ff79c6;">=</span><span>availability_zone,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">vpc_id</span><span style="color:#ff79c6;">=</span><span>vpc</span><span style="color:#ff79c6;">.</span><span>id,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">cidr_block</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;10.0.1.0/24&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">tags</span><span style="color:#ff79c6;">=</span><span>{</span><span style="color:#f1fa8c;">&quot;Name&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;kubernetes&quot;</span><span>},
+</span><span>)
+</span></code></pre>
+<h3 id="iv-setting-up-an-internet-gateway-and-route-table">iv. Setting up an Internet gateway and Route table</h3>
+<p>Internet gateway provisions the resources within the VPC to access the internet. Route tables help to determine where network traffic from your subnet or gateway is directed. A route is added to the route table to direct all traffic (<code>0.0.0.0/0</code>) to the Internet Gateway.</p>
+<pre data-lang="py" style="background-color:#282a36;color:#f8f8f2;" class="language-py "><code class="language-py" data-lang="py"><span>internet_gateway </span><span style="color:#ff79c6;">= </span><span>ec2</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">InternetGateway</span><span>(
+</span><span>    </span><span style="color:#f1fa8c;">&quot;internet-gateway&quot;</span><span>, </span><span style="font-style:italic;color:#ffb86c;">vpc_id</span><span style="color:#ff79c6;">=</span><span>vpc</span><span style="color:#ff79c6;">.</span><span>id, </span><span style="font-style:italic;color:#ffb86c;">tags</span><span style="color:#ff79c6;">=</span><span>{</span><span style="color:#f1fa8c;">&quot;Name&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;kubernetes&quot;</span><span>}
+</span><span>)
+</span><span>route_table </span><span style="color:#ff79c6;">= </span><span>ec2</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">RouteTable</span><span>(</span><span style="color:#f1fa8c;">&quot;route-table&quot;</span><span>, </span><span style="font-style:italic;color:#ffb86c;">vpc_id</span><span style="color:#ff79c6;">=</span><span>vpc</span><span style="color:#ff79c6;">.</span><span>id)
+</span><span>route_table_association </span><span style="color:#ff79c6;">= </span><span>ec2</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">RouteTableAssociation</span><span>(
+</span><span>    </span><span style="color:#f1fa8c;">&quot;route-table-association&quot;</span><span>, </span><span style="font-style:italic;color:#ffb86c;">route_table_id</span><span style="color:#ff79c6;">=</span><span>route_table</span><span style="color:#ff79c6;">.</span><span>id, </span><span style="font-style:italic;color:#ffb86c;">subnet_id</span><span style="color:#ff79c6;">=</span><span>subnet</span><span style="color:#ff79c6;">.</span><span>id
+</span><span>)
+</span><span>route </span><span style="color:#ff79c6;">= </span><span>ec2</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Route</span><span>(
+</span><span>    </span><span style="color:#f1fa8c;">&quot;route&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">route_table_id</span><span style="color:#ff79c6;">=</span><span>route_table</span><span style="color:#ff79c6;">.</span><span>id,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">destination_cidr_block</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;0.0.0.0/0&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">gateway_id</span><span style="color:#ff79c6;">=</span><span>internet_gateway</span><span style="color:#ff79c6;">.</span><span>id,
+</span><span>)
+</span></code></pre>
+<h3 id="v-configuring-security-group-rules">v. Configuring Security group rules</h3>
+<p>Egress rules are used to control the outbound traffic; traffic generated by AWS resources (such as ec2 instances) and sent out from VPC to the internet or the other networks. Below egress rules allow services to connect to any IP address, on any port, using any protocol (“-1” means all protocols)</p>
+<p>Ingress rules are used to control the inbound traffic; traffic from the outside world entering into the AWS network. Below ingress rules allows all protocols &amp; all ports from <code>10.0.0.0/16</code> and <code>10.200.0.0/16</code> for internal communication and access for <code>ssh-22</code>, <code>https-443</code>, and <code>kube-api-server-6443</code></p>
+<pre data-lang="py" style="background-color:#282a36;color:#f8f8f2;" class="language-py "><code class="language-py" data-lang="py"><span>security_group </span><span style="color:#ff79c6;">= </span><span>ec2</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">SecurityGroup</span><span>(
+</span><span>    </span><span style="color:#f1fa8c;">&quot;kubernetes&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">vpc_id</span><span style="color:#ff79c6;">=</span><span>vpc</span><span style="color:#ff79c6;">.</span><span>id,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">description</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;Kubernetes security group&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">tags</span><span style="color:#ff79c6;">=</span><span>{</span><span style="color:#f1fa8c;">&quot;Name&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;kubernetes&quot;</span><span>},
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">egress</span><span style="color:#ff79c6;">=</span><span>[
+</span><span>        {</span><span style="color:#f1fa8c;">&quot;protocol&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;-1&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;from_port&quot;</span><span>: </span><span style="color:#bd93f9;">0</span><span>, </span><span style="color:#f1fa8c;">&quot;to_port&quot;</span><span>: </span><span style="color:#bd93f9;">0</span><span>, </span><span style="color:#f1fa8c;">&quot;cidr_blocks&quot;</span><span>: [</span><span style="color:#f1fa8c;">&quot;0.0.0.0/0&quot;</span><span>]},
+</span><span>    ],
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">ingress</span><span style="color:#ff79c6;">=</span><span>[
+</span><span>        {
+</span><span>            </span><span style="color:#f1fa8c;">&quot;protocol&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;-1&quot;</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;from_port&quot;</span><span>: </span><span style="color:#bd93f9;">0</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;to_port&quot;</span><span>: </span><span style="color:#bd93f9;">0</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;cidr_blocks&quot;</span><span>: [</span><span style="color:#f1fa8c;">&quot;10.0.0.0/16&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;10.200.0.0/16&quot;</span><span>],
+</span><span>        },
+</span><span>        {
+</span><span>            </span><span style="color:#f1fa8c;">&quot;protocol&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;tcp&quot;</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;from_port&quot;</span><span>: </span><span style="color:#bd93f9;">22</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;to_port&quot;</span><span>: </span><span style="color:#bd93f9;">22</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;cidr_blocks&quot;</span><span>: [</span><span style="color:#f1fa8c;">&quot;0.0.0.0/0&quot;</span><span>],
+</span><span>        },
+</span><span>        {
+</span><span>            </span><span style="color:#f1fa8c;">&quot;protocol&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;tcp&quot;</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;from_port&quot;</span><span>: </span><span style="color:#bd93f9;">6443</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;to_port&quot;</span><span>: </span><span style="color:#bd93f9;">6443</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;cidr_blocks&quot;</span><span>: [</span><span style="color:#f1fa8c;">&quot;0.0.0.0/0&quot;</span><span>],
+</span><span>        },
+</span><span>        {
+</span><span>            </span><span style="color:#f1fa8c;">&quot;protocol&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;tcp&quot;</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;from_port&quot;</span><span>: </span><span style="color:#bd93f9;">443</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;to_port&quot;</span><span>: </span><span style="color:#bd93f9;">443</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;cidr_blocks&quot;</span><span>: [</span><span style="color:#f1fa8c;">&quot;0.0.0.0/0&quot;</span><span>],
+</span><span>        },
+</span><span>        {
+</span><span>            </span><span style="color:#f1fa8c;">&quot;protocol&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;icmp&quot;</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;from_port&quot;</span><span>: </span><span style="color:#ff79c6;">-</span><span style="color:#bd93f9;">1</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;to_port&quot;</span><span>: </span><span style="color:#ff79c6;">-</span><span style="color:#bd93f9;">1</span><span>,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;cidr_blocks&quot;</span><span>: [</span><span style="color:#f1fa8c;">&quot;0.0.0.0/0&quot;</span><span>],
+</span><span>        },
+</span><span>    ],
+</span><span>)
+</span></code></pre>
+<h3 id="vi-load-balancer-and-target-group">vi. Load balancer and target group</h3>
+<p>Load balancer (NLB) is used to distribute incoming network traffic across multiple targets, in this case, it will be directed to IP addresses, and attaching the target group instructs the load balancer to distribute traffic to the IP addresses specified target_id within the target group specified by target_group.arn. The below snippet receives the income request and forwards it to the 6443 port to the controller instances where kube-api-server listens.</p>
+<pre data-lang="py" style="background-color:#282a36;color:#f8f8f2;" class="language-py "><code class="language-py" data-lang="py"><span>load_balancer </span><span style="color:#ff79c6;">= </span><span>lb</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">LoadBalancer</span><span>(
+</span><span>    </span><span style="color:#f1fa8c;">&quot;loadBalancer&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">internal</span><span style="color:#ff79c6;">=</span><span style="color:#bd93f9;">False</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">name</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;kubernetes&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">subnets</span><span style="color:#ff79c6;">=</span><span>[subnet</span><span style="color:#ff79c6;">.</span><span>id],
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">load_balancer_type</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;network&quot;</span><span>,
+</span><span>)
+</span><span>
+</span><span>target_group </span><span style="color:#ff79c6;">= </span><span>lb</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">TargetGroup</span><span>(
+</span><span>    </span><span style="color:#f1fa8c;">&quot;targetGroup&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">name</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;kubernetes&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">protocol</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;TCP&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">port</span><span style="color:#ff79c6;">=</span><span style="color:#bd93f9;">6443</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">target_type</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;ip&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">vpc_id</span><span style="color:#ff79c6;">=</span><span>vpc</span><span style="color:#ff79c6;">.</span><span>id,
+</span><span>)
+</span><span style="color:#ff79c6;">for </span><span>i </span><span style="color:#ff79c6;">in </span><span style="color:#8be9fd;">range</span><span>(</span><span style="color:#bd93f9;">3</span><span>):
+</span><span>    lb</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">TargetGroupAttachment</span><span>(
+</span><span>        </span><span style="font-style:italic;color:#8be9fd;">f</span><span style="color:#f1fa8c;">&quot;target</span><span>{i}</span><span style="color:#f1fa8c;">&quot;</span><span>, </span><span style="font-style:italic;color:#ffb86c;">target_group_arn</span><span style="color:#ff79c6;">=</span><span>target_group</span><span style="color:#ff79c6;">.</span><span>arn, </span><span style="font-style:italic;color:#ffb86c;">target_id</span><span style="color:#ff79c6;">=</span><span style="font-style:italic;color:#8be9fd;">f</span><span style="color:#f1fa8c;">&quot;10.0.1.1</span><span>{i}</span><span style="color:#f1fa8c;">&quot;
+</span><span>    )
+</span><span>listener </span><span style="color:#ff79c6;">= </span><span>lb</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Listener</span><span>(
+</span><span>    </span><span style="color:#f1fa8c;">&quot;listener&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">load_balancer_arn</span><span style="color:#ff79c6;">=</span><span>load_balancer</span><span style="color:#ff79c6;">.</span><span>arn,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">protocol</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;TCP&quot;</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">port</span><span style="color:#ff79c6;">=</span><span style="color:#bd93f9;">443</span><span>,
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">default_actions</span><span style="color:#ff79c6;">=</span><span>[{</span><span style="color:#f1fa8c;">&quot;type&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;forward&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;target_group_arn&quot;</span><span>: target_group</span><span style="color:#ff79c6;">.</span><span>arn}],
+</span><span>)
+</span></code></pre>
+<h3 id="vii-get-the-latest-amazon-machine-image">vii. Get the latest Amazon machine image</h3>
+<p>Below snippet of code retrieves the most recent Ubuntu 20.04 AMI owned by Amazon.</p>
+<pre data-lang="py" style="background-color:#282a36;color:#f8f8f2;" class="language-py "><code class="language-py" data-lang="py"><span>instance_image </span><span style="color:#ff79c6;">= </span><span>pulumi</span><span style="color:#ff79c6;">.</span><span>Output</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">from_input</span><span>(
+</span><span>    ec2</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">get_ami</span><span>(
+</span><span>        </span><span style="font-style:italic;color:#ffb86c;">most_recent</span><span style="color:#ff79c6;">=</span><span style="color:#bd93f9;">True</span><span>,
+</span><span>        </span><span style="font-style:italic;color:#ffb86c;">owners</span><span style="color:#ff79c6;">=</span><span>[</span><span style="color:#f1fa8c;">&quot;099720109477&quot;</span><span>],
+</span><span>        </span><span style="font-style:italic;color:#ffb86c;">filters</span><span style="color:#ff79c6;">=</span><span>[
+</span><span>            {
+</span><span>                </span><span style="color:#f1fa8c;">&quot;name&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;name&quot;</span><span>,
+</span><span>                </span><span style="color:#f1fa8c;">&quot;values&quot;</span><span>: [</span><span style="color:#f1fa8c;">&quot;ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*&quot;</span><span>],
+</span><span>            },
+</span><span>            {
+</span><span>                </span><span style="color:#f1fa8c;">&quot;name&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;root-device-type&quot;</span><span>,
+</span><span>                </span><span style="color:#f1fa8c;">&quot;values&quot;</span><span>: [</span><span style="color:#f1fa8c;">&quot;ebs&quot;</span><span>],
+</span><span>            },
+</span><span>            {
+</span><span>                </span><span style="color:#f1fa8c;">&quot;name&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;architecture&quot;</span><span>,
+</span><span>                </span><span style="color:#f1fa8c;">&quot;values&quot;</span><span>: [</span><span style="color:#f1fa8c;">&quot;x86_64&quot;</span><span>],
+</span><span>            },
+</span><span>        ],
+</span><span>    )
+</span><span>)
+</span></code></pre>
+<h3 id="viii-instance-creation">viii. Instance creation</h3>
+<p>The below helper function is used to create six EC2 instances (three workers and three controllers) in the subnet, with the security group attached to it. The instances are configured with user data for identifying their roles and private IP addresses.</p>
+<pre data-lang="py" style="background-color:#282a36;color:#f8f8f2;" class="language-py "><code class="language-py" data-lang="py"><span style="font-style:italic;color:#ff79c6;">def </span><span style="color:#50fa7b;">create_instance</span><span>(</span><span style="font-style:italic;color:#ffb86c;">name</span><span>: </span><span style="font-style:italic;color:#66d9ef;">str</span><span>):
+</span><span>  res </span><span style="color:#ff79c6;">= </span><span>name</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">split</span><span>(</span><span style="font-style:italic;color:#ffb86c;">sep</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">&quot;-&quot;</span><span>)
+</span><span>  name </span><span style="color:#ff79c6;">= </span><span style="font-style:italic;color:#8be9fd;">f</span><span style="color:#f1fa8c;">&quot;</span><span>{res[</span><span style="color:#bd93f9;">0</span><span>]}</span><span style="color:#f1fa8c;">-</span><span>{res[</span><span style="color:#bd93f9;">1</span><span>]}</span><span style="color:#f1fa8c;">&quot;
+</span><span>  private_ip </span><span style="color:#ff79c6;">= </span><span>(
+</span><span>      </span><span style="font-style:italic;color:#8be9fd;">f</span><span style="color:#f1fa8c;">&quot;10.0.1.2</span><span>{res[</span><span style="color:#bd93f9;">1</span><span>]}</span><span style="color:#f1fa8c;">&quot; </span><span style="color:#ff79c6;">if </span><span>res[</span><span style="color:#bd93f9;">0</span><span>]</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">lower</span><span>() </span><span style="color:#ff79c6;">== </span><span style="color:#f1fa8c;">&quot;worker&quot; </span><span style="color:#ff79c6;">else </span><span style="font-style:italic;color:#8be9fd;">f</span><span style="color:#f1fa8c;">&quot;10.0.1.1</span><span>{res[</span><span style="color:#bd93f9;">1</span><span>]}</span><span style="color:#f1fa8c;">&quot;
+</span><span>  )
+</span><span>  user_data </span><span style="color:#ff79c6;">= </span><span>(
+</span><span>      </span><span style="font-style:italic;color:#8be9fd;">f</span><span style="color:#f1fa8c;">&quot;name=worker-</span><span>{res[</span><span style="color:#bd93f9;">1</span><span>]}</span><span style="color:#f1fa8c;">|pod-cidr=10.200.</span><span>{res[</span><span style="color:#bd93f9;">1</span><span>]}</span><span style="color:#f1fa8c;">.0/24&quot;
+</span><span>      </span><span style="color:#ff79c6;">if </span><span>res[</span><span style="color:#bd93f9;">0</span><span>]</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">lower</span><span>() </span><span style="color:#ff79c6;">== </span><span style="color:#f1fa8c;">&quot;worker&quot;
+</span><span>      </span><span style="color:#ff79c6;">else </span><span>name
+</span><span>  )
+</span><span>  </span><span style="color:#ff79c6;">return </span><span>ec2</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Instance</span><span>(
+</span><span>      name,
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">ami</span><span style="color:#ff79c6;">=</span><span>instance_image</span><span style="color:#ff79c6;">.</span><span>id,
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">instance_type</span><span style="color:#ff79c6;">=</span><span>instance_type,
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">key_name</span><span style="color:#ff79c6;">=</span><span>key_pair</span><span style="color:#ff79c6;">.</span><span>key_name,
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">vpc_security_group_ids</span><span style="color:#ff79c6;">=</span><span>[security_group</span><span style="color:#ff79c6;">.</span><span>id],
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">subnet_id</span><span style="color:#ff79c6;">=</span><span>subnet</span><span style="color:#ff79c6;">.</span><span>id,
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">associate_public_ip_address</span><span style="color:#ff79c6;">=</span><span style="color:#bd93f9;">True</span><span>,
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">user_data</span><span style="color:#ff79c6;">=</span><span>user_data,
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">private_ip</span><span style="color:#ff79c6;">=</span><span>private_ip,
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">tags</span><span style="color:#ff79c6;">=</span><span>{</span><span style="color:#f1fa8c;">&quot;Name&quot;</span><span>: name},
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">availability_zone</span><span style="color:#ff79c6;">=</span><span>availability_zone,
+</span><span>      </span><span style="font-style:italic;color:#ffb86c;">ebs_block_devices</span><span style="color:#ff79c6;">=</span><span>[
+</span><span>          {
+</span><span>              </span><span style="color:#f1fa8c;">&quot;device_name&quot;</span><span>: </span><span style="color:#f1fa8c;">&quot;/dev/sda1&quot;</span><span>,
+</span><span>              </span><span style="color:#f1fa8c;">&quot;volume_size&quot;</span><span>: </span><span style="color:#bd93f9;">20</span><span>,
+</span><span>              </span><span style="color:#f1fa8c;">&quot;delete_on_termination&quot;</span><span>: </span><span style="color:#bd93f9;">True</span><span>,
+</span><span>          }
+</span><span>      ],
+</span><span>  )
+</span></code></pre>
+<h3 id="ix-bringing-up-the-resources">ix. Bringing up the resources</h3>
+<p>The following command brings up the above-specified resources in the AWS cloud infrastructure.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">pulumi</span><span> up</span><span style="font-style:italic;color:#ffb86c;"> -y -s</span><span> dev
+</span></code></pre>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/production-ready-eks-cluster-setup-part-iii-c629648f9cd0">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/kubernetes-the-hard-way-iac">GitHub - madhank93/kubernetes-the-hard-way-iac</a></p>
+</center>
+<p><strong>References:</strong></p>
+<p>[1] <a href="https://github.com/prabhatsharma/kubernetes-the-hard-way-aws">https://github.com/prabhatsharma/kubernetes-the-hard-way-aws</a></p>
+<p>[2] <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">https://github.com/kelseyhightower/kubernetes-the-hard-way</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-kubernetes-the-hard-way-iac-part-i" class="toc is-size-7 is-active"
+                href=" /blogs/017-k8s-hardway-part-1/#kubernetes-the-hard-way-iac-part-i">
+                Kubernetes The Hard Way IaC — Part I
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-i-getting-ssh-key-content" class="toc is-size-7" href=" /blogs/017-k8s-hardway-part-1/#i-getting-ssh-key-content">
+                    i. Getting .ssh key content
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-ii-creating-a-vpc" class="toc is-size-7" href=" /blogs/017-k8s-hardway-part-1/#ii-creating-a-vpc">
+                    ii. Creating a VPC
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-iii-creating-a-subnet-in-an-availability-zone" class="toc is-size-7" href=" /blogs/017-k8s-hardway-part-1/#iii-creating-a-subnet-in-an-availability-zone">
+                    iii. Creating a Subnet in an Availability Zone
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-iv-setting-up-an-internet-gateway-and-route-table" class="toc is-size-7" href=" /blogs/017-k8s-hardway-part-1/#iv-setting-up-an-internet-gateway-and-route-table">
+                    iv. Setting up an Internet gateway and Route table
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-v-configuring-security-group-rules" class="toc is-size-7" href=" /blogs/017-k8s-hardway-part-1/#v-configuring-security-group-rules">
+                    v. Configuring Security group rules
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-vi-load-balancer-and-target-group" class="toc is-size-7" href=" /blogs/017-k8s-hardway-part-1/#vi-load-balancer-and-target-group">
+                    vi. Load balancer and target group
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-vii-get-the-latest-amazon-machine-image" class="toc is-size-7" href=" /blogs/017-k8s-hardway-part-1/#vii-get-the-latest-amazon-machine-image">
+                    vii. Get the latest Amazon machine image
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-viii-instance-creation" class="toc is-size-7" href=" /blogs/017-k8s-hardway-part-1/#viii-instance-creation">
+                    viii. Instance creation
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-ix-bringing-up-the-resources" class="toc is-size-7" href=" /blogs/017-k8s-hardway-part-1/#ix-bringing-up-the-resources">
+                    ix. Bringing up the resources
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;016-prod-eks-part-3&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Production-ready EKS cluster setup — Part III
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;018-llm-in-pi&#x2F;">
+              Serving LLMs from Raspberry Pi using Ollama and Cloudflare Tunnel<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

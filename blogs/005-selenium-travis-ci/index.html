@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Selenium DevOps series: Run your scripts in Travis CI
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Selenium DevOps series: Run your scripts in Travis CI
+          </h1>
+          <p class="subtitle">Aren’t you bored of running your automation scripts locally?</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2020-05-16T01:24:33+05:30"
+      >May 16, 2020</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>3 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>557 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/selenium/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>selenium</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/snippets/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>snippets</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/testing/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>testing</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/automation/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>automation</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/java/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>java</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3600/1*IbnJC_qfjBAMMQLQ1scTgg.jpeg" alt="Source — unknown" /><em>Source — unknown</em></p>
+<p>In this article, we are going to see how to run Selenium automation scripts in headless mode in the Travis CI environment. In three steps,</p>
+<ol>
+<li>
+<p>Setup Travis CI account</p>
+</li>
+<li>
+<p>Add Travis YAML file</p>
+</li>
+<li>
+<p>Push your code</p>
+<blockquote>
+<p>Note: Testing your open source projects are free in Travis CI</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="setting-up-travis-ci-account">Setting up Travis CI account</h2>
+<ol>
+<li>Head to the URL — <a href="https://travis-ci.org/">https://travis-ci.org/</a></li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/2154/1*p4DpAsS-Ef_0HTvogr9f0A.png" alt="Travis CI homepage" /><em>Travis CI homepage</em></p>
+<ol start="2">
+<li>Click on Sign-up and Sign-in using your GitHub account</li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*yjyCrEmosXHm2B1ucBwzcA.png" alt="sign-in page" /><em>sign-in page</em></p>
+<ol start="3">
+<li>Click on Authorize travis-ci</li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*jCIuhn59xgZ5fGCyRMufPA.png" alt="authorizing travis ci" /><em>authorizing travis ci</em></p>
+<ol start="4">
+<li>Select the repository</li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/2208/1*S-WF7VKEdtku7dA4w587Ww.png" alt="select repo" /><em>select repo</em></p>
+<ol start="5">
+<li>Activate repository</li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/2528/1*1INM3fvmt0d5mff2bOM4jw.png" alt="activate repo" /><em>activate repo</em></p>
+<ol start="6">
+<li>Builds status for the repository</li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*d08h-NH6OnCPT6Z07GINIw.png" alt="build status" /><em>build status</em></p>
+<p>Now that our GitHub and Travis CI are integrated. Next step is we have to add a .travis.yml file in the same directory level</p>
+<h2 id="adding-travis-yml-file">Adding .travis.yml file</h2>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*qmrP2OMaX9Nqc92BgemUKQ.png" alt=".travis.yml" /><em>.travis.yml</em></p>
+<p>Adding .travis.yml file to your root folder level helps Travis CI to know how to build the project. Now let’s see what should go inside the file</p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>dist: trusty
+</span><span>language: java
+</span><span>jdk:
+</span><span>- openjdk11
+</span></code></pre>
+<p>dist stands for distributions used to configure the version of Ubuntu</p>
+<p>language used to configure programming language</p>
+<p>jdk used to configure the JDK</p>
+<p>Since we are going to run the scripts in the headless mode we don’t need to add <a href="https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml">Xvfb</a> — the virtual framebuffer (since from Chrome 59 and Chrome 60 for Windows)</p>
+<h2 id="pushing-your-code">Pushing your code</h2>
+<p>Travis CI automatically recognizes that our project is built using Maven by identifying the presence of a pom.xml file. And automatically installs the dependencies.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;46b4c21ae59142dd4cff550eed02664e.js"></script>
+</div>
+<!-- <iframe src="https://medium.com/media/a7e554ccc27ad0fe93f7fe2917d0315b" frameborder=0></iframe> -->
+<blockquote>
+<p>In this i have used <a href="https://github.com/bonigarcia/webdrivermanager">webdrivermanager</a> library as one of the dependencies in pom.xml file to manage binary drivers (e.g. <em>chromedriver</em>, <em>geckodriver</em>, etc.)</p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/3054/1*qR-i1V__qW9SEdncsgaAsg.png" alt="settings" /><em>settings</em></p>
+<p>By default, Travis CI automatically starts build process when the code changes have been pushed or pull request has been created.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2734/1*XXM8rLAprBOpU3I26gx5CQ.png" alt="" /></p>
+<h2 id="result">Result</h2>
+<p><img src="https://cdn-images-1.medium.com/max/2734/1*XXM8rLAprBOpU3I26gx5CQ.png" alt="" /></p>
+<p>The Build log shows us that our tests are passed !!!</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/selenium-devops-series-run-your-scripts-in-travis-ci-b3505aaad367">Medium</a></p>
+<p><a href="https://travis-ci.org/github/madhank93/selenium-maven-travisci">Travis CI build</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/selenium-maven-travisci">GitHub - madhank93/selenium-maven-travisci</a></p>
+</center>
+<p><strong>References:</strong></p>
+<p>[1] <a href="https://www.kenst.com/2018/10/how-to-run-your-tests-with-headless-chrome-ruby-version/">https://www.kenst.com/2018/10/how-to-run-your-tests-with-headless-chrome-ruby-version/</a></p>
+<p>[2] <a href="https://docs.travis-ci.com/">https://docs.travis-ci.com/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-setting-up-travis-ci-account" class="toc is-size-7 is-active"
+                href=" /blogs/005-selenium-travis-ci/#setting-up-travis-ci-account">
+                Setting up Travis CI account
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-adding-travis-yml-file" class="toc is-size-7 "
+                href=" /blogs/005-selenium-travis-ci/#adding-travis-yml-file">
+                Adding .travis.yml file
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-pushing-your-code" class="toc is-size-7 "
+                href=" /blogs/005-selenium-travis-ci/#pushing-your-code">
+                Pushing your code
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-result" class="toc is-size-7 "
+                href=" /blogs/005-selenium-travis-ci/#result">
+                Result
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;004-selenium-snippets&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Selenium code snippets
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;006-github-actions-selenoid&#x2F;">
+              Github Actions for Seleniod Test Scripts<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
