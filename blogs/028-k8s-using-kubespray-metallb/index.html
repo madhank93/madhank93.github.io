@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Configuring Kubernetes cluster in Proxmox using Kubespray and MetalLB — Part II
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Configuring Kubernetes cluster in Proxmox using Kubespray and MetalLB — Part II
+          </h1>
+          <p class="subtitle">Deploying High-Availabile k8s cluster on Proxmox using Kubespray and MetalLB</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2024-12-22T00:00:00+00:00"
+      >December 22, 2024</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>4 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>658 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/homelab/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>homelab</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/proxmox/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>proxmox</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/self-hosting/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>self-hosting</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/kubespray/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>kubespray</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/metallb/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>metallb</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/pulumi/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>pulumi</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/golang/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>golang</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*k96Ygxvp-pTbZrfOJK1fVw.png" alt="Banner" /></p>
+<p>In my previous article, we explored setting up a <a href="https://medium.com/@madhankumaravelu93/setting-up-kubernetes-on-proxmox-with-cloud-init-and-pulumi-part-i-64e697bdfe98">Kubernetes (k8s) infrastructure in Proxmox using Pulumi and Cloud-init</a>. In this article we look into how to configure that Kubernetes setup using <a href="https://kubespray.io/">Kubespray</a> — an open-source solution for automating the deployment and management of production-ready Kubernetes clusters.</p>
+<h3 id="what-is-kubespray">What is Kubespray?</h3>
+<p>Kubespray is a project maintained by the Kubernetes SIG team that leverages Ansible playbooks to automate and manage Kubernetes clusters. It supports a variety of configurations,</p>
+<ul>
+<li>
+<p><strong>Container Network Interface (CNI):</strong> Calico, Flannel, Weave, and Cilium.</p>
+</li>
+<li>
+<p><strong>Container Runtime Interface (CRI):</strong> containerd, CRI-O, gVisor, and Kata Containers.</p>
+</li>
+<li>
+<p><strong>Container Storage Interface (CSI):</strong> AWS EBS, Azure Disk, and GCP Persistent Disk.</p>
+</li>
+</ul>
+<h3 id="why-you-need-metallb">Why you need MetalLB ?</h3>
+<p><a href="https://metallb.io/">MetalLB</a> allows you to create Kubernetes services of type LoadBalancer in a bare-metal cluster.</p>
+<h3 id="prerequisite-adjustments">Prerequisite Adjustments</h3>
+<p>Since Kubespray handles most Kubernetes configuration tasks, some of the steps from my original Cloud-init setup are now redundant. And also I considered using Nix to configure Kubernetes, I found it required a steeper learning curve than I’m ready for at this stage.</p>
+<p>Let’s begin the setup;</p>
+<h3 id="clone-the-kubespray-repository">Clone the Kubespray Repository</h3>
+<p>Start by cloning the Kubespray repository and checking out the latest release tag, in this case, v2.26.0</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">git</span><span> clone https://github.com/kubernetes-sigs/kubespray
+</span><span style="color:#50fa7b;">git</span><span> checkout tags/v2.26.0
+</span></code></pre>
+<h3 id="install-ansible">Install Ansible</h3>
+<p>To deploy Kubespray, install Ansible in a Python virtual environment</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#ffffff;">VENVDIR</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">kubespray-venv
+</span><span style="color:#50fa7b;">python3</span><span style="font-style:italic;color:#ffb86c;"> -m</span><span> venv $</span><span style="color:#ffffff;">VENVDIR
+</span><span style="color:#8be9fd;">source </span><span>$</span><span style="color:#ffffff;">VENVDIR</span><span>/bin/activate
+</span><span style="color:#50fa7b;">pip</span><span> install</span><span style="font-style:italic;color:#ffb86c;"> -U -r</span><span> requirements.txt
+</span></code></pre>
+<h3 id="generate-inventory">Generate Inventory</h3>
+<p>Kubespray includes a Python script to generate a host inventory file. Use it to create and tweak the necessary configurations.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">pip</span><span> install</span><span style="font-style:italic;color:#ffb86c;"> -U -r</span><span> kubespray/contrib/inventory_builder/requirements.txt
+</span><span>
+</span><span style="color:#ffffff;">CONFIG_FILE</span><span style="color:#ff79c6;">=</span><span style="color:#f1fa8c;">inventory/proxmox/hosts.yaml </span><span style="color:#50fa7b;">python3</span><span> kubespray/contrib/inventory_builder/inventory.py \
+</span><span>    k8s-controller-ip,192.168.1.75 \
+</span><span>    k8s-worker1-ip,192.168.1.76 \
+</span><span>    k8s-worker2-ip,192.168.1.204
+</span></code></pre>
+<p>This script generates a host configuration file.</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">all</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">hosts</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">k8s-controller1</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">ansible_host</span><span>: </span><span style="color:#bd93f9;">192.168.1.76
+</span><span>        </span><span style="color:#ff79c6;">ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.76
+</span><span>        </span><span style="color:#ff79c6;">access_ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.76
+</span><span>    </span><span style="color:#ff79c6;">k8s-controller2</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">ansible_host</span><span>: </span><span style="color:#bd93f9;">192.168.1.75
+</span><span>        </span><span style="color:#ff79c6;">ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.75
+</span><span>        </span><span style="color:#ff79c6;">access_ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.75
+</span><span>    </span><span style="color:#ff79c6;">k8s-controller3</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">ansible_host</span><span>: </span><span style="color:#bd93f9;">192.168.1.204
+</span><span>        </span><span style="color:#ff79c6;">ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.204
+</span><span>        </span><span style="color:#ff79c6;">access_ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.204
+</span><span>    </span><span style="color:#ff79c6;">k8s-worker1</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">ansible_host</span><span>: </span><span style="color:#bd93f9;">192.168.1.72
+</span><span>        </span><span style="color:#ff79c6;">ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.72
+</span><span>        </span><span style="color:#ff79c6;">access_ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.72
+</span><span>    </span><span style="color:#ff79c6;">k8s-worker2</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">ansible_host</span><span>: </span><span style="color:#bd93f9;">192.168.1.73
+</span><span>        </span><span style="color:#ff79c6;">ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.73
+</span><span>        </span><span style="color:#ff79c6;">access_ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.73
+</span><span>    </span><span style="color:#ff79c6;">k8s-worker3</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">ansible_host</span><span>: </span><span style="color:#bd93f9;">192.168.1.74
+</span><span>        </span><span style="color:#ff79c6;">ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.74
+</span><span>        </span><span style="color:#ff79c6;">access_ip</span><span>: </span><span style="color:#bd93f9;">192.168.1.74
+</span><span>    </span><span style="color:#ff79c6;">children</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">kube_control_plane</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">hosts</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-controller1</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-controller2</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-controller3</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">kube_node</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">hosts</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-controller1</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-controller2</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-controller3</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-worker1</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-worker2</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-worker3</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">etcd</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">hosts</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-controller1</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-controller2</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">k8s-controller3</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">k8s_cluster</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">children</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">kube_control_plane</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">kube_node</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">calico_rr</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">hosts</span><span>: {}
+</span></code></pre>
+<h3 id="configure-cluster-settings">Configure Cluster Settings</h3>
+<p>Edit the cluster settings variables file to define key configurations, such as the Kubernetes version and add-ons like MetalLB.</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">kube_version</span><span>: </span><span style="color:#f1fa8c;">v1.30.0
+</span><span style="color:#ff79c6;">helm_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">kube_proxy_strict_arp</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">metrics_server_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">cert_manager_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">ingress_nginx_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">metallb_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">metallb_speaker_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">metallb_config</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">address_pools</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">primary</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">ip_range</span><span>:
+</span><span>        - </span><span style="color:#f1fa8c;">192.168.1.210-192.168.1.255
+</span><span>        </span><span style="color:#ff79c6;">auto_assign</span><span>: </span><span style="color:#bd93f9;">true
+</span><span>        </span><span style="color:#ff79c6;">avoid_buggy_ips</span><span>: </span><span style="color:#bd93f9;">true
+</span><span>    </span><span style="color:#ff79c6;">layer2</span><span>:
+</span><span>    - </span><span style="color:#f1fa8c;">primary
+</span></code></pre>
+<h3 id="deploy-the-cluster">Deploy the Cluster</h3>
+<p>Run the Ansible playbook to deploy the cluster. Depending on your environment, this may take 20–30 minutes.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">ansible-playbook</span><span style="font-style:italic;color:#ffb86c;"> -i</span><span> ../inventory/proxmox/hosts.yaml</span><span style="font-style:italic;color:#ffb86c;"> -e</span><span> @../inventory/proxmox/cluster.yml</span><span style="font-style:italic;color:#ffb86c;"> --user</span><span style="color:#ff79c6;">=</span><span>ubuntu</span><span style="font-style:italic;color:#ffb86c;"> --become --become-user</span><span style="color:#ff79c6;">=</span><span>root cluster.yml
+</span></code></pre>
+<p>After a successful run, verify that all nodes are joined</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> get nodes</span><span style="font-style:italic;color:#ffb86c;"> -o</span><span> wide
+</span></code></pre>
+<h3 id="test-the-cluster">Test the Cluster</h3>
+<p>Test your Kubernetes cluster by deploying an Nginx application and exposing it as a LoadBalancer service to validate MetalLB</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> create deployment nginx</span><span style="font-style:italic;color:#ffb86c;"> --image</span><span style="color:#ff79c6;">=</span><span>nginx
+</span><span style="color:#50fa7b;">kubectl</span><span> expose deployment nginx</span><span style="font-style:italic;color:#ffb86c;"> --port</span><span> 80</span><span style="font-style:italic;color:#ffb86c;"> --type</span><span> LoadBalancer
+</span><span style="color:#50fa7b;">kubectl</span><span> get svc
+</span></code></pre>
+<p>Access the application using the external IP address returned by the <code>kubectl get svc</code> command.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/configuring-kubernetes-cluster-in-proxmox-using-kubespray-and-metallb-part-ii-ac073aac3bf3">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/pulumi-proxmox/tree/main/proxmox-k8s-II/inventory/proxmox">GitHub - madhank93/pulumi-proxmox at main</a></p>
+</center>
+<p><strong>Reference</strong>:</p>
+<p>[1] <a href="https://kubespray.io/#/">https://kubespray.io/#/</a></p>
+<p>[2] <a href="https://metallb.io/">https://metallb.io/</a></p>
+<p>[3] <a href="https://youtu.be/2SmYjj-GFnE?si=xI7ToyNuVmikdm16">https://youtu.be/2SmYjj-GFnE?si=xI7ToyNuVmikdm16</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-what-is-kubespray" class="toc is-size-7 is-active"
+                href=" /blogs/028-k8s-using-kubespray-metallb/#what-is-kubespray">
+                What is Kubespray?
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-why-you-need-metallb" class="toc is-size-7 "
+                href=" /blogs/028-k8s-using-kubespray-metallb/#why-you-need-metallb">
+                Why you need MetalLB ?
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-prerequisite-adjustments" class="toc is-size-7 "
+                href=" /blogs/028-k8s-using-kubespray-metallb/#prerequisite-adjustments">
+                Prerequisite Adjustments
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-clone-the-kubespray-repository" class="toc is-size-7 "
+                href=" /blogs/028-k8s-using-kubespray-metallb/#clone-the-kubespray-repository">
+                Clone the Kubespray Repository
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-install-ansible" class="toc is-size-7 "
+                href=" /blogs/028-k8s-using-kubespray-metallb/#install-ansible">
+                Install Ansible
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-generate-inventory" class="toc is-size-7 "
+                href=" /blogs/028-k8s-using-kubespray-metallb/#generate-inventory">
+                Generate Inventory
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-configure-cluster-settings" class="toc is-size-7 "
+                href=" /blogs/028-k8s-using-kubespray-metallb/#configure-cluster-settings">
+                Configure Cluster Settings
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-deploy-the-cluster" class="toc is-size-7 "
+                href=" /blogs/028-k8s-using-kubespray-metallb/#deploy-the-cluster">
+                Deploy the Cluster
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-test-the-cluster" class="toc is-size-7 "
+                href=" /blogs/028-k8s-using-kubespray-metallb/#test-the-cluster">
+                Test the Cluster
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;027-k8s-on-proxmox-using-pulumi&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Setting up Kubernetes on Proxmox with Cloud-Init and Pulumi— Part I
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;029-proxmox-gpu-pulumi&#x2F;">
+              GPU pass through in Proxmox using Pulumi<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

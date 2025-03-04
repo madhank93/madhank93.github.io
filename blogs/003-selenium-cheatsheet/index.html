@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Selenium cheat sheet
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Selenium cheat sheet
+          </h1>
+          <p class="subtitle">A comprehensive list of selenium commands in Java</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2020-04-17T01:24:33+05:30"
+      >April 17, 2020</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>10 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>1934 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/selenium/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>selenium</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/cheatsheet/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>cheatsheet</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/testing/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>testing</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/automation/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>automation</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/java/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>java</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/2800/1*RQZPhTEqSNHBEHAMUEJCZw.png" alt="" /></p>
+<h2 id="1-browser-property-setup">1. Browser property setup</h2>
+<ul>
+<li><strong>Chrome</strong>:</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">System</span><span style="color:#ff79c6;">.</span><span>se­tPr­ope­rty­(</span><span style="color:#f1fa8c;">&quot;we­bdr­ive­r.chrome.d­riv­er&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;/path/to/chromedrive­r&quot;</span><span>);
+</span></code></pre>
+<ul>
+<li><strong>Firefox:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">System</span><span style="color:#ff79c6;">.</span><span>se­tPr­ope­rty­(</span><span style="color:#f1fa8c;">&quot;we­bdr­ive­r.g­eck­o.d­riv­er&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;/path/to/geckodriver&quot;</span><span>);
+</span></code></pre>
+<ul>
+<li><strong>Edge:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">System</span><span style="color:#ff79c6;">.</span><span>se­tPr­ope­rty­(</span><span style="color:#f1fa8c;">&quot;we­bdr­ive­r.edge.d­riv­er&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;/path/to/MicrosoftWebDriver&quot;</span><span>);
+</span></code></pre>
+<h2 id="2-browser-initialization">2. Browser Initialization</h2>
+<ul>
+<li><strong>Firefox</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">FirefoxDriver</span><span>();
+</span></code></pre>
+<ul>
+<li><strong>Chrome</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeDriver</span><span>();
+</span></code></pre>
+<ul>
+<li><strong>Internet Explorer</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">InternetExplorerDriver</span><span>();
+</span></code></pre>
+<ul>
+<li><strong>Safari Driver</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>  </span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">SafariDriver</span><span>();
+</span></code></pre>
+<h2 id="3-desired-capabilities">3. Desired capabilities</h2>
+<p><a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/remote/DesiredCapabilities.html">Doc link</a></p>
+<ul>
+<li><strong>Chrome:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">DesiredCapabilities</span><span> caps </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">DesiredCapabilities</span><span>();
+</span><span>caps</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setCapability</span><span>(</span><span style="color:#f1fa8c;">&quot;browserName&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;chrome&quot;</span><span>);
+</span><span>caps</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setCapability</span><span>(</span><span style="color:#f1fa8c;">&quot;browserVersion&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;80.0&quot;</span><span>);
+</span><span>caps</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setCapability</span><span>(</span><span style="color:#f1fa8c;">&quot;platformName&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;win10&quot;</span><span>);
+</span><span>
+</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeDriver</span><span>(caps); </span><span style="color:#6272a4;">// Pass the capabilities as an argument to the driver object
+</span></code></pre>
+<ul>
+<li><strong>Firefox:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">DesiredCapabilities</span><span> caps </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">DesiredCapabilities</span><span>();
+</span><span>caps</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setCapability</span><span>(</span><span style="color:#f1fa8c;">&quot;browserName&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;firefox&quot;</span><span>);
+</span><span>caps</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setCapability</span><span>(</span><span style="color:#f1fa8c;">&quot;browserVersion&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;81.0&quot;</span><span>);
+</span><span>caps</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setCapability</span><span>(</span><span style="color:#f1fa8c;">&quot;platformName&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;win10&quot;</span><span>);
+</span><span>
+</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">FirefoxDriver</span><span>(caps); </span><span style="color:#6272a4;">// Pass the capabilities as an argument to the driver object
+</span></code></pre>
+<h2 id="4-browser-options">4. Browser options</h2>
+<ul>
+<li><strong>Chrome: (<a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/chrome/ChromeOptions.html">Doc link</a>)</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span> chromeOptions </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span>();
+</span><span>chromeOptions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setBinary</span><span>(</span><span style="color:#f1fa8c;">&quot;C:Program Files(x86)/GoogleChromeApplication/chrome.exe&quot;</span><span>); </span><span style="color:#6272a4;">// if chrome is not in defaultlocation
+</span><span>chromeOptions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">addArguments</span><span>(</span><span style="color:#f1fa8c;">&quot;--headless&quot;</span><span>); </span><span style="color:#6272a4;">// Passing single option
+</span><span>chromeOptions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">addArguments</span><span>(</span><span style="color:#f1fa8c;">&quot;--start-maximized&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;--incognito&quot;</span><span>,</span><span style="color:#f1fa8c;">&quot;--disable-notifications&quot; </span><span>); </span><span style="color:#6272a4;">// Passing multiple options
+</span><span>
+</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeDriver</span><span>(chromeOptions); </span><span style="color:#6272a4;">// Pass the capabilities as an argument to the driver object
+</span></code></pre>
+<ul>
+<li><strong>Firefox: (<a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/firefox/FirefoxOptions.html">Doc link</a>)</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">FirefoxOptions</span><span> firefoxOptions </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">FirefoxOptions</span><span>();
+</span><span>firefoxOptions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setBinary</span><span>(</span><span style="color:#ff79c6;">new </span><span style="font-style:italic;color:#66d9ef;">FirefoxBinary</span><span>(</span><span style="color:#ff79c6;">new </span><span style="font-style:italic;color:#66d9ef;">File</span><span>(</span><span style="color:#f1fa8c;">&quot;C:ProgramFiles/MozillaFire/foxirefox.exe&quot;</span><span>)));
+</span><span>firefoxOptions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setHeadless</span><span>(</span><span style="color:#bd93f9;">true</span><span>);
+</span><span>
+</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">FirefoxDriver</span><span>(caps); </span><span style="color:#6272a4;">// Pass the capabilities as an argument to the driver object
+</span></code></pre>
+<blockquote>
+<p><strong>Options VS Desired capabilities</strong>:
+There are two ways to specify <a href="https://sites.google.com/a/chromium.org/chromedriver/capabilities">capabilities</a>.</p>
+<ol>
+<li><strong>ChromeOptions/FirefoxOptions</strong> class — Recommended</li>
+<li>Or you can specify the capabilities directly as part of the <strong>DesiredCapabilities</strong> — its usage in Java is deprecated</li>
+</ol>
+</blockquote>
+<h2 id="5-navigation">5. Navigation</h2>
+<ul>
+<li><strong>Navigate to URL — (doc <a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebDriver.Navigation.html">link1</a> <a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebDriver.html#get-java.lang.String-">link2</a>)</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">get</span><span>(</span><span style="color:#f1fa8c;">&quot;http://google.com&quot;</span><span>)
+</span><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">navigate</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">to</span><span>(</span><span style="color:#f1fa8c;">&quot;http://google.com&quot;</span><span>)
+</span></code></pre>
+<blockquote>
+<p><strong>Myth</strong> — get() method waits till the page is loaded while navigate() does not.</p>
+</blockquote>
+<p>Referring to the selenium <a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/events/EventFiringWebDriver.html#get-java.lang.String-">official doc</a>, get() method is a synonym for to() method. Both do the same thing.</p>
+<blockquote>
+<p><strong>Myth</strong> - get() does not store history while navigate() does.</p>
+</blockquote>
+<p>All the URLs loaded in the browser will be stored in history and the navigate method allows us to access it. Try executing the below code</p>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">get</span><span>(</span><span style="color:#f1fa8c;">&quot;http://madhank93.github.io/&quot;</span><span>);
+</span><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">get</span><span>(</span><span style="color:#f1fa8c;">&quot;https://www.google.com/&quot;</span><span>);
+</span><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">navigate</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">back</span><span>();
+</span></code></pre>
+<ul>
+<li><strong>Refresh page</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">navigate</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">refresh</span><span>()
+</span></code></pre>
+<ul>
+<li><strong>Navigate forwards in the browser history</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">navigate</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">forward</span><span>()
+</span></code></pre>
+<ul>
+<li><strong>Navigate backward in the browser history</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">navigate</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">back</span><span>()
+</span></code></pre>
+<h2 id="6-find-element-vs-find-elements">6. Find element VS Find elements</h2>
+<blockquote>
+<p>(<a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebElement.html#findElements-org.openqa.selenium.By-">doc link</a>)</p>
+</blockquote>
+<ul>
+<li><strong>driver.findElement()</strong></li>
+</ul>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>When no match has found (0) throws NoSuchElementException
+</span><span>when 1 match found returns a WebElement instance
+</span><span>when 2 matches found returns only the first matching web element
+</span></code></pre>
+<ul>
+<li><strong>driver.findElements()</strong></li>
+</ul>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>when no match has found (0) returns an empty list
+</span><span>when 1 match found returns a list with one WebElement
+</span><span>when 2 matches found returns a list with all matching WebElements
+</span></code></pre>
+<h2 id="7-locator-strategy">7. Locator Strategy</h2>
+<blockquote>
+<p>(<a href="https://www.selenium.dev/selenium/docs/api/java/">doc link</a>)</p>
+</blockquote>
+<ul>
+<li><strong><em>By id</em></strong></li>
+</ul>
+<pre data-lang="html" style="background-color:#282a36;color:#f8f8f2;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#ff79c6;">input </span><span style="color:#50fa7b;">id</span><span>=</span><span style="color:#f1fa8c;">&quot;login&quot; </span><span style="color:#50fa7b;">type</span><span>=</span><span style="color:#f1fa8c;">&quot;text&quot; </span><span>/&gt;
+</span></code></pre>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>element </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">id</span><span>(</span><span style="color:#f1fa8c;">&quot;login&quot;</span><span>))
+</span></code></pre>
+<ul>
+<li><strong><em>By Class Name</em></strong></li>
+</ul>
+<pre data-lang="html" style="background-color:#282a36;color:#f8f8f2;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#ff79c6;">input </span><span style="color:#50fa7b;">class</span><span>=</span><span style="color:#f1fa8c;">&quot;Content&quot; </span><span style="color:#50fa7b;">type</span><span>=</span><span style="color:#f1fa8c;">&quot;text&quot; </span><span>/&gt;
+</span></code></pre>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>element </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">className</span><span>(</span><span style="color:#f1fa8c;">&quot;Content&quot;</span><span>));
+</span></code></pre>
+<ul>
+<li><strong><em>By Name</em></strong></li>
+</ul>
+<pre data-lang="html" style="background-color:#282a36;color:#f8f8f2;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#ff79c6;">input </span><span style="color:#50fa7b;">name</span><span>=</span><span style="color:#f1fa8c;">&quot;pswd&quot; </span><span style="color:#50fa7b;">type</span><span>=</span><span style="color:#f1fa8c;">&quot;text&quot; </span><span>/&gt;
+</span></code></pre>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>element </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">name</span><span>(</span><span style="color:#f1fa8c;">&quot;pswd&quot;</span><span>));
+</span></code></pre>
+<ul>
+<li><strong><em>By Tag Name</em></strong></li>
+</ul>
+<pre data-lang="html" style="background-color:#282a36;color:#f8f8f2;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#ff79c6;">div </span><span style="color:#50fa7b;">id</span><span>=</span><span style="color:#f1fa8c;">&quot;forgot-password&quot;</span><span>&gt;…&lt;/</span><span style="color:#ff79c6;">div</span><span>&gt;
+</span></code></pre>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>element </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">tagName</span><span>(</span><span style="color:#f1fa8c;">&quot;div&quot;</span><span>));
+</span></code></pre>
+<ul>
+<li><strong><em>By Link Text</em></strong></li>
+</ul>
+<pre data-lang="html" style="background-color:#282a36;color:#f8f8f2;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#ff79c6;">a </span><span style="color:#50fa7b;">href</span><span>=</span><span style="color:#f1fa8c;">&quot;#&quot;</span><span>&gt;News&lt;/</span><span style="color:#ff79c6;">a</span><span>&gt;
+</span></code></pre>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>element </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">linkText</span><span>(</span><span style="color:#f1fa8c;">&quot;News&quot;</span><span>));
+</span></code></pre>
+<ul>
+<li><strong><em>By XPath</em></strong></li>
+</ul>
+<pre data-lang="html" style="background-color:#282a36;color:#f8f8f2;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#ff79c6;">form </span><span style="color:#50fa7b;">id</span><span>=</span><span style="color:#f1fa8c;">&quot;login&quot; </span><span style="color:#50fa7b;">action</span><span>=</span><span style="color:#f1fa8c;">&quot;/action_page.php&quot;</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">input </span><span style="color:#50fa7b;">type</span><span>=</span><span style="color:#f1fa8c;">&quot;text&quot; </span><span style="color:#50fa7b;">placeholder</span><span>=</span><span style="color:#f1fa8c;">&quot;Username&quot; </span><span style="color:#50fa7b;">name</span><span>=</span><span style="color:#f1fa8c;">&quot;username&quot; </span><span>/&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">input </span><span style="color:#50fa7b;">type</span><span>=</span><span style="color:#f1fa8c;">&quot;text&quot; </span><span style="color:#50fa7b;">placeholder</span><span>=</span><span style="color:#f1fa8c;">&quot;Password&quot; </span><span style="color:#50fa7b;">name</span><span>=</span><span style="color:#f1fa8c;">&quot;psw&quot; </span><span>/&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">button </span><span style="color:#50fa7b;">type</span><span>=</span><span style="color:#f1fa8c;">&quot;submit&quot;</span><span>&gt;Login&lt;/</span><span style="color:#ff79c6;">button</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#ff79c6;">form</span><span>&gt;
+</span></code></pre>
+<pre data-lang="java element" style="background-color:#282a36;color:#f8f8f2;" class="language-java element "><code class="language-java element" data-lang="java element"><span>driver.findElement(By.xpath(&quot;//input[[@placeholder](http://twitter.com/placeholder)=’Username’]&quot;));
+</span></code></pre>
+<p>List of Keywords — <code>and</code>, <code>or</code>, <code>contains()</code>, <code>starts-with()</code>, <code>text()</code>, <code>last()</code></p>
+<ul>
+<li><strong><em>By CSS Selector</em></strong></li>
+</ul>
+<pre data-lang="html" style="background-color:#282a36;color:#f8f8f2;" class="language-html "><code class="language-html" data-lang="html"><span>&lt;</span><span style="color:#ff79c6;">form </span><span style="color:#50fa7b;">id</span><span>=</span><span style="color:#f1fa8c;">&quot;login&quot; </span><span style="color:#50fa7b;">action</span><span>=</span><span style="color:#f1fa8c;">&quot;submit&quot; </span><span style="color:#50fa7b;">method</span><span>=</span><span style="color:#f1fa8c;">&quot;get&quot;</span><span>&gt;
+</span><span>  Username: &lt;</span><span style="color:#ff79c6;">input </span><span style="color:#50fa7b;">type</span><span>=</span><span style="color:#f1fa8c;">&quot;text&quot; </span><span>/&gt; Password: &lt;</span><span style="color:#ff79c6;">input </span><span style="color:#50fa7b;">type</span><span>=</span><span style="color:#f1fa8c;">&quot;password&quot; </span><span>/&gt;
+</span><span>&lt;/</span><span style="color:#ff79c6;">form</span><span>&gt;
+</span></code></pre>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>element </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">cssSelector</span><span>(</span><span style="color:#f1fa8c;">&quot;input.username&quot;</span><span>));
+</span></code></pre>
+<h2 id="8-click-on-an-element">8. Click on an element</h2>
+<ul>
+<li><strong>click()</strong> — method is used to click on an element</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">className</span><span>(</span><span style="color:#f1fa8c;">&quot;Content&quot;</span><span>))</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">click</span><span>();
+</span></code></pre>
+<h2 id="9-write-text-inside-an-element-input-and-textarea">9. Write text inside an element — input and textarea</h2>
+<ul>
+<li><strong>sendKeys()</strong> — method is used to send data</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">className</span><span>(</span><span style="color:#f1fa8c;">&quot;email&quot;</span><span>))</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">sendKeys</span><span>(</span><span style="color:#f1fa8c;">&quot;abc@xyz.com&quot;</span><span>);
+</span></code></pre>
+<h2 id="10-clear-text-from-the-text-box">10. Clear text from the text box</h2>
+<ul>
+<li><strong>clear()</strong> — method is used to clear text from the text area</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">xpath</span><span>(</span><span style="color:#f1fa8c;">&quot;//input[[@placeholder](http://twitter.com/placeholder)=’Username’]&quot;</span><span>))</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">clear</span><span>();
+</span></code></pre>
+<h2 id="11-select-a-drop-down">11. Select a drop-down</h2>
+<blockquote>
+<p>(<a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/Select.html">doc link</a>)</p>
+</blockquote>
+<pre data-lang="html" style="background-color:#282a36;color:#f8f8f2;" class="language-html "><code class="language-html" data-lang="html"><span>// single select option
+</span><span>&lt;</span><span style="color:#ff79c6;">select </span><span style="color:#50fa7b;">id</span><span>=</span><span style="color:#f1fa8c;">&quot;country&quot;</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">option </span><span style="color:#50fa7b;">value</span><span>=</span><span style="color:#f1fa8c;">&quot;US&quot;</span><span>&gt;United States&lt;/</span><span style="color:#ff79c6;">option</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">option </span><span style="color:#50fa7b;">value</span><span>=</span><span style="color:#f1fa8c;">&quot;CA&quot;</span><span>&gt;Canada&lt;/</span><span style="color:#ff79c6;">option</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">option </span><span style="color:#50fa7b;">value</span><span>=</span><span style="color:#f1fa8c;">&quot;MX&quot;</span><span>&gt;Mexico&lt;/</span><span style="color:#ff79c6;">option</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#ff79c6;">select</span><span>&gt;
+</span><span>
+</span><span>// multiple select option
+</span><span>&lt;</span><span style="color:#ff79c6;">select </span><span style="color:#50fa7b;">multiple</span><span>=</span><span style="color:#f1fa8c;">&quot;&quot; </span><span style="color:#50fa7b;">id</span><span>=</span><span style="color:#f1fa8c;">&quot;fruits&quot;</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">option </span><span style="color:#50fa7b;">value</span><span>=</span><span style="color:#f1fa8c;">&quot;banana&quot;</span><span>&gt;Banana&lt;/</span><span style="color:#ff79c6;">option</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">option </span><span style="color:#50fa7b;">value</span><span>=</span><span style="color:#f1fa8c;">&quot;apple&quot;</span><span>&gt;Apple&lt;/</span><span style="color:#ff79c6;">option</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">option </span><span style="color:#50fa7b;">value</span><span>=</span><span style="color:#f1fa8c;">&quot;orange&quot;</span><span>&gt;Orange&lt;/</span><span style="color:#ff79c6;">option</span><span>&gt;
+</span><span>  &lt;</span><span style="color:#ff79c6;">option </span><span style="color:#50fa7b;">value</span><span>=</span><span style="color:#f1fa8c;">&quot;grape&quot;</span><span>&gt;Grape&lt;/</span><span style="color:#ff79c6;">option</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#ff79c6;">select</span><span>&gt;
+</span></code></pre>
+<ul>
+<li>
+<p><strong>selectByVisibleText() / selectByValue() / selectByIndex()</strong></p>
+</li>
+<li>
+<p><strong>deselectByVisibleText() / deselectByValue() / deselectByIndex()</strong></p>
+</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#6272a4;">// import statements for select class
+</span><span style="color:#ff79c6;">import </span><span style="font-style:italic;color:#66d9ef;">org</span><span style="text-decoration:underline;color:#ff79c6;">.</span><span style="font-style:italic;color:#66d9ef;">openqa</span><span style="text-decoration:underline;color:#ff79c6;">.</span><span style="font-style:italic;color:#66d9ef;">selenium</span><span style="text-decoration:underline;color:#ff79c6;">.</span><span style="font-style:italic;color:#66d9ef;">support</span><span style="text-decoration:underline;color:#ff79c6;">.</span><span style="font-style:italic;color:#66d9ef;">ui</span><span style="text-decoration:underline;color:#ff79c6;">.</span><span style="font-style:italic;color:#66d9ef;">Select</span><span>;
+</span><span>
+</span><span style="color:#6272a4;">// Single selection
+</span><span style="font-style:italic;color:#66d9ef;">Select</span><span> country </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">Select</span><span>(driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">id</span><span>(</span><span style="color:#f1fa8c;">&quot;country&quot;</span><span>)));
+</span><span>country</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">selectByVisibleText</span><span>(</span><span style="color:#f1fa8c;">&quot;Canada&quot;</span><span>); </span><span style="color:#6272a4;">// using **selectByVisibleText()** method
+</span><span>country</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">selectByValue</span><span>(</span><span style="color:#f1fa8c;">&quot;MX&quot;</span><span>); </span><span style="color:#6272a4;">//using **selectByValue()** method
+</span><span>
+</span><span style="color:#6272a4;">//Selecting Items in a Multiple SELECT elements
+</span><span style="font-style:italic;color:#66d9ef;">Select</span><span> fruits </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">Select</span><span>(driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">id</span><span>(</span><span style="color:#f1fa8c;">&quot;fruits&quot;</span><span>)));
+</span><span>fruits</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">selectByVisibleText</span><span>(</span><span style="color:#f1fa8c;">&quot;Banana&quot;</span><span>);
+</span><span>fruits</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">selectByIndex</span><span>(</span><span style="color:#bd93f9;">1</span><span>); </span><span style="color:#6272a4;">// using **selectByIndex()** method
+</span></code></pre>
+<h2 id="12-get-methods-in-selenium">12. Get methods in Selenium</h2>
+<ul>
+<li>
+<p><strong>getTitle()</strong> - used to retrieve the current title of the webpage</p>
+</li>
+<li>
+<p><strong>getCurrentUrl()</strong>— used to retrieve the current URL of the webpage</p>
+</li>
+<li>
+<p><strong>getPageSource()</strong> — used to retrieve the current page source of the webpage</p>
+</li>
+<li>
+<p><strong>getText()</strong> — used to retrieve the text of the specified web element</p>
+</li>
+<li>
+<p><strong>getAttribute()</strong>— used to retrieve the value specified in the attribute</p>
+</li>
+</ul>
+<h2 id="13-handle-alerts-web-based-alert-pop-ups">13. Handle alerts: (Web-based alert pop-ups)</h2>
+<ul>
+<li>
+<p><strong>driver.switchTO().alert.getText()</strong> — to retrieve the alert message</p>
+</li>
+<li>
+<p><strong>driver.switchTO().alert.accept()</strong> — to accept the alert box</p>
+</li>
+<li>
+<p><strong>driver.switchTO().alert.dismiss()</strong> — to cancel the alert box</p>
+</li>
+<li>
+<p><strong>driver.switchTO().alert.sendKeys(&quot;Text&quot;)</strong> — to send data to the alert box</p>
+</li>
+</ul>
+<h2 id="14-switch-frames">14. Switch frames</h2>
+<ul>
+<li>
+<p><strong>driver.switchTo.frame(int frameNumber)</strong> — mentioning the frame index number, the Driver will switch to that specific frame</p>
+</li>
+<li>
+<p><strong>driver.switchTo.frame(string frameNameOrID)</strong> — mentioning the frame element or ID, the Driver will switch to that specific frame</p>
+</li>
+<li>
+<p><strong>driver.switchTo.frame(WebElement frameElement)</strong> — mentioning the frame web element, the Driver will switch to that specific frame</p>
+</li>
+<li>
+<p><strong>driver.switchTo().defaultContent()</strong> — Switching back to the main window</p>
+</li>
+</ul>
+<h2 id="15-handle-multiple-windows-and-tabs">15. Handle multiple windows and tabs</h2>
+<ul>
+<li>
+<p><strong>getWindowHandle()</strong> — used to retrieve the handle of the current page (a unique identifier)</p>
+</li>
+<li>
+<p><strong>getWindowHandles()</strong> - used to retrieve a set of handles of the all the pages available</p>
+</li>
+<li>
+<p><strong>driver.switchTo().window(&quot;windowName/handle&quot;)</strong> — switch to a window</p>
+</li>
+<li>
+<p><strong>driver.close()</strong> — closes the current browser window</p>
+</li>
+</ul>
+<h2 id="16-waits-in-selenium">16. Waits in selenium</h2>
+<p>There are 3 types of waits in selenium,</p>
+<ul>
+<li><strong>Implicit Wait</strong> - used to wait for a certain amount of time before throwing an exception</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">timeouts</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">implicitlyWait</span><span>(</span><span style="color:#bd93f9;">10</span><span>, </span><span style="font-style:italic;color:#66d9ef;">TimeUnit</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">SECONDS</span><span>);
+</span></code></pre>
+<ul>
+<li><strong>Explicit Wait</strong> — used to wait until a certain condition occurs before executing the code.</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">WebDriverWait</span><span> wait </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">WebDriverWait</span><span>(driver,</span><span style="color:#bd93f9;">30</span><span>);
+</span><span>wait</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">until</span><span>(</span><span style="font-style:italic;color:#66d9ef;">ExpectedConditions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">presenceOfElementLocated</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">name</span><span>(</span><span style="color:#f1fa8c;">&quot;login&quot;</span><span>)));
+</span></code></pre>
+<p><strong>List of explicit wait:</strong></p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>alertIsPresent()
+</span><span>elementSelectionStateToBe()
+</span><span>elementToBeClickable()
+</span><span>elementToBeSelected()
+</span><span>frameToBeAvaliableAndSwitchToIt()
+</span><span>invisibilityOfTheElementLocated()
+</span><span>invisibilityOfElementWithText()
+</span><span>presenceOfAllElementsLocatedBy()
+</span><span>presenceOfElementLocated()
+</span><span>textToBePresentInElement()
+</span><span>textToBePresentInElementLocated()
+</span><span>textToBePresentInElementValue()
+</span><span>titleIs()
+</span><span>titleContains()
+</span><span>visibilityOf()
+</span><span>visibilityOfAllElements()
+</span><span>visibilityOfAllElementsLocatedBy()
+</span><span>visibilityOfElementLocated()
+</span></code></pre>
+<ul>
+<li>**Fluent Wait — **defines the maximum amount of time to wait for a certain condition to appear</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">Wait</span><span> wait </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">FluentWait</span><span>(</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> reference)
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">withTimeout</span><span>(</span><span style="font-style:italic;color:#66d9ef;">Duration</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">ofSeconds</span><span>(</span><span style="color:#bd93f9;">SECONDS</span><span>))
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">pollingEvery</span><span>(</span><span style="font-style:italic;color:#66d9ef;">Duration</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">ofSeconds</span><span>(</span><span style="color:#bd93f9;">SECONDS</span><span>))
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">ignoring</span><span>(</span><span style="font-style:italic;color:#66d9ef;">Exception</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">class</span><span>);
+</span><span>
+</span><span style="font-style:italic;color:#66d9ef;">WebElement</span><span> foo</span><span style="color:#ff79c6;">=</span><span>wait</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">until</span><span>(</span><span style="color:#ff79c6;">new </span><span style="font-style:italic;color:#66d9ef;">Function</span><span>&lt;</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span>, </span><span style="font-style:italic;color:#66d9ef;">WebElement</span><span>&gt;() {
+</span><span>    </span><span style="color:#ff79c6;">public </span><span style="font-style:italic;color:#66d9ef;">WebElement </span><span style="color:#50fa7b;">apply</span><span>(</span><span style="font-style:italic;color:#66d9ef;">WebDriver </span><span style="font-style:italic;color:#ffb86c;">driver</span><span>) </span><span style="color:#ffffff;">{
+</span><span>    </span><span style="color:#ff79c6;">return</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">findElement</span><span>(</span><span style="font-style:italic;color:#66d9ef;">By</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">id</span><span>(</span><span style="color:#f1fa8c;">&quot;foo&quot;</span><span>));
+</span><span>    </span><span style="color:#ffffff;">}
+</span><span>});
+</span></code></pre>
+<h2 id="17-element-validation">17. Element validation</h2>
+<ul>
+<li>
+<p><a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebElement.html#isEnabled--">isEnabled()</a> — determines if an element is enabled or not, returns a boolean.</p>
+</li>
+<li>
+<p><a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebElement.html#isSelected--">isSelected()</a> — determines if an element is selected or not, returns a boolean.</p>
+</li>
+<li>
+<p><a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/WebElement.html#isDisplayed--">isDisplayed()</a> — determines if an element is displayed or not, returns a boolean.</p>
+</li>
+</ul>
+<h2 id="18-handling-proxy">18. Handling proxy</h2>
+<ul>
+<li><strong>Chrome:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span> options </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span>();
+</span><span>
+</span><span style="color:#6272a4;">// Create object Proxy class - **Approach 1**
+</span><span style="font-style:italic;color:#66d9ef;">Proxy</span><span> proxy </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">Proxy</span><span>();
+</span><span>proxy</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setHttpProxy</span><span>(</span><span style="color:#f1fa8c;">&quot;username:password.myhttpproxy:3337&quot;</span><span>);
+</span><span>
+</span><span style="color:#6272a4;">// register the proxy with options class - **Approach 1**
+</span><span>options</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setCapability</span><span>(</span><span style="color:#f1fa8c;">&quot;proxy&quot;</span><span>, proxy);
+</span><span>
+</span><span style="color:#6272a4;">// Add a ChromeDriver-specific capability.
+</span><span style="font-style:italic;color:#66d9ef;">ChromeDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeDriver</span><span>(options);
+</span></code></pre>
+<ul>
+<li><strong>Firefox:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">FirefoxOptions</span><span> options </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">FirefoxOptions</span><span>();
+</span><span>
+</span><span style="color:#6272a4;">// Create object Proxy class - **Approach 2**
+</span><span style="font-style:italic;color:#66d9ef;">Proxy</span><span> proxy </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">Proxy</span><span>();
+</span><span>proxy</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setHttpProxy</span><span>(</span><span style="color:#f1fa8c;">&quot;myhttpproxy:3337&quot;</span><span>);
+</span><span>proxy</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setSocksUsername</span><span>(</span><span style="color:#f1fa8c;">&quot;username&quot;</span><span>);
+</span><span>proxy</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setSocksPassword</span><span>(</span><span style="color:#f1fa8c;">&quot;password&quot;</span><span>)
+</span><span>
+</span><span style="color:#6272a4;">// register the proxy with options class - **Approach 2**
+</span><span>options</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setProxy</span><span>(proxy);
+</span><span>
+</span><span style="color:#6272a4;">// create object to firefx driver
+</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">FirefoxDriver</span><span>(options);
+</span></code></pre>
+<h2 id="19-window-management">19. Window management</h2>
+<ul>
+<li><strong>Get window size:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#6272a4;">//Access each dimension individually
+</span><span style="font-style:italic;color:#8be9fd;">int</span><span> width </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getSize</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getWidth</span><span>();
+</span><span style="font-style:italic;color:#8be9fd;">int</span><span> height </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getSize</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getHeight</span><span>();
+</span><span>
+</span><span style="color:#6272a4;">//Or store the dimensions and query them later
+</span><span style="font-style:italic;color:#66d9ef;">Dimension</span><span> size </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getSize</span><span>();
+</span><span style="font-style:italic;color:#8be9fd;">int</span><span> width1 </span><span style="color:#ff79c6;">=</span><span> size</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getWidth</span><span>();
+</span><span style="font-style:italic;color:#8be9fd;">int</span><span> height1 </span><span style="color:#ff79c6;">=</span><span> size</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getHeight</span><span>();
+</span></code></pre>
+<ul>
+<li><strong>Set window size:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setSize</span><span>(</span><span style="color:#ff79c6;">new </span><span style="font-style:italic;color:#66d9ef;">Dimension</span><span>(</span><span style="color:#bd93f9;">1024</span><span>, </span><span style="color:#bd93f9;">768</span><span>));
+</span></code></pre>
+<ul>
+<li><strong>Get window position:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#6272a4;">// Access each dimension individually
+</span><span style="font-style:italic;color:#8be9fd;">int</span><span> x </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getPosition</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getX</span><span>();
+</span><span style="font-style:italic;color:#8be9fd;">int</span><span> y </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getPosition</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getY</span><span>();
+</span><span>
+</span><span style="color:#6272a4;">// Or store the dimensions and query them later
+</span><span style="font-style:italic;color:#66d9ef;">Point</span><span> position </span><span style="color:#ff79c6;">=</span><span> driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getPosition</span><span>();
+</span><span style="font-style:italic;color:#8be9fd;">int</span><span> x1 </span><span style="color:#ff79c6;">=</span><span> position</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getX</span><span>();
+</span><span style="font-style:italic;color:#8be9fd;">int</span><span> y1 </span><span style="color:#ff79c6;">=</span><span> position</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getY</span><span>();
+</span></code></pre>
+<ul>
+<li><strong>Set window position:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#6272a4;">// Move the window to the top left of the primary monitor
+</span><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setPosition</span><span>(</span><span style="color:#ff79c6;">new </span><span style="font-style:italic;color:#66d9ef;">Point</span><span>(</span><span style="color:#bd93f9;">0</span><span>, </span><span style="color:#bd93f9;">0</span><span>));
+</span></code></pre>
+<ul>
+<li><strong>Maximize window:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">maximize</span><span>();
+</span></code></pre>
+<ul>
+<li><strong>Fullscreen window:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">window</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">fullscreen</span><span>();
+</span></code></pre>
+<h2 id="20-page-loading-strategy">20. Page loading strategy</h2>
+<p>The document.readyState property of a document describes the loading state of the current document. By default, WebDriver will hold off on responding to a driver.get() (or) driver.navigate().to() call until the document ready state is complete</p>
+<p>By default, when Selenium WebDriver loads a page, it follows the normal pageLoadStrategy.</p>
+<ul>
+<li><strong>normal:</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span> chromeOptions </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span>();
+</span><span>chromeOptions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setPageLoadStrategy</span><span>(</span><span style="font-style:italic;color:#66d9ef;">PageLoadStrategy</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">NORMAL</span><span>);
+</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeDriver</span><span>(chromeOptions);
+</span></code></pre>
+<ul>
+<li><strong>eager:</strong> When setting to eager, Selenium WebDriver waits until <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event">DOMContentLoaded</a> event fire is returned.</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span> chromeOptions </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span>();
+</span><span>chromeOptions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setPageLoadStrategy</span><span>(</span><span style="font-style:italic;color:#66d9ef;">PageLoadStrategy</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">EAGER</span><span>);
+</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeDriver</span><span>(chromeOptions);
+</span></code></pre>
+<ul>
+<li><strong>none:</strong> When set to none Selenium WebDriver only waits until the initial page is downloaded.</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span> chromeOptions </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeOptions</span><span>();
+</span><span>chromeOptions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">setPageLoadStrategy</span><span>(</span><span style="font-style:italic;color:#66d9ef;">PageLoadStrategy</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">NONE</span><span>);
+</span><span style="font-style:italic;color:#66d9ef;">WebDriver</span><span> driver </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">ChromeDriver</span><span>(chromeOptions);
+</span></code></pre>
+<h2 id="21-keyboard-and-mouse-events">21. Keyboard and Mouse events</h2>
+<p><a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/interactions/Actions.html">Action class</a> is used to handle keyboard and mouse events</p>
+<h3 id="keyboard-events">keyboard events:</h3>
+<ul>
+<li>
+<p>keyDown()</p>
+</li>
+<li>
+<p>keyUp()</p>
+</li>
+<li>
+<p>sendKeys()</p>
+</li>
+</ul>
+<h3 id="mouse-events">Mouse events:</h3>
+<ul>
+<li>
+<p>clickAndHold()</p>
+</li>
+<li>
+<p>contextClick() — performs the mouse right-click action</p>
+</li>
+<li>
+<p>doubleClick()</p>
+</li>
+<li>
+<p>dragAndDrop(source,target)</p>
+</li>
+<li>
+<p>dragAndDropBy(source,xOffset,yOffset)</p>
+</li>
+<li>
+<p>moveByOffset(xOffset,yOffset)</p>
+</li>
+<li>
+<p>moveByElement()</p>
+</li>
+<li>
+<p>release()</p>
+</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">Actions</span><span> builder </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">Actions</span><span>(driver);
+</span><span>
+</span><span style="font-style:italic;color:#66d9ef;">Action</span><span> actions </span><span style="color:#ff79c6;">=</span><span> builder
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">moveToElement</span><span>(</span><span style="color:#f1fa8c;">&quot;login-textbox&quot;</span><span>)
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">click</span><span>()
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">keyDown</span><span>(</span><span style="color:#f1fa8c;">&quot;login-textbox&quot;</span><span>, </span><span style="font-style:italic;color:#66d9ef;">Keys</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">SHIFT</span><span>)
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">sendKeys</span><span>(</span><span style="color:#f1fa8c;">&quot;login-textbox&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;hello&quot;</span><span>)
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">keyUp</span><span>(</span><span style="color:#f1fa8c;">&quot;login-textbox&quot;</span><span>, </span><span style="font-style:italic;color:#66d9ef;">Keys</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">SHIFT</span><span>)
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">doubleClick</span><span>(</span><span style="color:#f1fa8c;">&quot;login-textbox&quot;</span><span>)
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">contextClick</span><span>()
+</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">build</span><span>();
+</span><span>
+</span><span>actions</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">perform</span><span>();
+</span></code></pre>
+<h2 id="22-cookies">22. Cookies</h2>
+<ul>
+<li><strong>addCookie(arg)</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">addCookie</span><span>(</span><span style="color:#ff79c6;">new </span><span style="font-style:italic;color:#66d9ef;">Cookie</span><span>(</span><span style="color:#f1fa8c;">&quot;foo&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;bar&quot;</span><span>));
+</span></code></pre>
+<ul>
+<li><strong>getCookies()</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getCookies</span><span>(); </span><span style="color:#6272a4;">// to get all cookies
+</span></code></pre>
+<ul>
+<li><strong>getCookieNamed()</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getCookieNamed</span><span>(</span><span style="color:#f1fa8c;">&quot;foo&quot;</span><span>);
+</span></code></pre>
+<ul>
+<li><strong>deleteCookieNamed()</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">deleteCookieNamed</span><span>(</span><span style="color:#f1fa8c;">&quot;foo&quot;</span><span>);
+</span></code></pre>
+<ul>
+<li><strong>deleteCookie()</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">Cookie</span><span> cookie1 </span><span style="color:#ff79c6;">= new </span><span style="font-style:italic;color:#66d9ef;">Cookie</span><span>(</span><span style="color:#f1fa8c;">&quot;test2&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;cookie2&quot;</span><span>);
+</span><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">addCookie</span><span>(cookie1);
+</span><span>
+</span><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">deleteCookie</span><span>(cookie1); </span><span style="color:#6272a4;">// deleting cookie object
+</span></code></pre>
+<ul>
+<li><strong>deleteAllCookies()</strong></li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span>driver</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">manage</span><span>()</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">deleteAllCookies</span><span>(); </span><span style="color:#6272a4;">// deletes all cookies
+</span></code></pre>
+<h2 id="23-take-screenshot">23. Take screenshot:</h2>
+<blockquote>
+<p><a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/TakesScreenshot.html">(doc link)</a></p>
+</blockquote>
+<ul>
+<li><strong>getScreenshotAs</strong> - used to Capture the screenshot and store it in the specified location. This method throws WebDriverException. copy() method from the <a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/io/FileHandler.html">File Handler</a> class is used to store the screenshot in a destination folder</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">TakesScreenshot</span><span> screenShot </span><span style="color:#ff79c6;">=</span><span>(</span><span style="font-style:italic;color:#66d9ef;">TakesScreenshot</span><span>)driver;
+</span><span style="font-style:italic;color:#66d9ef;">FileHandler</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">copy</span><span>(screenShot</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getScreenshotAs</span><span>(</span><span style="font-style:italic;color:#66d9ef;">OutputType</span><span style="color:#ff79c6;">.</span><span style="color:#bd93f9;">FILE</span><span>), </span><span style="color:#ff79c6;">new </span><span style="font-style:italic;color:#66d9ef;">File</span><span>(</span><span style="color:#f1fa8c;">&quot;path/to/destination/folder/screenshot.png&quot;</span><span>));
+</span></code></pre>
+<h2 id="24-execute-javascript">24. Execute Javascript:</h2>
+<blockquote>
+<p><a href="https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/JavascriptExecutor.html">(doc link)</a></p>
+</blockquote>
+<ul>
+<li>
+<p><strong>executeAsyncScript()</strong> - executes an asynchronous piece of JavaScript</p>
+</li>
+<li>
+<p><strong>executeScript()</strong> - executes JavaScript</p>
+</li>
+</ul>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ff79c6;">if </span><span>(driver </span><span style="color:#ff79c6;">instanceof </span><span style="font-style:italic;color:#66d9ef;">JavascriptExecutor</span><span>) </span><span style="color:#ffffff;">{
+</span><span>((</span><span style="font-style:italic;color:#66d9ef;">JavascriptExecutor</span><span>)driver)</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">executeScript</span><span>(</span><span style="color:#f1fa8c;">&quot;alert(&#39;hello world&#39;);&quot;</span><span>);
+</span><span style="color:#ffffff;">}
+</span></code></pre>
+<p><em>Last updated on — Apr 18, 2020</em></p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/selenium-cheat-sheet-a-comprehensive-list-of-selenium-commands-fa4c5c9d11ab">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/selenium-cheatsheet-java">GitHub - madhank93/selenium-cheatsheet-java</a></p>
+</center>
+<h2 id="references">References:</h2>
+<p>[1] <a href="https://www.selenium.dev/selenium/docs/api/java/overview-summary.html">https://www.selenium.dev/selenium/docs/api/java/overview-summary.html</a></p>
+<p>[2] <a href="https://www.selenium.dev/documentation/en/">https://www.selenium.dev/documentation/en/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-1-browser-property-setup" class="toc is-size-7 is-active"
+                href=" /blogs/003-selenium-cheatsheet/#1-browser-property-setup">
+                1. Browser property setup
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-2-browser-initialization" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#2-browser-initialization">
+                2. Browser Initialization
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-3-desired-capabilities" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#3-desired-capabilities">
+                3. Desired capabilities
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-4-browser-options" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#4-browser-options">
+                4. Browser options
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-5-navigation" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#5-navigation">
+                5. Navigation
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-6-find-element-vs-find-elements" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#6-find-element-vs-find-elements">
+                6. Find element VS Find elements
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-7-locator-strategy" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#7-locator-strategy">
+                7. Locator Strategy
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-8-click-on-an-element" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#8-click-on-an-element">
+                8. Click on an element
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-9-write-text-inside-an-element-input-and-textarea" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#9-write-text-inside-an-element-input-and-textarea">
+                9. Write text inside an element — input and textarea
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-10-clear-text-from-the-text-box" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#10-clear-text-from-the-text-box">
+                10. Clear text from the text box
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-11-select-a-drop-down" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#11-select-a-drop-down">
+                11. Select a drop-down
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-12-get-methods-in-selenium" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#12-get-methods-in-selenium">
+                12. Get methods in Selenium
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-13-handle-alerts-web-based-alert-pop-ups" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#13-handle-alerts-web-based-alert-pop-ups">
+                13. Handle alerts: (Web-based alert pop-ups)
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-14-switch-frames" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#14-switch-frames">
+                14. Switch frames
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-15-handle-multiple-windows-and-tabs" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#15-handle-multiple-windows-and-tabs">
+                15. Handle multiple windows and tabs
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-16-waits-in-selenium" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#16-waits-in-selenium">
+                16. Waits in selenium
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-17-element-validation" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#17-element-validation">
+                17. Element validation
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-18-handling-proxy" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#18-handling-proxy">
+                18. Handling proxy
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-19-window-management" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#19-window-management">
+                19. Window management
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-20-page-loading-strategy" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#20-page-loading-strategy">
+                20. Page loading strategy
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-21-keyboard-and-mouse-events" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#21-keyboard-and-mouse-events">
+                21. Keyboard and Mouse events
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-keyboard-events" class="toc is-size-7" href=" /blogs/003-selenium-cheatsheet/#keyboard-events">
+                    keyboard events:
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-mouse-events" class="toc is-size-7" href=" /blogs/003-selenium-cheatsheet/#mouse-events">
+                    Mouse events:
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-22-cookies" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#22-cookies">
+                22. Cookies
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-23-take-screenshot" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#23-take-screenshot">
+                23. Take screenshot:
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-24-execute-javascript" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#24-execute-javascript">
+                24. Execute Javascript:
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-references" class="toc is-size-7 "
+                href=" /blogs/003-selenium-cheatsheet/#references">
+                References:
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;002-build-tool&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              What are build automation tool ? And a closer look at the Maven and POM file
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;004-selenium-snippets&#x2F;">
+              Selenium code snippets<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

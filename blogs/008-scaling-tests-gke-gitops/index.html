@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Scaling tests on Google Kubernetes Engine with Cloud Build
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Scaling tests on Google Kubernetes Engine with Cloud Build
+          </h1>
+          <p class="subtitle">A guide to running test automation scripts in distributed env using gitops approach</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2021-10-12T01:24:33+05:30"
+      >October 12, 2021</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>6 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>1062 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/gke/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>gke</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/gitops/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>gitops</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/gcp/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>gcp</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ci/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ci</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/cloud-build/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>cloud-build</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/4480/1*tP8OkC__HFt0ctvKVm3nvw.png" alt="Source — google &amp; Built using — canva" /></p>
+<p>As we looked at how to run automation scripts in selenoid using <a href="https://www.docker.com/">docker</a> and <a href="https://docs.docker.com/compose/">docker-compose</a> in my <a href="https://medium.com/testvagrant/running-webdriverio-tests-in-containers-871e0238e31f">previous blog</a>. In this blog let’s dive into how to run <a href="https://webdriver.io/">WebdriverIO</a> test automation scripts in scalable mode using <a href="https://cloud.google.com/kubernetes-engine">Google Kubernetes Engine</a> and <a href="https://cloud.google.com/build">Cloud Build</a>.</p>
+<p><a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/">Kubernetes</a> is an open-source system for automating deployment, scaling, and management of containerized applications. <strong><em>Google Kubernetes Engine</em></strong> — provides a simple way to automatically deploy, scale, and manage Kubernetes. And <strong><em>Cloud Build</em></strong> — it is a serverless CI/CD platform to build, test, and deploy.</p>
+<p>According to the documentation of <a href="https://aerokube.com/">Aerokube</a>, selenoid is <a href="https://aerokube.com/selenoid/latest/#_selenoid_in_kubernetes">not recommended</a> for the Kubernetes platform. And <a href="https://aerokube.com/moon/">Moon</a> is pay per use model. So in this article, we are going to explore <a href="https://github.com/alcounit/selenosis">Selenosis</a> — a scalable, stateless selenium hub for the Kubernetes cluster.</p>
+<h2 id="selenosis-setup-walkthrough">Selenosis setup walkthrough</h2>
+<h3 id="1-creating-a-namespace">1. Creating a namespace</h3>
+<p><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Namespaces</a> are Kubernetes objects which help in organising resources and partition a single Kubernetes cluster into multiple virtual clusters. It provides a degree of isolation from the other parts of the cluster.</p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>apiVersion: v1
+</span><span>kind: Namespace
+</span><span>metadata:
+</span><span>  name: selenosis
+</span></code></pre>
+<h3 id="2-creating-service-for-selenosis">2. Creating service for selenosis</h3>
+<p><a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</a> is an abstract way to expose an application running on a set of Pods as a network service. It creates a permanent IP address, the lifecycle of pod and service are not connected. Even if the pods crash and are recreated, the service IP remains the same.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;c1b7ef110e0c492980e14643de308843.js"></script>
+</div>
+<h3 id="3-creating-selenosis-deployment">3. Creating selenosis deployment</h3>
+<p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployment</a> describes the desired state of a pod or a replica set, then gradually updates the environment (for example, creating or deleting replicas) until the current state matches the desired state specified in the deployment file. In general, we don’t work directly with pods, we will create deployments. It is mainly for stateless apps.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;b9a526cdc7063e88f7db7b7c790d9ab5.js"></script>
+</div>
+<h3 id="4-selenosis-hpa">4. Selenosis HPA</h3>
+<p><a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/">Horizontal Pod Autoscaler</a> automatically scales the number of Pods in a replication controller, deployment, replica set or stateful set based on observed CPU utilisation</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;58b9e436052ee8f5486f449589411716.js"></script>
+</div>
+<h3 id="5-other-configs">5. Other configs</h3>
+<ul>
+<li>
+<p>Below is the command to convert the <a href="https://gist.github.com/madhank93/4957d448ac1814587392705e377da908#file-browsers-yaml">browser</a> yaml file into ConfigMap</p>
+<p>kubectl create cm selenosis-config --from-file=browsers.yaml=selenosis-deploy/browsers.yaml -n selenosis</p>
+</li>
+<li>
+<p>Use <a href="https://gist.github.com/madhank93/3d6f62ffd72c5a3b31bb13970ebd9bfa#file-06-coredns-yaml">core-dns.yaml</a> to turn off the DNS caching for the selenosis namespace</p>
+</li>
+<li>
+<p>Use <a href="https://gist.github.com/madhank93/9f7329dd203a23a176c0d84b212ce5c7#file-07-pre-pull-images-yml">pre-pull-image.yaml</a> to pre pull the chrome and firefox browser images</p>
+</li>
+<li>
+<p>To debug use <a href="https://gist.github.com/madhank93/e92e5729b10a9dc695da3b464f5c4754#file-04-selenoid-ui-yaml">selenoid-ui.yaml</a> ***which enables the UI feature to debug</p>
+</li>
+</ul>
+<h2 id="containerizing-test-scripts">Containerizing test scripts</h2>
+<p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">Jobs</a> used to run a finite task(which is a suitable k8s object to use for running test scripts). It will create one or more Pods and performs a given task. Once the task is completed successfully, the pod will be exited.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;7478c960d7ba916537eab94d4c79ec79.js"></script>
+</div>
+<h2 id="creating-a-project-in-gcp">Creating a project in GCP</h2>
+<p>Create a new project in <a href="https://cloud.google.com/">GCP</a>, go to Cloud Build, enable the api. And few other settings as shown in the below picture (to follow along with this tutorial you need a cloud billing account, a <a href="https://cloud.google.com/free/docs/gcp-free-tier">*free tier</a>* is sufficient). And make sure you have the required permissions in the IAM &amp; Admin section.</p>
+<p><img src="https://cdn-images-1.medium.com/max/5744/1*9DYaVACXkkGlkbADj9c1mA.png" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/5740/1*Zx80UpKCM1U39eDE5FHSKw.png" alt="1. Cloud build settings, and 2. IAM &amp; Admin configurations" /></p>
+<h2 id="setting-up-cloud-build">Setting up Cloud build</h2>
+<p>Go to Cloud Build &gt; Triggers section, click on Create Trigger and add the details as follow. So whenever the code has been pushed to GitHub, cloud build flow will be triggered.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3248/1*M5yfmgYvTirnI2rGs-KDBg.png" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/2312/1*Sa50IIagaW4QOu6L_1M-ew.png" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/2572/1*NwPfm264-JF_UJWTaRdE1w.png" alt="Cloud build setup" /></p>
+<p>And finally creating cloudbuild.yml file to execute the process of building docker image from source code (e2e), pushing it to a container registry, creating a GKE cluster and finally starting e2e tests.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*FPjkChOGGmgtvrQyfv1mIg.png" alt="Cloud build flow" /></p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;08945a9d867d106ee143e5bf1147f790.js"></script>
+</div>
+<h2 id="execution">Execution</h2>
+<p>According to the cloud build settings, whenever the code has been pushed to Github repositories, execution will begin.</p>
+<p><img src="https://cdn-images-1.medium.com/max/5764/1*e9qUIU1TH6uQZHuepPuFDQ.png" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/5756/1*PLsmmNbVmcjwoPMIdaqQpA.png" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/5760/1*UUSVseBqlIF_fOotzKbgjA.png" alt="1. Cloud build logs, 2. GKE workloads and 3. Chrome/Firefox browsers pods" /></p>
+<h2 id="result">Result</h2>
+<p>Running all the 25 spec/tests files in chrome and firefox browsers parallelly, and completing it all within well under 04:41 mins. More or less time remains constant since all the tests are running in parallel no matter how many tests scripts has been authored, maximum time will take to complete the whole process will the slowest of all the test.</p>
+<p><img src="https://cdn-images-1.medium.com/max/5744/1*dSPlXLrStA2RjMDdh6zTjQ.png" alt="Test execution results" /></p>
+<p>⚠️❗⚠️ Finally make sure to delete the <strong><em>GKE cluster</em></strong> and <strong><em>Container images</em></strong> to avoid any charges.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/testvagrant/scaling-tests-on-google-kubernetes-engine-with-cloud-build-624d955f6698">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/wdio-gke-cloud-build">GitHub - madhank93/wdio-gke-cloud-build</a></p>
+</center>
+<p><strong>References:</strong></p>
+<p>[1] <a href="https://github.com/alcounit/selenosis">https://github.com/alcounit/selenosis</a></p>
+<p>[2] <a href="https://github.com/alcounit/selenosis-deploy">https://github.com/alcounit/selenosis-deploy</a></p>
+<p>[3] <a href="https://cloud.google.com/kubernetes-engine/docs/tutorials/gitops-cloud-build">https://cloud.google.com/kubernetes-engine/docs/tutorials/gitops-cloud-build</a></p>
+<p>[4] <a href="https://codefresh.io/kubernetes-tutorial/single-use-daemonset-pattern-pre-pulling-images-kubernetes/">https://codefresh.io/kubernetes-tutorial/single-use-daemonset-pattern-pre-pulling-images-kubernetes/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-selenosis-setup-walkthrough" class="toc is-size-7 is-active"
+                href=" /blogs/008-scaling-tests-gke-gitops/#selenosis-setup-walkthrough">
+                Selenosis setup walkthrough
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-1-creating-a-namespace" class="toc is-size-7" href=" /blogs/008-scaling-tests-gke-gitops/#1-creating-a-namespace">
+                    1. Creating a namespace
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-2-creating-service-for-selenosis" class="toc is-size-7" href=" /blogs/008-scaling-tests-gke-gitops/#2-creating-service-for-selenosis">
+                    2. Creating service for selenosis
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-3-creating-selenosis-deployment" class="toc is-size-7" href=" /blogs/008-scaling-tests-gke-gitops/#3-creating-selenosis-deployment">
+                    3. Creating selenosis deployment
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-4-selenosis-hpa" class="toc is-size-7" href=" /blogs/008-scaling-tests-gke-gitops/#4-selenosis-hpa">
+                    4. Selenosis HPA
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-5-other-configs" class="toc is-size-7" href=" /blogs/008-scaling-tests-gke-gitops/#5-other-configs">
+                    5. Other configs
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-containerizing-test-scripts" class="toc is-size-7 "
+                href=" /blogs/008-scaling-tests-gke-gitops/#containerizing-test-scripts">
+                Containerizing test scripts
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-creating-a-project-in-gcp" class="toc is-size-7 "
+                href=" /blogs/008-scaling-tests-gke-gitops/#creating-a-project-in-gcp">
+                Creating a project in GCP
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-setting-up-cloud-build" class="toc is-size-7 "
+                href=" /blogs/008-scaling-tests-gke-gitops/#setting-up-cloud-build">
+                Setting up Cloud build
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-execution" class="toc is-size-7 "
+                href=" /blogs/008-scaling-tests-gke-gitops/#execution">
+                Execution
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-result" class="toc is-size-7 "
+                href=" /blogs/008-scaling-tests-gke-gitops/#result">
+                Result
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;007-wdio-in-containers&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Running WebdriverIO tests in containers
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;009-containerized-android-test&#x2F;">
+              Running containerized android tests in GCP using Pulumi and Selenoid<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
