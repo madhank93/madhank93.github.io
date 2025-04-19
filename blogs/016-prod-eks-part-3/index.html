@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Production-ready EKS cluster setup — Part III
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Production-ready EKS cluster setup — Part III
+          </h1>
+          <p class="subtitle">Using the Pulumi IaC tool to provision the AWS EKS cluster</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2023-08-22T01:25:33+05:30"
+      >August 22, 2023</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>4 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>800 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/eks/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>eks</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/aws/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>aws</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/pulumi/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>pulumi</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ts/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ts</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/iac/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>iac</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*WaJ5Ibd4WbRHvXCB3jRASA.jpeg" alt="Banner" /></p>
+<p>As a continuation to my blog series of <a href="https://medium.com/@madhankumaravelu93/production-ready-eks-cluster-setup-part-i-49a4eba171cc">Part-I</a>, and <a href="https://medium.com/@madhankumaravelu93/production-ready-eks-cluster-setup-part-ii-f702542cde7c">Part-II</a> on production-level EKS cluster setup, in this, we are going to see how to create an <a href="https://aws.amazon.com/eks/">AWS EKS</a> cluster using <a href="https://www.pulumi.com/">Pulumi</a> as the IaC and <a href="https://www.typescriptlang.org/">Typescript</a> as the programming language.</p>
+<p><a href="https://www.pulumi.com/">Pulumi</a> is a modern <a href="https://www.pulumi.com/what-is/what-is-infrastructure-as-code/">Infrastructure as Code</a> platform that allows you to use familiar programming languages and tools to build, deploy, and manage cloud infrastructure.</p>
+<p>In a similar fashion, we will break this article into smaller parts for better understanding. Let’s dive directly into the coding part.</p>
+<h3 id="1-starting-with-the-configuration">1. Starting with the configuration</h3>
+<pre data-lang="ts" style="background-color:#282a36;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#6272a4;">// Grab some values from the Pulumi configuration (or use default values)
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">config </span><span style="color:#ff79c6;">= new </span><span>pulumi</span><span style="color:#ff79c6;">.</span><span>Config();
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">minClusterSize </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getNumber</span><span>(</span><span style="color:#f1fa8c;">&quot;minClusterSize&quot;</span><span>) </span><span style="color:#ff79c6;">|| </span><span style="color:#bd93f9;">3</span><span>;
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">maxClusterSize </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getNumber</span><span>(</span><span style="color:#f1fa8c;">&quot;maxClusterSize&quot;</span><span>) </span><span style="color:#ff79c6;">|| </span><span style="color:#bd93f9;">6</span><span>;
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">desiredClusterSize </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">getNumber</span><span>(</span><span style="color:#f1fa8c;">&quot;desiredClusterSize&quot;</span><span>) </span><span style="color:#ff79c6;">|| </span><span style="color:#bd93f9;">3</span><span>;
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">eksNodeInstanceType </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#8be9fd;">get</span><span>(</span><span style="color:#f1fa8c;">&quot;eksNodeInstanceType&quot;</span><span>) </span><span style="color:#ff79c6;">|| </span><span style="color:#f1fa8c;">&quot;t3.medium&quot;</span><span>;
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">vpcNetworkCidr </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#8be9fd;">get</span><span>(</span><span style="color:#f1fa8c;">&quot;vpcNetworkCidr&quot;</span><span>) </span><span style="color:#ff79c6;">|| </span><span style="color:#f1fa8c;">&quot;10.0.0.0/16&quot;</span><span>;
+</span></code></pre>
+<p>In many cases, a single project will have a different configuration based on the environments we choose to run. For example, Dev instance configs will differ from Prod instances. Such key-value pairs config can be maintained at Pulumi.<stack-name>.yml instead of hard-coding it.</p>
+<h3 id="2-creating-a-vpc">2. Creating a VPC</h3>
+<pre data-lang="ts" style="background-color:#282a36;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#6272a4;">// Creating VPC
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">eksVpc </span><span style="color:#ff79c6;">= new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>ec2</span><span style="color:#ff79c6;">.</span><span>Vpc(</span><span style="color:#f1fa8c;">&quot;eks-vpc&quot;</span><span>, {
+</span><span>  tags: {
+</span><span>    name: </span><span style="color:#f1fa8c;">&quot;my-eks-vpc&quot;</span><span>,
+</span><span>  },
+</span><span>  cidrBlock: </span><span style="color:#ffffff;">vpcNetworkCidr</span><span>,
+</span><span>});
+</span><span>
+</span><span style="color:#6272a4;">// Subnet cidr block range
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">privateSubnetCidrBlock </span><span style="color:#ff79c6;">= </span><span>[</span><span style="color:#f1fa8c;">&quot;10.0.1.0/24&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;10.0.2.0/24&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;10.0.3.0/24&quot;</span><span>];
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">publicSubnetCidrBlock </span><span style="color:#ff79c6;">= </span><span>[
+</span><span>  </span><span style="color:#f1fa8c;">&quot;10.0.101.0/24&quot;</span><span>,
+</span><span>  </span><span style="color:#f1fa8c;">&quot;10.0.102.0/24&quot;</span><span>,
+</span><span>  </span><span style="color:#f1fa8c;">&quot;10.0.103.0/24&quot;</span><span>,
+</span><span>];
+</span><span>
+</span><span style="color:#6272a4;">// Helper function to create subnets
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#50fa7b;">createSubnetAndGetID </span><span style="color:#ff79c6;">= </span><span>(
+</span><span>  </span><span style="font-style:italic;color:#ffb86c;">cidrRange</span><span style="color:#ff79c6;">: </span><span style="font-style:italic;color:#66d9ef;">string</span><span>,
+</span><span>  </span><span style="font-style:italic;color:#ffb86c;">index</span><span style="color:#ff79c6;">: </span><span style="font-style:italic;color:#66d9ef;">number</span><span>,
+</span><span>  </span><span style="font-style:italic;color:#ffb86c;">isPublic</span><span style="color:#ff79c6;">: </span><span style="font-style:italic;color:#66d9ef;">boolean
+</span><span>) </span><span style="font-style:italic;color:#8be9fd;">=&gt;
+</span><span>  </span><span style="color:#ff79c6;">new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>ec2</span><span style="color:#ff79c6;">.</span><span>Subnet(</span><span style="color:#f1fa8c;">`${</span><span style="color:#ffffff;">isPublic </span><span style="color:#ff79c6;">? </span><span style="color:#f1fa8c;">&quot;public&quot; </span><span style="color:#ff79c6;">: </span><span style="color:#f1fa8c;">&quot;private&quot;}-subnet-${</span><span style="color:#ffffff;">index</span><span style="color:#f1fa8c;">}`</span><span>, {
+</span><span>    vpcId: </span><span style="color:#ffffff;">eksVpc</span><span style="color:#ff79c6;">.</span><span>id,
+</span><span>    cidrBlock: </span><span style="color:#ffffff;">cidrRange</span><span>,
+</span><span>    mapPublicIpOnLaunch: </span><span style="color:#ffffff;">isPublic</span><span>,
+</span><span>    availabilityZone: </span><span style="color:#ffffff;">index </span><span style="color:#ff79c6;">/ </span><span style="color:#bd93f9;">2 </span><span style="color:#ff79c6;">== </span><span style="color:#bd93f9;">0 </span><span style="color:#ff79c6;">? </span><span style="color:#f1fa8c;">&quot;us-west-2a&quot; </span><span style="color:#ff79c6;">: </span><span style="color:#f1fa8c;">&quot;us-west-2b&quot;</span><span>,
+</span><span>    tags: {
+</span><span>      name: </span><span style="color:#f1fa8c;">&quot;my-eks-subnets&quot;</span><span>,
+</span><span>    },
+</span><span>  })</span><span style="color:#ff79c6;">.</span><span>id;
+</span><span>
+</span><span style="color:#6272a4;">// Create private subnet
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">privateSubnet </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">privateSubnetCidrBlock</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">map</span><span>((</span><span style="font-style:italic;color:#ffb86c;">subnet</span><span>, </span><span style="font-style:italic;color:#ffb86c;">index</span><span>) </span><span style="font-style:italic;color:#8be9fd;">=&gt;
+</span><span>  </span><span style="color:#50fa7b;">createSubnetAndGetID</span><span>(</span><span style="color:#ffffff;">subnet</span><span>, </span><span style="color:#ffffff;">index</span><span>, </span><span style="color:#bd93f9;">false</span><span>)
+</span><span>);
+</span><span>
+</span><span style="color:#6272a4;">// Create public subnet
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">publicSubnet </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">publicSubnetCidrBlock</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">map</span><span>((</span><span style="font-style:italic;color:#ffb86c;">subnet</span><span>, </span><span style="font-style:italic;color:#ffb86c;">index</span><span>) </span><span style="font-style:italic;color:#8be9fd;">=&gt;
+</span><span>  </span><span style="color:#50fa7b;">createSubnetAndGetID</span><span>(</span><span style="color:#ffffff;">subnet</span><span>, </span><span style="color:#ffffff;">index</span><span>, </span><span style="color:#bd93f9;">true</span><span>)
+</span><span>);
+</span></code></pre>
+<p>The above code snippet will take care of the VPC cluster creation along with the private and public subnets spanned across different availability zones.</p>
+<h3 id="3-iam-role-for-eks-cluster">3. IAM role for EKS cluster</h3>
+<pre data-lang="ts" style="background-color:#282a36;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#6272a4;">// IAM role for EKS cluster
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">eksClusterRole </span><span style="color:#ff79c6;">= new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>iam</span><span style="color:#ff79c6;">.</span><span>Role(</span><span style="color:#f1fa8c;">&quot;eks-cluster-role&quot;</span><span>, {
+</span><span>  assumeRolePolicy: </span><span style="color:#6be5fd;">JSON</span><span style="color:#ff79c6;">.</span><span style="color:#8be9fd;">stringify</span><span>({
+</span><span>    Version: </span><span style="color:#f1fa8c;">&quot;2012-10-17&quot;</span><span>,
+</span><span>    Statement: [
+</span><span>      {
+</span><span>        Action: </span><span style="color:#f1fa8c;">&quot;sts:AssumeRole&quot;</span><span>,
+</span><span>        Effect: </span><span style="color:#f1fa8c;">&quot;Allow&quot;</span><span>,
+</span><span>        Principal: {
+</span><span>          Service: </span><span style="color:#f1fa8c;">&quot;eks.amazonaws.com&quot;</span><span>,
+</span><span>        },
+</span><span>      },
+</span><span>    ],
+</span><span>  }),
+</span><span>});
+</span><span>
+</span><span style="color:#6272a4;">// Attach the AmazonEKSClusterPolicy to the role
+</span><span style="color:#ff79c6;">new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>iam</span><span style="color:#ff79c6;">.</span><span>RolePolicyAttachment(</span><span style="color:#f1fa8c;">&quot;cluster-role-policy-attachment&quot;</span><span>, {
+</span><span>  role: </span><span style="color:#ffffff;">eksClusterRole</span><span style="color:#ff79c6;">.</span><span>name,
+</span><span>  policyArn: </span><span style="color:#f1fa8c;">&quot;arn:aws:iam::aws:policy/AmazonEKSClusterPolicy&quot;</span><span>,
+</span><span>});
+</span></code></pre>
+<p>Creating an IAM role and associating it with the policy AmazonEKSClusterPolicy , since Kubernetes clusters managed by Amazon EKS need access to other AWS services.</p>
+<h3 id="4-eks-cluster">4. EKS cluster</h3>
+<pre data-lang="ts" style="background-color:#282a36;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#6272a4;">// Creating EKS cluster
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">eksCluster </span><span style="color:#ff79c6;">= new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>eks</span><span style="color:#ff79c6;">.</span><span>Cluster(</span><span style="color:#f1fa8c;">&quot;eks-cluster&quot;</span><span>, {
+</span><span>  roleArn: </span><span style="color:#ffffff;">eksClusterRole</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">arn</span><span>,
+</span><span>  vpcConfig: {
+</span><span>    subnetIds: [</span><span style="color:#ff79c6;">...</span><span style="color:#ffffff;">privateSubnet</span><span>, </span><span style="color:#ff79c6;">...</span><span style="color:#ffffff;">publicSubnet</span><span>],
+</span><span>  },
+</span><span>  version: </span><span style="color:#f1fa8c;">&quot;1.27&quot;</span><span>,
+</span><span>  tags: {
+</span><span>    name: </span><span style="color:#f1fa8c;">&quot;my-eks-cluster&quot;</span><span>,
+</span><span>  },
+</span><span>});
+</span></code></pre>
+<p>Creating an EKS cluster in the pre-configured subnets and attaching the eksClusterRole cluster role to it.</p>
+<h3 id="5-iam-role-for-worker-nodes">5. IAM role for Worker Nodes</h3>
+<pre data-lang="ts" style="background-color:#282a36;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#6272a4;">// Create an IAM role for EKS worker nodes
+</span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">workerNodeRole </span><span style="color:#ff79c6;">= new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>iam</span><span style="color:#ff79c6;">.</span><span>Role(</span><span style="color:#f1fa8c;">&quot;worker-node-role&quot;</span><span>, {
+</span><span>  assumeRolePolicy: </span><span style="color:#6be5fd;">JSON</span><span style="color:#ff79c6;">.</span><span style="color:#8be9fd;">stringify</span><span>({
+</span><span>    Version: </span><span style="color:#f1fa8c;">&quot;2012-10-17&quot;</span><span>,
+</span><span>    Statement: [
+</span><span>      {
+</span><span>        Action: </span><span style="color:#f1fa8c;">&quot;sts:AssumeRole&quot;</span><span>,
+</span><span>        Principal: {
+</span><span>          Service: </span><span style="color:#f1fa8c;">&quot;ec2.amazonaws.com&quot;</span><span>,
+</span><span>        },
+</span><span>        Effect: </span><span style="color:#f1fa8c;">&quot;Allow&quot;</span><span>,
+</span><span>      },
+</span><span>    ],
+</span><span>  }),
+</span><span>});
+</span><span>
+</span><span style="color:#6272a4;">// Attach the EKS Worker Node, CNI and container registry policy
+</span><span style="color:#ff79c6;">new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>iam</span><span style="color:#ff79c6;">.</span><span>RolePolicyAttachment(</span><span style="color:#f1fa8c;">&quot;worker-node-policy-attachment&quot;</span><span>, {
+</span><span>  role: </span><span style="color:#ffffff;">workerNodeRole</span><span style="color:#ff79c6;">.</span><span>name,
+</span><span>  policyArn: </span><span style="color:#f1fa8c;">&quot;arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy&quot;</span><span>,
+</span><span>});
+</span><span>
+</span><span style="color:#ff79c6;">new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>iam</span><span style="color:#ff79c6;">.</span><span>RolePolicyAttachment(</span><span style="color:#f1fa8c;">&quot;cni-policy-attachment&quot;</span><span>, {
+</span><span>  role: </span><span style="color:#ffffff;">workerNodeRole</span><span style="color:#ff79c6;">.</span><span>name,
+</span><span>  policyArn: </span><span style="color:#f1fa8c;">&quot;arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy&quot;</span><span>,
+</span><span>});
+</span><span>
+</span><span style="color:#ff79c6;">new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>iam</span><span style="color:#ff79c6;">.</span><span>RolePolicyAttachment(</span><span style="color:#f1fa8c;">&quot;container-registry-policy-attachment&quot;</span><span>, {
+</span><span>  role: </span><span style="color:#ffffff;">workerNodeRole</span><span style="color:#ff79c6;">.</span><span>name,
+</span><span>  policyArn: </span><span style="color:#f1fa8c;">&quot;arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly&quot;</span><span>,
+</span><span>});
+</span></code></pre>
+<p>Creating an IAM role for the worker node group and associating it with the following policiesAmazonEC2ContianerRegistryReadOnly, AmazonEKSWorkerNodePolicy, and AmazonEKS_CNI_Policy since the EC2 worker nodes need access to the EKS control plane and pull container images from the AWS registry.</p>
+<h3 id="6-worker-node-group">6. Worker node group</h3>
+<pre data-lang="ts" style="background-color:#282a36;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#6272a4;">// Create a Node Group
+</span><span style="color:#ff79c6;">new </span><span>aws</span><span style="color:#ff79c6;">.</span><span>eks</span><span style="color:#ff79c6;">.</span><span>NodeGroup(</span><span style="color:#f1fa8c;">&quot;worker-node-group&quot;</span><span>, {
+</span><span>  clusterName: </span><span style="color:#ffffff;">eksCluster</span><span style="color:#ff79c6;">.</span><span>name,
+</span><span>  nodeRoleArn: </span><span style="color:#ffffff;">workerNodeRole</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">arn</span><span>,
+</span><span>  subnetIds: [</span><span style="color:#ff79c6;">...</span><span style="color:#ffffff;">privateSubnet</span><span>, </span><span style="color:#ff79c6;">...</span><span style="color:#ffffff;">publicSubnet</span><span>],
+</span><span>  scalingConfig: {
+</span><span>    desiredSize: </span><span style="color:#ffffff;">desiredClusterSize</span><span>,
+</span><span>    maxSize: </span><span style="color:#ffffff;">maxClusterSize</span><span>,
+</span><span>    minSize: </span><span style="color:#ffffff;">minClusterSize</span><span>,
+</span><span>  },
+</span><span>  instanceTypes: [</span><span style="color:#ffffff;">eksNodeInstanceType</span><span>],
+</span><span>});
+</span></code></pre>
+<p>The above code will create the AWS-managed node group and it will take care of attaching the nodes to the EKS control plane with auto-scaling capability.</p>
+<h3 id="7-exporting-cluster-details">7. Exporting cluster details</h3>
+<pre data-lang="ts" style="background-color:#282a36;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#6272a4;">// Export the cluster name, ARN and kubeconfig
+</span><span style="color:#ff79c6;">export </span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">clusterName </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">eksCluster</span><span style="color:#ff79c6;">.</span><span>name;
+</span><span style="color:#ff79c6;">export </span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">clusterArn </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">eksCluster</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">arn</span><span>;
+</span><span style="color:#ff79c6;">export </span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">clusterKubeConfig </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">kubeconfig</span><span>;
+</span><span style="color:#ff79c6;">export </span><span style="font-style:italic;color:#8be9fd;">const </span><span style="color:#ffffff;">vpcId </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">eksVpc</span><span style="color:#ff79c6;">.</span><span>id;
+</span></code></pre>
+<p><strong>export</strong> is used to display the outputs of your stack to the standard output.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/production-ready-eks-cluster-setup-part-iii-c629648f9cd0">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/learn-pulumi/tree/main/aws/provision-eks-cluster">Github madhank93/learn-pulumi/aws/provision-eks-cluster</a></p>
+</center>
+<p><strong>Reference:</strong></p>
+<p>[1] <a href="https://www.pulumi.com/docs/clouds/aws/">https://www.pulumi.com/docs/clouds/aws/</a></p>
+<p>[2] <a href="https://www.pulumi.com/registry/packages/aws/installation-configuration/">https://www.pulumi.com/registry/packages/aws/installation-configuration/</a></p>
+<p>[3] <a href="https://www.pulumi.com/registry/packages/aws/api-docs/">https://www.pulumi.com/registry/packages/aws/api-docs/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-1-starting-with-the-configuration" class="toc is-size-7 is-active"
+                href=" /blogs/016-prod-eks-part-3/#1-starting-with-the-configuration">
+                1. Starting with the configuration
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-2-creating-a-vpc" class="toc is-size-7 "
+                href=" /blogs/016-prod-eks-part-3/#2-creating-a-vpc">
+                2. Creating a VPC
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-3-iam-role-for-eks-cluster" class="toc is-size-7 "
+                href=" /blogs/016-prod-eks-part-3/#3-iam-role-for-eks-cluster">
+                3. IAM role for EKS cluster
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-4-eks-cluster" class="toc is-size-7 "
+                href=" /blogs/016-prod-eks-part-3/#4-eks-cluster">
+                4. EKS cluster
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-5-iam-role-for-worker-nodes" class="toc is-size-7 "
+                href=" /blogs/016-prod-eks-part-3/#5-iam-role-for-worker-nodes">
+                5. IAM role for Worker Nodes
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-6-worker-node-group" class="toc is-size-7 "
+                href=" /blogs/016-prod-eks-part-3/#6-worker-node-group">
+                6. Worker node group
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-7-exporting-cluster-details" class="toc is-size-7 "
+                href=" /blogs/016-prod-eks-part-3/#7-exporting-cluster-details">
+                7. Exporting cluster details
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;015-prod-eks-part-2&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Production-ready EKS cluster setup — Part II
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;017-k8s-hardway-part-1&#x2F;">
+              Kubernetes The Hard Way IaC — Part I<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

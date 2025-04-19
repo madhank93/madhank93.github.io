@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Serving LLMs from Raspberry Pi using Ollama and Cloudflare Tunnel
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Serving LLMs from Raspberry Pi using Ollama and Cloudflare Tunnel
+          </h1>
+          <p class="subtitle">Provisioning the compute resource for k8s setup in AWS using Pulumi</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2024-04-21T01:25:33+05:30"
+      >April 21, 2024</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>3 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>518 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/llm/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>llm</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/raspberry-pi/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>raspberry-pi</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/cloudflare-tunnel/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>cloudflare-tunnel</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ollama/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ollama</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ansible/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ansible</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/docker/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>docker</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/self-hosting/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>self-hosting</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/0*HDUywKYg7M4Ij64B" alt="" /></p>
+<p>In this article, we will look at how to run LLMs like Gemma and Llama 2 using Ollama on the Raspberry Pi and using <a href="https://www.cloudflare.com/products/tunnel/">Cloudflare tunnels</a> for public internet access.</p>
+<ul>
+<li>
+<p><a href="https://github.com/google-deepmind/gemma">Gemma</a> and <a href="https://github.com/meta-llama/llama">Llama2</a> are the open-source LLMs released by Google and Facebook.</p>
+</li>
+<li>
+<p><a href="https://ollama.com/">Ollama</a> is an open-source project that makes it easier to create and run a LLM model locally.</p>
+</li>
+<li>
+<p><a href="https://www.raspberrypi.com/">Raspberry Pi</a> is a single-board computer powered by <a href="https://www.redhat.com/en/topics/linux/what-is-arm-processor">ARM</a> processors.</p>
+</li>
+<li>
+<p><a href="https://github.com/open-webui/open-webui">Open WebUI</a> provides a user-friendly Web UI for LLMs.</p>
+</li>
+<li>
+<p><a href="https://www.cloudflare.com/products/tunnel/">Cloudflare tunnels</a> connect LLMs running locally on Raspberry Pi to the internet.</p>
+</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2252/1*OFpYLfvtbnXUIcjhih3r0Q.png" alt="High-level architecture" /></p>
+<h2 id="installing-ollama-and-open-web-ui">Installing Ollama and Open Web UI</h2>
+<p>Using the following docker-compose file to install the Ollama and Open Web UI as containers on the Raspberry Pi.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;8f493338dc792af68595f411d7fc2dcb.js"></script>
+</div>
+<p>Ansible scripts are used to install prerequisites setup and above docker containers on the Raspberry Pi.</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Install Ollama in Raspberry Pi
+</span><span>    </span><span style="color:#ff79c6;">become</span><span>: </span><span style="color:#bd93f9;">true
+</span><span>    </span><span style="color:#ff79c6;">block</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Git checkout Open webui (ollama webui)
+</span><span>        </span><span style="color:#ff79c6;">ansible.builtin.git</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">repo</span><span>: </span><span style="color:#f1fa8c;">&quot;https://github.com/open-webui/open-webui.git&quot;
+</span><span>        </span><span style="color:#ff79c6;">dest</span><span>: </span><span style="color:#f1fa8c;">&quot;/home/{{ user }}/open-webui&quot;
+</span><span>        </span><span style="color:#ff79c6;">version</span><span>: </span><span style="color:#f1fa8c;">&quot;{{ open_webui.git_tag }}&quot;
+</span><span>    - </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Copy docker compose file
+</span><span>        </span><span style="color:#ff79c6;">ansible.builtin.template</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">mode</span><span>: </span><span style="color:#f1fa8c;">u=rwx,g=rx,o=rx
+</span><span>        </span><span style="color:#ff79c6;">src</span><span>: </span><span style="color:#f1fa8c;">&quot;{{ playbook_dir }}/roles/ollama/templates/docker-compose.yml.j2&quot;
+</span><span>        </span><span style="color:#ff79c6;">dest</span><span>: </span><span style="color:#f1fa8c;">&quot;/home/{{ user }}/open-webui/docker-compose.yml&quot;
+</span><span>    - </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Run Docker Compose
+</span><span>        </span><span style="color:#ff79c6;">community.docker.docker_compose</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">debug</span><span>: </span><span style="color:#bd93f9;">true
+</span><span>        </span><span style="color:#ff79c6;">project_src</span><span>: </span><span style="color:#f1fa8c;">&quot;/home/{{ user }}/open-webui&quot;
+</span><span>        </span><span style="color:#ff79c6;">files</span><span>:
+</span><span>            - </span><span style="color:#f1fa8c;">docker-compose.yml
+</span><span>        </span><span style="color:#ff79c6;">state</span><span>: </span><span style="color:#f1fa8c;">present
+</span></code></pre>
+<p>Once the Ansible script is executed successfully, Open Web UI can be accessed at ip_addr_of_raspberrypi:3000 . Login into the application as an Admin and head onto the Settings &gt; Model page to download the Gemma and Lama 2 models.</p>
+<h2 id="cloudflare-tunnel-setup">Cloudflare tunnel setup</h2>
+<p>Cloudflare tunnels allow you to securely connect Raspberry Pi to the internet.</p>
+<h3 id="i-install-and-configure-cloudflared">i. Install and configure Cloudflared</h3>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#6272a4;"># Download the package
+</span><span style="color:#50fa7b;">curl</span><span style="font-style:italic;color:#ffb86c;"> -L</span><span> https://github.com/cloudflare/cloudflared/releases/download/2024.2.1/cloudflared-linux-arm64.deb
+</span><span>
+</span><span style="color:#6272a4;"># Install the package
+</span><span style="color:#50fa7b;">sudo</span><span> dpkg</span><span style="font-style:italic;color:#ffb86c;"> -i</span><span> cloudflared.deb
+</span><span>
+</span><span style="color:#6272a4;"># Authenticate cloudflared setup
+</span><span style="color:#50fa7b;">cloudflared</span><span> tunnel login
+</span><span>
+</span><span style="color:#6272a4;"># Create Cloudflare tunnel
+</span><span style="color:#50fa7b;">cloudflared</span><span> tunnel create ollama-ai
+</span></code></pre>
+<h3 id="ii-create-a-configuration-file">ii. Create a configuration file</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">url</span><span>: </span><span style="color:#f1fa8c;">http://localhost:3000
+</span><span style="color:#ff79c6;">tunnel</span><span>: </span><span style="color:#f1fa8c;">&lt;Tunnel-UUID&gt;
+</span><span style="color:#ff79c6;">credentials-file</span><span>: </span><span style="color:#f1fa8c;">/root/.cloudflared/&lt;Tunnel-UUID&gt;.json
+</span></code></pre>
+<h3 id="iii-start-routing-traffic">iii. Start routing traffic</h3>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#6272a4;"># Routing the traffic
+</span><span style="color:#50fa7b;">cloudflared</span><span> tunnel route dns ollama-ai ai.madhan.app
+</span><span>
+</span><span style="color:#6272a4;"># Run the tunnel
+</span><span style="color:#50fa7b;">cloudflared</span><span> tunnel run ollama-ai
+</span></code></pre>
+<p>When the Cloudflare tunnel setup is completed successfully Gemma and Lama2 models can be accessed using Open Web UI at ai.madhan.app (the site is no longer operational)</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/serving-llms-from-raspberry-pi-using-ollama-and-cloudflare-tunnel-a688930583cc">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/ollama-pi-cf">GitHub - madhank93/ollama-pi-cf</a></p>
+</center>
+<p><strong>References:</strong></p>
+<p>[1] <a href="https://ollama.com/blog">https://ollama.com/blog</a></p>
+<p>[2] <a href="https://docs.openwebui.com/">https://docs.openwebui.com/</a></p>
+<p>[3] <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-installing-ollama-and-open-web-ui" class="toc is-size-7 is-active"
+                href=" /blogs/018-llm-in-pi/#installing-ollama-and-open-web-ui">
+                Installing Ollama and Open Web UI
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-cloudflare-tunnel-setup" class="toc is-size-7 "
+                href=" /blogs/018-llm-in-pi/#cloudflare-tunnel-setup">
+                Cloudflare tunnel setup
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-i-install-and-configure-cloudflared" class="toc is-size-7" href=" /blogs/018-llm-in-pi/#i-install-and-configure-cloudflared">
+                    i. Install and configure Cloudflared
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-ii-create-a-configuration-file" class="toc is-size-7" href=" /blogs/018-llm-in-pi/#ii-create-a-configuration-file">
+                    ii. Create a configuration file
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-iii-start-routing-traffic" class="toc is-size-7" href=" /blogs/018-llm-in-pi/#iii-start-routing-traffic">
+                    iii. Start routing traffic
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;017-k8s-hardway-part-1&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Kubernetes The Hard Way IaC — Part I
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;019-solving-sad-servers-1&#x2F;">
+              Solving Sad Servers — Part I<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

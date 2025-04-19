@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Setting up Kubernetes on Proxmox with Cloud-Init and Pulumi— Part I
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Setting up Kubernetes on Proxmox with Cloud-Init and Pulumi— Part I
+          </h1>
+          <p class="subtitle">Provisioning the compute resource for k8s</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2024-11-17T00:00:00+00:00"
+      >November 17, 2024</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>841 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/homelab/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>homelab</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/proxmox/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>proxmox</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/self-hosting/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>self-hosting</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/cloud-init/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>cloud-init</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/pulumi/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>pulumi</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/golang/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>golang</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*O8D_62j7_OCIe4dstOwnvg.jpeg" alt="Banner" /></p>
+<p>In this blog post, we’ll explore how to set up a <a href="https://kubernetes.io/">Kubernetes</a> cluster on <a href="https://www.proxmox.com/en/">Proxmox</a> using <a href="https://cloud-init.io/">cloud-init</a> for VM initialization during their first boot and <a href="https://www.pulumi.com/">Pulumi</a> for infrastructure as code.</p>
+<h2 id="prerequisite">Prerequisite</h2>
+<p><img src="https://cdn-images-1.medium.com/max/6028/1*d36gWJKGtwTG3f04SHFUsw.png" alt="Enable snippets in Proxmox" /></p>
+<p><strong>Ensure snippets are enabled in Storage Configuration:</strong></p>
+<ul>
+<li>
+<p>Go to <strong>Datacenter &gt; Storage</strong> in the Proxmox GUI.</p>
+</li>
+<li>
+<p>Edit an existing storage (or add a new one) that supports snippets</p>
+</li>
+<li>
+<p>Ensure the <code>Content</code> field includes the <strong>Snippets</strong> type, as showed in the above screenshot.</p>
+</li>
+</ul>
+<h2 id="cloud-init-configuration">Cloud-Init Configuration</h2>
+<p>Let’s break down the cloud-init configuration used to set up k8s nodes.</p>
+<h3 id="user-setup">User Setup</h3>
+<pre data-lang="yaml" style="background-color:#282a36;color:#f8f8f2;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#ff79c6;">users</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">ubuntu
+</span><span>    </span><span style="color:#ff79c6;">sudo</span><span>: </span><span style="color:#f1fa8c;">ALL=(ALL) NOPASSWD:ALL
+</span><span>    </span><span style="color:#ff79c6;">lock_passwd</span><span>: </span><span style="color:#bd93f9;">false
+</span><span>    </span><span style="color:#ff79c6;">passwd</span><span>: </span><span style="color:#f1fa8c;">$6$SP/vqykLkV9d05An$mJ/fEZ3gmfVvD1vwSJqxfjsK9z/bykIMbCZ/Hov.nt31e8h0XklDSE7ofw2YjPemVOSm14JdYoEfEzbxkFkY/1
+</span><span>    </span><span style="color:#ff79c6;">ssh_authorized_keys</span><span>:
+</span><span>        - </span><span style="color:#f1fa8c;">ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHDtJdQ12Q8pUUGM16V1Ko+es5LzuGT/0FGWWTmsKQxj
+</span></code></pre>
+<p>This section creates a user named “ubuntu” with sudo privileges and adds SSH access.</p>
+<h3 id="system-configuration">System Configuration</h3>
+<pre data-lang="yaml" style="background-color:#282a36;color:#f8f8f2;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#ff79c6;">write_files</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">path</span><span>: </span><span style="color:#f1fa8c;">/etc/modules-load.d/k8s.conf
+</span><span>    </span><span style="color:#ff79c6;">permissions</span><span>: </span><span style="color:#f1fa8c;">&#39;0644&#39;
+</span><span>    </span><span style="color:#ff79c6;">content</span><span>: </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">        overlay
+</span><span style="color:#f1fa8c;">        br_netfilter
+</span><span>    - </span><span style="color:#ff79c6;">path</span><span>: </span><span style="color:#f1fa8c;">/etc/sysctl.d/k8s.conf
+</span><span>    </span><span style="color:#ff79c6;">permissions</span><span>: </span><span style="color:#f1fa8c;">&#39;0644&#39;
+</span><span>    </span><span style="color:#ff79c6;">content</span><span>: </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">        net.bridge.bridge-nf-call-iptables  = 1
+</span><span style="color:#f1fa8c;">        net.bridge.bridge-nf-call-ip6tables = 1
+</span><span style="color:#f1fa8c;">        net.ipv4.ip_forward                 = 1
+</span></code></pre>
+<p>These configurations includes necessary kernel modules and system parameters for Kubernetes</p>
+<h3 id="network-configuration">Network Configuration</h3>
+<pre data-lang="yaml" style="background-color:#282a36;color:#f8f8f2;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span>- </span><span style="color:#ff79c6;">path</span><span>: </span><span style="color:#f1fa8c;">/etc/netplan/00-installer-config.yaml
+</span><span>    </span><span style="color:#ff79c6;">permissions</span><span>: </span><span style="color:#f1fa8c;">&#39;0600&#39;
+</span><span>    </span><span style="color:#ff79c6;">content</span><span>: </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">        network:
+</span><span style="color:#f1fa8c;">        version: 2
+</span><span style="color:#f1fa8c;">        ethernets:
+</span><span style="color:#f1fa8c;">            ens18:
+</span><span style="color:#f1fa8c;">            dhcp4: true
+</span><span style="color:#f1fa8c;">            dhcp6: false
+</span><span style="color:#f1fa8c;">            optional: true
+</span><span style="color:#f1fa8c;">            nameservers:
+</span><span style="color:#f1fa8c;">                addresses: [8.8.8.8, 8.8.4.4]
+</span></code></pre>
+<p>This sets up the network interface using Netplan, configuring DHCP and DNS</p>
+<h3 id="installation-and-configuration-commands">Installation and Configuration Commands</h3>
+<pre data-lang="yaml" style="background-color:#282a36;color:#f8f8f2;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#ff79c6;">runcmd</span><span>:
+</span><span>    </span><span style="color:#6272a4;"># Set hostname
+</span><span>    - </span><span style="color:#f1fa8c;">hostnamectl set-hostname ${hostname}
+</span><span>
+</span><span>    </span><span style="color:#6272a4;"># Basic system setup
+</span><span>    - </span><span style="color:#f1fa8c;">modprobe overlay
+</span><span>    - </span><span style="color:#f1fa8c;">modprobe br_netfilter
+</span><span>    - </span><span style="color:#f1fa8c;">sysctl --system
+</span><span>    - </span><span style="color:#f1fa8c;">systemctl restart systemd-timesyncd
+</span><span>    
+</span><span>    </span><span style="color:#6272a4;"># Network configuration
+</span><span>    - </span><span style="color:#f1fa8c;">netplan generate
+</span><span>    - </span><span style="color:#f1fa8c;">netplan apply
+</span><span>    
+</span><span>    </span><span style="color:#6272a4;"># Wait for network connectivity
+</span><span>    - </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">    count=0
+</span><span style="color:#f1fa8c;">    max_attempts=30
+</span><span style="color:#f1fa8c;">    until ping -c 1 8.8.8.8 &gt;/dev/null 2&gt;&amp;1 || [ $count -eq $max_attempts ]; do
+</span><span style="color:#f1fa8c;">        echo &quot;Waiting for network connectivity... Attempt $count of $max_attempts&quot;
+</span><span style="color:#f1fa8c;">        sleep 5
+</span><span style="color:#f1fa8c;">        count=$((count + 1))
+</span><span style="color:#f1fa8c;">    done
+</span><span style="color:#f1fa8c;">    
+</span><span style="color:#f1fa8c;">    # Update and install basic packages
+</span><span style="color:#f1fa8c;">    - apt-get update
+</span><span style="color:#f1fa8c;">    - apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+</span><span style="color:#f1fa8c;">    
+</span><span style="color:#f1fa8c;">    # Setup Kubernetes repository
+</span><span style="color:#f1fa8c;">    - mkdir -p /etc/apt/keyrings
+</span><span style="color:#f1fa8c;">    - curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+</span><span style="color:#f1fa8c;">    - echo &#39;deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /&#39; &gt; /etc/apt/sources.list.d/kubernetes.list
+</span><span style="color:#f1fa8c;">    
+</span><span style="color:#f1fa8c;">    # Install packages
+</span><span style="color:#f1fa8c;">    - apt-get update
+</span><span style="color:#f1fa8c;">    - |
+</span><span style="color:#f1fa8c;">    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+</span><span style="color:#f1fa8c;">        wget \
+</span><span style="color:#f1fa8c;">        vim \
+</span><span style="color:#f1fa8c;">        net-tools \
+</span><span style="color:#f1fa8c;">        qemu-guest-agent \
+</span><span style="color:#f1fa8c;">        kubelet \
+</span><span style="color:#f1fa8c;">        kubeadm \
+</span><span style="color:#f1fa8c;">        kubectl \
+</span><span style="color:#f1fa8c;">        containerd
+</span><span style="color:#f1fa8c;">    
+</span><span style="color:#f1fa8c;">    # Hold kubernetes packages
+</span><span style="color:#f1fa8c;">    - apt-mark hold kubelet kubeadm
+</span><span style="color:#f1fa8c;">    
+</span><span style="color:#f1fa8c;">    # Install Nix package manager
+</span><span style="color:#f1fa8c;">    - curl --proto &#39;=https&#39; --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
+</span><span style="color:#f1fa8c;">    
+</span><span style="color:#f1fa8c;">    # Enable and start services
+</span><span style="color:#f1fa8c;">    - systemctl enable qemu-guest-agent
+</span><span style="color:#f1fa8c;">    - systemctl start qemu-guest-agent
+</span><span style="color:#f1fa8c;">    - systemctl enable kubelet
+</span><span style="color:#f1fa8c;">    - systemctl start kubelet
+</span><span style="color:#f1fa8c;">
+</span><span style="color:#f1fa8c;">    # Set bash as the default shell
+</span><span style="color:#f1fa8c;">    - chsh -s /bin/bash ubuntu
+</span></code></pre>
+<p>The runcmd section includes a series of commands to set the hostname, Load kernel modules, Apply system configurations, Set up networking, Install necessary packages including Kubernetes components and containerd, Install the Nix package manager and Enable and start required services.</p>
+<h2 id="pulumi-code-for-kubernetes-setup">Pulumi Code for Kubernetes Setup</h2>
+<p>Now, let’s look at how we can use Pulumi with Go to set up our infra setup for k8s cluster on Proxmox.</p>
+<h3 id="cloud-init-setup">Cloud-init setup</h3>
+<p>Below function reads &amp; customizes the cloud-init configuration and uploads the yml file into Proxmox.</p>
+<pre data-lang="go" style="background-color:#282a36;color:#f8f8f2;" class="language-go "><code class="language-go" data-lang="go"><span style="font-style:italic;color:#8be9fd;">func </span><span style="color:#50fa7b;">createCloudInit</span><span>(</span><span style="font-style:italic;color:#ffb86c;">ctx </span><span style="color:#ff79c6;">*</span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="font-style:italic;color:#8be9fd;">Context</span><span>, </span><span style="font-style:italic;color:#ffb86c;">provider </span><span style="color:#ff79c6;">*</span><span style="color:#ffffff;">proxmoxve</span><span style="color:#ff79c6;">.</span><span style="font-style:italic;color:#8be9fd;">Provider</span><span>, </span><span style="font-style:italic;color:#ffb86c;">nodeName </span><span style="font-style:italic;color:#66d9ef;">string</span><span>, </span><span style="font-style:italic;color:#ffb86c;">hostname </span><span style="font-style:italic;color:#66d9ef;">string</span><span>) (</span><span style="color:#ff79c6;">*</span><span style="color:#ffffff;">storage</span><span style="color:#ff79c6;">.</span><span style="font-style:italic;color:#8be9fd;">File</span><span>, </span><span style="font-style:italic;color:#66d9ef;">error</span><span>) {
+</span><span>    configPath </span><span style="color:#ff79c6;">:= </span><span style="color:#ffffff;">filepath</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Join</span><span>(</span><span style="color:#f1fa8c;">&quot;cloud-init&quot;</span><span>, </span><span style="color:#f1fa8c;">&quot;cloud-init.yml&quot;</span><span>)
+</span><span>    data, err </span><span style="color:#ff79c6;">:= </span><span style="color:#ffffff;">os</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">ReadFile</span><span>(</span><span style="color:#ffffff;">configPath</span><span>)
+</span><span>    </span><span style="color:#ff79c6;">if </span><span style="color:#ffffff;">err </span><span style="color:#ff79c6;">!= </span><span style="color:#bd93f9;">nil </span><span>{
+</span><span>        </span><span style="color:#ff79c6;">return </span><span style="color:#bd93f9;">nil</span><span>, </span><span style="color:#ffffff;">err
+</span><span>    }
+</span><span>
+</span><span>    content </span><span style="color:#ff79c6;">:= </span><span style="font-style:italic;color:#66d9ef;">string</span><span>(</span><span style="color:#ffffff;">data</span><span>)
+</span><span>    replacements </span><span style="color:#ff79c6;">:= </span><span style="font-style:italic;color:#8be9fd;">map</span><span>[</span><span style="font-style:italic;color:#66d9ef;">string</span><span>]</span><span style="font-style:italic;color:#66d9ef;">string</span><span>{
+</span><span>        </span><span style="color:#f1fa8c;">&quot;${hostname}&quot;</span><span>: </span><span style="color:#ffffff;">hostname</span><span>,
+</span><span>    }
+</span><span>    </span><span style="color:#ff79c6;">for </span><span>k, v </span><span style="color:#ff79c6;">:= range </span><span style="color:#ffffff;">replacements </span><span>{
+</span><span>        </span><span style="color:#ffffff;">content </span><span style="color:#ff79c6;">= </span><span style="color:#ffffff;">strings</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">ReplaceAll</span><span>(</span><span style="color:#ffffff;">content</span><span>, </span><span style="color:#ffffff;">k</span><span>, </span><span style="color:#ffffff;">v</span><span>)
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#ff79c6;">return </span><span style="color:#ffffff;">storage</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">NewFile</span><span>(</span><span style="color:#ffffff;">ctx</span><span>, </span><span style="color:#ffffff;">hostname</span><span style="color:#ff79c6;">+</span><span style="color:#f1fa8c;">&quot;-cloud-init&quot;</span><span>, </span><span style="color:#ff79c6;">&amp;</span><span style="color:#ffffff;">storage</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">FileArgs</span><span>{
+</span><span>            </span><span style="color:#ffffff;">NodeName</span><span>:    </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#ffffff;">nodeName</span><span>),
+</span><span>            </span><span style="color:#ffffff;">DatastoreId</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;local&quot;</span><span>),
+</span><span>            </span><span style="color:#ffffff;">ContentType</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;snippets&quot;</span><span>),
+</span><span>            </span><span style="color:#ffffff;">FileMode</span><span>:    </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;0755&quot;</span><span>),
+</span><span>            </span><span style="color:#ffffff;">Overwrite</span><span>:   </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Bool</span><span>(</span><span style="color:#bd93f9;">true</span><span>),
+</span><span>            </span><span style="color:#ffffff;">SourceRaw</span><span>: </span><span style="color:#ffffff;">storage</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">FileSourceRawArgs</span><span>{
+</span><span>            </span><span style="color:#ffffff;">Data</span><span>:     </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#ffffff;">content</span><span>),
+</span><span>            </span><span style="color:#ffffff;">FileName</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#ffffff;">hostname </span><span style="color:#ff79c6;">+ </span><span style="color:#f1fa8c;">&quot;.yml&quot;</span><span>),
+</span><span>        },
+</span><span>    }, </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Provider</span><span>(</span><span style="color:#ffffff;">provider</span><span>))
+</span><span>}
+</span></code></pre>
+<h3 id="provisioning-vm">Provisioning VM</h3>
+<p>Below core function handles the creation of a VM.</p>
+<pre data-lang="go" style="background-color:#282a36;color:#f8f8f2;" class="language-go "><code class="language-go" data-lang="go"><span style="font-style:italic;color:#8be9fd;">func </span><span style="color:#50fa7b;">createVM</span><span>(</span><span style="font-style:italic;color:#ffb86c;">ctx </span><span style="color:#ff79c6;">*</span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="font-style:italic;color:#8be9fd;">Context</span><span>, </span><span style="font-style:italic;color:#ffb86c;">provider </span><span style="color:#ff79c6;">*</span><span style="color:#ffffff;">proxmoxve</span><span style="color:#ff79c6;">.</span><span style="font-style:italic;color:#8be9fd;">Provider</span><span>, </span><span style="font-style:italic;color:#ffb86c;">config </span><span style="font-style:italic;color:#8be9fd;">NodeConfig</span><span>, </span><span style="font-style:italic;color:#ffb86c;">cloudInit </span><span style="color:#ff79c6;">*</span><span style="color:#ffffff;">storage</span><span style="color:#ff79c6;">.</span><span style="font-style:italic;color:#8be9fd;">File</span><span>, </span><span style="font-style:italic;color:#ffb86c;">cloudImage </span><span style="color:#ff79c6;">*</span><span style="color:#ffffff;">download</span><span style="color:#ff79c6;">.</span><span style="font-style:italic;color:#8be9fd;">File</span><span>, </span><span style="font-style:italic;color:#ffb86c;">bridge </span><span style="font-style:italic;color:#66d9ef;">string</span><span>) (</span><span style="color:#ff79c6;">*</span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="font-style:italic;color:#8be9fd;">VirtualMachine</span><span>, </span><span style="font-style:italic;color:#66d9ef;">error</span><span>) {
+</span><span>    </span><span style="color:#ff79c6;">return </span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">NewVirtualMachine</span><span>(</span><span style="color:#ffffff;">ctx</span><span>, </span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">Name</span><span>, </span><span style="color:#ff79c6;">&amp;</span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineArgs</span><span>{
+</span><span>        </span><span style="color:#ffffff;">NodeName</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;pve&quot;</span><span>),
+</span><span>        </span><span style="color:#ffffff;">Name</span><span>:     </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">Name</span><span>),
+</span><span>        </span><span style="color:#ffffff;">Agent</span><span>:    </span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineAgentArgs</span><span>{</span><span style="color:#ffffff;">Enabled</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Bool</span><span>(</span><span style="color:#bd93f9;">true</span><span>)},
+</span><span>        </span><span style="color:#ffffff;">Cpu</span><span>:      </span><span style="color:#ff79c6;">&amp;</span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineCpuArgs</span><span>{</span><span style="color:#ffffff;">Cores</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Int</span><span>(</span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">Cores</span><span>)},
+</span><span>        </span><span style="color:#ffffff;">Memory</span><span>: </span><span style="color:#ff79c6;">&amp;</span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineMemoryArgs</span><span>{
+</span><span>            </span><span style="color:#ffffff;">Dedicated</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Int</span><span>(</span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">Memory</span><span>),
+</span><span>            </span><span style="color:#ffffff;">Floating</span><span>:  </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Int</span><span>(</span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">Memory</span><span>),
+</span><span>        },
+</span><span>        </span><span style="color:#ffffff;">Disks</span><span>: </span><span style="color:#ff79c6;">&amp;</span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineDiskArray</span><span>{
+</span><span>            </span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineDiskArgs</span><span>{
+</span><span>                </span><span style="color:#ffffff;">Size</span><span>:       </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Int</span><span>(</span><span style="color:#ffffff;">config</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">DiskSize</span><span>),
+</span><span>                </span><span style="color:#ffffff;">Interface</span><span>:  </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;scsi0&quot;</span><span>),
+</span><span>                </span><span style="color:#ffffff;">Iothread</span><span>:   </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Bool</span><span>(</span><span style="color:#bd93f9;">true</span><span>),
+</span><span>                </span><span style="color:#ffffff;">FileFormat</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;raw&quot;</span><span>),
+</span><span>                </span><span style="color:#ffffff;">FileId</span><span>:     </span><span style="color:#ffffff;">cloudImage</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">ID</span><span>(),
+</span><span>            },
+</span><span>        },
+</span><span>        </span><span style="color:#ffffff;">BootOrders</span><span>:   </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">StringArray</span><span>{</span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;scsi0&quot;</span><span>), </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;net0&quot;</span><span>)},
+</span><span>        </span><span style="color:#ffffff;">ScsiHardware</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;virtio-scsi-single&quot;</span><span>),
+</span><span>        </span><span style="color:#ffffff;">OperatingSystem</span><span>: </span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineOperatingSystemArgs</span><span>{
+</span><span>            </span><span style="color:#ffffff;">Type</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;l26&quot;</span><span>),
+</span><span>        },
+</span><span>        </span><span style="color:#ffffff;">NetworkDevices</span><span>: </span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineNetworkDeviceArray</span><span>{
+</span><span>            </span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineNetworkDeviceArgs</span><span>{
+</span><span>            </span><span style="color:#ffffff;">Model</span><span>:  </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;virtio&quot;</span><span>),
+</span><span>            </span><span style="color:#ffffff;">Bridge</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#ffffff;">bridge</span><span>),
+</span><span>            },
+</span><span>        },
+</span><span>        </span><span style="color:#ffffff;">OnBoot</span><span>: </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Bool</span><span>(</span><span style="color:#bd93f9;">true</span><span>),
+</span><span>        </span><span style="color:#ffffff;">Initialization</span><span>: </span><span style="color:#ff79c6;">&amp;</span><span style="color:#ffffff;">vm</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">VirtualMachineInitializationArgs</span><span>{
+</span><span>            </span><span style="color:#ffffff;">DatastoreId</span><span>:    </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">String</span><span>(</span><span style="color:#f1fa8c;">&quot;local-lvm&quot;</span><span>),
+</span><span>            </span><span style="color:#ffffff;">UserDataFileId</span><span>: </span><span style="color:#ffffff;">cloudInit</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">ID</span><span>(),
+</span><span>        },
+</span><span>    }, </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">DependsOn</span><span>([]</span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#ffffff;">Resource</span><span>{</span><span style="color:#ffffff;">cloudImage</span><span>}), </span><span style="color:#ffffff;">pulumi</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">Provider</span><span>(</span><span style="color:#ffffff;">provider</span><span>))
+</span><span>}
+</span></code></pre>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/setting-up-kubernetes-on-proxmox-with-cloud-init-and-pulumi-part-i-64e697bdfe98">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/pulumi-proxmox/tree/main/proxmox-k8s">GitHub - madhank93/pulumi-proxmox at main</a></p>
+</center>
+<p><strong>Reference</strong>:</p>
+<p>[1] <a href="https://www.learnlinux.tv/how-to-build-an-awesome-kubernetes-cluster-using-proxmox-virtual-environment/">https://www.learnlinux.tv/how-to-build-an-awesome-kubernetes-cluster-using-proxmox-virtual-environment/</a></p>
+<p>[2] <a href="https://www.youtube.com/watch?v=Kv6-_--y5CM">https://www.youtube.com/watch?v=Kv6-_--y5CM</a></p>
+<p>[3] <a href="https://cloud-init.io/">https://cloud-init.io/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-prerequisite" class="toc is-size-7 is-active"
+                href=" /blogs/027-k8s-on-proxmox-using-pulumi/#prerequisite">
+                Prerequisite
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-cloud-init-configuration" class="toc is-size-7 "
+                href=" /blogs/027-k8s-on-proxmox-using-pulumi/#cloud-init-configuration">
+                Cloud-Init Configuration
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-user-setup" class="toc is-size-7" href=" /blogs/027-k8s-on-proxmox-using-pulumi/#user-setup">
+                    User Setup
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-system-configuration" class="toc is-size-7" href=" /blogs/027-k8s-on-proxmox-using-pulumi/#system-configuration">
+                    System Configuration
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-network-configuration" class="toc is-size-7" href=" /blogs/027-k8s-on-proxmox-using-pulumi/#network-configuration">
+                    Network Configuration
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-installation-and-configuration-commands" class="toc is-size-7" href=" /blogs/027-k8s-on-proxmox-using-pulumi/#installation-and-configuration-commands">
+                    Installation and Configuration Commands
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-pulumi-code-for-kubernetes-setup" class="toc is-size-7 "
+                href=" /blogs/027-k8s-on-proxmox-using-pulumi/#pulumi-code-for-kubernetes-setup">
+                Pulumi Code for Kubernetes Setup
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-cloud-init-setup" class="toc is-size-7" href=" /blogs/027-k8s-on-proxmox-using-pulumi/#cloud-init-setup">
+                    Cloud-init setup
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-provisioning-vm" class="toc is-size-7" href=" /blogs/027-k8s-on-proxmox-using-pulumi/#provisioning-vm">
+                    Provisioning VM
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;026-homelab-part-3&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Building a Home Lab server — Part III
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;028-k8s-using-kubespray-metallb&#x2F;">
+              Configuring Kubernetes cluster in Proxmox using Kubespray and MetalLB — Part II<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

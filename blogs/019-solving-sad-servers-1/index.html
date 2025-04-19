@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Solving Sad Servers — Part I
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Solving Sad Servers — Part I
+          </h1>
+          <p class="subtitle">Unraveling server snags</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2024-05-10T00:00:00+00:00"
+      >May 10, 2024</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>3 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>539 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/linux/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>linux</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/debugging/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>debugging</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/troubleshooting/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>troubleshooting</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/servers/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>servers</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/command-line/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>command-line</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/2406/1*8zl4RiXM18WjY_IOBJCk4Q.png" alt="Sad Servers" /></p>
+<p>Recently, while finding ways to enhance my skills in troubleshooting and debugging servers, I came across <a href="https://sadservers.com/">sadservers.com</a>. In this article, we’ll work on resolving server issues🐞🐞🐞</p>
+<h3 id="problem-1">Problem 1:</h3>
+<blockquote>
+<p>A developer created a testing program that is continuously writing to a log file <em>/var/log/bad.log</em> and filling up disk. You can check for example with tail -f /var/log/bad.log. This program is no longer needed. Find it and terminate it.</p>
+</blockquote>
+<h3 id="solution">Solution:</h3>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">sudo</span><span> lsof /var/log/bad.log
+</span><span>
+</span><span style="color:#50fa7b;">or
+</span><span>
+</span><span style="color:#50fa7b;">sudo</span><span> fuser</span><span style="font-style:italic;color:#ffb86c;"> -v</span><span> /var/log/bad.log
+</span></code></pre>
+<p>The first step is to identify the writing process to the log file. Command-line tools like <a href="https://explainshell.com/explain?cmd=sudo+lsof+%2Fvar%2Flog%2Fbad.log">lsof</a> (list open files) or <a href="https://explainshell.com/explain?cmd=sudo+fuser+-v+%2Fvar%2Flog%2Fbad.log">fuser</a> (identify processes using files or sockets) are used to find out which process has the log file /var/log/bad.log open. And kill the process using <code>sudo kill -9 PID</code></p>
+<h3 id="problem-2">Problem 2:</h3>
+<blockquote>
+<p>There’s a web server access log file at /home/admin/access.log. The file consists of one line per HTTP request, with the requester’s IP address at the beginning of each line.
+Find what’s the IP address that has the most requests in this file (there’s no tie; the IP is unique). Write the solution into a file /home/admin/highestip.txt</p>
+</blockquote>
+<h3 id="solution-1">Solution:</h3>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">awk </span><span style="color:#f1fa8c;">&#39;{print $1}&#39;</span><span> /home/admin/access.log </span><span style="color:#ff79c6;">| </span><span style="color:#50fa7b;">sort </span><span style="color:#ff79c6;">| </span><span style="color:#50fa7b;">uniq</span><span style="font-style:italic;color:#ffb86c;"> -c </span><span style="color:#ff79c6;">| </span><span style="color:#50fa7b;">sort</span><span style="font-style:italic;color:#ffb86c;"> -nr </span><span style="color:#ff79c6;">| </span><span style="color:#50fa7b;">head</span><span style="font-style:italic;color:#ffb86c;"> -n</span><span> 1 </span><span style="color:#ff79c6;">| </span><span style="color:#50fa7b;">awk </span><span style="color:#f1fa8c;">&#39;{print $2}&#39; </span><span style="color:#ff79c6;">&gt;</span><span> /home/admin/highestip.txt
+</span></code></pre>
+<ul>
+<li>
+<p>Extract the first field (which is the IP address) from each line of the access log file using <code>awk '{print $1}' /home/admin/access.log</code></p>
+</li>
+<li>
+<p>Sort the IP addresses in ascending order using <code>sort</code></p>
+</li>
+<li>
+<p>Count the occurrences of each unique IP address using <code>uniq -c</code></p>
+</li>
+<li>
+<p>Sorts the IP addresses based on the count in descending order, with the IP address that has the most requests at the top using <code>sort -nr</code></p>
+</li>
+<li>
+<p>Select the first line (which contains the IP address with the most requests) — <code>head -n 1</code></p>
+</li>
+<li>
+<p>Extracts only the IP address from the selected line awk <code>'{print $2}'</code></p>
+</li>
+<li>
+<p>Finally, write the IP address to the file — /home/admin/highestip.txt</p>
+</li>
+</ul>
+<h3 id="problem-3">Problem 3</h3>
+<blockquote>
+<p>Alice the spy has hidden a secret number combination, find it using these instructions:</p>
+<ol>
+<li>Find the number of <strong>lines</strong> with occurrences of the string <strong>Alice</strong> (case sensitive) in the *<em>.txt</em> files in the <em>/home/admin</em> directory</li>
+<li>There’s a file where <strong>Alice</strong> appears exactly once. In that file, in the line after that “Alice” occurrence there’s a number. Write both numbers consecutively as one (no new line or spaces) to the solution file.</li>
+</ol>
+</blockquote>
+<h3 id="solution-2">Solution:</h3>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">grep</span><span style="font-style:italic;color:#ffb86c;"> -c </span><span style="color:#f1fa8c;">&#39;Alice&#39;</span><span> /home/admin/</span><span style="color:#ff79c6;">*</span><span>.txt
+</span><span style="color:#8be9fd;">echo </span><span style="font-style:italic;color:#ffb86c;">-n</span><span> 411 </span><span style="color:#ff79c6;">&gt;</span><span> /home/admin/solution
+</span><span style="color:#50fa7b;">grep</span><span> Alice</span><span style="font-style:italic;color:#ffb86c;"> -A</span><span> 1 /home/admin/1342-0.txt
+</span><span style="color:#8be9fd;">echo</span><span> 156 </span><span style="color:#ff79c6;">&gt;&gt;</span><span> /home/admin/solution
+</span></code></pre>
+<ul>
+<li>
+<p>Find the number of lines with occurrences of the string Alice in the <code>*.txt</code> file and add it to the solution</p>
+</li>
+<li>
+<p>Search for the matching lines along with the lines that follow the string “Alice” in the file <code>1342–0.txt</code> and add it to the solution</p>
+</li>
+</ul>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/p/440bb3151de7">Medium</a></p>
+</center>
+<p><strong>References:</strong></p>
+<p>[1] <a href="https://sadservers.com/">https://sadservers.com/</a></p>
+<p>[2] <a href="https://explainshell.com/">https://explainshell.com/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-problem-1" class="toc is-size-7 is-active"
+                href=" /blogs/019-solving-sad-servers-1/#problem-1">
+                Problem 1:
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-solution" class="toc is-size-7 "
+                href=" /blogs/019-solving-sad-servers-1/#solution">
+                Solution:
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-problem-2" class="toc is-size-7 "
+                href=" /blogs/019-solving-sad-servers-1/#problem-2">
+                Problem 2:
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-solution-1" class="toc is-size-7 "
+                href=" /blogs/019-solving-sad-servers-1/#solution-1">
+                Solution:
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-problem-3" class="toc is-size-7 "
+                href=" /blogs/019-solving-sad-servers-1/#problem-3">
+                Problem 3
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-solution-2" class="toc is-size-7 "
+                href=" /blogs/019-solving-sad-servers-1/#solution-2">
+                Solution:
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;018-llm-in-pi&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Serving LLMs from Raspberry Pi using Ollama and Cloudflare Tunnel
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;020-getting-started-crossplane&#x2F;">
+              Getting Started with Crossplane — Part I<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
