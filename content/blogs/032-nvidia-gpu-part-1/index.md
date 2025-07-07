@@ -4,7 +4,7 @@ description = "A step-by-step upgrade from server to AI workstation"
 date = 2025-06-25T00:00:00+00:00
 
 [taxonomies]
-tags = ["gpu", "homelab", "ai", "egpu"]
+tags = ["gpu", "homelab", "ai", "nvidia", "egpu"]
 
 [extra]
 toc = true
