@@ -45,7 +45,7 @@ To streamline the deployment process, all environment specific settings are now 
 
 ## VM creation with GPU passthrough
 
-When provisioning a VM that requires GPU access, the Pulumi Go code dynamically adjusts the VM specification. By setting HasGPU: true and specifying PCIe IDs in your config.yml, the correct passthrough configuration is automatically applied during provisioning.
+When provisioning a VM that requires GPU access, the Pulumi Go code dynamically adjusts the VM specification. By setting HasGPU: true and specifying PCIe IDs, the correct passthrough configuration is automatically applied during provisioning.
 
 ```go
 if config.HasGPU {
