@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | A Deep Dive into the W3C WebDriver Specification
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            A Deep Dive into the W3C WebDriver Specification
+          </h1>
+          <p class="subtitle">It’s time to look under the hood</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2020-03-28T01:24:33+05:30"
+      >March 28, 2020</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>6 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>1091 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/selenium/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>selenium</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/w3c/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>w3c</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/webdriver/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>webdriver</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/2390/1*szv6X0IYai76AwQx17DgsA.png" alt="w3c-webdriver" /></p>
+<p>Before getting into the topic lets first understand the difference between the terms WebDriver and Selenium.</p>
+<p>When it comes to testing, these two terms WebDriver and Selenium are interchangeably used to refer the automating the web application.</p>
+<p><a href="https://w3c.github.io/webdriver/">WebDriver </a>is an HTTP based API to interact with a web browser. The standard is provided by W3C. WebDriver is a remote control interface that enables introspection and control of user agents. It provides a platform- and language-neutral wire protocol as a way for out-of-process programs to remotely instruct the behavior of web browsers.</p>
+<p><a href="https://www.selenium.dev/documentation/en/">Selenium </a>is a range of tools and libraries that enable and support the automation of web browsers. <a href="https://www.selenium.dev/documentation/en/webdriver/understanding_the_components/">Selenium WebDriver</a> refers to both the language bindings and the implementations of the individual browser controlling code. This is commonly referred to as just <em>WebDriver</em>.</p>
+<blockquote>
+<p>Most of the browser vendors implements the <a href="https://w3c.github.io/webdriver/webdriver-spec.html">W3C WebDriver capabilities</a> and protocol on Selenium 3.8.0 (JSON wire protocol is <em>OBSOLETE</em> now) as a standalone server in a binary executable format.</p>
+</blockquote>
+<ul>
+<li>
+<p><a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">Chrome</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mozilla/geckodriver/releases">Firefox</a></p>
+</li>
+<li>
+<p><a href="https://github.com/operasoftware/operachromiumdriver/releases">Opera</a></p>
+</li>
+<li>
+<p><a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/#downloads">EDGE</a></p>
+</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2440/1*de0VdIsqiluhVWEne3NF7A.jpeg" alt="selenium_architecture" /> Selenium Architecture</p>
+<blockquote>
+<p>In this article, we are going to see <strong>WebDriver API in action</strong>, for that we need to download ChromeDriver and PostMan tool.</p>
+</blockquote>
+<p>The first step is to <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">download</a> the ChromeDriver executable. Download the appropriate driver version based on your OS.</p>
+<p>To interact with the API we need a tool that allows us to make HTTP requests. For that we need to <a href="https://www.postman.com/downloads/">download</a> the Postman tool. So that you can send and receive API requests.</p>
+<h1 id="the-test-case-that-we-are-going-to-automate-as-follow">The test case that we are going to automate as follow,</h1>
+<ol>
+<li>
+<p>Open the Chrome browser</p>
+</li>
+<li>
+<p>Navigate to Google page</p>
+</li>
+<li>
+<p>Find search text box</p>
+</li>
+<li>
+<p>Send a search value</p>
+</li>
+<li>
+<p>Find the search button</p>
+</li>
+<li>
+<p>Click on the search button</p>
+</li>
+<li>
+<p>Quit driver</p>
+</li>
+</ol>
+<h2 id="let-s-first-start-chromedriver-in-terminal">Let’s first start ChromeDriver in Terminal</h2>
+<p>Extract the file and run it using the command <a href="https://w3c.github.io/webdriver/#new-session">./chromedriver</a>. You will be given the port on which the WebDriver API is running.</p>
+<pre data-lang="bash" style="background-color:#282a36;color:#f8f8f2;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#50fa7b;">$</span><span> ./chromedriver
+</span><span>
+</span><span style="color:#50fa7b;">Starting</span><span> ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch heads/3987@{#882})
+</span><span style="color:#50fa7b;">on</span><span> port9515 Only local connections are allowed.
+</span><span style="color:#50fa7b;">Please</span><span> protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+</span></code></pre>
+<h2 id="1-open-the-chrome-browser">1. Open the Chrome browser</h2>
+<div class="galleria mb-6" style="height: 450px">{
+"images": [
+{
+"src": "https://cdn-images-1.medium.com/max/2540/1*HX7JzMXo5R75qtkFTA4zhQ.png",
+"title": "Step 1"
+},
+{
+"src": "https://cdn-images-1.medium.com/max/2000/1*I3cVPlrRTp4_n9pylkQnRw.png",
+"title": "Step 2"
+},
+{
+"src": "https://cdn-images-1.medium.com/max/2000/1*O9gSQmtKsBafxdqHAQT0OQ.png",
+"title": "Step 3"
+},
+{
+"src": "https://cdn-images-1.medium.com/max/2000/1*faSnhxAkGGE6RIsYbw5PyQ.png",
+"title": "Step 4"
+}
+]
+}</div>
+<p>Now that the <code>chromedriver</code> started in the default port 9519. Let's open the browser. This is done by creating a new session. To create a new session using the WebDriver API, make an HTTP <code>POST</code> request to the <a href="https://w3c.github.io/webdriver/#new-session">/session</a> endpoint. In addition, we need to define the type of browser. This information is sent in as a JSON object in the POST body. On success, the response includes a <code>sessionId</code>.</p>
+<h2 id="2-navigate-to-google-page">2. Navigate to Google page</h2>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*tfiJOwHyAsNGBxgzgMqKUQ.png" alt="" /></p>
+<p>The next step is to open a URL in the browser. This is done with an HTTP <code>POST</code> request to <a href="https://w3c.github.io/webdriver/#navigate-to">/session/&lt;session_id&gt;/url</a>, with the POST body including the <code>URL</code> that will be opened</p>
+<h2 id="3-find-search-text-box">3. Find search text box</h2>
+<img title="step 1" src="https://cdn-images-1.medium.com/max/2076/1*We5Hhw6j_bIPqCNqO_EO2w.png" width="100%">
+<p align="center">
+    <img title="step 2" src="https://cdn-images-1.medium.com/max/2000/1*YqaSJkKPYOsrpxR_YMIcsw.png" width="45%">
+    &nbsp; &nbsp;
+    <img title="step 3" src="https://cdn-images-1.medium.com/max/2000/1*mTJcGR9zcyTUq9Z9eZKYwA.png" width="45%">
+</p>
+<p>Now that we have opened the Google page, let's find the search text box. This is done with an HTTP <code>POST</code> request to <a href="https://w3c.github.io/webdriver/#find-element">/session/&lt;session_id&gt;/element</a>, with the POST body including the <code>location strategy</code> and <code>selector</code></p>
+<h2 id="4-send-a-search-value">4. Send a search value</h2>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*bLtuBqQlixM8buEikmwFYw.png" alt="" /></p>
+<p>After locating the search box, let's send the search value. This is done with an HTTP <code>POST</code> request to <a href="https://w3c.github.io/webdriver/#element-send-keys">/session/&lt;session_id&gt;/element/&lt;element_id&gt;/value</a>, with the POST body including the value in the <code>text</code> parameter</p>
+<h2 id="5-find-the-search-button">5. Find the search button</h2>
+<img title="step 1" src="https://cdn-images-1.medium.com/max/2000/1*C-MRw9CryoicmxbjE8Kt9Q.png" width="100%">
+<p align="center">
+    <img title="step 2" src="https://cdn-images-1.medium.com/max/2000/1*bYRsHcSi-kgMYCpkZSRvbw.png" width="45%">
+    &nbsp; &nbsp;
+    <img title="step 3" src="https://cdn-images-1.medium.com/max/2000/1*HTO1qzeTEKGG8hrk7YgtTw.png" width="45%">
+</p>
+<p>Let's find the search text button. This is done with an HTTP <code>POST</code> request to <a href="https://w3c.github.io/webdriver/#find-element">/session/&lt;session_id&gt;/element</a>, with the POST body including the <code>location strategy</code> and <code>selector</code></p>
+<h2 id="6-click-on-search-button">6. Click on search button</h2>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*n-FjMiz5gfQZQDkjyGIgVQ.png" alt="" /></p>
+<p>Now let's click the search text button. This is done with an HTTP <code>POST</code> request to <a href="https://w3c.github.io/webdriver/#element-click">/session/&lt;session_id&gt;/element/&lt;element_id/click</a>, with the POST body including the <code>empty dictionary</code></p>
+<h2 id="7-quit-driver">7. Quit driver</h2>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*EX3TgWgWfenwaCZIn9yQbA.png" alt="" /></p>
+<p>To quit the driver, send the HTTP <code>DELETE</code> request to <a href="https://w3c.github.io/webdriver/#delete-session">/session/&lt;session_id&gt;</a></p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/a-deep-dive-into-the-w3c-webdriver-specification-fcf0906048f9">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/automation_using_chromedriver_postman">GitHub - madhank93/automation_using_chromedriver_postman</a></p>
+</center>
+<h1 id="references">References</h1>
+<p>[1] <a href="https://www.selenium.dev/documentation/en/">https://www.selenium.dev/documentation/en/</a></p>
+<p>[2] <a href="https://www.youtube.com/watch?v=IcCnzXTxFt0&amp;feature=youtu.be">https://www.youtube.com/watch?v=IcCnzXTxFt0&amp;feature=youtu.be</a></p>
+<p>[3] <a href="https://www.slideshare.net/ptrthomas/a-deep-dive-into-the-w3c-webdriver-specification">https://www.slideshare.net/ptrthomas/a-deep-dive-into-the-w3c-webdriver-specification</a></p>
+<p>[4] <a href="https://www.erranderr.com/blog/webdriver-ontology.html%5D(https://www.erranderr.com/blog/webdriver-ontology.html)">https://www.erranderr.com/blog/webdriver-ontology.html</a></p>
+<p>[5] <a href="https://sfconservancy.org/news/2018/may/31/seleniumW3C/">https://sfconservancy.org/news/2018/may/31/seleniumW3C/</a></p>
+<p>[6] <a href="https://lists.w3.org/Archives/Public/public-browser-tools-testing/2016AprJun/0097.html">https://lists.w3.org/Archives/Public/public-browser-tools-testing/2016AprJun/0097.html</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-the-test-case-that-we-are-going-to-automate-as-follow" class="toc is-size-7 is-active"
+                href=" /blogs/001-w3c/#the-test-case-that-we-are-going-to-automate-as-follow">
+                The test case that we are going to automate as follow,
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-let-s-first-start-chromedriver-in-terminal" class="toc is-size-7" href=" /blogs/001-w3c/#let-s-first-start-chromedriver-in-terminal">
+                    Let’s first start ChromeDriver in Terminal
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-1-open-the-chrome-browser" class="toc is-size-7" href=" /blogs/001-w3c/#1-open-the-chrome-browser">
+                    1. Open the Chrome browser
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-2-navigate-to-google-page" class="toc is-size-7" href=" /blogs/001-w3c/#2-navigate-to-google-page">
+                    2. Navigate to Google page
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-3-find-search-text-box" class="toc is-size-7" href=" /blogs/001-w3c/#3-find-search-text-box">
+                    3. Find search text box
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-4-send-a-search-value" class="toc is-size-7" href=" /blogs/001-w3c/#4-send-a-search-value">
+                    4. Send a search value
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-5-find-the-search-button" class="toc is-size-7" href=" /blogs/001-w3c/#5-find-the-search-button">
+                    5. Find the search button
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-6-click-on-search-button" class="toc is-size-7" href=" /blogs/001-w3c/#6-click-on-search-button">
+                    6. Click on search button
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-7-quit-driver" class="toc is-size-7" href=" /blogs/001-w3c/#7-quit-driver">
+                    7. Quit driver
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-references" class="toc is-size-7 "
+                href=" /blogs/001-w3c/#references">
+                References
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+               
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;002-build-tool&#x2F;">
+              What are build automation tool ? And a closer look at the Maven and POM file<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Getting Started with Crossplane — Part I
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Getting Started with Crossplane — Part I
+          </h1>
+          <p class="subtitle">Deploying and managing cloud resources in Kubernetes way</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2024-05-27T00:00:00+00:00"
+      >May 27, 2024</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>920 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/crossplane/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>crossplane</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/aws/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>aws</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/cloud/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>cloud</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*N9jFuyhokkBMNxNOxEtXRg.png" alt="" /></p>
+<p>In this blog post, we are going to look at how to create an AWS Cloud resource S3 bucket using <a href="https://www.crossplane.io/">Crossplane</a>.</p>
+<h3 id="what-is-crossplane">What is Crossplane ?</h3>
+<p><a href="https://www.crossplane.io/">Crossplane.io</a> is an open-source, CNCF project built on the foundation of Kubernetes to orchestrate applications and infrastructures using a <a href="https://www.linode.com/blog/devops/declarative-vs-imperative-in-iac/">declarative approach</a>. It is a framework for creating Control Planes by following principles of the <a href="https://kubernetes.io/docs/concepts/architecture/controller/">Kubernetes control loop</a> mechanism and using <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CRDs</a></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*EomF4PJGKg8fMqfpsAQ0Dw.png" alt="" /></p>
+<h3 id="how-does-it-work">How does it work ?</h3>
+<p>Crossplane transforms the Kubernetes cluster into a control plane to manage the resources in a declarative model. It comes with a set of components: <a href="https://docs.crossplane.io/latest/getting-started/introduction/#providers">Provider</a>, <a href="https://docs.crossplane.io/latest/getting-started/introduction/#compositions">Composition</a>, <a href="https://docs.crossplane.io/latest/getting-started/introduction/#composite-resources">Composite Resources</a>, <a href="https://docs.crossplane.io/latest/getting-started/introduction/#composite-resource-definitions">Composite Resource Definitions</a>, and <a href="https://docs.crossplane.io/latest/getting-started/introduction/#claims">Claims</a> as <a href="https://doc.crds.dev/github.com/crossplane/crossplane">CRDs</a>, using these components in Crossplane, resources can be managed by directly calling their APIs.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2772/1*LWYIj-v0XTqkpyCwtabscw.png" alt="" /></p>
+<h3 id="how-does-it-differ-from-tools-like-terraform-or-pulumi">How does it differ from tools like <a href="https://www.terraform.io/">Terraform</a> or <a href="https://www.pulumi.com/">Pulumi</a> ?</h3>
+<p><strong>Language and Syntax:</strong></p>
+<ul>
+<li>
+<p>Crossplane — Uses kubernetes YAML manifests file</p>
+</li>
+<li>
+<p>Terraform — Uses a domain-specific language called HCL</p>
+</li>
+<li>
+<p>Pulumi — Uses general-purpose programming languages and YAML</p>
+</li>
+</ul>
+<p><strong>Approach:</strong></p>
+<p><strong>Declarative</strong> - defining a desired state rather than the steps to reach that desired solution. <strong>Imperative</strong> — define the steps to execute in order to reach the desired solution.</p>
+<ul>
+<li>
+<p>Crossplane — Uses declarative approach</p>
+</li>
+<li>
+<p>Terraform — Uses declarative approach</p>
+</li>
+<li>
+<p>Pulumi — Uses <a href="https://www.pulumi.com/blog/pulumi-is-imperative-declarative-imperative/">declarative &amp; imperative</a> approach</p>
+</li>
+</ul>
+<p><strong>State Management:</strong></p>
+<p>It is a process of keeping track of the current state of the infrastructure resources and how to handle drift.</p>
+<ul>
+<li>
+<p><a href="https://docs.crossplane.io/latest/concepts/pods/#reconcile-loop">Crossplane </a> — Relies on Kubernetes control loop, allowing it to respond immediately to changes (drift), by continuously reconciling</p>
+</li>
+<li>
+<p><a href="https://www.hashicorp.com/blog/detecting-and-managing-drift-with-terraform">Terraform </a>— Manages the state in a state file. Commands like terraform plan to generate a plan/view the changes and terraform apply to apply changes</p>
+</li>
+<li>
+<p><a href="https://www.pulumi.com/docs/pulumi-cloud/deployments/drift/">Pulumi </a>— Manages the state in a state file. Commands likepulumi preview to generate a plan/view the changes andpulumi up to apply changes</p>
+</li>
+</ul>
+<h2 id="getting-started">Getting Started:</h2>
+<h3 id="i-installing-crossplane">i) Installing Crossplane:</h3>
+<p>Using the <a href="https://artifacthub.io/packages/helm/crossplane/crossplane">Helm chart</a>, add the Crossplane repo and install the Helm chart in a new namespace.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#6272a4;"># Add the repo
+</span><span style="color:#50fa7b;">helm</span><span> repo add crossplane-stable https://charts.crossplane.io/stable
+</span><span>
+</span><span style="color:#6272a4;"># Update local cache
+</span><span style="color:#50fa7b;">helm</span><span> repo update
+</span><span>
+</span><span style="color:#6272a4;"># Install crossplane
+</span><span style="color:#50fa7b;">helm</span><span> install crossplane \
+</span><span style="font-style:italic;color:#ffb86c;">--namespace</span><span> crossplane-system \
+</span><span style="font-style:italic;color:#ffb86c;">--create-namespace</span><span> crossplane-stable/crossplane
+</span></code></pre>
+<p>Verify the Crossplane installed components in the cluster by running the following command</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">➜  </span><span style="color:#bd93f9;">~</span><span> k get all</span><span style="font-style:italic;color:#ffb86c;"> -n</span><span> crossplane-system
+</span><span style="color:#50fa7b;">NAME</span><span>                                           READY   STATUS    RESTARTS   AGE
+</span><span style="color:#50fa7b;">pod/crossplane-b5bd69bfd-wlb2q</span><span>                 1/1     Running   0          20m
+</span><span style="color:#50fa7b;">pod/crossplane-rbac-manager-684b78c8c8-c559f</span><span>   1/1     Running   0          20m
+</span><span>
+</span><span style="color:#50fa7b;">NAME</span><span>                          TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    </span><span style="color:#50fa7b;">AGE
+</span><span style="color:#50fa7b;">service/crossplane-webhooks</span><span>   ClusterIP   10.106.50.79   </span><span style="color:#ff79c6;">&lt;</span><span>none</span><span style="color:#ff79c6;">&gt;        </span><span style="color:#bd93f9;">9443</span><span>/TCP   20m
+</span><span>
+</span><span style="color:#50fa7b;">NAME</span><span>                                      READY   UP-TO-DATE   AVAILABLE   AGE
+</span><span style="color:#50fa7b;">deployment.apps/crossplane</span><span>                1/1     1            1           20m
+</span><span style="color:#50fa7b;">deployment.apps/crossplane-rbac-manager</span><span>   1/1     1            1           20m
+</span><span>
+</span><span style="color:#50fa7b;">NAME</span><span>                                                 DESIRED   CURRENT   READY   AGE
+</span><span style="color:#50fa7b;">replicaset.apps/crossplane-b5bd69bfd</span><span>                 1         1         1       20m
+</span><span style="color:#50fa7b;">replicaset.apps/crossplane-rbac-manager-684b78c8c8</span><span>   1         1         1       20m
+</span></code></pre>
+<h3 id="ii-configuring-aws-providers">ii) Configuring AWS providers:</h3>
+<p>Providers enable Crossplane to provision infrastructure on an external service. In this example, the <a href="https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.5.0">AWS S3 provider</a> is used. Run the kubernetes apply -f provider.yml to create a <a href="https://docs.crossplane.io/latest/concepts/providers/">Provider</a> object in the k8s cluster.</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">apiVersion</span><span>: </span><span style="color:#f1fa8c;">pkg.crossplane.io/v1
+</span><span style="color:#ff79c6;">kind</span><span>: </span><span style="color:#f1fa8c;">Provider
+</span><span style="color:#ff79c6;">metadata</span><span>:
+</span><span>  </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">provider-aws-s3
+</span><span style="color:#ff79c6;">spec</span><span>:
+</span><span>  </span><span style="color:#ff79c6;">package</span><span>: </span><span style="color:#f1fa8c;">xpkg.upbound.io/upbound/provider-aws-s3:v1.5.0
+</span></code></pre>
+<p>To create resources in AWS, need to authenticate to AWS. First, you need to create Secrets from the credentials.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> create secret generic aws-secret \
+</span><span style="font-style:italic;color:#ffb86c;">    -n</span><span> crossplane-system \
+</span><span style="font-style:italic;color:#ffb86c;">    --from-file</span><span style="color:#ff79c6;">=</span><span>creds=/root/.aws/credentials
+</span></code></pre>
+<p>And then reference the secrets in ProviderConfig to establish the connection to AWS. Run the kubernetes apply -f provider-config.yml to create a <a href="https://docs.crossplane.io/latest/concepts/providers/#provider-configuration">ProviderConfig</a> object in the k8s cluster.</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">apiVersion</span><span>: </span><span style="color:#f1fa8c;">aws.upbound.io/v1beta1
+</span><span style="color:#ff79c6;">kind</span><span>: </span><span style="color:#f1fa8c;">ProviderConfig
+</span><span style="color:#ff79c6;">metadata</span><span>:
+</span><span>  </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">default
+</span><span style="color:#ff79c6;">spec</span><span>:
+</span><span>  </span><span style="color:#ff79c6;">credentials</span><span>:
+</span><span>  </span><span style="color:#ff79c6;">source</span><span>: </span><span style="color:#f1fa8c;">Secret
+</span><span>  </span><span style="color:#ff79c6;">secretRef</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">namespace</span><span>: </span><span style="color:#f1fa8c;">crossplane-system
+</span><span>    </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">aws-secret
+</span><span>    </span><span style="color:#ff79c6;">key</span><span>: </span><span style="color:#f1fa8c;">creds
+</span></code></pre>
+<h3 id="iii-create-s3-bucket">iii) Create S3 bucket</h3>
+<p>It is time to create an S3 bucket in AWS, execute the commandkubernetes apply -f s3-bucket.yml</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">apiVersion</span><span>: </span><span style="color:#f1fa8c;">s3.aws.upbound.io/v1beta1
+</span><span style="color:#ff79c6;">kind</span><span>: </span><span style="color:#f1fa8c;">Bucket
+</span><span style="color:#ff79c6;">metadata</span><span>:
+</span><span>  </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">mk-crossplane-test-bucket
+</span><span>  </span><span style="color:#ff79c6;">labels</span><span>:
+</span><span>  </span><span style="color:#ff79c6;">testing.upbound.io/example-name</span><span>: </span><span style="color:#f1fa8c;">s3
+</span><span style="color:#ff79c6;">spec</span><span>:
+</span><span>  </span><span style="color:#ff79c6;">forProvider</span><span>:
+</span><span>  </span><span style="color:#ff79c6;">region</span><span>: </span><span style="color:#f1fa8c;">us-east-1
+</span><span>  </span><span style="color:#ff79c6;">tags</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">env</span><span>: </span><span style="color:#f1fa8c;">test
+</span></code></pre>
+<p>Go to the AWS console, and select the S3 service. And verify the s3 bucket named mk-crossplane-test-bucket is created.</p>
+<p>To verify the drift correction process delete the s3 bucket in the AWS console. Wait for some time and observe that the bucket is being re-created.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/getting-started-with-crossplane-part-i-3d549b2937fb">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/crossplane-aws">GitHub - madhank93/crossplane-aws</a></p>
+</center>
+<p><strong>References</strong>:</p>
+<p>[1] <a href="https://docs.crossplane.io/latest/">https://docs.crossplane.io/latest/</a></p>
+<p>[2] <a href="https://blog.upbound.io/">https://blog.upbound.io/</a></p>
+<p>[3] <a href="https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16">https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16</a></p>
+<p>[4] <a href="https://www.youtube.com/watch?v=2l8j_yxJbow">https://www.youtube.com/watch?v=2l8j_yxJbow</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-what-is-crossplane" class="toc is-size-7 is-active"
+                href=" /blogs/020-getting-started-crossplane/#what-is-crossplane">
+                What is Crossplane ?
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-how-does-it-work" class="toc is-size-7 "
+                href=" /blogs/020-getting-started-crossplane/#how-does-it-work">
+                How does it work ?
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-how-does-it-differ-from-tools-like-terraform-or-pulumi" class="toc is-size-7 "
+                href=" /blogs/020-getting-started-crossplane/#how-does-it-differ-from-tools-like-terraform-or-pulumi">
+                How does it differ from tools like Terraform or Pulumi ?
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-getting-started" class="toc is-size-7 "
+                href=" /blogs/020-getting-started-crossplane/#getting-started">
+                Getting Started:
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-i-installing-crossplane" class="toc is-size-7" href=" /blogs/020-getting-started-crossplane/#i-installing-crossplane">
+                    i) Installing Crossplane:
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-ii-configuring-aws-providers" class="toc is-size-7" href=" /blogs/020-getting-started-crossplane/#ii-configuring-aws-providers">
+                    ii) Configuring AWS providers:
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-iii-create-s3-bucket" class="toc is-size-7" href=" /blogs/020-getting-started-crossplane/#iii-create-s3-bucket">
+                    iii) Create S3 bucket
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;019-solving-sad-servers-1&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Solving Sad Servers — Part I
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;021-tailscale-geo-content&#x2F;">
+              Unlocking geo-restricted contents with Tailscale<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
