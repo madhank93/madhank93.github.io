@@ -4,7 +4,7 @@ description = "A End-to-End guide on GPU Passthrough"
 date = 2025-07-06T00:00:00+00:00
 
 [taxonomies]
-tags = ["gpu", "homelab", "proxmox", "ai", "nvidia"]
+tags = ["gpu", "homelab", "proxmox", "ai", "nvidia", "pulumi"]
 
 [extra]
 toc = true

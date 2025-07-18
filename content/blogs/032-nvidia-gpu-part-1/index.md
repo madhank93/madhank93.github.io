@@ -60,6 +60,14 @@ At first, I tried using a regular USB-C cable to connect the dock. It didn’t w
 
 A vGPU, or virtual GPU, is a technology that allows a physical GPU to be split into virtual instances, enabling multiple virtual machines (VMs) to share graphics card. However, this feature is officially supported only on Nvidia’s enterprise-grade GPUs and is not available for consumer models like the RTX series. For homelab users, the alternative is PCIe tunneling (passthrough), which assigns the entire GPU to a single VM at a time — without sharing it across multiple VM.
 
+<div align="center">* * * *</div>
+
+<center>
+
+Originally published on [Medium](https://medium.com/@madhankumaravelu93/making-my-homelab-server-ai-ready-with-nvidia-gpu-part-i-e292ad0ea042)
+
+</center>
+
 ### Reference:
 
 [1] [https://aoostar.com/collections/egpu-series](https://aoostar.com/collections/egpu-series)
