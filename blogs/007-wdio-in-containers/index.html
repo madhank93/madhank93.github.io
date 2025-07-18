@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Running WebdriverIO tests in containers
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Running WebdriverIO tests in containers
+          </h1>
+          <p class="subtitle">A guide to running test automation scripts in container</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2021-06-22T01:24:33+05:30"
+      >June 22, 2021</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>3 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>478 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/wdio/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>wdio</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/docker/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>docker</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/selenoid/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>selenoid</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ts/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ts</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/github-actions/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>github-actions</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ci/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ci</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/2880/1*clLrNn1wKHiytehS2Mu3Fg.gif" alt="" /></p>
+<p>As we looked at how to run test automation scripts in selenoid using 3rd party add-on actions in my <a href="https://medium.com/testvagrant/github-actions-for-seleniod-test-scripts-df469062a08c">previous blog</a>. In this blog let’s dive into how to containerize <a href="https://webdriver.io/">WebdriverIO</a> test automation scripts, and set up a <a href="https://aerokube.com/selenoid/">Selenoid</a> environment using <a href="https://www.docker.com/">Docker</a> to run in local and CI environments.</p>
+<p>The main advantage of choosing docker over any 3rd party add-on is it enables users to package an application into containers — standardized executable components that combine application source code with all the dependencies required to run the code in any environment.</p>
+<h3 id="setup-process">Setup process</h3>
+<p>Let’s start this process by creating a <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>, which is a text document that contains all the commands to build an image, docker can build an image automatically by reading the instructions present in the docker file.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;821651bc4c2adfa2e0b49047d33c29ba.js"></script>
+</div>
+<p>The above Dockerfile will install the necessary packages and includes all the test automation source code.</p>
+<p>Now let's create a <a href="https://docs.docker.com/compose/">Docker Compose</a> file. All the instructions for running a container will be specified in this file in a YAML format.</p>
+<p>For this example, we will use the <a href="https://docs.docker.com/compose/extends/">shared compose</a> feature which lets you share the common configurations between the compose files.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;35a31854fdb114c0884fceb82a31df91.js"></script>
+</div>
+<p>The above docker-compose file will act as a base config file for both local and CI.</p>
+<p>Now let’s create a compose file specific for the local environment, which enables the selenoid feature of VNC and video storage.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;a5c8e4a91baeb16bca72549a86bfbef2.js"></script>
+</div>
+<p>The next step is to create compose file specific to CI environments.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;7b0f682b889d23dc3f211e25175cd625.js"></script>
+</div>
+<p>Now let’s make necessary changes in wdio.conf.ts to support VNC and video storage which are specific to selenoid.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;81a55d69a12a10f4a70edecac6a25eb6.js"></script>
+</div>
+<p>And don’t forget to volume map the <a href="https://gist.github.com/madhank93/a945f0d2fe622825fe29d15ecc25c7cc">browsers.json</a>* to the container running selenoid.</p>
+<p>To manage all the commands for creating and removing containers let’s create <a href="https://www.gnu.org/software/make/manual/make.html">Makefile</a> and store all the commands in it.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;4c96feb7171006fcc29f293ba8954237.js"></script>
+</div>
+<p>Finally, let’s hook all these steps into Github Actions.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;39b208e2d17b1e04d53e6ed9d7c94d32.js"></script>
+</div>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/testvagrant/running-webdriverio-tests-in-containers-871e0238e31f">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/wdio-docker-ci">GitHub - madhank93/wdio-docker-ci</a></p>
+<p><a href="https://madhank93.github.io/wdio-docker-ci/5/">Allure report link</a></p>
+</center>
+<p><strong>References:</strong></p>
+<p>[1] <a href="https://aerokube.com/selenoid/latest/">https://aerokube.com/selenoid/latest/</a></p>
+<p>[2] <a href="https://aerokube.com/selenoid-ui/latest/">https://aerokube.com/selenoid-ui/latest/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-setup-process" class="toc is-size-7 is-active"
+                href=" /blogs/007-wdio-in-containers/#setup-process">
+                Setup process
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;006-github-actions-selenoid&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Github Actions for Seleniod Test Scripts
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;008-scaling-tests-gke-gitops&#x2F;">
+              Scaling tests on Google Kubernetes Engine with Cloud Build<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

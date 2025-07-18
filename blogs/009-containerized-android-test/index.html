@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Running containerized android tests in GCP using Pulumi and Selenoid
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Running containerized android tests in GCP using Pulumi and Selenoid
+          </h1>
+          <p class="subtitle">Leveraging Pulumi’s IaC feature to run Android test automation</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2022-04-21T01:24:33+05:30"
+      >April 21, 2022</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>816 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/docker/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>docker</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/selenoid/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>selenoid</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/android/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>android</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/gcp/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>gcp</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/pulumi/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>pulumi</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ts/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ts</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/appium/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>appium</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/iac/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>iac</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*qQ4VcDa22uq2a00xeOH7Mw.png" alt="" /></p>
+<p>In the previous blog we looked at running web automation tests using selenoid in <a href="https://medium.com/p/871e0238e31f">Docker</a> and <a href="https://medium.com/p/624d955f6698">Kubernetes</a>. This time we are going to look at running containerized android tests in GCP using Pulumi and Selenoid.</p>
+<p><a href="https://www.pulumi.com/">Pulumi</a> is a modern <a href="https://www.pulumi.com/what-is/what-is-infrastructure-as-code/">Infrastructure as Code</a> platform that allows you to use familiar programming languages and tools to build, deploy, and manage cloud infrastructure. <a href="https://aerokube.com/selenoid/">Selenoid</a> is a lightning fast Selenium protocol implementation running on browsers and android emulator in Docker containers.</p>
+<blockquote>
+<p>To get started with Pulumi and GCP, please refer to this <a href="https://www.pulumi.com/docs/get-started/gcp/">article</a>. It includes installation and environment setup.</p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*BMkYeNZF1zWDrxdxiDsLdA.png" alt="High level architecture" /></p>
+<p>Totally there are 3 parts to this article,</p>
+<ol>
+<li>
+<p>Environment setup in GCP,</p>
+</li>
+<li>
+<p>Running Selenoid containers, and</p>
+</li>
+<li>
+<p>Containerizing Android tests and executing it</p>
+</li>
+</ol>
+<h2 id="environment-setup-in-gcp">Environment setup in GCP</h2>
+<p>In order to run selenoid android containers we need a <a href="https://github.com/aerokube/selenoid/issues/687">Linux server</a> with <a href="https://cloud.google.com/compute/docs/instances/nested-virtualization/overview">nested virtualization</a> enabled. So we will use Pulumi to build infrastructure setup in GCP. One thing to keep in mind is that not every machine type in GCP supports nested virtualization; for more info refer to this <a href="https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions">article</a>.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;aaa95eb7e77ba6031e7d3da72afc70ea.js"></script>
+</div>
+<p><a href="https://gist.github.com/1d6d18fd27dd74292ac364a9a20ac5df">deploy.sh</a> file contains scripts to install docker and docker compose in the GCP remote instance.</p>
+<h2 id="running-selenoid-containers">Running Selenoid containers</h2>
+<p>Pulumi <a href="https://www.pulumi.com/registry/packages/docker/">docker provider</a> packaged is used to run the containers in GCP instance.</p>
+<div class="gist" >
+  <script src="https:&#x2F;&#x2F;gist.github.com&#x2F;madhank93&#x2F;58287b1a8607392f1b0c09b1da47f796.js"></script>
+</div>
+<h2 id="containerizing-android-tests-and-executing-it">Containerizing android tests and executing it</h2>
+<p>To demonstrate I have used Sauce Labs <a href="https://github.com/saucelabs/sample-app-mobile/releases">swag app</a> using Java to automate the <a href="https://gist.github.com/madhank93/2fd8bfb0cee6cff3e77437ff738ec043#file-androidautomation-java">login process</a>. Containerized the test scripts using <a href="https://gist.github.com/madhank93/be0da07ede408c6ec9d0ee7465dc0882#file-dockerfile">docker</a> multi stage build.</p>
+<p><strong>Remote address</strong></p>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">String </span><span style="color:#bd93f9;">APPIUM </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;http://selenoid:4444/wd/hub&quot;</span><span>;
+</span></code></pre>
+<p>The android automation test scripts should point to the above URL. If the test application is also deployed as part of a docker container.</p>
+<pre data-lang="java" style="background-color:#282a36;color:#f8f8f2;" class="language-java "><code class="language-java" data-lang="java"><span style="font-style:italic;color:#66d9ef;">String </span><span style="color:#bd93f9;">APPIUM </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;http://external-ip:4444/wd/hub&quot;</span><span>;
+</span></code></pre>
+<p>If you want your setup to be in GCP and run tests from the local machine, all we need is to change the above URL to point to the <strong>External IP</strong> address.</p>
+<p><strong>Specifying capabilities</strong></p>
+<p><img src="https://cdn-images-1.medium.com/max/6060/1*rvJt9ff7SvrPGFMNzF0pug.png" alt="Android Capabilities" /></p>
+<p>One thing to notice here is that rather than providing the local path of the APK file, I have specified the URL. Because the local path of the APK does not exist inside the container or else you have to <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> the APK file. Another approach is to <a href="http://aerokube.com/images/latest/#_building_images">build an image</a> with APK preinstalled.</p>
+<p><strong>Adding containers to Pulumi docker setup</strong></p>
+<p><img src="https://cdn-images-1.medium.com/max/3408/1*oqkYqo2m3LJMTQcUlvzp1Q.png" alt="Android demo test container" /></p>
+<p>Finally, the docker execution file of Pulumi will look like <a href="https://gist.github.com/1d113a9043b06bc2e50a174ab01a5e3f">this</a>. Since it is a demo application, I have pushed docker image to the <a href="https://hub.docker.com/r/madhank93/android-demo">public registry</a>; you should consider pushing it to private registry.</p>
+<h2 id="execution">Execution</h2>
+<p>Finally, we have reached to the execution part, once all the setup has been completed. All we need to do is run the below command.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">pulumi</span><span> up
+</span></code></pre>
+<p>Proceed with “<strong>Yes</strong>” for <a href="https://www.pulumi.com/docs/reference/cli/pulumi_preview/">pulumi preview</a> updates, and you will have the infrastructure setup in 4 minutes <a href="https://gist.github.com/madhank93/b942c48567a37f9bbd788efcf4cc7bab#file-pulumi-logs-log">logs</a>. You can connect to <strong><em>http://external-ip:8080/</em></strong> to see the live execution. The Selenoid UI also provides the option to launch the session manually. Once the tests are completed, you can run the following command</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">pulumi</span><span> destroy
+</span></code></pre>
+<p>The above command will destroy all the resources created as part of Pulumi (including instance, docker container and images, etc.)</p>
+<p>The source code of this blog post can be found <a href="https://github.com/madhank93/android-automation-gcp-pulumi">here</a>.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/running-containerized-android-tests-in-gcp-using-pulumi-and-selenoid-faf4c398cd6c">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/android-automation-gcp-pulumi">GitHub - madhank93/android-automation-gcp-pulumi</a></p>
+</center>
+<p><strong>References:</strong></p>
+<p>[1] <a href="https://www.pulumi.com/blog/">https://www.pulumi.com/blog/</a></p>
+<p>[2] <a href="https://aerokube.com/selenoid/latest/">https://aerokube.com/selenoid/latest/</a></p>
+<p>[3] <a href="https://github.com/pulumi/examples">https://github.com/pulumi/examples</a></p>
+<p>[4] <a href="https://brunoscheufler.com/blog/2021-09-26-containers-as-code-with-pulumi-and-docker">https://brunoscheufler.com/blog/2021-09-26-containers-as-code-with-pulumi-and-docker</a></p>
+<p>[5] <a href="https://stackoverflow.com/a/59022743">https://stackoverflow.com/a/59022743</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-environment-setup-in-gcp" class="toc is-size-7 is-active"
+                href=" /blogs/009-containerized-android-test/#environment-setup-in-gcp">
+                Environment setup in GCP
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-running-selenoid-containers" class="toc is-size-7 "
+                href=" /blogs/009-containerized-android-test/#running-selenoid-containers">
+                Running Selenoid containers
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-containerizing-android-tests-and-executing-it" class="toc is-size-7 "
+                href=" /blogs/009-containerized-android-test/#containerizing-android-tests-and-executing-it">
+                Containerizing android tests and executing it
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-execution" class="toc is-size-7 "
+                href=" /blogs/009-containerized-android-test/#execution">
+                Execution
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;008-scaling-tests-gke-gitops&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Scaling tests on Google Kubernetes Engine with Cloud Build
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;010-mointoring-tests&#x2F;">
+              Monitoring Test automation: Gathering metrics — Part 1<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
