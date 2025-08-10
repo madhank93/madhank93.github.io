@@ -16,7 +16,7 @@ In my previous article I talked about [configuring GPU in VM level in Proxmox us
 
 ## Pre-flight check:
 
-To ensure secure and automated access to the newly provisioned VMs, password authentication for the default `ubuntu` user has been disabled and now it relies on SSH keys. Before deployment, you must update the `cloud-init.yml` file with your own public SSH key. This `cloud-init` configuration automatically adds your key to the VM upon creation, allowing you to connect securely without a password.
+To ensure secure and automated access to the newly provisioned VMs, password authentication for the default `ubuntu` user has been disabled and now it relies on SSH keys. Before deployment, update the `cloud-init.yml` file with own public SSH key. This `cloud-init` configuration automatically adds key to the VM upon creation, allowing to connect securely without a password.
 
 ## Updating cluster inventory
 
@@ -97,7 +97,7 @@ Describe the node and look for `nvidia.com/gpu` in the labels and `nvidia.com/gp
 kubectl describe node k8s-worker4
 ```
 
-You should see an output similar to this.
+Should see an output similar to this.
 
 ```yml
 Allocatable:
@@ -110,7 +110,7 @@ Allocatable:
     pods:               110
 ```
 
-To confirm that everything is working, you can run a simple test pod that requests GPU resources and executes the nvidia-smi command.
+To confirm that everything is working, run a simple test pod that requests GPU resources and executes the nvidia-smi command.
 
 Create a file named gpu-test.yaml with the following content.
 
@@ -150,7 +150,7 @@ After a few moments, check the logs of the pod.
 kubectl logs pods/cuda-smi-test
 ```
 
-If the installation was successful, the output will be the familiar nvidia-smi report, showing the details of the GPU, but this time generated from within a Kubernetes pod . With these changes, my homelab is now fully equipped to run GPU-accelerated workloads directly within Kubernetes, marking a significant milestone in its evolution.
+If the installation was successful, the output will be the familiar nvidia-smi report, showing the details of the GPU, but this time generated from within a Kubernetes pod . With these changes, my homelab is now fully equipped to run GPU-accelerated workloads directly within Kubernetes.
 
 ![nvidia-smi output](https://cdn-images-1.medium.com/max/3168/1*oq2U6YQfB-hLBI7xGHeJxw.png)
 

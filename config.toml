@@ -65,6 +65,7 @@ navbar_items = [
   { url = "$BASE_URL/til", name = "TIL" },
   { url = "$BASE_URL/projects", name = "Projects" },
   { url = "$BASE_URL/archive", name = "Archive" },
+  { url = "$BASE_URL/uses", name = "Uses" },
   { url = "$BASE_URL/tags", name = "Tags" },
  ]},
 ]
