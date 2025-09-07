@@ -14,7 +14,9 @@ paginate_by = 5
 
 ## Homelab
 
-- **Home server**: Dell Precision 7820 Tower Workstation - Refurbished
+- **Home server**: 
+    - Dell Precision 7820 Tower Workstation - Refurbished
+    - Raspberry Pi 4 Model B
 - **GPU**: Gigabyte NVIDIA GeForce RTX 5070 Ti
 - **eGPU**: AOOSTAR AG02 EGPU Dock
 
@@ -27,4 +29,4 @@ paginate_by = 5
 
 <br>
 
-_Last Updated Aug 9th, 2025_
+_Last Updated Sep 6th, 2025_
