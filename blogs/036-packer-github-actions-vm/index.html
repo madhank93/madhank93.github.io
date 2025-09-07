@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Building pre-configured VM images with Packer and GitHub actions
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;uses">
+            Uses
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Building pre-configured VM images with Packer and GitHub actions
+          </h1>
+          <p class="subtitle">Simplifying VM provisioning and accelerating boot times</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2025-09-01T00:00:00+00:00"
+      >September 01, 2025</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>974 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/packer/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>packer</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/github-actions/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>github-actions</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/hashicorp/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>hashicorp</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/qemu/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>qemu</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/kvm/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>kvm</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/vm-image/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>vm image</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*AsrF1Sxe-3gOgpMsjmc4Yw.png" alt="Banner" /></p>
+<p>I recently hit a roadblock in my homelab setup when trying to install few packages as part of cloud-init during VM creation. Main issue I faced were the QEMU guest agent not running properly, which made getting the IP addresses of newly spun VMs difficult. That’s when I came across <a href="https://developer.hashicorp.com/packer"><strong>Hashicorp Packer</strong></a> — a tool that allows to pre-build cloud images with all the necessary packages already installed, and eliminating lengthy VM boot.</p>
+<p><a href="https://www.qemu.org/"><strong>QEMU</strong></a> (Quick Emulator) — An open-source hypervisor that emulates physical computers by providing virtualized hardware resources like storage, network cards, and CPU to guest operating systems.</p>
+<p><a href="https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine"><strong>KVM</strong></a> (Kernel-based Virtual Machine) — A Linux virtualization technology that turns the kernel into a hypervisor, allowing multiple isolated virtual machines to run on a single host with near-native performance.</p>
+<p><a href="https://developer.hashicorp.com/packer/integrations/hashicorp/qemu/latest/components/builder/qemu"><strong>Packer QEMU</strong></a> builder — Creates KVM virtual machine images by spinning up a temporary VM, installing an operating system, provisioning software, and then converting the result into a reusable image.</p>
+<h2 id="packer-configuration-breakdown">Packer configuration breakdown</h2>
+<h3 id="plugin-and-variable-setup">Plugin and variable setup</h3>
+<pre data-lang="ini" style="background-color:#282a36;color:#f8f8f2;" class="language-ini "><code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#8be9fd;">packer </span><span>{
+</span><span style="font-style:italic;color:#8be9fd;">    required_plugins </span><span>{
+</span><span>        </span><span style="font-style:italic;color:#ffb86c;">qemu </span><span style="color:#ff79c6;">=</span><span> {
+</span><span>            </span><span style="font-style:italic;color:#ffb86c;">version </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;&gt;= 1.1.4&quot;
+</span><span>            </span><span style="font-style:italic;color:#ffb86c;">source  </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;github.com/hashicorp/qemu&quot;
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span style="font-style:italic;color:#ffb86c;">variable </span><span style="color:#f1fa8c;">&quot;image_url&quot;</span><span> {
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">type    </span><span style="color:#ff79c6;">=</span><span> string
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">default </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-amd64.img&quot;
+</span><span>}
+</span><span style="font-style:italic;color:#ffb86c;">variable </span><span style="color:#f1fa8c;">&quot;image_checksum&quot;</span><span> {
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">type    </span><span style="color:#ff79c6;">=</span><span> string
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">default </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;sha256:834af9cd766d1fd86eca156db7dff34c3713fbbc7f5507a3269be2a72d2d1820&quot;
+</span><span>}
+</span></code></pre>
+<p>This section declares the required QEMU plugin and defines variables for the Ubuntu 24.04 cloud image URL and its SHA256 checksum for integrity verification.</p>
+<h3 id="qemu-source-configuration">QEMU source configuration</h3>
+<pre data-lang="ini" style="background-color:#282a36;color:#f8f8f2;" class="language-ini "><code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#ffb86c;">source </span><span style="color:#f1fa8c;">&quot;qemu&quot; &quot;ubuntu&quot;</span><span> {
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">iso_url              </span><span style="color:#ff79c6;">=</span><span> var</span><span style="color:#ff79c6;">.</span><span>image_url
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">iso_checksum         </span><span style="color:#ff79c6;">=</span><span> var</span><span style="color:#ff79c6;">.</span><span>image_checksum
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">disk_image           </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">true
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">output_directory     </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;artifacts&quot;
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">disk_interface       </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;virtio&quot;
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">net_device           </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;virtio-net&quot;
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">disk_size            </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;8G&quot;
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">format               </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;qcow2&quot;
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">disk_compression     </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">true
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">accelerator          </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;kvm&quot;
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">headless             </span><span style="color:#ff79c6;">= </span><span style="color:#bd93f9;">true
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">qemuargs </span><span style="color:#ff79c6;">=</span><span> [
+</span><span style="font-style:italic;color:#8be9fd;">        [&quot;-cdrom&quot;, &quot;cidata.iso&quot;]
+</span><span>    ]
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">ssh_username         </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;ubuntu&quot;
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">ssh_password         </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;supersecret&quot;
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">ssh_timeout          </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;10m&quot;
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">shutdown_command     </span><span style="color:#ff79c6;">= </span><span style="color:#f1fa8c;">&quot;echo &#39;supersecret&#39; | sudo -S shutdown -P now&quot;
+</span><span>}
+</span></code></pre>
+<p>Key Configuration,</p>
+<ul>
+<li>
+<p><strong>qcow2</strong> — QEMU's copy-on-write format that supports compression and snapshots</p>
+</li>
+<li>
+<p><strong>accelerator</strong> = &quot;kvm&quot; — Enables hardware acceleration for faster builds</p>
+</li>
+<li>
+<p><strong>qemuargs</strong> — Attaches the cloud-init ISO containing user configuration</p>
+</li>
+</ul>
+<h3 id="build-process">Build process</h3>
+<pre data-lang="ini" style="background-color:#282a36;color:#f8f8f2;" class="language-ini "><code class="language-ini" data-lang="ini"><span style="font-style:italic;color:#8be9fd;">build </span><span>{
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">sources </span><span style="color:#ff79c6;">=</span><span> [</span><span style="color:#f1fa8c;">&quot;source.qemu.ubuntu&quot;</span><span>]
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">provisioner </span><span style="color:#f1fa8c;">&quot;shell&quot;</span><span> {
+</span><span>        </span><span style="font-style:italic;color:#ffb86c;">inline </span><span style="color:#ff79c6;">=</span><span> [
+</span><span>            </span><span style="color:#f1fa8c;">&quot;while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo &#39;Waiting for Cloud-Init...&#39;; sleep 1; done&quot;</span><span style="color:#ff79c6;">,
+</span><span>        ]
+</span><span>    }
+</span><span>    </span><span style="font-style:italic;color:#ffb86c;">provisioner </span><span style="color:#f1fa8c;">&quot;shell&quot;</span><span> {
+</span><span>        </span><span style="font-style:italic;color:#ffb86c;">inline </span><span style="color:#ff79c6;">=</span><span> [
+</span><span>            </span><span style="color:#f1fa8c;">&quot;sudo apt-get clean&quot;</span><span style="color:#ff79c6;">,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;sudo rm -rf /var/lib/apt/lists/*&quot;</span><span style="color:#ff79c6;">,
+</span><span>            </span><span style="color:#f1fa8c;">&quot;sudo fstrim -av&quot;
+</span><span>        ]
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>The build process,</p>
+<ol>
+<li>
+<p>Waits for cloud-init completion to ensure all initial setup is finished</p>
+</li>
+<li>
+<p>Cleans package caches to reduce final image size</p>
+</li>
+<li>
+<p>Trims unused disk space for optimal storage efficiency</p>
+</li>
+</ol>
+<h3 id="cloud-init-configuration">Cloud-Init configuration</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">users</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">ubuntu
+</span><span>    </span><span style="color:#ff79c6;">sudo</span><span>: </span><span style="color:#f1fa8c;">ALL=(ALL) NOPASSWD:ALL
+</span><span>    </span><span style="color:#ff79c6;">shell</span><span>: </span><span style="color:#f1fa8c;">/bin/bash
+</span><span>    </span><span style="color:#ff79c6;">lock_passwd</span><span>: </span><span style="color:#bd93f9;">false
+</span><span>    </span><span style="color:#ff79c6;">plain_text_passwd</span><span>: </span><span style="color:#f1fa8c;">supersecret
+</span><span style="color:#ff79c6;">ssh_pwauth</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">password</span><span>: </span><span style="color:#f1fa8c;">supersecret
+</span><span style="color:#ff79c6;">chpasswd</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">expire</span><span>: </span><span style="color:#bd93f9;">false
+</span><span style="color:#ff79c6;">runcmd</span><span>:
+</span><span>    - </span><span style="color:#f1fa8c;">systemctl enable ssh
+</span><span>    - </span><span style="color:#f1fa8c;">systemctl start ssh
+</span><span>    - </span><span style="color:#f1fa8c;">systemctl restart ssh
+</span><span style="color:#ff79c6;">package_update</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">package_upgrade</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">packages</span><span>:
+</span><span>    - </span><span style="color:#f1fa8c;">openssh-server
+</span><span>    - </span><span style="color:#f1fa8c;">clang
+</span><span>    - </span><span style="color:#f1fa8c;">llvm
+</span><span>    - </span><span style="color:#f1fa8c;">make
+</span><span>    - </span><span style="color:#f1fa8c;">gcc
+</span><span>    - </span><span style="color:#f1fa8c;">git
+</span><span>    - </span><span style="color:#f1fa8c;">curl
+</span><span>    - </span><span style="color:#f1fa8c;">wget
+</span><span>    - </span><span style="color:#f1fa8c;">net-tools
+</span><span>    - </span><span style="color:#f1fa8c;">qemu-guest-agent
+</span><span>    - </span><span style="color:#f1fa8c;">ubuntu-drivers-common
+</span><span>    - </span><span style="color:#f1fa8c;">linux-headers-generic
+</span><span style="color:#ff79c6;">write_files</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">path</span><span>: </span><span style="color:#f1fa8c;">/etc/ssh/sshd_config.d/99-packer.conf
+</span><span>    </span><span style="color:#ff79c6;">content</span><span>: </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">        PasswordAuthentication yes
+</span><span style="color:#f1fa8c;">        PermitRootLogin no
+</span><span style="color:#f1fa8c;">        PubkeyAuthentication yes
+</span><span>    </span><span style="color:#ff79c6;">permissions</span><span>: </span><span style="color:#f1fa8c;">&#39;0644&#39;
+</span></code></pre>
+<p>This cloud-init configuration,</p>
+<ul>
+<li>
+<p>Creates a user with sudo privileges and password authentication</p>
+</li>
+<li>
+<p>Installs essential development tools and system utilities</p>
+</li>
+<li>
+<p>Configures SSH for remote access</p>
+</li>
+<li>
+<p>Updates all packages to latest versions</p>
+</li>
+</ul>
+<h2 id="github-actions-automation">GitHub Actions automation</h2>
+<p>The GitHub Actions workflow automates the entire image building and release process.</p>
+<h3 id="workflow-triggers-and-permissions">Workflow triggers and permissions</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#bd93f9;">on</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">push</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">branches</span><span>:
+</span><span>        - </span><span style="color:#f1fa8c;">&quot;main&quot;
+</span><span>    </span><span style="color:#ff79c6;">workflow_dispatch</span><span>:
+</span><span style="color:#ff79c6;">permissions</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">contents</span><span>: </span><span style="color:#f1fa8c;">write
+</span><span>    </span><span style="color:#ff79c6;">id-token</span><span>: </span><span style="color:#f1fa8c;">write
+</span></code></pre>
+<p>Triggers on pushes to main branch or manual dispatch and grants permissions to create releases &amp; upload artifacts.</p>
+<h3 id="environment-variables">Environment Variables</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">env</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">PRODUCT_VERSION</span><span>: </span><span style="color:#f1fa8c;">&quot;1.14.1&quot;
+</span><span>    </span><span style="color:#ff79c6;">UBUNTU_VERSION</span><span>: </span><span style="color:#f1fa8c;">&quot;22.04&quot;
+</span></code></pre>
+<p>Defines Packer and Ubuntu version.</p>
+<h2 id="ga-step-analysis">GA step analysis</h2>
+<h3 id="1-repository-checkout">1. Repository checkout</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Checkout repository
+</span><span>    </span><span style="color:#ff79c6;">uses</span><span>: </span><span style="color:#f1fa8c;">actions/checkout@v4
+</span></code></pre>
+<p>Downloads the repository code.</p>
+<h3 id="2-kvm-permissions-setup">2. KVM permissions setup</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Enable KVM group perms
+</span><span>    </span><span style="color:#ff79c6;">run</span><span>: </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">    echo &#39;KERNEL==&quot;kvm&quot;, GROUP=&quot;kvm&quot;, MODE=&quot;0666&quot;, OPTIONS+=&quot;static_node=kvm&quot;&#39; | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+</span><span style="color:#f1fa8c;">    sudo udevadm control --reload-rules
+</span><span style="color:#f1fa8c;">    sudo udevadm trigger --name-match=kvm
+</span></code></pre>
+<p>This step enables hardware acceleration for significantly faster builds.</p>
+<h3 id="3-qemu-installation">3. QEMU installation</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Install QEMU and dependencies
+</span><span>    </span><span style="color:#ff79c6;">run</span><span>: </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">    sudo apt-get update
+</span><span style="color:#f1fa8c;">    sudo apt-get install -y qemu-system-x86 qemu-utils genisoimage
+</span></code></pre>
+<p>Installs QEMU system emulator, utilities, and tools for creating ISO images.</p>
+<h3 id="4-cloud-init-iso-creation">4. Cloud-Init ISO creation</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Create Cloud-Init ISO
+</span><span>    </span><span style="color:#ff79c6;">run</span><span>: </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">    genisoimage -output cidata.iso -input-charset utf-8 -volid cidata -joliet -r http/user-data http/meta-data
+</span></code></pre>
+<p>Creates an ISO containing cloud-init configuration files (user-data) that QEMU will mount as a CD-ROM during VM boot.</p>
+<h3 id="5-packer-setup-and-execution">5. Packer setup and execution</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Setup Packer
+</span><span>    </span><span style="color:#ff79c6;">uses</span><span>: </span><span style="color:#f1fa8c;">hashicorp/setup-packer@main
+</span><span>    </span><span style="color:#ff79c6;">id</span><span>: </span><span style="color:#f1fa8c;">setup
+</span><span>    </span><span style="color:#ff79c6;">with</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">version</span><span>: </span><span style="color:#f1fa8c;">${{ env.PRODUCT_VERSION }}
+</span><span>
+</span><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Initialize Packer
+</span><span>    </span><span style="color:#ff79c6;">id</span><span>: </span><span style="color:#f1fa8c;">init
+</span><span>    </span><span style="color:#ff79c6;">run</span><span>: </span><span style="color:#f1fa8c;">packer init .
+</span><span>
+</span><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Validate Packer template
+</span><span>    </span><span style="color:#ff79c6;">run</span><span>: </span><span style="color:#f1fa8c;">packer validate .
+</span><span>
+</span><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Build artifact
+</span><span>    </span><span style="color:#ff79c6;">run</span><span>: </span><span style="color:#f1fa8c;">packer build .
+</span></code></pre>
+<p>Downloads Packer, initializes plugins, validates the template syntax, and builds the custom image.</p>
+<h3 id="6-release-creation">6. Release creation</h3>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Rename artifact for release
+</span><span>    </span><span style="color:#ff79c6;">run</span><span>: </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">    mv artifacts/* ubuntu-${{ github.ref_name }}.qcow2
+</span><span>- </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Create Release and Upload Artifact
+</span><span>    </span><span style="color:#ff79c6;">uses</span><span>: </span><span style="color:#f1fa8c;">softprops/action-gh-release@v1
+</span><span>    </span><span style="color:#ff79c6;">with</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">files</span><span>: </span><span style="color:#f1fa8c;">ubuntu-${{ github.ref_name }}.qcow2
+</span><span>    </span><span style="color:#ff79c6;">tag_name</span><span>: </span><span style="color:#f1fa8c;">v${{env.UBUNTU_VERSION}}-${{ github.run_number }}
+</span><span>    </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">Ubuntu custom image v${{env.UBUNTU_VERSION}}-${{ github.run_number }}
+</span><span>    </span><span style="color:#ff79c6;">body</span><span>: </span><span style="color:#ff79c6;">|
+</span><span style="color:#f1fa8c;">        ## Ubuntu Image Release
+</span><span style="color:#f1fa8c;">        Built from commit: ${{ github.sha }}
+</span><span style="color:#f1fa8c;">        Branch: ${{ github.ref_name }}
+</span><span style="color:#f1fa8c;">        Build date: ${{ github.event.head_commit.timestamp }}
+</span></code></pre>
+<p>Renames the built image with a descriptive filename and creates a GitHub release with,</p>
+<ul>
+<li>
+<p>Automatic version tagging using Ubuntu version and build number</p>
+</li>
+<li>
+<p>Detailed release notes including commit info and build timestamp</p>
+</li>
+<li>
+<p>The custom image file as a downloadable asset</p>
+</li>
+</ul>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/building-pre-configured-vm-images-with-packer-and-github-actions-2847cadcbfa9">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/ubuntu-cloud-image">GitHub - madhank93/ubuntu-cloud-image</a></p>
+</center>
+<p><strong>Reference:</strong></p>
+<p>[1] <a href="https://www.redhat.com/en/topics/virtualization/what-is-KVM">https://www.redhat.com/en/topics/virtualization/what-is-KVM</a></p>
+<p>[2] <a href="https://www.qemu.org/documentation/">https://www.qemu.org/documentation/</a></p>
+<p>[3] <a href="https://developer.hashicorp.com/packer">https://developer.hashicorp.com/packer</a></p>
+<p>[4] <a href="https://actuated.com/blog/automate-packer-qemu-image-builds">https://actuated.com/blog/automate-packer-qemu-image-builds</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-packer-configuration-breakdown" class="toc is-size-7 is-active"
+                href=" /blogs/036-packer-github-actions-vm/#packer-configuration-breakdown">
+                Packer configuration breakdown
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-plugin-and-variable-setup" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#plugin-and-variable-setup">
+                    Plugin and variable setup
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-qemu-source-configuration" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#qemu-source-configuration">
+                    QEMU source configuration
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-build-process" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#build-process">
+                    Build process
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-cloud-init-configuration" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#cloud-init-configuration">
+                    Cloud-Init configuration
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-github-actions-automation" class="toc is-size-7 "
+                href=" /blogs/036-packer-github-actions-vm/#github-actions-automation">
+                GitHub Actions automation
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-workflow-triggers-and-permissions" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#workflow-triggers-and-permissions">
+                    Workflow triggers and permissions
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-environment-variables" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#environment-variables">
+                    Environment Variables
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-ga-step-analysis" class="toc is-size-7 "
+                href=" /blogs/036-packer-github-actions-vm/#ga-step-analysis">
+                GA step analysis
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-1-repository-checkout" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#1-repository-checkout">
+                    1. Repository checkout
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-2-kvm-permissions-setup" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#2-kvm-permissions-setup">
+                    2. KVM permissions setup
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-3-qemu-installation" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#3-qemu-installation">
+                    3. QEMU installation
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-4-cloud-init-iso-creation" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#4-cloud-init-iso-creation">
+                    4. Cloud-Init ISO creation
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-5-packer-setup-and-execution" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#5-packer-setup-and-execution">
+                    5. Packer setup and execution
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-6-release-creation" class="toc is-size-7" href=" /blogs/036-packer-github-actions-vm/#6-release-creation">
+                    6. Release creation
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;035-gpt-oss-k8s-ollama&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Deploying OpenAI’s GPT-OSS model on Kubernetes with Ollama
+            </a>
+          </div>
+           
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

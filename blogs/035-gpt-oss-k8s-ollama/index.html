@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Deploying OpenAI’s GPT-OSS model on Kubernetes with Ollama
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;uses">
+            Uses
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Deploying OpenAI’s GPT-OSS model on Kubernetes with Ollama
+          </h1>
+          <p class="subtitle">A step-by-step guide to self-hosting LLMs in a homelab</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2025-08-10T00:00:00+00:00"
+      >August 10, 2025</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>4 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>695 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/nvidia/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>nvidia</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/homelab/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>homelab</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ollama/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ollama</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/gpu/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>gpu</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/proxmox/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>proxmox</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/openai/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>openai</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/ai/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ai</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*egjv9_E9eIkSWJP-s2OARQ.jpeg" alt="Banner" /></p>
+<p>Following up on the previous article about <a href="https://medium.com/@madhankumaravelu93/adding-nvidia-gpu-boost-to-proxmox-k8s-using-pulumi-and-kubespray-d5d9d3dace94">setting up a home lab with AI capabilities</a>, in this article we will cover the practical steps of running a large language model <a href="https://github.com/openai/gpt-oss">gpt-oss</a> on a <a href="https://kubernetes.io/">Kubernetes</a> cluster using <a href="https://ollama.com/">Ollama</a> and all running within a <a href="https://www.proxmox.com/en/">Proxmox</a> environment.</p>
+<h2 id="setting-up-ollama">Setting up Ollama</h2>
+<p>The deployment of Ollama within a k8s environment is simplified by using the <a href="https://github.com/otwld/ollama-helm">otwld/ollama</a> helm chart. This chart manages various parameters, including GPU enablement for Nvidia, ingress configuration, and pulling various models from the library.</p>
+<h3 id="configure-the-values-yml">Configure the values.yml</h3>
+<p>First, create a values.yml file to define the specific configuration. And it includes the instruction on how to set up Ollama, enabling GPU support, and specifies which model to download.</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">ollama</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">gpu</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span>    </span><span style="color:#ff79c6;">type</span><span>: </span><span style="color:#f1fa8c;">&quot;nvidia&quot;
+</span><span>    </span><span style="color:#ff79c6;">number</span><span>: </span><span style="color:#bd93f9;">1
+</span><span>    </span><span style="color:#ff79c6;">models</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">pull</span><span>:
+</span><span>        - </span><span style="color:#f1fa8c;">gpt-oss:20b
+</span><span style="color:#ff79c6;">ingress</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">annotations</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">nginx.ingress.kubernetes.io/proxy-read-timeout</span><span>: </span><span style="color:#f1fa8c;">&quot;600&quot;
+</span><span>    </span><span style="color:#ff79c6;">nginx.ingress.kubernetes.io/proxy-send-timeout</span><span>: </span><span style="color:#f1fa8c;">&quot;600&quot;
+</span><span>    </span><span style="color:#ff79c6;">nginx.ingress.kubernetes.io/proxy-connect-timeout</span><span>: </span><span style="color:#f1fa8c;">&quot;600&quot;
+</span><span>    </span><span style="color:#ff79c6;">enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span>    </span><span style="color:#ff79c6;">className</span><span>: </span><span style="color:#f1fa8c;">&quot;nginx&quot;
+</span><span>    </span><span style="color:#ff79c6;">hosts</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">host</span><span>: </span><span style="color:#f1fa8c;">ollama.local.com
+</span><span>        </span><span style="color:#ff79c6;">paths</span><span>:
+</span><span>        - </span><span style="color:#ff79c6;">path</span><span>: </span><span style="color:#f1fa8c;">/
+</span><span>            </span><span style="color:#ff79c6;">pathType</span><span>: </span><span style="color:#f1fa8c;">Prefix
+</span></code></pre>
+<h3 id="install-the-helm-chart">Install the Helm Chart</h3>
+<p>With the values.yml file created, run the following helm command to install Ollama.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">helm</span><span> install ollama otwld/ollama \
+</span><span style="font-style:italic;color:#ffb86c;">    --namespace</span><span> ollama \
+</span><span style="font-style:italic;color:#ffb86c;">    --create-namespace </span><span>\
+</span><span style="font-style:italic;color:#ffb86c;">    -f</span><span> values.yml
+</span></code></pre>
+<h3 id="verifying-the-installation">Verifying the Installation</h3>
+<p>After the installation completed, verify that all components are running by listing the resources in the ollama namespace.</p>
+<p><code>kubectl get all -n ollama</code></p>
+<p>Should see an output similar to this,</p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>NAME                        READY   STATUS    RESTARTS   AGE
+</span><span>pod/ollama-8699ddb5-c6n9q   1/1     Running   0          31m
+</span><span>
+</span><span>NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+</span><span>service/ollama   ClusterIP   10.233.62.132   &lt;none&gt;        11434/TCP   31m
+</span><span>
+</span><span>NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+</span><span>deployment.apps/ollama   1/1     1            1           31m
+</span><span>
+</span><span>NAME                              DESIRED   CURRENT   READY   AGE
+</span><span>replicaset.apps/ollama-8699ddb5   1         1         1       31m
+</span></code></pre>
+<p>To access the Ollama API using the hostname defined in the ingress, add the following entry to local <code>/etc/hosts</code> file, replacing with the IP address of Kubernetes ingress controller.</p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>INGRESS_IP_ADDRESS   ollama.local.com
+</span></code></pre>
+<h2 id="testing-the-deployed-model">Testing the Deployed Model</h2>
+<p>Test the model by sending a request to the Ollama API endpoint using curl.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">curl</span><span> http://ollama.local.com/api/generate</span><span style="font-style:italic;color:#ffb86c;"> -d </span><span style="color:#f1fa8c;">&#39;{
+</span><span style="color:#f1fa8c;">    &quot;model&quot;: &quot;gpt-oss:20b&quot;,
+</span><span style="color:#f1fa8c;">    &quot;prompt&quot;: &quot;Why is the sky blue?&quot;,
+</span><span style="color:#f1fa8c;">    &quot;stream&quot;: false
+</span><span style="color:#f1fa8c;">}&#39;
+</span></code></pre>
+<p>If everything is configured correctly, a JSON response from the model will be sent.</p>
+<h2 id="monitoring-resources">Monitoring resources</h2>
+<h3 id="checking-the-pod-logs">Checking the Pod Logs</h3>
+<p>The pod logs provides the detailed information about the server’s status, including GPU detection and model loading.</p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>time=2025-08-10T12:58:29.372Z level=INFO source=types.go:130 msg=&quot;inference compute&quot; id=GPU-075d926f-8a44-1552-2cbc-276dc5bfd68d library=cuda variant=v12 compute=12.0 driver=12.8 name=&quot;NVIDIA GeForce RTX 5070 Ti&quot; total=&quot;15.5 GiB&quot; available=&quot;15.3 GiB&quot;
+</span><span>time=2025-08-10T13:02:21.739Z level=INFO source=ggml.go:378 msg=&quot;offloaded 22/25 layers to GPU&quot;
+</span></code></pre>
+<h3 id="monitoring-gpu-usage">Monitoring GPU Usage</h3>
+<p>While a query is being processed, SSH into the GPU enabled worker node and monitor the resource utilization in real time using the following command.</p>
+<p><code>watch -n 1 nvidia-smi</code></p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>Every 1.0s: nvidia-smi                                   worker4: Sun Aug 10 13:46:00 2025
+</span><span>
+</span><span>Sun Aug 10 13:46:00 2025
+</span><span>+-----------------------------------------------------------------------------------------+
+</span><span>| NVIDIA-SMI 570.133.07             Driver Version: 570.133.07     CUDA Version: 12.8     |
+</span><span>|-----------------------------------------+------------------------+----------------------+
+</span><span>| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+</span><span>| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+</span><span>|                                         |                        |               MIG M. |
+</span><span>|=========================================+========================+======================|
+</span><span>|   0  NVIDIA GeForce RTX 5070 Ti     Off |   00000000:01:00.0 Off |                  N/A |
+</span><span>|  0%   41C    P1             45W /  300W |   12678MiB /  16303MiB |      0%      Default |
+</span><span>|                                         |                        |                  N/A |
+</span><span>+-----------------------------------------+------------------------+----------------------+
+</span><span>
+</span><span>+-----------------------------------------------------------------------------------------+
+</span><span>| Processes:                                                                              |
+</span><span>|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+</span><span>|        ID   ID                                                               Usage      |
+</span><span>|=========================================================================================|
+</span><span>|    0   N/A  N/A         2506171      C   /usr/bin/ollama                       12668MiB |
+</span><span>+-----------------------------------------------------------------------------------------+
+</span><span>
+</span></code></pre>
+<p>The above output shows the Ollama process consuming GPU resource.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/deploying-openais-gpt-oss-model-on-kubernetes-with-ollama-dec1efb158fb">Medium</a></p>
+</center>
+<p><strong>Reference:</strong></p>
+<p>[1] <a href="https://github.com/otwld/ollama-helm">https://github.com/otwld/ollama-helm</a></p>
+<p>[2] <a href="https://github.com/openai/gpt-oss">https://github.com/openai/gpt-oss</a></p>
+<p>[3] <a href="https://enterprise-support.nvidia.com/s/article/Useful-nvidia-smi-Queries-2">https://enterprise-support.nvidia.com/s/article/Useful-nvidia-smi-Queries-2</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-setting-up-ollama" class="toc is-size-7 is-active"
+                href=" /blogs/035-gpt-oss-k8s-ollama/#setting-up-ollama">
+                Setting up Ollama
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-configure-the-values-yml" class="toc is-size-7" href=" /blogs/035-gpt-oss-k8s-ollama/#configure-the-values-yml">
+                    Configure the values.yml
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-install-the-helm-chart" class="toc is-size-7" href=" /blogs/035-gpt-oss-k8s-ollama/#install-the-helm-chart">
+                    Install the Helm Chart
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-verifying-the-installation" class="toc is-size-7" href=" /blogs/035-gpt-oss-k8s-ollama/#verifying-the-installation">
+                    Verifying the Installation
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-testing-the-deployed-model" class="toc is-size-7 "
+                href=" /blogs/035-gpt-oss-k8s-ollama/#testing-the-deployed-model">
+                Testing the Deployed Model
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-monitoring-resources" class="toc is-size-7 "
+                href=" /blogs/035-gpt-oss-k8s-ollama/#monitoring-resources">
+                Monitoring resources
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-checking-the-pod-logs" class="toc is-size-7" href=" /blogs/035-gpt-oss-k8s-ollama/#checking-the-pod-logs">
+                    Checking the Pod Logs
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-monitoring-gpu-usage" class="toc is-size-7" href=" /blogs/035-gpt-oss-k8s-ollama/#monitoring-gpu-usage">
+                    Monitoring GPU Usage
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;034-nvidia-gpu-k8s&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Adding Nvidia GPU boost to Proxmox k8s using Pulumi and Kubespray
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;036-packer-github-actions-vm&#x2F;">
+              Building pre-configured VM images with Packer and GitHub actions<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

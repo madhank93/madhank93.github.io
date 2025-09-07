@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.css" integrity="sha384-+rY0QD+LRnTOquDMzGa9lXU6jIwdiQuwCJQ2cdcW0qeP/0UbjQCZlXnRsUMA+9pH" crossorigin="anonymous">
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href=" /deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan | Running Super Mario on Kubernetes in a Proxmox Homelab
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=&lt;your_gtag&gt;"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "&lt;your_gtag&gt;");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href=" ">Madhan</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;uses">
+            Uses
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href=" &#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Running Super Mario on Kubernetes in a Proxmox Homelab
+          </h1>
+          <p class="subtitle">Combining retro gaming with modern Cloud-native technologies</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2025-03-23T00:00:00+00:00"
+      >March 23, 2025</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>6 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>1073 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/homelab/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>homelab</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/proxmox/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>proxmox</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/lets-encrypt/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>lets-encrypt</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href=" /tags/cloudflare/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>cloudflare</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*LAc2J4pxSMsiupzjxCmDEg.png" alt="Supermario — homelab" /></p>
+<p>In this article, we’ll explore how to deploy the classic Super Mario game on a <a href="https://kubernetes.io/">Kubernetes</a> cluster running in a <a href="https://www.proxmox.com/en/">Proxmox</a> homelab server. Using <a href="https://github.com/kubernetes/ingress-nginx">Nginx Ingress Controller</a> for routing traffic, <a href="https://cert-manager.io/">Cert Manager</a> to automatically provision and manage TLS certificates with <a href="https://letsencrypt.org/">Let’s Encrypt</a>, and <a href="https://www.cloudflare.com/">Cloudflare</a> for DNS services. This setup allows you to securely expose your applications to the internet with a custom domain.</p>
+<p><img src="https://cdn-images-1.medium.com/max/4752/1*vcHKYZLCoGQdqGSjVSIyeg.png" alt="High-level architecture" /></p>
+<h2 id="infrastructure-setup">Infrastructure Setup</h2>
+<p>I previously written an article, creating a <a href="https://medium.com/@madhankumaravelu93/configuring-kubernetes-cluster-in-proxmox-using-kubespray-and-metallb-part-ii-ac073aac3bf3">Proxmox server using Pulumi</a>. In this, I’ve made one significant change — instead of using <a href="https://metallb.io/">MetalLB</a> for load balancing, I’ve opted for <a href="https://kube-vip.io/">kube-vip</a>, which provides both control plane and service load balancing capabilities.</p>
+<p>Below is the configuration for the Kubernetes cluster,</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">kube_version</span><span>: </span><span style="color:#f1fa8c;">v1.32.0
+</span><span style="color:#ff79c6;">helm_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">kube_proxy_strict_arp</span><span>: </span><span style="color:#bd93f9;">true
+</span><span>
+</span><span style="color:#6272a4;">##############
+</span><span style="color:#6272a4;">### Addons ###
+</span><span style="color:#6272a4;">##############
+</span><span style="color:#ff79c6;">metrics_server_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">cert_manager_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">ingress_nginx_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span>
+</span><span style="color:#6272a4;">### Kube-VIP
+</span><span style="color:#ff79c6;">kube_vip_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">kube_vip_arp_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">kube_vip_controlplane_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">kube_vip_services_enabled</span><span>: </span><span style="color:#bd93f9;">true
+</span><span style="color:#ff79c6;">kube_vip_address</span><span>: </span><span style="color:#f1fa8c;">&quot;192.168.1.200&quot;
+</span><span style="color:#6272a4;"># kube_vip_interface: &quot;{% if has_gpu | default(false) %}ens18{% else %}enp6s18{% endif %}&quot;
+</span><span style="color:#ff79c6;">kube_vip_interface</span><span>: </span><span style="color:#f1fa8c;">ens18
+</span><span style="color:#ff79c6;">kube_vip_address_range</span><span>: </span><span style="color:#f1fa8c;">192.168.1.201-192.168.1.210
+</span><span>
+</span><span style="color:#ff79c6;">loadbalancer_apiserver</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">address</span><span>: </span><span style="color:#f1fa8c;">&quot;{{ kube_vip_address }}&quot;
+</span><span>    </span><span style="color:#ff79c6;">port</span><span>: </span><span style="color:#bd93f9;">6443
+</span></code></pre>
+<p>The main benefit of using kube-vip is that we get load balancing for both the control plane and services in a single solution. When configuring kube-vip, it’s critical to provide unused IP addresses in the address range. You can identify available IPs in your home network using the <a href="https://nmap.org/">NMAP</a></p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">nmap</span><span style="font-style:italic;color:#ffb86c;"> -sn</span><span> 192.168.1.0/24
+</span></code></pre>
+<p>After building the infrastructure with <a href="https://www.pulumi.com/">Pulumi</a> and setting up Kubernetes with <a href="https://kubespray.io/#/">Kubespray</a>, it is time to deploy <a href="https://hub.docker.com/r/bharathshetty4/supermario">Super Mario</a>.</p>
+<h2 id="deploying-super-mario">Deploying Super Mario</h2>
+<p>For Super Mario deployment, we’ll be using <a href="https://kustomize.io/">kustomize</a> with Horizontal Pod Autoscaler (HPA) and a ClusterIP service. The Kubernetes manifests for this application include:</p>
+<ul>
+<li>
+<p>A Deployment resource that runs the Super Mario container</p>
+</li>
+<li>
+<p>A Service resource that exposes the game on port 8080</p>
+</li>
+<li>
+<p>An HPA to automatically scale based on CPU utilization</p>
+</li>
+</ul>
+<p>Once the deployment is complete, you can test the application locally using port forwarding.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> port-forward</span><span style="font-style:italic;color:#ffb86c;"> -n</span><span> mario-game mario-deployment-56c444b9b6-5xk2j 8080:8080
+</span></code></pre>
+<p>Navigate to localhost:8080 in your browser to verify the game is running correctly.</p>
+<h2 id="installing-nginx-ingress-controller">Installing Nginx Ingress Controller</h2>
+<p>The Nginx Ingress Controller acts as a reverse proxy and load balancer for the Kubernetes services. It will route external traffic to Super Mario game. It can be installed using Helm.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">helm</span><span> repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+</span><span style="color:#50fa7b;">helm</span><span> repo update
+</span><span style="color:#50fa7b;">helm</span><span> install nginx-ingress ingress-nginx/ingress-nginx \
+</span><span style="font-style:italic;color:#ffb86c;">    --namespace</span><span> nginx-ingress-system</span><span style="font-style:italic;color:#ffb86c;"> --create-namespace </span><span>\
+</span><span style="font-style:italic;color:#ffb86c;">    --version</span><span> 4.12.0 \
+</span><span style="font-style:italic;color:#ffb86c;">    --set</span><span> controller.service.loadBalancerIP=192.168.1.205
+</span></code></pre>
+<p>Note: we’re setting the loadBalancerIP to an address within our kube-vip address range.</p>
+<h2 id="setting-up-dns-with-cloudflare">Setting Up DNS with Cloudflare</h2>
+<p>To make Super Mario game accessible via a custom domain, need to create a DNS record pointing to our Nginx Ingress Controller’s IP address.</p>
+<p><img src="https://miro.medium.com/v2/format:webp/1*DNFI0fPyEV4c5W-27rZJFw.png" alt="" /></p>
+<ol>
+<li>
+<p>Log into your Cloudflare dashboard</p>
+</li>
+<li>
+<p>Navigate to the DNS management section for your domain</p>
+</li>
+<li>
+<p>Create an A record (e.g., mario.yourdomain.com) pointing to 192.168.1.205</p>
+</li>
+<li>
+<p>Ensure the “Proxy status” is turned OFF (use DNS only mode)</p>
+</li>
+</ol>
+<p>This direct DNS mapping is essential because we’re running in a homelab environment.</p>
+<h2 id="creating-a-cloudflare-api-token">Creating a Cloudflare API Token</h2>
+<p>For Let’s Encrypt to automatically verify domain ownership and issue certificates, we need to create a Cloudflare API token.</p>
+<p><img src="https://miro.medium.com/v2/format:webp/1*tjcH6foAzmTRnss1SW3Y2Q.png" alt="" /></p>
+<ol>
+<li>
+<p>Log into your Cloudflare dashboard</p>
+</li>
+<li>
+<p>Navigate to “My Profile” &gt; “API Tokens”</p>
+</li>
+<li>
+<p>Click on “Create Token”</p>
+</li>
+<li>
+<p>Select the “Edit zone DNS” template</p>
+</li>
+<li>
+<p>Ensure “Zone” &gt; “DNS” &gt; “Edit” permission is included</p>
+</li>
+<li>
+<p>Specify your domain in the “Zone Resources” section</p>
+</li>
+<li>
+<p>Click “Continue to summary” and then “Create Token”</p>
+</li>
+<li>
+<p>Copy and securely store the token that appears — it will only be shown once</p>
+</li>
+</ol>
+<h2 id="configuring-certificate-management">Configuring Certificate Management</h2>
+<p>Let’s Encrypt provides free TLS certificates that can be used to secure the Super Mario game. First, create a Kubernetes secret with your Cloudflare API token.</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> create secret generic cloudflare-api-token-secret \
+</span><span style="font-style:italic;color:#ffb86c;">    --namespace</span><span> cert-manager \
+</span><span style="font-style:italic;color:#ffb86c;">    --from-literal</span><span style="color:#ff79c6;">=</span><span>api-token=</span><span style="color:#ff79c6;">&lt;</span><span>CLOUDFLARE_API_TOKEN</span><span style="color:#ff79c6;">&gt;
+</span></code></pre>
+<p>Next, create a ClusterIssuer to handle certificate provisioning. We’ll use the DNS-01 challenge since our homelab isn’t directly accessible from the internet (which would be required for HTTP-01 challenges).</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">apiVersion</span><span>: </span><span style="color:#f1fa8c;">cert-manager.io/v1
+</span><span style="color:#ff79c6;">kind</span><span>: </span><span style="color:#f1fa8c;">ClusterIssuer
+</span><span style="color:#ff79c6;">metadata</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">letsencrypt-prod
+</span><span>    </span><span style="color:#ff79c6;">namespace</span><span>: </span><span style="color:#f1fa8c;">cert-manager
+</span><span style="color:#ff79c6;">spec</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">acme</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">server</span><span>: </span><span style="color:#f1fa8c;">https://acme-v02.api.letsencrypt.org/directory
+</span><span>    </span><span style="color:#ff79c6;">privateKeySecretRef</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">letsencrypt-prod
+</span><span>    </span><span style="color:#6272a4;"># Enable the DNS-01 challenge provider
+</span><span>    </span><span style="color:#ff79c6;">solvers</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">dns01</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">cloudflare</span><span>:
+</span><span>            </span><span style="color:#6272a4;"># Reference to the Kubernetes secret containing the Cloudflare API token
+</span><span>            </span><span style="color:#ff79c6;">apiTokenSecretRef</span><span>:
+</span><span>            </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">cloudflare-api-token-secret
+</span><span>            </span><span style="color:#ff79c6;">key</span><span>: </span><span style="color:#f1fa8c;">api-token
+</span></code></pre>
+<h2 id="exposing-super-mario-with-ingress">Exposing Super Mario with Ingress</h2>
+<p>Finally, create an Ingress resource to expose the Super Mario game to the internet with TLS encryption.</p>
+<pre data-lang="yml" style="background-color:#282a36;color:#f8f8f2;" class="language-yml "><code class="language-yml" data-lang="yml"><span style="color:#ff79c6;">apiVersion</span><span>: </span><span style="color:#f1fa8c;">networking.k8s.io/v1
+</span><span style="color:#ff79c6;">kind</span><span>: </span><span style="color:#f1fa8c;">Ingress
+</span><span style="color:#ff79c6;">metadata</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">mario-ingress
+</span><span>    </span><span style="color:#ff79c6;">namespace</span><span>: </span><span style="color:#f1fa8c;">mario-game
+</span><span>    </span><span style="color:#ff79c6;">annotations</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">cert-manager.io/cluster-issuer</span><span>: </span><span style="color:#f1fa8c;">&quot;letsencrypt-prod&quot;
+</span><span style="color:#ff79c6;">spec</span><span>:
+</span><span>    </span><span style="color:#ff79c6;">ingressClassName</span><span>: </span><span style="color:#f1fa8c;">nginx
+</span><span>    </span><span style="color:#ff79c6;">tls</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">hosts</span><span>:
+</span><span>    - </span><span style="color:#f1fa8c;">mario.madhan.app
+</span><span>    </span><span style="color:#ff79c6;">secretName</span><span>: </span><span style="color:#f1fa8c;">mario-tls
+</span><span>    </span><span style="color:#ff79c6;">rules</span><span>:
+</span><span>    - </span><span style="color:#ff79c6;">host</span><span>: </span><span style="color:#f1fa8c;">mario.madhan.app
+</span><span>        </span><span style="color:#ff79c6;">http</span><span>:
+</span><span>        </span><span style="color:#ff79c6;">paths</span><span>:
+</span><span>            - </span><span style="color:#ff79c6;">pathType</span><span>: </span><span style="color:#f1fa8c;">Prefix
+</span><span>            </span><span style="color:#ff79c6;">path</span><span>: </span><span style="color:#f1fa8c;">&quot;/&quot;
+</span><span>            </span><span style="color:#ff79c6;">backend</span><span>:
+</span><span>                </span><span style="color:#ff79c6;">service</span><span>:
+</span><span>                </span><span style="color:#ff79c6;">name</span><span>: </span><span style="color:#f1fa8c;">mario-service
+</span><span>                </span><span style="color:#ff79c6;">port</span><span>:
+</span><span>                    </span><span style="color:#ff79c6;">number</span><span>: </span><span style="color:#bd93f9;">8080
+</span></code></pre>
+<h2 id="verifying-the-deployment">Verifying the Deployment</h2>
+<p>After applying all configurations, you should be able to access your Super Mario game securely via your custom domain (e.g., https://mario.yourdomain.com). You can verify the certificate status with:</p>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#50fa7b;">kubectl</span><span> get certificate</span><span style="font-style:italic;color:#ffb86c;"> -n</span><span> mario-game
+</span></code></pre>
+<p>The status should show “Ready” once Let’s Encrypt has issued the certificate.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you encounter issues, check the following:</p>
+<ol>
+<li>
+<p>Ensure your Cloudflare API token has the correct permissions</p>
+</li>
+<li>
+<p>Verify that the DNS record is properly configured in Cloudflare</p>
+</li>
+<li>
+<p>Check the cert-manager logs for any errors <code>kubectl logs -n cert-manager -l app=cert-manager</code></p>
+</li>
+<li>
+<p>Confirm that your Ingress Controller is properly receiving traffic</p>
+</li>
+</ol>
+<pre data-lang="sh" style="background-color:#282a36;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>    </span><span style="color:#50fa7b;">kubectl</span><span> logs</span><span style="font-style:italic;color:#ffb86c;"> -n</span><span> nginx-ingress-system</span><span style="font-style:italic;color:#ffb86c;"> -l</span><span> app.kubernetes.io/component=controller
+</span></code></pre>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/running-super-mario-on-kubernetes-in-a-proxmox-homelab-e809b337d9bf">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/homelab/tree/v0.1.2">GitHub - madhank93/homelab</a></p>
+</center>
+<p><strong>Reference</strong>:</p>
+<p>[1] <a href="https://www.youtube.com/watch?v=MpovOI5eK58&amp;t=2679s">https://www.youtube.com/watch?v=MpovOI5eK58&amp;t=2679s</a></p>
+<p>[2] <a href="https://github.com/kubernetes/ingress-nginx">https://github.com/kubernetes/ingress-nginx</a></p>
+<p>[3] <a href="https://cert-manager.io/docs/">https://cert-manager.io/docs/</a></p>
+<p>[4] <a href="https://letsencrypt.org/docs/challenge-types/">https://letsencrypt.org/docs/challenge-types/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-infrastructure-setup" class="toc is-size-7 is-active"
+                href=" /blogs/031-supermario-on-proxmox-k8s/#infrastructure-setup">
+                Infrastructure Setup
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-deploying-super-mario" class="toc is-size-7 "
+                href=" /blogs/031-supermario-on-proxmox-k8s/#deploying-super-mario">
+                Deploying Super Mario
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-installing-nginx-ingress-controller" class="toc is-size-7 "
+                href=" /blogs/031-supermario-on-proxmox-k8s/#installing-nginx-ingress-controller">
+                Installing Nginx Ingress Controller
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-setting-up-dns-with-cloudflare" class="toc is-size-7 "
+                href=" /blogs/031-supermario-on-proxmox-k8s/#setting-up-dns-with-cloudflare">
+                Setting Up DNS with Cloudflare
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-creating-a-cloudflare-api-token" class="toc is-size-7 "
+                href=" /blogs/031-supermario-on-proxmox-k8s/#creating-a-cloudflare-api-token">
+                Creating a Cloudflare API Token
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-configuring-certificate-management" class="toc is-size-7 "
+                href=" /blogs/031-supermario-on-proxmox-k8s/#configuring-certificate-management">
+                Configuring Certificate Management
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-exposing-super-mario-with-ingress" class="toc is-size-7 "
+                href=" /blogs/031-supermario-on-proxmox-k8s/#exposing-super-mario-with-ingress">
+                Exposing Super Mario with Ingress
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-verifying-the-deployment" class="toc is-size-7 "
+                href=" /blogs/031-supermario-on-proxmox-k8s/#verifying-the-deployment">
+                Verifying the Deployment
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-troubleshooting" class="toc is-size-7 "
+                href=" /blogs/031-supermario-on-proxmox-k8s/#troubleshooting">
+                Troubleshooting
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;030-bank-statement-analysis&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Simplifying Bank statement analysis using Marker and Ollama
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href=" &#x2F;blogs&#x2F;032-nvidia-gpu-part-1&#x2F;">
+              Making my homelab server AI ready with Nvidia GPU — Part I<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/galleria.min.js" integrity="sha384-QSfwGT8/EU536DKdtyP2D6SLlh8zBaZ0cVkwfrwhqzIU9VCfJT00CLVP5t+HAiYg" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/galleria@1.6.1/dist/themes/folio/galleria.folio.min.js" integrity="sha384-DwpKI+deZB267+hPKwiOIc5Y2GKsVL0mR6hgz7GgIu7AgAMYqJwcJKY1YBNfhWcY" crossorigin="anonymous"></script>
+  
+  
+  
+  
+  <script src=" /elasticlunr.min.js"></script>
+  <script src=" /search_index.en.js"></script><script src=" /js/site.js"></script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
