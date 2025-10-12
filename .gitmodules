@@ -1,3 +1,4 @@
-[submodule "themes/DeepThought"]
-	path = themes/DeepThought
-	url = https://github.com/madhank93/DeepThought.git
+[submodule "themes/serene"]
+	path = themes/serene
+	url = https://github.com/isunjn/serene.git
+	branch = latest
