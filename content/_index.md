@@ -25,7 +25,7 @@ recent_more_text = "more »"
 date_format = "%b %-d, %Y"
 +++
 
-<img src="/img/avatar.webp" alt="avatar" style="width:220px; height:220px;">
+<!-- <img src="/img/avatar.webp" alt="avatar" style="width:220px; height:220px;"> -->
 
 
 Hi, I'm ...
