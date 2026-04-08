@@ -23,7 +23,7 @@ paginate_by = 5
 ## Subscriptions
 
 - [KodeKloud](https://kodekloud.com/)
-- [InterviewReady](https://interviewready.io/)
+- [InterviewReady](https://interviewready.io/) - [Referral link](https://interviewready.io/checkout/?_aff=trrfgdbj48717)
 - [NeetCode](https://neetcode.io/)
 - [iximiuz Labs](https://labs.iximiuz.com/)
 

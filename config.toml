@@ -1,6 +1,6 @@
 base_url = "https://madhan.app"
-title = "serene"
-description = "The demo site of zola theme serene"
+title = "Madhan K"
+description = "Engineer, blogger & tinkerer"
 default_language = "en"
 
 theme = "serene"
@@ -34,16 +34,17 @@ anchors = "on"
 [extra]
 sections = [
   { name = "posts", path = "/posts", is_external = false },
+  { name = "til", path = "/til", is_external = false },
+  { name = "projects", path = "/projects", is_external = false },
+  { name = "uses", path = "/uses", is_external = false },
   { name = "tags", path = "/tags", is_external = false },
-  { name = "collections", path = "/collections", is_external = false },
-  { name = "about", path = "/about", is_external = false },
 ]
 blog_section_path = "/posts"
 
 force_theme = false
 back_link_text = "Back"
 
-footer_copyright = "© 2025 Serene"
+footer_copyright = "© 2025 Madhan K"
 footer_credits = true
 
 not_found_error_text = "404 Not Found"

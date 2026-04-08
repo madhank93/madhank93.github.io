@@ -1,0 +1,71 @@
+[[collection]]
+type = "card"
+title = "Homelab"
+link = "https://github.com/madhank93/homelab"
+content = "Infrastructure-as-code for a self-hosted homelab running on Proxmox. Covers VM provisioning, Kubernetes setup, GPU passthrough, and LXC container management using Pulumi and Go."
+tags = ["proxmox", "pulumi", "kubernetes", "go"]
+featured = true
+
+[[collection]]
+type = "card"
+title = "ubuntu-cloud-image"
+link = "https://github.com/madhank93/ubuntu-cloud-image"
+content = "Pre-configured Ubuntu VM images built with Hashicorp Packer and automated via GitHub Actions. Packages QEMU guest agent, dev tools, and SSH config into a ready-to-deploy qcow2 image."
+tags = ["packer", "qemu", "github-actions", "kvm"]
+
+[[collection]]
+type = "card"
+title = "learn-system-design"
+link = "https://github.com/madhank93/learn-system-design"
+content = "Hands-on implementations of system design concepts including load balancing algorithms (Round Robin, Least Connections, Geo-based) using Go and Nginx with Docker."
+tags = ["golang", "system-design", "nginx", "docker"]
+featured = true
+
+[[collection]]
+type = "card"
+title = "pulumi-proxmox"
+link = "https://github.com/madhank93/pulumi-proxmox"
+content = "Pulumi programs in Go for automating Proxmox infrastructure — VM creation, cloud-init configuration, and Kubernetes cluster provisioning."
+tags = ["pulumi", "proxmox", "go", "kubernetes"]
+
+[[collection]]
+type = "card"
+title = "learn-ai"
+link = "https://github.com/madhank93/learn-ai"
+content = "Experiments with local AI models including bank statement analysis using Streamlit, Marker PDF extraction, and Phi-4 via Ollama."
+tags = ["python", "ollama", "ai", "streamlit"]
+
+[[collection]]
+type = "card"
+title = "typst-resume-template"
+link = "https://github.com/madhank93/typst-resume-template"
+content = "A clean, modern resume template built with Typst — a composable document preparation system. Designed for engineers who prefer code over word processors."
+tags = ["typst", "resume", "template"]
+
+[[collection]]
+type = "card"
+title = "ollama-pi-cf"
+link = "https://github.com/madhank93/ollama-pi-cf"
+content = "Running LLMs on a Raspberry Pi with Ollama, exposed securely via Cloudflare Tunnel — no port forwarding required."
+tags = ["raspberry-pi", "ollama", "cloudflare", "llm"]
+
+[[collection]]
+type = "card"
+title = "monitoring-test-automation"
+link = "https://github.com/madhank93/monitoring-test-automation"
+content = "Monitoring and observability setup for test automation pipelines using Grafana and Prometheus."
+tags = ["grafana", "prometheus", "testing", "monitoring"]
+
+[[collection]]
+type = "card"
+title = "kubernetes-the-hard-way-iac"
+link = "https://github.com/madhank93/kubernetes-the-hard-way-iac"
+content = "Kubernetes the Hard Way implemented as Infrastructure-as-Code using Terraform and Pulumi — for learning the internals of a Kubernetes cluster."
+tags = ["kubernetes", "terraform", "pulumi", "iac"]
+
+[[collection]]
+type = "card"
+title = "learn-securing-secrets"
+link = "https://github.com/madhank93/learn-securing-secrets"
+content = "Practical guide to storing and managing secrets in Kubernetes using Sealed Secrets, External Secrets Operator, and HashiCorp Vault."
+tags = ["kubernetes", "secrets", "vault", "security"]
