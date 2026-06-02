@@ -94,7 +94,7 @@ credly = "madhank93"
 
 # To add google analytics
 [extra.analytics]
-google = "<your_gtag>"
+google = "G-EMS43ND28F"
 
 # To add disqus comments
 [extra.commenting]
