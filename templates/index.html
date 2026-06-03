@@ -1,125 +1,127 @@
-{% extends "DeepThought/templates/index.html" %} {% block content %}
+{% extends "DeepThought/templates/index.html" %}
+
+{% block user_custom_stylesheet %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Madhan Kumaravelu",
+  "alternateName": ["Madhan K", "Madhan"],
+  "url": "https://madhan.app",
+  "sameAs": [
+    "https://github.com/madhank93",
+    "https://www.linkedin.com/in/madhank93",
+    "https://medium.com/@madhankumaravelu93",
+    "https://stackoverflow.com/users/5514320",
+    "https://www.credly.com/users/madhank93"
+  ],
+  "jobTitle": "Platform Engineer",
+  "description": "Platform Engineer specializing in Kubernetes, cloud-native infrastructure, DevOps, IaC, and open source."
+}
+</script>
+{% endblock %}
+
+{% block content %}
 <style>
-  .text_1 {
-    animation: text1;
+  /* ── animated roles ── */
+  .text_1 { animation: text1; }
+  .text_2 { animation: text2; }
+  .text_3 { animation: text3; }
+  .text_4 { animation: text4; }
+  .text_1,.text_2,.text_3,.text_4 {
+    overflow:hidden; white-space:nowrap; display:inline-block; position:relative;
+    animation-duration:20s; animation-timing-function:steps(25,end); animation-iteration-count:infinite;
   }
+  .text_1::after,.text_2::after,.text_3::after,.text_4::after {
+    content:"|"; position:absolute; right:0;
+    animation:caret infinite 1s steps(1,end);
+  }
+  @keyframes text1 { 0%,25%,50%,75%,100%{width:0} 1%,24%{width:19em} }
+  @keyframes text2 { 0%,25%,50%,75%,100%{width:0} 26%,49%{width:9em} }
+  @keyframes text3 { 0%,25%,50%,75%,100%{width:0} 51%,74%{width:12em} }
+  @keyframes text4 { 0%,25%,50%,75%,100%{width:0} 76%,99%{width:12em} }
+  @keyframes caret  { 0%,100%{opacity:0} 50%{opacity:1} }
 
-  .text_2 {
-    animation: text2;
+  /* ── terminal ── */
+  .term-wrap { max-width:680px; margin:2.5rem auto 0; }
+  .term-label { text-align:center; color:#aaa; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.75rem; }
+  .term {
+    background:#1e1e2e; border-radius:12px; overflow:hidden;
+    box-shadow:0 24px 80px rgba(0,0,0,0.35);
+    font-family:"Fira Code",monospace; font-size:0.88rem;
+    display:flex; flex-direction:column; height:400px; cursor:text;
   }
+  .term-bar {
+    background:#313244; padding:10px 16px;
+    display:flex; align-items:center; gap:7px; flex-shrink:0;
+  }
+  .t-dot { width:12px; height:12px; border-radius:50%; }
+  .t-dot.r{background:#ff5f57} .t-dot.y{background:#febc2e} .t-dot.g{background:#28c840}
+  .term-title { flex:1; text-align:center; color:#6c7086; font-size:0.78rem; }
+  .term-output {
+    flex:1; overflow-y:auto; padding:14px 18px 4px;
+    scrollbar-width:thin; scrollbar-color:#45475a #1e1e2e;
+  }
+  .term-output::-webkit-scrollbar { width:5px; }
+  .term-output::-webkit-scrollbar-track { background:#1e1e2e; }
+  .term-output::-webkit-scrollbar-thumb { background:#45475a; border-radius:3px; }
+  .term-input-row {
+    display:flex; align-items:center; padding:8px 18px 14px;
+    flex-shrink:0; border-top:1px solid #313244;
+  }
+  .t-prompt { color:#a6e3a1; white-space:nowrap; margin-right:6px; user-select:none; }
+  .t-prompt .t-host { color:#89b4fa; }
+  .t-prompt .t-path { color:#cba6f7; }
+  #cmd {
+    background:transparent; border:none; outline:none;
+    color:#cdd6f4; font-family:"Fira Code",monospace;
+    font-size:0.88rem; flex:1; caret-color:#a6e3a1; width:100%;
+  }
+  .ln { color:#cdd6f4; line-height:1.8; margin:0; white-space:pre-wrap; word-break:break-all; position:relative; }
+  .ln-link { color:#89b4fa; text-decoration:underline; cursor:pointer; }
+  .ln-link:hover { color:#cba6f7; }
+  .copy-btn { position:absolute; right:6px; top:50%; transform:translateY(-50%); opacity:0; background:#313244; border:none; color:#89dceb; cursor:pointer; padding:1px 6px; border-radius:3px; font-size:0.68rem; font-family:"Fira Code",monospace; transition:opacity 0.15s; line-height:1.6; }
+  .ln:hover .copy-btn { opacity:1; }
+  .ln-prompt { color:#a6e3a1; }
+  .ln-prompt .ln-host { color:#89b4fa; }
+  .ln-prompt .ln-path { color:#cba6f7; }
+  .ln-err  { color:#f38ba8; }
+  .ln-key  { color:#89dceb; }
+  .ln-val  { color:#a6e3a1; }
+  .ln-str  { color:#a6e3a1; }
+  .ln-dir  { color:#89b4fa; font-weight:700; }
+  .ln-file { color:#cdd6f4; }
+  .ln-cert-hd { color:#f9e2af; }
+  .ln-cert-bd { color:#a6e3a1; }
+  .ln-dim  { color:#585b70; }
+  .ln-hi   { color:#cba6f7; font-weight:700; }
+  .ln-blank { height:0.4rem; }
+  .hint-bar { text-align:center; margin-top:0.6rem; }
+  .hint {
+    display:inline-block; background:#f5f5f5; border:1px solid #e0e0e0;
+    border-radius:4px; padding:2px 8px; font-family:"Fira Code",monospace;
+    font-size:0.72rem; color:#555; margin:2px; cursor:pointer; transition:background 0.15s;
+  }
+  .hint:hover { background:#e8e8e8; }
 
-  .text_3 {
-    animation: text3;
-  }
-
-  .text_4 {
-    animation: text4;
-  }
-
-  .text_1,
-  .text_2,
-  .text_3,
-  .text_4 {
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
-    position: relative;
-    animation-duration: 20s;
-    animation-timing-function: steps(25, end);
-    animation-iteration-count: infinite;
-  }
-
-  .text_1::after,
-  .text_2::after,
-  .text_3::after,
-  .text_4::after {
-    content: "|";
-    position: absolute;
-    right: 0;
-    animation: caret infinite;
-    animation-duration: 1s;
-    animation-timing-function: steps(1, end);
-  }
-
-  @keyframes text1 {
-    0%,
-    25%,
-    50%,
-    75%,
-    100% {
-      width: 0;
-    }
-    1%,
-    24% {
-      width: 19em;
-    }
-  }
-  @keyframes text2 {
-    0%,
-    25%,
-    50%,
-    75%,
-    100% {
-      width: 0;
-    }
-    26%,
-    49% {
-      width: 9em;
-    }
-  }
-  @keyframes text3 {
-    0%,
-    25%,
-    50%,
-    75%,
-    100% {
-      width: 0;
-    }
-    51%,
-    74% {
-      width: 12em;
-    }
-  }
-  @keyframes text4 {
-    0%,
-    25%,
-    50%,
-    75%,
-    100% {
-      width: 0;
-    }
-    76%,
-    99% {
-      width: 12em;
-    }
-  }
-  @keyframes caret {
-    0%,
-    100% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
+  /* re-invert terminal in dark mode so it stays dark */
+  body[theme=dark] .term      { filter: invert(1) hue-rotate(180deg); }
+  body[theme=dark] .hint      { filter: invert(1) hue-rotate(180deg); }
+  body[theme=dark] .term-label{ filter: invert(1) hue-rotate(180deg); }
 </style>
+
 <section class="section">
   <div class="container">
     <div class="has-text-centered">
       <h1 class="title is-2">{{ section.title }}</h1>
       <p class="subtitle is-4">{{ section.description }}</p>
       {% if config.extra.author.avatar %}
-      <figure
-        class="image is-flex is-justify-content-center is-align-items-center"
-      >
-        <img
-          class="is-rounded"
-          src="{{ config.extra.author.avatar }}"
-          style="max-width: 192px"
-        />
+      <figure class="image is-flex is-justify-content-center is-align-items-center">
+        <img class="is-rounded" src="{{ config.extra.author.avatar }}"
+          width="192" height="192" style="max-width:192px" alt="Madhan Kumaravelu" />
       </figure>
-      {% endif %} {{ macros:: social_links( social_config=config.extra.social)
-      }}
+      {% endif %}
+      {{ macros::social_links(social_config=config.extra.social) }}
     </div>
     <div align="center">
       <span class="text_1">Engineer</span>
@@ -127,8 +129,651 @@
       <span class="text_3">Tinkerer</span>
       <span class="text_4">Foss Enthusiast</span>
     </div>
+
+    <div class="term-wrap">
+<div class="term" id="term" onclick="document.getElementById('cmd').focus()">
+        <div class="term-bar">
+          <div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div>
+          <span class="term-title" id="term-title">visitor@madhan.app — ~</span>
+        </div>
+        <div class="term-output" id="output"></div>
+        <div class="term-input-row">
+          <span class="t-prompt"><span id="t-user">visitor</span><span class="t-host">@madhan.app</span>:<span class="t-path">~</span>$&nbsp;</span>
+          <input id="cmd" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        </div>
+      </div>
+      <div class="hint-bar">
+        <span class="hint" onclick="run('ls')">ls</span>
+        <span class="hint" onclick="run('cat about.me')">cat about.me</span>
+        <span class="hint" onclick="run('cat madhan.json')">cat madhan.json</span>
+        <span class="hint" onclick="run('cat skills.txt')">cat skills.txt</span>
+        <span class="hint" onclick="run('cat certifications.crt')">cat certifications.crt</span>
+        <span class="hint" onclick="run('ls experience/')">ls experience/</span>
+        <span class="hint" onclick="run('whoami')">whoami</span>
+        <span class="hint" onclick="run('help')">help</span>
+      </div>
+    </div>
+
     <div class="content">{{ section.content | safe }}</div>
   </div>
 </section>
+{% endblock %}
 
+{% block user_custom_js %}
+<script>
+  const visitor = { loading: true, err: false };
+  let visitorUser = 'visitor';
+  let cwd = '~';
+
+  function setUser(u) {
+    visitorUser = u;
+    document.getElementById('t-user').textContent = u;
+    updateTitle();
+  }
+
+  function updateTitle() {
+    document.getElementById('term-title').textContent = visitorUser + '@madhan.app — ' + cwd;
+  }
+
+  function applyVisitor(d) {
+    visitor.loading  = false;
+    visitor.ip       = d.ip       || d.query      || '';
+    visitor.city     = d.city                      || '';
+    visitor.region   = d.region   || d.regionName || '';
+    visitor.country  = d.country_name || d.country || '';
+    visitor.org      = d.org      || d.isp        || '';
+    visitor.timezone = d.timezone                  || '';
+    if (visitor.ip) setUser(visitor.ip);
+  }
+
+  fetch('https://ipapi.co/json/')
+    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+    .then(d => { if (!d.ip) throw new Error(); applyVisitor(d); })
+    .catch(() =>
+      fetch('https://ip-api.com/json/')
+        .then(r => r.json())
+        .then(d => applyVisitor(d))
+        .catch(() => { visitor.loading = false; visitor.err = true; })
+    );
+
+  const FS = {
+    'about.me': [
+      ['hi',    'Madhan Kumaravelu'],
+      ['blank'],
+      ['plain', 'Platform Engineer with a passion for cloud-native infrastructure,'],
+      ['plain', 'Kubernetes, DevOps, IaC, and open source.'],
+      ['blank'],
+      ['plain', 'I build and maintain production-grade infrastructure, automate'],
+      ['plain', 'everything I can, and run a homelab to experiment with new tech.'],
+      ['blank'],
+      ['key',   'Currently focused on:', 'Platform Engineering · IaC · Observability'],
+      ['key',   'Currently learning:  ', 'eBPF · MicroVM'],
+      ['key',   'Fun fact:            ', 'I Run Kubernetes on Bare Metal at Home'],
+    ],
+    'madhan.json': [
+      ['json-open'],
+      ['json-kv',      'name',               '"Madhan Kumaravelu"'],
+      ['json-kv',      'alias',              '"madhank93"'],
+      ['json-kv',      'role',               '"Platform Engineer"'],
+      ['json-kv',      'location',           '"United States"'],
+      ['json-kv',      'homelab',            '"Proxmox + Talos Linux + K8s + NetBird"'],
+      ['json-kv',      'focus',              '["Kubernetes","Cloud-Native","IaC","DevOps","Open Source"]'],
+      ['json-kv',      'currently_learning', '["eBPF","MicroVM"]'],
+      ['json-kv',      'blog',               '"https://madhan.app"'],
+      ['json-kv',      'github',             '"https://github.com/madhank93"'],
+      ['json-kv',      'linkedin',           '"https://linkedin.com/in/madhank93"'],
+      ['json-kv-last', 'fun_fact',           '"I run K8s on bare metal at home"'],
+      ['json-close'],
+    ],
+    'skills.txt': [
+      ['section', 'ORCHESTRATION'], ['plain', '  Kubernetes · Helm · ArgoCD · CDK8s'],
+      ['section', 'IAC'],           ['plain', '  Terraform · Pulumi · Ansible · Packer · Crossplane'],
+      ['section', 'CONTAINERS'],    ['plain', '  Docker · containerd · LXC · KVM · QEMU'],
+      ['section', 'CLOUD'],         ['plain', '  AWS (EKS · IAM · CloudFormation) · GCP (GKE · Cloud Build)'],
+      ['section', 'OBSERVABILITY'], ['plain', '  VictoriaMetrics · VictoriaLogs · Grafana · AlertManager · ELK'],
+      ['section', 'NETWORKING'],    ['plain', '  NetBird · Traefik · Cilium · Cloudflare · MetalLB · Nginx'],
+      ['section', 'SECURITY'],      ['plain', '  Falco · Kyverno · Trivy · Authentik · SOPS · cert-manager'],
+      ['section', 'LANGUAGES'],     ['plain', '  Go · Python · Bash · TypeScript · Java'],
+      ['section', 'STORAGE'],       ['plain', '  Longhorn · NFS'],
+      ['section', 'PLATFORMS'],     ['plain', '  Proxmox · Talos Linux · Linux · Raspberry Pi'],
+    ],
+    'certifications.crt': [
+      ['cert-hd', '-----BEGIN CERTIFICATIONS-----'],
+      ['blank'],
+      ['cert', 'CKA  ', 'Certified Kubernetes Administrator'],
+      ['cert', 'CKAD ', 'Certified Kubernetes Application Developer'],
+      ['cert', 'CKS  ', 'Certified Kubernetes Security Specialist'],
+      ['cert', 'KCNA ', 'Kubernetes and Cloud Native Associate'],
+      ['cert', 'KCSA ', 'Kubernetes and Cloud Native Security Associate'],
+      ['blank'],
+      ['cert', '🚀   ', 'KubeAstronaut — all 5 K8s certs achieved'],
+      ['blank'],
+      ['cert-hd', '-----END CERTIFICATIONS-----'],
+      ['blank'],
+      ['url', 'Verify: ', 'https://www.credly.com/users/madhank93'],
+    ],
+    'contact.json': [
+      ['json-open'],
+      ['json-url',      'blog',     'https://madhan.app'],
+      ['json-url',      'github',   'https://github.com/madhank93'],
+      ['json-url',      'linkedin', 'https://linkedin.com/in/madhank93'],
+      ['json-url',      'medium',   'https://medium.com/@madhankumaravelu93'],
+      ['json-url-last', 'credly',   'https://credly.com/users/madhank93'],
+      ['json-close'],
+    ],
+    'experience/': 'dir',
+    'experience/current.txt': [
+      ['section', 'CURRENT ROLE'],
+      ['key',   'Title:    ', 'Platform Engineer'],
+      ['blank'],
+      ['plain', 'Building and maintaining Cloud-Native infrastructure,'],
+      ['plain', 'Kubernetes platforms, and internal developer tooling.'],
+      ['blank'],
+      ['key',   'Stack:    ', 'K8s · Terraform · Go · AWS · Prometheus'],
+    ],
+    'experience/2022-2024.txt': [
+      ['section', 'SENIOR ENGINEER — 2022–2024'],
+      ['plain', 'Infrastructure automation, CI/CD pipelines,'],
+      ['plain', 'Container platform migration to Kubernetes.'],
+      ['blank'],
+      ['key', 'Stack:', 'Docker · Jenkins · Ansible · AWS'],
+    ],
+    'experience/2020-2022.txt': [
+      ['section', 'SOFTWARE ENGINEER — 2020–2022'],
+      ['plain', 'Test infrastructure, automation frameworks,'],
+      ['plain', 'CI pipelines, containerized test environments.'],
+      ['blank'],
+      ['key', 'Stack:', 'Python · Selenium · Docker · GHA'],
+    ],
+    'blog/': 'dir',
+    'blog/system-design-load-balancing': [['key','Title:  ','System Design 101: Load Balancing'],          ['url','URL:    ','https://madhan.app/blogs/037-system-design-load-balancing/']],
+    'blog/packer-github-actions':        [['key','Title:  ','Building VM Images with Packer + GitHub Actions'],['url','URL:    ','https://madhan.app/blogs/036-packer-github-actions-vm/']],
+    'blog/gpt-oss-k8s-ollama':           [['key','Title:  ','Running OSS LLMs on K8s with Ollama'],          ['url','URL:    ','https://madhan.app/blogs/035-gpt-oss-k8s-ollama/']],
+    'blog/nvidia-gpu-k8s':               [['key','Title:  ','NVIDIA GPU Passthrough on K8s'],                 ['url','URL:    ','https://madhan.app/blogs/034-nvidia-gpu-k8s/']],
+    'blog/homelab-part-1':               [['key','Title:  ','Building a Homelab — Part 1'],                   ['url','URL:    ','https://madhan.app/blogs/024-homelab-part-1/']],
+    'blog/k8s-on-proxmox-pulumi':        [['key','Title:  ','K8s on Proxmox using Pulumi'],                   ['url','URL:    ','https://madhan.app/blogs/027-k8s-on-proxmox-using-pulumi/']],
+    'projects/': 'dir',
+    'projects/homelab':        [['key','Name:  ','Homelab'],        ['url','URL:   ','https://homelab.madhan.app'],               ['plain','Proxmox · Talos Linux · K8s · ArgoCD · Cilium · NetBird']],
+    'projects/dotfiles':       [['key','Name:  ','Dotfiles'],       ['url','URL:   ','https://dotfiles.madhan.app'],              ['plain','Personal Dotfiles and Shell Config']],
+    'projects/learn-k8s-ckad': [['key','Name:  ','Learn K8s CKAD'],['url','URL:   ','https://github.com/madhank93/learn-k8s-ckad'],['plain','CKAD Exam Prep Notes and Exercises']],
+    'projects/learn-docker':   [['key','Name:  ','Learn Docker'],   ['url','URL:   ','https://github.com/madhank93/learn-docker'],  ['plain','Docker Learning Resources']],
+    'projects/learn-dsa':      [['key','Name:  ','Learn DSA'],      ['url','URL:   ','https://github.com/madhank93/learn-dsa'],     ['plain','Data Structures and Algorithms']],
+    'projects/js-mindmap':     [['key','Name:  ','JS Mind Map'],    ['url','URL:   ','https://madhank93.github.io/js-mindmap/'],   ['plain','JavaScript Concepts Mind Map']],
+  };
+
+  const ROOT_FILES = ['about.me','madhan.json','skills.txt','certifications.crt','contact.json','experience/','blog/','projects/'];
+  const EXP_FILES  = ['current.txt','2022-2024.txt','2020-2022.txt'];
+  const BLOG_FILES = ['system-design-load-balancing','packer-github-actions','gpt-oss-k8s-ollama','nvidia-gpu-k8s','homelab-part-1','k8s-on-proxmox-pulumi'];
+  const PROJ_FILES = ['homelab','dotfiles','learn-k8s-ckad','learn-docker','learn-dsa','js-mindmap'];
+
+  const output = document.getElementById('output');
+  const input  = document.getElementById('cmd');
+  let history = [], histIdx = -1, passwordMode = false, pwMask = null, confirmMode = false;
+
+  function addCopyBtn(el) {
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = '⎘';
+    btn.title = 'Copy';
+    btn.onclick = e => {
+      e.stopPropagation();
+      const text = el.textContent.replace(/⎘|✓/g, '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '✓';
+        setTimeout(() => btn.textContent = '⎘', 1000);
+      });
+    };
+    el.appendChild(btn);
+  }
+  function printRaw(html) {
+    const p = document.createElement('p');
+    p.className = 'ln'; p.innerHTML = html;
+    addCopyBtn(p);
+    output.appendChild(p);
+  }
+  function print(text, cls) {
+    const p = document.createElement('p');
+    p.className = 'ln ' + (cls || ''); p.textContent = text;
+    addCopyBtn(p);
+    output.appendChild(p);
+  }
+  function printBlank() {
+    const p = document.createElement('p');
+    p.className = 'ln-blank'; output.appendChild(p);
+  }
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function printPromptLine(cmd) {
+    printRaw(`<span class="ln-prompt">${escHtml(visitorUser)}<span class="ln-host">@madhan.app</span>:<span class="ln-path">${cwd}</span>$</span> <span>${escHtml(cmd)}</span>`);
+  }
+  function scroll() { output.scrollTop = output.scrollHeight; }
+
+  function renderLines(lines) {
+    for (const l of lines) {
+      switch (l[0]) {
+        case 'blank':      printBlank(); break;
+        case 'plain':      print(l[1]); break;
+        case 'hi':         print(l[1], 'ln-hi'); break;
+        case 'dim':        print(l[1], 'ln-dim'); break;
+        case 'section':    print(l[1], 'ln-key'); break;
+        case 'key':        printRaw(`<span class="ln-key">${escHtml(l[1])}</span><span class="ln-val"> ${escHtml(l[2])}</span>`); break;
+        case 'cert-hd':    print(l[1], 'ln-cert-hd'); break;
+        case 'cert':       printRaw(`<span class="ln-key">${escHtml(l[1])}</span><span class="ln-dim">  ·  </span><span class="ln-cert-bd">${escHtml(l[2])}</span>`); break;
+        case 'json-open':  print('{'); break;
+        case 'json-close': print('}'); break;
+        case 'json-kv':      printRaw(`  <span class="ln-key">"${escHtml(l[1])}"</span>: <span class="ln-str">${escHtml(l[2])}</span>,`); break;
+        case 'json-kv-last': printRaw(`  <span class="ln-key">"${escHtml(l[1])}"</span>: <span class="ln-str">${escHtml(l[2])}</span>`); break;
+        case 'url':          printRaw(`<span class="ln-key">${escHtml(l[1])}</span><a class="ln-link" href="${escHtml(l[2])}" target="_blank" rel="noopener">${escHtml(l[2])}</a>`); break;
+        case 'json-url':     printRaw(`  <span class="ln-key">"${escHtml(l[1])}"</span>: <a class="ln-link" href="${escHtml(l[2])}" target="_blank" rel="noopener">"${escHtml(l[2])}"</a>,`); break;
+        case 'json-url-last':printRaw(`  <span class="ln-key">"${escHtml(l[1])}"</span>: <a class="ln-link" href="${escHtml(l[2])}" target="_blank" rel="noopener">"${escHtml(l[2])}"</a>`); break;
+      }
+    }
+  }
+
+  function evalCmd(raw) {
+    const cmd = raw.trim();
+    if (!cmd) return;
+    printPromptLine(cmd);
+    history.unshift(cmd);
+    histIdx = -1;
+
+    const parts = cmd.split(/\s+/);
+    const op  = parts[0];
+    const arg = parts.slice(1).join(' ').replace(/^['"]|['"]$/g, '');
+
+    // ── core ────────────────────────────────────────────────────
+    if (op === 'clear') { output.innerHTML = ''; return; }
+
+    if (op === 'help' || op === '?') {
+      print('Available commands:', 'ln-key');
+      printBlank();
+      [
+        ['ls [path]',   'List files'],
+        ['cat [file]',  'Read a file'],
+        ['cd [dir]',    'Change directory  (experience, blog, projects)'],
+        ['whoami',      'Who are you?'],
+        ['pwd',         'Current directory'],
+        ['uname -a',    'System info'],
+        ['date',        'Current date/time'],
+        ['echo [text]', 'Print text'],
+        ['history',     'Command history'],
+        ['clear',       'Clear terminal'],
+      ].forEach(([c, d]) => printRaw(`  <span class="ln-key" style="display:inline-block;min-width:15ch">${escHtml(c)}</span><span class="ln-dim">${d}</span>`));
+      printBlank();
+      print('Clickable shortcuts below the terminal.', 'ln-dim');
+      return;
+    }
+
+    if (op === 'whoami') {
+      const ua   = navigator.userAgent;
+      const br   = ua.match(/(Chrome|Firefox|Safari|Edge|OPR)\/[\d.]+/)?.[0] || 'unknown';
+      const os   = ua.match(/\(([^)]+)\)/)?.[1]?.split(';')[0] || 'unknown';
+      print('── you ─────────────────────────────────────', 'ln-dim');
+      if (visitor.loading) {
+        print('  resolving...', 'ln-dim');
+      } else if (!visitor.err && visitor.ip) {
+        printRaw(`  <span class="ln-key">IP       </span>: <span class="ln-val">${escHtml(visitor.ip)}</span>`);
+        const loc = [visitor.city, visitor.region, visitor.country].filter(Boolean).join(', ');
+        if (loc)             printRaw(`  <span class="ln-key">Location </span>: <span class="ln-val">${escHtml(loc)}</span>`);
+        if (visitor.org)     printRaw(`  <span class="ln-key">ISP/Org  </span>: <span class="ln-val">${escHtml(visitor.org)}</span>`);
+        if (visitor.timezone)printRaw(`  <span class="ln-key">Timezone </span>: <span class="ln-val">${escHtml(visitor.timezone)}</span>`);
+      }
+      printRaw(`  <span class="ln-key">Browser  </span>: <span class="ln-val">${escHtml(br)}</span>`);
+      printRaw(`  <span class="ln-key">OS       </span>: <span class="ln-val">${escHtml(os)}</span>`);
+      printRaw(`  <span class="ln-key">Screen   </span>: <span class="ln-val">${screen.width}×${screen.height}</span>`);
+      printRaw(`  <span class="ln-key">Language </span>: <span class="ln-val">${navigator.language || 'unknown'}</span>`);
+      print('────────────────────────────────────────────', 'ln-dim');
+      return;
+    }
+
+    if (op === 'pwd') {
+      print(cwd === '~' ? '/home/madhan' : '/home/madhan/' + cwd.replace('~/', ''));
+      return;
+    }
+
+    if (op === 'date')  { print(new Date().toString()); return; }
+    if (op === 'echo')  { print(arg || ''); return; }
+    if (op === 'uname') { print('Linux madhan.app 6.6.0-proxmox #1 SMP x86_64 GNU/Linux'); return; }
+
+    if (op === 'history') {
+      history.forEach((c, i) => printRaw(`  <span class="ln-dim">${String(i+1).padStart(3)}</span>  ${escHtml(c)}`));
+      return;
+    }
+
+    if (op === 'ls') {
+      const target = arg.replace(/\/$/, '');
+      const listFor = (dir) => {
+        if (dir === '~/experience') { EXP_FILES.forEach(f => print(f, 'ln-file')); return; }
+        if (dir === '~/blog')       { BLOG_FILES.forEach(f => print(f, 'ln-file')); return; }
+        if (dir === '~/projects')   { PROJ_FILES.forEach(f => print(f, 'ln-file')); return; }
+        ROOT_FILES.forEach(f => f.endsWith('/') ? printRaw(`<span class="ln-dir">${f}</span>`) : print(f, 'ln-file'));
+      };
+      if (!target || target === '.' || target.startsWith('-')) {
+        listFor(cwd);                                              // ls / ls . / ls -la → current dir
+      } else if (target === '~' || target === '/home/madhan') {
+        listFor('~');                                              // ls ~ → always root
+      } else if (target === 'experience') { EXP_FILES.forEach(f => print(f, 'ln-file')); }
+      else if (target === 'blog')         { BLOG_FILES.forEach(f => print(f, 'ln-file')); }
+      else if (target === 'projects')     { PROJ_FILES.forEach(f => print(f, 'ln-file')); }
+      else { print(`ls: cannot access '${arg}': No such file or directory`, 'ln-err'); }
+      return;
+    }
+
+    if (op === 'cd') {
+      const target = (arg || '~').replace(/\/$/, '');
+      const map = { '~':'~', '/home/madhan':'~', 'experience':'~/experience', 'blog':'~/blog', 'projects':'~/projects', '..':'~' };
+      if (target in map) {
+        cwd = map[target];
+        document.querySelector('.t-prompt .t-path').textContent = cwd;
+        updateTitle();
+      } else {
+        print(`cd: no such file or directory: ${arg}`, 'ln-err');
+      }
+      return;
+    }
+
+    if (op === 'cat') {
+      if (!arg) { print('cat: missing operand', 'ln-err'); return; }
+      const key = arg.includes('/')
+        ? arg
+        : cwd === '~/experience' ? 'experience/' + arg
+        : cwd === '~/blog'       ? 'blog/'       + arg
+        : cwd === '~/projects'   ? 'projects/'   + arg
+        : arg;
+      if (FS[key] && FS[key] !== 'dir') { renderLines(FS[key]); }
+      else if (FS[key] === 'dir')       { print(`cat: ${arg}: Is a directory`, 'ln-err'); }
+      else {
+        print(`cat: ${arg}: No such file or directory`, 'ln-err');
+        print("Hint: Try 'ls' to see available files", 'ln-dim');
+      }
+      return;
+    }
+
+    // ── easter eggs ─────────────────────────────────────────────
+    if (op === 'sudo') {
+      const pwLine = document.createElement('p');
+      pwLine.className = 'ln';
+      pwLine.innerHTML = `<span class="ln-key">[sudo] password for ${escHtml(visitorUser)}: </span>`;
+      pwMask = document.createElement('span');
+      pwLine.appendChild(pwMask);
+      output.appendChild(pwLine);
+      scroll();
+      passwordMode = true;
+      return;
+    }
+
+    if (op === 'exit' || op === 'logout') {
+      print('There is no escape. The pods are always Running.', 'ln-val'); return;
+    }
+
+    if (op === 'vim' || op === 'nvim') {
+      print('Entering vim...', 'ln-dim'); printBlank();
+      print('  [No Name]                        0,0-1    All', 'ln-dim'); printBlank();
+      printRaw('<span class="ln-err">Tip: To exit vim, type  :q!  and press Enter.</span>');
+      printRaw('<span class="ln-dim">Good luck. People have been trapped here since 1991.</span>');
+      return;
+    }
+
+    if (op === 'nano' || op === 'emacs') {
+      print(`${op}: A brave choice. But this is a kubectl household.`, 'ln-err'); return;
+    }
+
+    if (op === 'git' && !arg) {
+      print("usage: git [log|status|diff|...]", 'ln-dim');
+      print("Tip: try 'git log'", 'ln-key');
+      return;
+    }
+
+    if (op === 'git' && arg.startsWith('log')) {
+      [
+        ['a3f9d2e', 'HEAD → main', 'feat: add another k8s cluster to homelab (no reason)'],
+        ['7c8b1f3', '',            'fix: stop accidentally deleting prod namespace'],
+        ['2e4a9d1', '',            'feat: migrate everything to kubernetes (again)'],
+        ['f1c3b7a', '',            'chore: rewrite infra in Pulumi because why not'],
+        ['9d2e1f0', '',            'fix: cats do not make good rubber ducks'],
+        ['3b7f9c2', '',            'feat: automate coffee machine with ansible'],
+        ['c4a1e8d', '',            'init: become platform engineer'],
+      ].forEach(([hash, ref, msg]) => {
+        printRaw(`<span class="ln-key">commit ${hash}</span>${ref ? ` <span class="ln-val">(${ref})</span>` : ''}`);
+        printRaw(`<span class="ln-dim">Author: Madhan Kumaravelu &lt;madhan@madhan.app&gt;</span>`);
+        printRaw(`<span class="ln-dim">    ${escHtml(msg)}</span>`);
+        printBlank();
+      });
+      return;
+    }
+
+    if (op === 'neofetch') {
+      const art  = ['   ____  ____   ','  / __ \\/ __ \\  ',' / / / / / / /  ','/ /_/ / /_/ /   ','\\____/\\____/    ','                ','   madhan.app   ','                ','                ','                ','                '];
+      const info = [
+        ['info', `<span class="ln-hi">madhan</span><span class="ln-dim">@</span><span class="ln-hi">madhan.app</span>`],
+        ['info', '<span class="ln-dim">──────────────────────</span>'],
+        ['key',  'Host',   'Homelab (Proxmox + Talos + K8s)'],
+        ['key',  'OS',     'Arch Linux btw'],
+        ['key',  'Kernel', '6.6.0-proxmox'],
+        ['key',  'Shell',  'zsh + kubectl'],
+        ['key',  'Uptime', 'Platform Engineer since 2020'],
+        ['key',  'CPU',    'Infinite Curiosity'],
+        ['key',  'Memory', '4+ Years Experience'],
+        ['key',  'K8s',    'v1.29.0  (3 clusters)'],
+        ['key',  'Blog',   'madhan.app'],
+      ];
+      info.forEach((row, i) => {
+        const a = `<span class="ln-val">${art[i] || '                '}</span>`;
+        if (row[0] === 'info') printRaw(a + row[1]);
+        else printRaw(`${a}<span class="ln-key">${row[1]}:</span> ${row[2]}`);
+      });
+      return;
+    }
+
+    if (op === 'sl') {
+      ['      ====        ________                ___________',
+       '  _D _|  |_______/        \\__I_I_____===__|_________|',
+       '   |(_)---  |   H\\________/ |   |        =|___ ___|',
+       '   /     |  |   H  |  |     |   |         ||_| |_||',
+       '  |      |  |   H  |__--------------------| [___] |',
+       '  | ________|___H__/__|_____/[][]~\\________|       |',
+       '  |/ |   |-----------I_____I [][] []  D   |=======|',
+       '__/ =| o |=-~~\\  /~~\\  /~~\\  /~~\\ ____Y___________|',
+       ' |/-=|___|=    ||    ||    ||    |_____/~\\___/',
+       '  \\_/      \\_O=====O=====O=====O/      \\_/',
+      ].forEach(l => print(l, 'ln-val'));
+      print('sl: Next time take the kubectl express.', 'ln-dim');
+      return;
+    }
+
+    if (op === 'fortune') {
+      const q = [
+        '"Kubernetes: because your team loves debugging at 3am."',
+        '"It\'s not a bug, it\'s an undocumented feature in the YAML."',
+        '"Have you tried: kubectl rollout restart deployment/everything?"',
+        '"The cloud is just someone else\'s computer. The homelab is mine."',
+        '"Ship it.  kubectl apply -f prod.yaml --force"',
+        '"2 hard problems in CS: cache invalidation, off-by-one, and Helm charts."',
+        '"Automate the boring stuff. Then automate the automation."',
+        '"You don\'t need microservices. You need sleep."',
+      ];
+      print(q[Math.floor(Math.random() * q.length)], 'ln-val');
+      return;
+    }
+
+    if (op === 'ping') {
+      if (!arg) { print('ping: usage error: Destination address required', 'ln-err'); return; }
+      const host = arg;
+      const known = ['madhan.app','homelab.madhan.app','dotfiles.madhan.app'];
+      if (!known.includes(host)) {
+        print(`ping: cannot resolve ${host}: Name or service not known`, 'ln-err');
+        return;
+      }
+      print(`PING ${host}: 56 data bytes`, 'ln-dim');
+      let i = 0;
+      const iv = setInterval(() => {
+        const ms = (Math.random() * 8 + 1).toFixed(3);
+        printRaw(`<span class="ln-val">64 bytes from ${escHtml(host)}: icmp_seq=${i} ttl=64 time=<span class="ln-key">${ms} ms</span></span>`);
+        scroll();
+        if (++i >= 4) {
+          clearInterval(iv);
+          printBlank();
+          print(`--- ${host} ping statistics ---`, 'ln-dim');
+          print('4 packets transmitted, 4 received, 0% packet loss', 'ln-val');
+          scroll();
+        }
+      }, 700);
+      return;
+    }
+
+    if (op === 'ssh') {
+      print(`${arg || 'host'}@madhan.app: Permission denied (publickey).`, 'ln-err'); return;
+    }
+
+    if (op === 'rm' && !arg) {
+      print('rm: missing operand', 'ln-err');
+      print("Usage: rm -rf /  (if you're feeling brave)", 'ln-dim');
+      return;
+    }
+
+    if (op === 'rm' && (cmd.includes('-rf') || cmd.includes('-fr'))) {
+      print('Are you sure? This will delete the entire cluster. [y/N]', 'ln-err');
+      confirmMode = true;
+      return;
+    }
+
+    if (op === 'kubectl') {
+      print('kubectl controls the Kubernetes cluster manager.', 'ln-dim');
+      printBlank();
+      print("But you're on a static site, so...", 'ln-val');
+      print('Try: cat madhan.json', 'ln-key');
+      return;
+    }
+
+    if (op === 'coffee' || cmd === 'make coffee') {
+      let s = 0;
+      const steps = ['Grinding beans... ☕','Brewing...        ██████░░░░','Almost ready...   ████████░░','Done!             ██████████  ☕'];
+      const iv = setInterval(() => { print(steps[s++], 'ln-val'); scroll(); if (s >= steps.length) clearInterval(iv); }, 700);
+      return;
+    }
+
+    if (op === 'make') {
+      print(`make: *** No rule to make target '${arg || 'all'}'. Stop.`, 'ln-err');
+      if (arg === 'coffee') print('Hint: try the `coffee` command instead.', 'ln-dim');
+      return;
+    }
+
+    if (op === 'curl' && !arg) {
+      print('curl: try  curl wttr.in  for homelab weather', 'ln-dim'); return;
+    }
+
+    if (op === 'curl' && arg.includes('wttr')) {
+      print('Weather for: Homelab', 'ln-key');
+      print('⛅  +24°C  Partly cloudy', 'ln-val');
+      print('Humidity: 60%  Wind: 5km/h  Uptime: 99.9%', 'ln-dim');
+      return;
+    }
+
+    // ── unknown ─────────────────────────────────────────────────
+    print(`bash: ${parts[0]}: command not found`, 'ln-err');
+    print("Type 'help' to see available commands.", 'ln-dim');
+  }
+
+  function run(cmd) {
+    input.value = '';
+    evalCmd(cmd);
+    scroll();
+    input.focus();
+  }
+
+  input.addEventListener('keydown', e => {
+    if (passwordMode) {
+      e.preventDefault();
+      if (e.key === 'Enter') {
+        passwordMode = false;
+        pwMask = null;
+        input.value = '';
+        print('sudo: Permission denied. Nice try.', 'ln-err');
+        scroll();
+      } else if (e.key === 'Backspace') {
+        if (pwMask && pwMask.textContent.length) pwMask.textContent = pwMask.textContent.slice(0, -1);
+      } else if (e.key.length === 1) {
+        if (pwMask) pwMask.textContent += '•';
+      }
+      return;
+    }
+
+    if (confirmMode && e.key === 'Enter') {
+      e.preventDefault();
+      const answer = input.value.trim().toLowerCase();
+      input.value = '';
+      confirmMode = false;
+      if (answer === 'y') {
+        const steps = [
+          'Terminating pods...       ████████░░  80%',
+          'Deleting namespaces...    ██████████  100%',
+          'Removing nodes...         ██████████  100%',
+          '💥 Just kidding. Nothing was harmed.',
+        ];
+        let s = 0;
+        const iv = setInterval(() => {
+          print(steps[s++], s < steps.length ? 'ln-err' : 'ln-val');
+          scroll();
+          if (s >= steps.length) clearInterval(iv);
+        }, 600);
+      } else {
+        print('Aborted. The cluster lives another day.', 'ln-val');
+        scroll();
+      }
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      const v = input.value;
+      input.value = '';
+      evalCmd(v);
+      scroll();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (histIdx < history.length - 1) input.value = history[++histIdx];
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (histIdx > 0) input.value = history[--histIdx];
+      else { histIdx = -1; input.value = ''; }
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      const v = input.value;
+      const relFiles = cwd === '~/experience' ? EXP_FILES
+                     : cwd === '~/blog'       ? BLOG_FILES
+                     : cwd === '~/projects'   ? PROJ_FILES : [];
+      const all = [
+        'ls','ls -la','ls experience/','ls blog/','ls projects/',
+        'cat about.me','cat madhan.json','cat skills.txt','cat certifications.crt','cat contact.json',
+        'cat experience/current.txt','cat experience/2022-2024.txt','cat experience/2020-2022.txt',
+        'cat blog/system-design-load-balancing','cat blog/packer-github-actions',
+        'cat blog/gpt-oss-k8s-ollama','cat blog/nvidia-gpu-k8s',
+        'cat blog/homelab-part-1','cat blog/k8s-on-proxmox-pulumi',
+        'cat projects/homelab','cat projects/dotfiles','cat projects/learn-k8s-ckad',
+        'cat projects/learn-docker','cat projects/learn-dsa','cat projects/js-mindmap',
+        ...relFiles.map(f => 'cat ' + f),
+        'cd experience','cd blog','cd projects','cd ~','cd ..',
+        'whoami','pwd','uname -a','date','clear','help','history',
+        'fortune','neofetch','sl','git log','git log --oneline',
+        'ping madhan.app','ping homelab.madhan.app',
+        'sudo su -','rm -rf /','curl wttr.in',
+      ];
+      const matches = all.filter(c => c.startsWith(v));
+      if (matches.length === 1) input.value = matches[0];
+      else if (matches.length > 1) {
+        printPromptLine(v);
+        matches.forEach(c => print(c, 'ln-dim'));
+        scroll();
+      }
+    } else if (e.ctrlKey && e.key === 'l') {
+      e.preventDefault(); output.innerHTML = '';
+    }
+  });
+
+  // boot message
+  print(`Last login: ${new Date().toDateString()} on ttys001`, 'ln-dim');
+  printBlank();
+  printRaw(`<span class="ln-hi">Welcome.</span> Type <span class="ln-key">help</span> to see what's available, or <span class="ln-key">ls</span> to explore.`);
+  printBlank();
+</script>
 {% endblock %}

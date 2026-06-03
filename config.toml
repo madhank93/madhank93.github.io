@@ -2,7 +2,7 @@
 base_url = "https://madhan.app"
 
 # The site title used in feeds by default.
-title = "Madhan"
+title = "Madhan Kumaravelu"
 
 # The site theme to use.
 theme = "DeepThought"
@@ -55,7 +55,8 @@ anchors = "on"
 
 # Put all your custom variables here
 [extra]
-galleria.enabled = true
+galleria.enabled = false
+description = "Platform Engineer specializing in Kubernetes, cloud-native infrastructure, DevOps, and open source."
 date_format="%d %b, %Y"
 navbar_items = [
  { code = "en", nav_items = [
