@@ -42,10 +42,9 @@ taxonomies = [
 ]
 
 [markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+[markdown.highlighting]
 highlight_code = true
-highlight_theme = "dracula"
+theme = "dracula"
 
 # Various slugification strategies, see below for details
 # Defaults to everything being a slug
@@ -67,6 +66,7 @@ navbar_items = [
   { url = "$BASE_URL/archive", name = "Archive" },
   { url = "$BASE_URL/uses", name = "Uses" },
   { url = "$BASE_URL/tags", name = "Tags" },
+  { url = "https://homelab.madhan.app", name = "Homelab" },
  ]},
 ]
 
