@@ -1,4 +1,4 @@
 +++
 title = "Madhan Kumaravelu"
-description = "Platform Engineer · Kubernetes · Cloud-Native · Open Source"
+description = "Platform Engineer · Kubernetes · Cloud Native · Infra · Observability · Automation · FOSS"
 +++

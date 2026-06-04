@@ -274,13 +274,29 @@
   {% if config.extra.mapbox.enabled %}
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js" integrity="sha384-Pulw7+h73841BQIK0LzJCydKRPChJUF9w8h8W0o3h+cLtoyNPJS847bQauLWOTwg" crossorigin="anonymous"></script>
   {% endif %}
-  <script src="{{ get_url(path='elasticlunr.min.js') }}"></script>
-  <script src="{{ get_url(path='search_index.' ~ lang ~ '.js') }}"></script>
+  <script defer src="{{ get_url(path='elasticlunr.min.js') }}"></script>
   {%- if lang != "en" -%}
   {%- block other_lang_search_js -%}
   {%- endblock -%}
   {%- endif -%}
-  <script src="{{ get_url(path='js/site.js') }}"></script>
+  <script defer src="{{ get_url(path='js/site.js') }}"></script>
+  <script>
+    // Lazy-load search index only when search is opened
+    (function () {
+      var loaded = false;
+      function loadSearchIndex() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = '{{ get_url(path="search_index." ~ lang ~ ".js") }}';
+        document.head.appendChild(s);
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('nav-search');
+        if (btn) btn.addEventListener('click', loadSearchIndex, { once: false });
+      });
+    })();
+  </script>
 
   {% block custom_js %}
   {% endblock %}

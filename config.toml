@@ -1,5 +1,5 @@
 # The base URL of the site; the only required configuration variable.
-base_url = "https://madhan.app"
+base_url = "https://www.madhan.app"
 
 # The site title used in feeds by default.
 title = "Madhan Kumaravelu"
@@ -82,7 +82,8 @@ webmanifest = "/icons/site.webmanifest"
 # Author details
 [extra.author]
 name = "Madhan"
-avatar = "https://raw.githubusercontent.com/madhank93/personal_blog/main/static/images/avatar.png"
+avatar = "/images/avatar.webp"
+avatar_fallback = "/images/avatar.png"
 
 # Social links
 [extra.social]
