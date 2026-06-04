@@ -108,6 +108,9 @@
   body[theme=dark] .term      { filter: invert(1) hue-rotate(180deg); }
   body[theme=dark] .hint      { filter: invert(1) hue-rotate(180deg); }
   body[theme=dark] .term-label{ filter: invert(1) hue-rotate(180deg); }
+  /* picture+img both get [theme=dark] → double counter-invert → broken.
+     neutralise the img filter when it's already handled by the picture wrapper. */
+  picture[theme=dark] img[theme=dark] { filter: none; }
 </style>
 
 <section class="section">
