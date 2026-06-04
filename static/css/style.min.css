@@ -1,3 +1,9 @@
+/* Block Jost from loading — deep-thought.css imports it but we override with Fira Code */
+@font-face { font-family:'Jost'; src:local('Arial'); font-display:optional; }
+/* Prevent FA fonts from blocking render */
+@font-face { font-family:'Font Awesome 6 Free'; font-display:swap; src:local('Arial'); }
+@font-face { font-family:'Font Awesome 6 Brands'; font-display:swap; src:local('Arial'); }
+
 body {
   font: 100% "Fira Code", monospace;
   display: flex;

@@ -117,8 +117,11 @@
       <p class="subtitle is-4">{{ section.description }}</p>
       {% if config.extra.author.avatar %}
       <figure class="image is-flex is-justify-content-center is-align-items-center">
-        <img class="is-rounded" src="{{ config.extra.author.avatar }}"
-          width="192" height="192" style="max-width:192px" alt="Madhan Kumaravelu" />
+        <picture>
+          <source srcset="{{ config.extra.author.avatar }}" type="image/webp">
+          <img class="is-rounded" src="{{ config.extra.author.avatar_fallback }}"
+            width="192" height="192" style="max-width:192px" alt="Madhan Kumaravelu" />
+        </picture>
       </figure>
       {% endif %}
       {{ macros::social_links(social_config=config.extra.social) }}
@@ -175,26 +178,31 @@
     document.getElementById('term-title').textContent = visitorUser + '@madhan.app — ' + cwd;
   }
 
-  function applyVisitor(d) {
+  function applyVisitor(ip, geo) {
     visitor.loading  = false;
-    visitor.ip       = d.ip       || d.query      || '';
-    visitor.city     = d.city                      || '';
-    visitor.region   = d.region   || d.regionName || '';
-    visitor.country  = d.country_name || d.country || '';
-    visitor.org      = d.org      || d.isp        || '';
-    visitor.timezone = d.timezone                  || '';
+    visitor.ip       = ip;
+    visitor.city     = geo.city                        || '';
+    visitor.region   = geo.region   || geo.regionName || '';
+    visitor.country  = geo.country_name || geo.country || '';
+    visitor.org      = geo.org      || geo.isp         || '';
+    visitor.timezone = geo.timezone                    || '';
     if (visitor.ip) setUser(visitor.ip);
   }
 
-  fetch('https://ipapi.co/json/')
-    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-    .then(d => { if (!d.ip) throw new Error(); applyVisitor(d); })
-    .catch(() =>
-      fetch('https://ip-api.com/json/')
+  // Force IPv4 via api4.ipify.org, then geo-lookup with that IP
+  fetch('https://api4.ipify.org?format=json')
+    .then(r => r.json())
+    .then(({ ip }) => {
+      if (!ip) throw new Error();
+      return fetch(`https://ipapi.co/${ip}/json/`)
         .then(r => r.json())
-        .then(d => applyVisitor(d))
-        .catch(() => { visitor.loading = false; visitor.err = true; })
-    );
+        .then(geo => applyVisitor(ip, geo))
+        .catch(() => fetch(`https://ip-api.com/json/${ip}`)
+          .then(r => r.json())
+          .then(geo => applyVisitor(ip, geo))
+        );
+    })
+    .catch(() => { visitor.loading = false; visitor.err = true; });
 
   const FS = {
     'about.me': [
@@ -262,28 +270,89 @@
       ['json-close'],
     ],
     'experience/': 'dir',
-    'experience/current.txt': [
-      ['section', 'CURRENT ROLE'],
-      ['key',   'Title:    ', 'Platform Engineer'],
+    'experience/elevance-health-2024-present.txt': [
+      ['section', 'ELEVANCE HEALTH — DevOps Engineer'],
+      ['key', 'Location: ', 'Dallas, TX'],
+      ['key', 'Duration: ', 'March 2024 – Present'],
       ['blank'],
-      ['plain', 'Building and maintaining Cloud-Native infrastructure,'],
-      ['plain', 'Kubernetes platforms, and internal developer tooling.'],
+      ['plain', '- Jenkins CI/CD for Java & NodeJS apps, cut deploy time ~40%'],
+      ['plain', '- ELK stack via Terraform + Ansible, centralised logging across 10+ microservices'],
+      ['plain', '- Logstash pipelines ingesting 5GB+ daily log data into Elasticsearch'],
+      ['plain', '- K8s clusters (dev/staging/prod) for 15+ microservices with auto-scaling'],
+      ['plain', '- Helm charts for consistent rollouts and one-command rollbacks'],
+      ['plain', '- Elastic Observability uptime monitors for proactive alerting'],
+      ['plain', '- DR activities for ELK stack, validated data restoration procedures'],
       ['blank'],
-      ['key',   'Stack:    ', 'K8s · Terraform · Go · AWS · Prometheus'],
+      ['key', 'Stack:', 'Jenkins · ELK · Kubernetes · Helm · Terraform · Ansible · AWS'],
     ],
-    'experience/2022-2024.txt': [
-      ['section', 'SENIOR ENGINEER — 2022–2024'],
-      ['plain', 'Infrastructure automation, CI/CD pipelines,'],
-      ['plain', 'Container platform migration to Kubernetes.'],
+    'experience/citizens-bank-2023-2024.txt': [
+      ['section', 'CITIZENS BANK — DevOps Engineer'],
+      ['key', 'Location: ', 'Dallas, TX'],
+      ['key', 'Duration: ', 'November 2023 – February 2024'],
       ['blank'],
-      ['key', 'Stack:', 'Docker · Jenkins · Ansible · AWS'],
+      ['plain', '- Jenkins CI/CD onto K8s, reduced release lead time ~30%'],
+      ['plain', '- Jenkins shared libraries in Groovy, eliminated duplicate pipeline code across 5+ projects'],
+      ['plain', '- Helm charts for environment promotion dev → production with rollback capability'],
+      ['blank'],
+      ['key', 'Stack:', 'Jenkins · Kubernetes · Helm · Groovy'],
     ],
-    'experience/2020-2022.txt': [
-      ['section', 'SOFTWARE ENGINEER — 2020–2022'],
-      ['plain', 'Test infrastructure, automation frameworks,'],
-      ['plain', 'CI pipelines, containerized test environments.'],
+    'experience/delta-tech-hub-2023.txt': [
+      ['section', 'DELTA TECHNOLOGY HUB — DevOps Engineer'],
+      ['key', 'Location: ', 'Chicago, IL'],
+      ['key', 'Duration: ', 'August 2023 – September 2023'],
       ['blank'],
-      ['key', 'Stack:', 'Python · Selenium · Docker · GHA'],
+      ['plain', '- Selenium Grid on AWS EKS, increased parallel test capacity 3x, cut runtime ~50%'],
+      ['plain', '- Integrated Selenium framework into Jenkins CI/CD for continuous testing on every PR'],
+      ['blank'],
+      ['key', 'Stack:', 'AWS EKS · Selenium Grid · Jenkins'],
+    ],
+    'experience/trustrace-2021-2023.txt': [
+      ['section', 'TRUSTRACE — Tech Lead'],
+      ['key', 'Location: ', 'Chennai, India'],
+      ['key', 'Duration: ', 'November 2021 – June 2023'],
+      ['blank'],
+      ['plain', '- K8s clusters on AWS EKS via Terraform, cut deploy time ~60% across 20+ services'],
+      ['plain', '- 15+ custom Helm charts with versioned releases and one-command rollbacks'],
+      ['plain', '- Containerised Java & NodeJS apps with Docker, cut onboarding time ~35%'],
+      ['plain', '- Harbor registry + OWASP/SBOM scanning, reduced critical CVE exposure'],
+      ['plain', '- Prometheus + Grafana monitoring, reduced MTTD by ~45%'],
+      ['plain', '- IAM least-privilege policies with MFA and privilege escalation monitoring'],
+      ['plain', '- Managed EC2, IAM, S3, CloudFront, Lambda, SQS, EFS, EBS'],
+      ['blank'],
+      ['key', 'Stack:', 'AWS EKS · Terraform · Helm · Docker · Prometheus · Grafana · Harbor · IAM'],
+    ],
+    'experience/testvagrant-2020-2021.txt': [
+      ['section', 'TESTVAGRANT — Software Engineer'],
+      ['key', 'Location: ', 'Chennai, India'],
+      ['key', 'Duration: ', 'September 2020 – November 2021'],
+      ['blank'],
+      ['plain', '- Containerised test suites with Docker for consistent CI/CD execution'],
+      ['plain', '- WebDriverIO/TypeScript E2E framework, 80%+ test coverage on critical flows'],
+      ['plain', '- Node-fetch API test suites, reduced manual verification ~50%'],
+      ['blank'],
+      ['key', 'Stack:', 'Docker · TypeScript · WebDriverIO · Node.js'],
+    ],
+    'experience/sysvine-2018-2020.txt': [
+      ['section', 'SYSVINE TECHNOLOGIES — Software Engineer'],
+      ['key', 'Location: ', 'Chennai, India'],
+      ['key', 'Duration: ', 'February 2018 – June 2020'],
+      ['blank'],
+      ['plain', '- Ruby/Capybara web automation suite integrated with CircleCI'],
+      ['plain', '- Postman API test collections for regression coverage before production deploys'],
+      ['plain', '- BrowserStack cross-browser coverage across 10+ browser/OS combinations'],
+      ['blank'],
+      ['key', 'Stack:', 'Ruby · Capybara · RSpec · Postman · BrowserStack · CircleCI'],
+    ],
+    'experience/aiway-2015-2018.txt': [
+      ['section', 'AIWAY SOLUTIONS — Software Engineer'],
+      ['key', 'Location: ', 'Chennai, India'],
+      ['key', 'Duration: ', 'December 2015 – February 2018'],
+      ['blank'],
+      ['plain', '- Eclipse + Maven automation environment setup for the team'],
+      ['plain', '- 100+ data-driven E2E scripts in Java using Selenium/TestNG + Apache POI'],
+      ['plain', '- REST Assured API tests integrated into build pipeline for early defect detection'],
+      ['blank'],
+      ['key', 'Stack:', 'Java · Selenium · TestNG · Maven · REST Assured · Apache POI'],
     ],
     'blog/': 'dir',
     'blog/system-design-load-balancing': [['key','Title:  ','System Design 101: Load Balancing'],          ['url','URL:    ','https://madhan.app/blogs/037-system-design-load-balancing/']],
@@ -302,7 +371,7 @@
   };
 
   const ROOT_FILES = ['about.me','madhan.json','skills.txt','certifications.crt','contact.json','experience/','blog/','projects/'];
-  const EXP_FILES  = ['current.txt','2022-2024.txt','2020-2022.txt'];
+  const EXP_FILES  = ['elevance-health-2024-present.txt','citizens-bank-2023-2024.txt','delta-tech-hub-2023.txt','trustrace-2021-2023.txt','testvagrant-2020-2021.txt','sysvine-2018-2020.txt','aiway-2015-2018.txt'];
   const BLOG_FILES = ['system-design-load-balancing','packer-github-actions','gpt-oss-k8s-ollama','nvidia-gpu-k8s','homelab-part-1','k8s-on-proxmox-pulumi'];
   const PROJ_FILES = ['homelab','dotfiles','learn-k8s-ckad','learn-docker','learn-dsa','js-mindmap'];
 
@@ -389,17 +458,23 @@
       print('Available commands:', 'ln-key');
       printBlank();
       [
-        ['ls [path]',   'List files'],
-        ['cat [file]',  'Read a file'],
-        ['cd [dir]',    'Change directory  (experience, blog, projects)'],
-        ['whoami',      'Who are you?'],
-        ['pwd',         'Current directory'],
-        ['uname -a',    'System info'],
-        ['date',        'Current date/time'],
-        ['echo [text]', 'Print text'],
-        ['history',     'Command history'],
-        ['clear',       'Clear terminal'],
-      ].forEach(([c, d]) => printRaw(`  <span class="ln-key" style="display:inline-block;min-width:15ch">${escHtml(c)}</span><span class="ln-dim">${d}</span>`));
+        ['ls [path]',         'List files'],
+        ['cat [file]',        'Read a file'],
+        ['cd [dir]',          'Change directory'],
+        ['grep [pat] [file]', 'Search in file'],
+        ['whoami',            'Who are you?'],
+        ['which [cmd]',       'Locate a command'],
+        ['man [cmd]',         'Command manual'],
+        ['uptime',            'Time as Platform Engineer'],
+        ['env',               'Environment variables'],
+        ['!!',                'Repeat last command'],
+        ['pwd',               'Current directory'],
+        ['uname -a',          'System info'],
+        ['date',              'Current date/time'],
+        ['echo [text]',       'Print text'],
+        ['history',           'Command history'],
+        ['clear',             'Clear terminal'],
+      ].forEach(([c, d]) => printRaw(`  <span class="ln-key" style="display:inline-block;min-width:22ch">${escHtml(c)}</span><span class="ln-dim">${d}</span>`));
       printBlank();
       print('Clickable shortcuts below the terminal.', 'ln-dim');
       return;
@@ -436,8 +511,91 @@
     if (op === 'echo')  { print(arg || ''); return; }
     if (op === 'uname') { print('Linux madhan.app 6.6.0-proxmox #1 SMP x86_64 GNU/Linux'); return; }
 
+    if (cmd === '!!') {
+      if (history.length < 2) { print('!! no previous command', 'ln-err'); return; }
+      const prev = history[1]; // history[0] is '!!' itself
+      input.value = prev;
+      evalCmd(prev);
+      return;
+    }
+
     if (op === 'history') {
       history.forEach((c, i) => printRaw(`  <span class="ln-dim">${String(i+1).padStart(3)}</span>  ${escHtml(c)}`));
+      return;
+    }
+
+    if (op === 'uptime') {
+      const days = Math.floor((Date.now() - new Date('2014-01-01')) / 86400000);
+      const yrs  = Math.floor(days / 365);
+      print(`up ${days} days (${yrs} yrs) — no coffee, just PRs and deadlifts since 2014`, 'ln-val');
+      print(`load avg: high, higher, send-help  |  reboots: 0  |  incidents: classified`, 'ln-dim');
+      print(`last panic: "it works on my machine"  |  status: still deploying`, 'ln-dim');
+      return;
+    }
+
+    if (op === 'env' || op === 'export') {
+      [
+        ['USER',  visitorUser],
+        ['HOME',  '/home/madhan'],
+        ['SHELL', '/bin/zsh'],
+        ['TERM',  'xterm-256color'],
+        ['EDITOR','vim'],
+        ['PAGER', 'less'],
+        ['KUBECONFIG', '/home/madhan/.kube/config'],
+        ['DOCKER_HOST','unix:///var/run/docker.sock'],
+      ].forEach(([k,v]) => printRaw(`<span class="ln-key">${k}</span>=<span class="ln-val">${escHtml(v)}</span>`));
+      return;
+    }
+
+    if (op === 'which') {
+      if (!arg) { print('which: missing argument', 'ln-err'); return; }
+      const bins = { ls:'/bin/ls', cat:'/bin/cat', cd:'shell builtin', pwd:'shell builtin',
+        echo:'/bin/echo', git:'/usr/bin/git', kubectl:'/usr/local/bin/kubectl',
+        docker:'/usr/bin/docker', helm:'/usr/local/bin/helm', terraform:'/usr/local/bin/terraform',
+        vim:'/usr/bin/vim', zsh:'/bin/zsh', sudo:'/usr/bin/sudo', ssh:'/usr/bin/ssh',
+        curl:'/usr/bin/curl', ping:'/bin/ping', neofetch:'/usr/bin/neofetch', sl:'/usr/games/sl' };
+      print(bins[arg] || `which: no ${arg} in /usr/local/bin:/usr/bin:/bin`, bins[arg] ? '' : 'ln-err');
+      return;
+    }
+
+    if (op === 'man') {
+      if (!arg) { print('man: what manual page do you want?', 'ln-err'); return; }
+      const pages = {
+        ls:    'ls [path]       — list directory contents',
+        cat:   'cat [file]      — concatenate and print files',
+        cd:    'cd [dir]        — change directory',
+        whoami:'whoami          — display current user info',
+        pwd:   'pwd             — print working directory',
+        grep:  'grep [pat] [file] — search file for pattern',
+        git:   'git log         — show commit history',
+        ping:  'ping [host]     — send ICMP echo requests',
+        ssh:   'ssh [host]      — OpenSSH remote login (good luck)',
+        sudo:  'sudo [cmd]      — execute as superuser (denied here)',
+        curl:  'curl wttr.in    — transfer data from URL',
+        vim:   'vim             — vi improved (no escape)',
+      };
+      if (pages[arg]) { print(`NAME`, 'ln-key'); print(`    ${pages[arg]}`); }
+      else print(`man: no manual entry for ${arg}`, 'ln-err');
+      return;
+    }
+
+    if (op === 'grep') {
+      if (!arg) { print('grep: usage: grep [pattern] [file]', 'ln-err'); return; }
+      const gparts = arg.split(/\s+/);
+      const pattern = gparts[0], fname = gparts[1];
+      if (!fname) { print('grep: usage: grep [pattern] [file]', 'ln-err'); return; }
+      const key = fname.includes('/') ? fname
+        : cwd === '~/experience' ? 'experience/' + fname
+        : cwd === '~/blog'       ? 'blog/'       + fname
+        : cwd === '~/projects'   ? 'projects/'   + fname : fname;
+      if (!FS[key] || FS[key] === 'dir') { print(`grep: ${fname}: No such file or directory`, 'ln-err'); return; }
+      const re = new RegExp(escHtml(pattern), 'i');
+      let found = 0;
+      FS[key].forEach(l => {
+        const text = l.slice(1).join(' ');
+        if (re.test(text)) { printRaw(`<span class="ln-val">${escHtml(fname)}</span>:<span>${escHtml(text)}</span>`); found++; }
+      });
+      if (!found) print(`grep: no match for '${pattern}' in ${fname}`, 'ln-dim');
       return;
     }
 
@@ -745,7 +903,9 @@
       const all = [
         'ls','ls -la','ls experience/','ls blog/','ls projects/',
         'cat about.me','cat madhan.json','cat skills.txt','cat certifications.crt','cat contact.json',
-        'cat experience/current.txt','cat experience/2022-2024.txt','cat experience/2020-2022.txt',
+        'cat experience/elevance-health-2024-present.txt','cat experience/citizens-bank-2023-2024.txt',
+        'cat experience/delta-tech-hub-2023.txt','cat experience/trustrace-2021-2023.txt',
+        'cat experience/testvagrant-2020-2021.txt','cat experience/sysvine-2018-2020.txt','cat experience/aiway-2015-2018.txt',
         'cat blog/system-design-load-balancing','cat blog/packer-github-actions',
         'cat blog/gpt-oss-k8s-ollama','cat blog/nvidia-gpu-k8s',
         'cat blog/homelab-part-1','cat blog/k8s-on-proxmox-pulumi',
@@ -754,9 +914,11 @@
         ...relFiles.map(f => 'cat ' + f),
         'cd experience','cd blog','cd projects','cd ~','cd ..',
         'whoami','pwd','uname -a','date','clear','help','history',
+        'uptime','env','which kubectl','which docker','which git',
+        'man ls','man cat','man grep','man git','man vim',
         'fortune','neofetch','sl','git log','git log --oneline',
         'ping madhan.app','ping homelab.madhan.app',
-        'sudo su -','rm -rf /','curl wttr.in',
+        'sudo su -','rm -rf /','curl wttr.in','!!',
       ];
       const matches = all.filter(c => c.startsWith(v));
       if (matches.length === 1) input.value = matches[0];
