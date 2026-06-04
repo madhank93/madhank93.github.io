@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+  <meta name="description" content="Using Terraform IaC tool to provision the AWS EKS cluster">
+  <link rel="canonical" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;015-prod-eks-part-2&#x2F;">
+
+  <meta property="og:site_name" content="Madhan Kumaravelu">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Production-ready EKS cluster setup — Part II | Madhan Kumaravelu">
+  <meta property="og:description" content="Using Terraform IaC tool to provision the AWS EKS cluster">
+  <meta property="og:url" content="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;015-prod-eks-part-2&#x2F;">
+  <meta property="og:image" content="&#x2F;images&#x2F;avatar.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Production-ready EKS cluster setup — Part II | Madhan Kumaravelu">
+  <meta name="twitter:description" content="Using Terraform IaC tool to provision the AWS EKS cluster">
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href="https://www.madhan.app/deep-thought.css" rel="stylesheet" />
+  <link href="https://www.madhan.app/css/style.min.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan Kumaravelu | Production-ready EKS cluster setup — Part II
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4L4HQ9T2Q"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-H4L4HQ9T2Q");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;www.madhan.app">Madhan Kumaravelu</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;uses">
+            Uses
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;tags">
+            Tags
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;homelab.madhan.app">
+            Homelab
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Production-ready EKS cluster setup — Part II
+          </h1>
+          <p class="subtitle">Using Terraform IaC tool to provision the AWS EKS cluster</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2023-08-20T01:25:33+05:30"
+      >August 20, 2023</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>890 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/eks/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>eks</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/aws/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>aws</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/terraform/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>terraform</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/iac/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>iac</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*hNt_R_7aZHJr9bXZU8Tc0g.png" alt="Banner" /></p>
+<p>As a continuation of my <a href="https://medium.com/@madhankumaravelu93/production-ready-eks-cluster-setup-part-i-49a4eba171cc">previous blog</a> series on production-level EKS cluster setup, in this, we are going to see how to create an <a href="https://aws.amazon.com/eks/">AWS EKS</a> cluster using <a href="https://www.terraform.io/">Terraform</a>.</p>
+<p>Terraform is an open-source infrastructure tool to provision and manage infrastructure in any cloud. In this article, we’ll make use of the following features of TF</p>
+<ul>
+<li>
+<p><a href="https://developer.hashicorp.com/terraform/language/modules">Modules</a> — Are a collection of <code>.tf</code> files and/or <code>.tf.json</code> files kept together in a directory. It is the main way to package and reuse resource configurations. For this article, we’ll make use of <a href="https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest">VPC</a> and <a href="https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest">EKS</a> created and maintained by the <a href="https://github.com/terraform-aws-modules">community</a>.</p>
+</li>
+<li>
+<p><a href="https://developer.hashicorp.com/terraform/language/state/workspaces">Workspaces</a> — Each <a href="https://developer.hashicorp.com/terraform/language/state/purpose">state file</a> (<code>.tfstate</code>) stored in the backend belongs to a workspace. Some <a href="https://developer.hashicorp.com/terraform/language/state/workspaces#backends-supporting-multiple-workspaces">backend allows</a> the creation of multiple named workspaces in this case we are using <a href="https://developer.hashicorp.com/terraform/language/settings/backends/s3">S3</a>. Initially, it creates the default workspace. And this approach might not be suitable for some cases like deployments requiring separate credentials and access controls. Use cases and limitations can be <a href="https://developer.hashicorp.com/terraform/cli/workspaces#use-cases">referred to here</a>.</p>
+</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2090/1*6gsqQOrWch_mmqp_CnHL7A.png" alt="TF — workspace flow" /></p>
+<h2 id="code-walk-through">Code walk-through</h2>
+<h3 id="1-providers">1. Providers</h3>
+<p>Terraform relies on plugins called providers to interact with cloud providers, SaaS providers, and other APIs.</p>
+<pre data-lang="t" class="language-t "><code class="language-t" data-lang="t">terraform {
+  required_providers {
+    aws = {
+      source  = &quot;hashicorp&#x2F;aws&quot;
+      version = &quot;~&gt; 5.7.0&quot;
+    }
+    tls = {
+      source  = &quot;hashicorp&#x2F;tls&quot;
+      version = &quot;4.0.4&quot;
+    }
+  }
+  required_version = &quot;~&gt; 1.3&quot;
+
+  # State storage
+  backend &quot;s3&quot; {
+    bucket = &quot;my-eks-cluster-01&quot;
+    region = &quot;us-east-1&quot;
+    key    = &quot;terraform.tfstate&quot;
+  }
+}
+</code></pre>
+<p>In the above snippet, we are making use of <a href="https://registry.terraform.io/providers/hashicorp/tls/latest/docs">TLS</a> and <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">AWS</a> providers to interact with the resources supported by AWS. Authenticating to AWS cloud provider can be referred to <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration">here</a>.</p>
+<h3 id="2-modules-and-resources">2. Modules and Resources</h3>
+<p><a href="https://developer.hashicorp.com/terraform/language/resources">Resources</a> are the key component in Terraform, resource block describes one or more infrastructure objects, such as virtual networks, compute instances, or higher-level components such as DNS records.</p>
+<pre data-lang="t" class="language-t "><code class="language-t" data-lang="t"># Creating VPC configs
+module &quot;vpc&quot; {
+  source  = &quot;terraform-aws-modules&#x2F;vpc&#x2F;aws&quot;
+  version = &quot;5.0.0&quot;
+
+  name = &quot;my-vpc&quot;
+
+  cidr = &quot;10.0.0.0&#x2F;16&quot;
+  azs  = slice(data.aws_availability_zones.available.names, 0, 3)
+
+  private_subnets = [&quot;10.0.1.0&#x2F;24&quot;, &quot;10.0.2.0&#x2F;24&quot;, &quot;10.0.3.0&#x2F;24&quot;]
+  public_subnets  = [&quot;10.0.4.0&#x2F;24&quot;, &quot;10.0.5.0&#x2F;24&quot;, &quot;10.0.6.0&#x2F;24&quot;]
+
+  enable_nat_gateway     = true
+  single_nat_gateway     = true
+  one_nat_gateway_per_az = false
+
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  public_subnet_tags = {
+    &quot;kubernetes.io&#x2F;cluster&#x2F;${local.cluster_name}&quot; = &quot;shared&quot;
+    &quot;kubernetes.io&#x2F;role&#x2F;elb&quot;                      = 1
+  }
+
+  private_subnet_tags = {
+    &quot;kubernetes.io&#x2F;cluster&#x2F;${local.cluster_name}&quot; = &quot;shared&quot;
+    &quot;kubernetes.io&#x2F;role&#x2F;internal-elb&quot;             = 1
+  }
+}
+
+# IAM Role for EKS Cluster Group
+resource &quot;aws_iam_role&quot; &quot;eks_cluster_role&quot; {
+  name = &quot;${local.cluster_name}-eks-cluster-role&quot;
+    assume_role_policy = &lt;&lt;POLICY
+    {
+      &quot;Version&quot;: &quot;2012-10-17&quot;,
+      &quot;Statement&quot;: [
+        {
+          &quot;Effect&quot;: &quot;Allow&quot;,
+          &quot;Principal&quot;: {
+            &quot;Service&quot;: &quot;eks.amazonaws.com&quot;
+          },
+          &quot;Action&quot;: &quot;sts:AssumeRole&quot;
+        }
+      ]
+    }
+POLICY
+}
+
+resource &quot;aws_iam_role_policy_attachment&quot; &quot;AmazonEKSClusterPolicy&quot; {
+  policy_arn = &quot;arn:aws:iam::aws:policy&#x2F;AmazonEKSClusterPolicy&quot;
+  role       = aws_iam_role.eks_cluster_role.name
+}
+
+# IAM Role for EKS Node Group
+resource &quot;aws_iam_role&quot; &quot;eks_nodegroup_role&quot; {
+  name = &quot;${local.cluster_name}-eks-nodegroup-role&quot;
+
+  assume_role_policy = jsonencode({
+    Statement = [{
+      Action = &quot;sts:AssumeRole&quot;
+      Effect = &quot;Allow&quot;
+      Principal = {
+        Service = &quot;ec2.amazonaws.com&quot;
+      }
+    }]
+    Version = &quot;2012-10-17&quot;
+  })
+}
+
+resource &quot;aws_iam_role_policy_attachment&quot; &quot;eks-AmazonEKSWorkerNodePolicy&quot; {
+  policy_arn = &quot;arn:aws:iam::aws:policy&#x2F;AmazonEKSWorkerNodePolicy&quot;
+  role       = aws_iam_role.eks_nodegroup_role.name
+}
+
+resource &quot;aws_iam_role_policy_attachment&quot; &quot;eks-AmazonEKS_CNI_Policy&quot; {
+  policy_arn = &quot;arn:aws:iam::aws:policy&#x2F;AmazonEKS_CNI_Policy&quot;
+  role       = aws_iam_role.eks_nodegroup_role.name
+}
+
+resource &quot;aws_iam_role_policy_attachment&quot; &quot;eks-AmazonEC2ContainerRegistryReadOnly&quot; {
+  policy_arn = &quot;arn:aws:iam::aws:policy&#x2F;AmazonEC2ContainerRegistryReadOnly&quot;
+  role       = aws_iam_role.eks_nodegroup_role.name
+}
+
+# Creating EKS cluster with managedd node groups
+module &quot;eks&quot; {
+  source  = &quot;terraform-aws-modules&#x2F;eks&#x2F;aws&quot;
+  version = &quot;19.15.3&quot;
+
+  cluster_name    = local.cluster_name
+  cluster_version = &quot;1.27&quot;
+
+  vpc_id                         = module.vpc.vpc_id
+  subnet_ids                     = module.vpc.private_subnets
+  cluster_endpoint_public_access = true
+
+  cluster_iam_role_arn = aws_iam_role.eks_cluster_role.arn
+
+  eks_managed_node_group_defaults = {
+    ami_type     = &quot;AL2_x86_64&quot;
+    iam_role_arn = aws_iam_role.eks_nodegroup_role.iam_role_arn
+  }
+
+  eks_managed_node_groups = {
+    one = {
+      name = &quot;node-group-1&quot;
+
+      instance_types = [&quot;t3.small&quot;]
+
+      min_size     = 1
+      max_size     = 3
+      desired_size = 2
+    }
+
+    two = {
+      name = &quot;node-group-2&quot;
+
+      instance_types = [&quot;t3.small&quot;]
+
+      min_size     = 1
+      max_size     = 2
+      desired_size = 1
+    }
+  }
+}
+
+resource &quot;aws_iam_openid_connect_provider&quot; &quot;eks&quot; {
+  client_id_list  = [&quot;sts.amazonaws.com&quot;]
+  thumbprint_list = [data.tls_certificate.eks.certificates[0].sha1_fingerprint]
+  url             = module.eks.cluster_oidc_issuer_url
+}
+</code></pre>
+<p>In the above snippet, we made use of the aws_iam_role and aws_iam_role_policy_attachment resources to create an IAM role and attach it to the policy that has been created.</p>
+<h3 id="3-outputs">3. Outputs</h3>
+<p>Output values print the information about the infrastructure on the command line, and can expose information for other Terraform configurations to use. It is similar to return values in programming languages.</p>
+<pre data-lang="t" class="language-t "><code class="language-t" data-lang="t">output &quot;cluster_endpoint&quot; {
+  description = &quot;Endpoint for EKS control plane&quot;
+  value       = module.eks.cluster_endpoint
+}
+
+output &quot;cluster_security_group_id&quot; {
+  description = &quot;Security group ids attached to the cluster control plane&quot;
+  value       = module.eks.cluster_security_group_id
+}
+
+output &quot;region&quot; {
+  description = &quot;AWS region&quot;
+  value       = var.region
+}
+
+output &quot;cluster_name&quot; {
+  description = &quot;Kubernetes Cluster Name&quot;
+  value       = module.eks.cluster_name
+}
+</code></pre>
+<h2 id="executing">Executing</h2>
+<p>Firstly create the workspace using <code>terraform workspace new dev</code> the command from the CLI. Then apply the terraform changes using <code>terraform apply --auto-approve</code> the command to create the resources.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3830/1*AkGeMlDYFHqMdNjmtcMvSA.png" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*3r-omqFmn-WVaJK_U8UQ9g.png" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/3840/1*G9TJl_Aqnx4aguCur9f3sw.png" alt="Terraform s3 backend, output, and EKS cluster" /></p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/production-ready-eks-cluster-setup-part-ii-f702542cde7c">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/learn-tf/tree/main/aws/provision-eks-cluster">GitHub - madhank93/learn-tf/aws/provision-eks-cluster</a></p>
+</center>
+<p><strong>Reference</strong>:</p>
+<p>[1] <a href="https://terraform.io/">https://terraform.io/</a></p>
+<p>[2] <a href="https://registry.terraform.io/">https://registry.terraform.io/</a></p>
+<p>[3] <a href="https://github.com/terraform-aws-modules">https://github.com/terraform-aws-modules</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-code-walk-through" class="toc is-size-7 is-active"
+                href="https://www.madhan.app/blogs/015-prod-eks-part-2/#code-walk-through">
+                Code walk-through
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-1-providers" class="toc is-size-7" href="https://www.madhan.app/blogs/015-prod-eks-part-2/#1-providers">
+                    1. Providers
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-2-modules-and-resources" class="toc is-size-7" href="https://www.madhan.app/blogs/015-prod-eks-part-2/#2-modules-and-resources">
+                    2. Modules and Resources
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-3-outputs" class="toc is-size-7" href="https://www.madhan.app/blogs/015-prod-eks-part-2/#3-outputs">
+                    3. Outputs
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-executing" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/015-prod-eks-part-2/#executing">
+                Executing
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;014-aws-iam&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              AWS services — Identity Access Management (IAM)
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;016-prod-eks-part-3&#x2F;">
+              Production-ready EKS cluster setup — Part III<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  
+  
+  
+  <script defer src="https://www.madhan.app/elasticlunr.min.js"></script><script defer src="https://www.madhan.app/js/site.js"></script>
+  <script>
+    // Lazy-load search index only when search is opened
+    (function () {
+      var loaded = false;
+      function loadSearchIndex() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.madhan.app/search_index.en.js';
+        document.head.appendChild(s);
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('nav-search');
+        if (btn) btn.addEventListener('click', loadSearchIndex, { once: false });
+      });
+    })();
+  </script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

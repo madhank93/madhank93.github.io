@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+  <meta name="description" content="A step-by-step guide to leveraging Nvidia GPUs in Kubernetes">
+  <link rel="canonical" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;034-nvidia-gpu-k8s&#x2F;">
+
+  <meta property="og:site_name" content="Madhan Kumaravelu">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Adding Nvidia GPU boost to Proxmox k8s using Pulumi and Kubespray | Madhan Kumaravelu">
+  <meta property="og:description" content="A step-by-step guide to leveraging Nvidia GPUs in Kubernetes">
+  <meta property="og:url" content="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;034-nvidia-gpu-k8s&#x2F;">
+  <meta property="og:image" content="&#x2F;images&#x2F;avatar.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Adding Nvidia GPU boost to Proxmox k8s using Pulumi and Kubespray | Madhan Kumaravelu">
+  <meta name="twitter:description" content="A step-by-step guide to leveraging Nvidia GPUs in Kubernetes">
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href="https://www.madhan.app/deep-thought.css" rel="stylesheet" />
+  <link href="https://www.madhan.app/css/style.min.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan Kumaravelu | Adding Nvidia GPU boost to Proxmox k8s using Pulumi and Kubespray
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4L4HQ9T2Q"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-H4L4HQ9T2Q");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;www.madhan.app">Madhan Kumaravelu</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;uses">
+            Uses
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;tags">
+            Tags
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;homelab.madhan.app">
+            Homelab
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Adding Nvidia GPU boost to Proxmox k8s using Pulumi and Kubespray
+          </h1>
+          <p class="subtitle">A step-by-step guide to leveraging Nvidia GPUs in Kubernetes</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2025-07-17T00:00:00+00:00"
+      >July 17, 2025</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>970 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/nvidia/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>nvidia</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/homelab/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>homelab</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/proxmox/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>proxmox</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/gpu/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>gpu</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/proxmox/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>proxmox</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/pulumi/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>pulumi</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/kubespray/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>kubespray</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/k8s/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>k8s</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/ai/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ai</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*P0y96o3ZRD_P6ywwEK3YCw.jpeg" alt="Homelab" /></p>
+<p>In my previous article I talked about <a href="https://medium.com/@madhankumaravelu93/making-my-homelab-server-ai-ready-with-nvidia-gpu-part-ii-a6ef95b7282b">configuring GPU in VM level in Proxmox using GPU passthrough</a>. However, the ultimate goal was to make this capability available to containerized workloads. In this post, I’ll walk you through on setting up the GPU enabled capability in the Kubernetes cluster.</p>
+<h2 id="pre-flight-check">Pre-flight check:</h2>
+<p>To ensure secure and automated access to the newly provisioned VMs, password authentication for the default <code>ubuntu</code> user has been disabled and now it relies on SSH keys. Before deployment, update the <code>cloud-init.yml</code> file with own public SSH key. This <code>cloud-init</code> configuration automatically adds key to the VM upon creation, allowing to connect securely without a password.</p>
+<h2 id="updating-cluster-inventory">Updating cluster inventory</h2>
+<p>Inventory file has been simplified with the recent changes to accommodate the following features.</p>
+<pre data-lang="ini" class="language-ini "><code class="language-ini" data-lang="ini">worker4 ansible_host=192.168.1.69 has_gpu=true node_labels=&quot;{&#x27;node-role.kubernetes.io&#x2F;gpu&#x27;: &#x27;true&#x27;}&quot;
+</code></pre>
+<ul>
+<li>
+<p><strong>has_gpu=true</strong> custom variable that acts as a flag</p>
+</li>
+<li>
+<p><strong>node_labels</strong> applies a label to the node</p>
+</li>
+</ul>
+<h2 id="dynamic-networking-configuration">Dynamic networking configuration</h2>
+<p>GPU node uses a different network interface name <code>enp6s18</code> than the other nodes <code>ens18</code>. Because <a href="https://kube-vip.io/">kube-vip</a> maintains high availability, which needs to know the correct interface on each node.</p>
+<p>Instead of a static configuration, a dynamic solution is implemented in values.yml file using a <a href="https://jinja.palletsprojects.com/en/stable/">Jinja2</a> template.</p>
+<pre data-lang="j2" class="language-j2 "><code class="language-j2" data-lang="j2">kube_vip_interface: &quot;{% if has_gpu | default(false) %}enp6s18{% else %}ens18{% endif %}&quot;
+</code></pre>
+<p>It checks for the has_gpu variable defined in the inventory file and Ansible automatically assigns the correct network interface for Kube-VIP on each nodes.</p>
+<h2 id="deployment-with-docker-and-justfile">Deployment with Docker and Justfile</h2>
+<p>To improve consistency and simplify the deployment process, I’ve containerized the <a href="https://kubespray.io/#/">Kubespray</a> execution using Docker. And to manage the Docker command, I’ve adopted a <a href="https://just.systems/man/en/">Justfile</a>.</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">run-kubespray:
+    docker run --rm -it --mount type=bind,source=&quot;$(pwd)&#x2F;k8s_cluster_config&quot;,dst=&#x2F;config \
+        --mount type=bind,source=&quot;${HOME}&#x2F;.ssh&#x2F;id_ed25519&quot;,dst=&#x2F;root&#x2F;.ssh&#x2F;id_ed25519 \
+        quay.io&#x2F;kubespray&#x2F;kubespray:v2.28.0 bash -c &quot;ansible-playbook -i &#x2F;config&#x2F;inventory&#x2F;hosts.ini -e @&#x2F;config&#x2F;values.yml cluster.yml&quot;
+</code></pre>
+<p>Now, setting up the entire cluster deployment is reduced to a single command <code>just run-kubespray</code>.</p>
+<h2 id="cluster-verification">Cluster verification</h2>
+<p>After Kubespray successfully sets up cluster, configure <a href="https://kubernetes.io/docs/reference/kubectl/">kubectl</a> on local machine. Copy the admin.conf file from a control plane node to local <code>~/.kube/config</code>.</p>
+<pre data-lang="sh" class="language-sh "><code class="language-sh" data-lang="sh">ssh ubuntu@&lt;control-plane-node-ip&gt; &#x27;sudo cat &#x2F;etc&#x2F;kubernetes&#x2F;admin.conf&#x27; &gt; ~&#x2F;.kube&#x2F;config
+</code></pre>
+<p>Next, edit <code>~/.kube/config</code> file. Find the <code>server</code> address and replace it with the load balancer IP defined in Kubespray <code>values.yml </code>file (e.g., <code>https://192.168.1.10:6443</code>). This ensures commands are sent to the highly-available endpoint instead of a single node.</p>
+<p><img src="https://cdn-images-1.medium.com/max/5984/1*6T-aKxXw-wCwBEPjwssYeQ.png" alt="Nodes list" /></p>
+<p>Make sure all the nodes are joined by running the following command <code>kubectl get nodes --show-labels</code></p>
+<h2 id="installing-nvidia-gpu-operator">Installing NVIDIA GPU operator</h2>
+<p>The <a href="https://github.com/NVIDIA/gpu-operator">NVIDIA GPU Operator</a> automates the management of all the necessary software components to provision GPUs in Kubernetes, including drivers, container runtimes, and monitoring tools . The easiest way to install it is with Helm.</p>
+<pre data-lang="sh" class="language-sh "><code class="language-sh" data-lang="sh">helm repo add nvidia https:&#x2F;&#x2F;helm.ngc.nvidia.com&#x2F;nvidia
+helm repo update
+</code></pre>
+<p>Next, install the operator in a dedicated namespace.</p>
+<pre data-lang="sh" class="language-sh "><code class="language-sh" data-lang="sh">helm install gpu-operator nvidia&#x2F;gpu-operator \
+    --namespace gpu-operator \
+    --create-namespace \
+    -f nvidia-setup&#x2F;values.yml
+</code></pre>
+<p>This command deploys the operator, which will then automatically detect the GPU on the labeled worker node and installs all the necessary drivers and plugins.</p>
+<h2 id="verifying-gpu-integration">Verifying GPU Integration</h2>
+<p>Describe the node and look for <code>nvidia.com/gpu</code> in the labels and <code>nvidia.com/gpu</code> under the <code>Allocatable</code> resources section.</p>
+<pre data-lang="sh" class="language-sh "><code class="language-sh" data-lang="sh">kubectl describe node k8s-worker4
+</code></pre>
+<p>Should see an output similar to this.</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">Allocatable:
+    cpu:                3400m
+    ephemeral-storage:  114953451738
+    hugepages-1Gi:      0
+    hugepages-2Mi:      0
+    memory:             7237188Ki
+    nvidia.com&#x2F;gpu:     1
+    pods:               110
+</code></pre>
+<p>To confirm that everything is working, run a simple test pod that requests GPU resources and executes the nvidia-smi command.</p>
+<p>Create a file named gpu-test.yaml with the following content.</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">apiVersion: v1
+kind: Pod
+metadata:
+    name: cuda-smi-test
+spec:
+    # Ensures the pod is only scheduled on a node with the GPU label
+    nodeSelector:
+    node-role.kubernetes.io&#x2F;gpu: &quot;true&quot;
+    restartPolicy: OnFailure
+    containers:
+    - name: cuda-test-container
+        image: &quot;nvidia&#x2F;cuda:12.8.1-devel-ubuntu22.04&quot;
+        command: [&quot;nvidia-smi&quot;]
+        resources:
+        requests:
+            cpu: &quot;250m&quot;
+            memory: &quot;512Mi&quot;
+        limits:
+            nvidia.com&#x2F;gpu: &quot;1&quot;
+            cpu: &quot;1&quot;
+            memory: &quot;1Gi&quot;
+</code></pre>
+<p>Deploying the pod</p>
+<pre data-lang="sh" class="language-sh "><code class="language-sh" data-lang="sh">kubectl apply -f nvidia-setup&#x2F;gpu-test.yaml
+</code></pre>
+<p>After a few moments, check the logs of the pod.</p>
+<pre data-lang="sh" class="language-sh "><code class="language-sh" data-lang="sh">kubectl logs pods&#x2F;cuda-smi-test
+</code></pre>
+<p>If the installation was successful, the output will be the familiar nvidia-smi report, showing the details of the GPU, but this time generated from within a Kubernetes pod . With these changes, my homelab is now fully equipped to run GPU-accelerated workloads directly within Kubernetes.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3168/1*oq2U6YQfB-hLBI7xGHeJxw.png" alt="nvidia-smi output" /></p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>This post demonstrates how to build a Kubernetes cluster on Proxmox using a mutable infrastructure model. Future goal is to explore an immutable setup and I plan to experiment with <a href="https://www.talos.dev/">Talos</a> to achieve this.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/adding-nvidia-gpu-boost-to-proxmox-k8s-using-pulumi-and-kubespray-d5d9d3dace94">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/homelab/tree/v0.1.4">GitHub - madhank93/homelab at v0.1.4</a></p>
+</center>
+<p><strong>Reference:</strong></p>
+<p>[1] <a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html#">https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html#</a></p>
+<p>[2] <a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_cpu_type">https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_cpu_type</a></p>
+<p>[3] <a href="https://kubespray.io/#/docs/ansible/inventory">https://kubespray.io/#/docs/ansible/inventory</a></p>
+<p>[4] <a href="https://www.hashicorp.com/en/resources/what-is-mutable-vs-immutable-infrastructure">https://www.hashicorp.com/en/resources/what-is-mutable-vs-immutable-infrastructure</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-pre-flight-check" class="toc is-size-7 is-active"
+                href="https://www.madhan.app/blogs/034-nvidia-gpu-k8s/#pre-flight-check">
+                Pre-flight check:
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-updating-cluster-inventory" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/034-nvidia-gpu-k8s/#updating-cluster-inventory">
+                Updating cluster inventory
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-dynamic-networking-configuration" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/034-nvidia-gpu-k8s/#dynamic-networking-configuration">
+                Dynamic networking configuration
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-deployment-with-docker-and-justfile" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/034-nvidia-gpu-k8s/#deployment-with-docker-and-justfile">
+                Deployment with Docker and Justfile
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-cluster-verification" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/034-nvidia-gpu-k8s/#cluster-verification">
+                Cluster verification
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-installing-nvidia-gpu-operator" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/034-nvidia-gpu-k8s/#installing-nvidia-gpu-operator">
+                Installing NVIDIA GPU operator
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-verifying-gpu-integration" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/034-nvidia-gpu-k8s/#verifying-gpu-integration">
+                Verifying GPU Integration
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-final-thoughts" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/034-nvidia-gpu-k8s/#final-thoughts">
+                Final thoughts
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;033-nvidia-gpu-part-2&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Making my homelab server AI ready with Nvidia GPU — Part II
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;035-gpt-oss-k8s-ollama&#x2F;">
+              Deploying OpenAI’s GPT-OSS model on Kubernetes with Ollama<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  
+  
+  
+  <script defer src="https://www.madhan.app/elasticlunr.min.js"></script><script defer src="https://www.madhan.app/js/site.js"></script>
+  <script>
+    // Lazy-load search index only when search is opened
+    (function () {
+      var loaded = false;
+      function loadSearchIndex() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.madhan.app/search_index.en.js';
+        document.head.appendChild(s);
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('nav-search');
+        if (btn) btn.addEventListener('click', loadSearchIndex, { once: false });
+      });
+    })();
+  </script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
