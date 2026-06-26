@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+  <meta name="description" content="A guide to running test automation scripts in container">
+  <link rel="canonical" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;006-github-actions-selenoid&#x2F;">
+
+  <meta property="og:site_name" content="Madhan Kumaravelu">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Github Actions for Seleniod Test Scripts | Madhan Kumaravelu">
+  <meta property="og:description" content="A guide to running test automation scripts in container">
+  <meta property="og:url" content="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;006-github-actions-selenoid&#x2F;">
+  <meta property="og:image" content="&#x2F;images&#x2F;avatar.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Github Actions for Seleniod Test Scripts | Madhan Kumaravelu">
+  <meta name="twitter:description" content="A guide to running test automation scripts in container">
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href="https://www.madhan.app/deep-thought.css" rel="stylesheet" />
+  <link href="https://www.madhan.app/css/style.min.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan Kumaravelu | Github Actions for Seleniod Test Scripts
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4L4HQ9T2Q"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-H4L4HQ9T2Q");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;www.madhan.app">Madhan Kumaravelu</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;uses">
+            Uses
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;tags">
+            Tags
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;homelab.madhan.app">
+            Homelab
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Github Actions for Seleniod Test Scripts
+          </h1>
+          <p class="subtitle">A guide to running test automation scripts in container</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2021-05-04T01:24:33+05:30"
+      >May 04, 2021</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>4 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>778 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/wdio/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>wdio</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/ci/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ci</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/selenoid/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>selenoid</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/ts/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>ts</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/github-actions/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>github-actions</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/2880/1*ss_zYvYkUTJ13xg82NFcow.gif" alt="" /></p>
+<p>In this article, we are going to see how to automate a web application using <a href="https://webdriver.io/">WebdriverIO</a>. Leveraging the cross-browser power of <a href="https://aerokube.com/selenoid/">Selenoid</a>, by running it on the <a href="https://github.com/features/actions">GitHub Actions</a> and publishing the test results to <a href="https://pages.github.com/">GitHub pages</a>.</p>
+<blockquote>
+<p><strong>WebdriverIO</strong> is a next-gen browser and mobile automation test framework for Node.js</p>
+</blockquote>
+<p>It is what they say, truly an open-source framework that can be used to automated modern web applications as well as native and cross-platform mobile applications.</p>
+<p>It comes with a lot of add-on services, to name a few, Google lighthouse integration, DevTools service (leverages Chrome DevTools protocol), Appium service and Visual regression testing service. Check the complete list of services provided by WebdriverIO <a href="https://webdriver.io/docs/gettingstarted">here</a> under the services section.</p>
+<blockquote>
+<p><strong>Selenoid</strong> is a lightning fast Selenium protocol implementation running browsers in Docker containers</p>
+</blockquote>
+<p>It is an open-source solution for running all your test scripts on a cross-browser platform. Easy installation, relatively fast, ready to use browser images, live browser execution with logs, and video recordings.</p>
+<blockquote>
+<p><strong>GitHub Actions</strong> makes it easy to automate all your software workflows</p>
+</blockquote>
+<p>Currently, it has <strong>8K+</strong> actions in the <a href="https://github.com/marketplace?type=actions">Github market</a>. It is easy to configure, all the action files are written using YAML syntax, supports multiple programming languages and major OS, matrix builds, secure way to managing all your secret keys.</p>
+<h3 id="installation">Installation</h3>
+<p>Now that we have seen all the benefits, let’s get started with an installation process. Installing a WebdriverIO is very straight forward. All you need to do is initialise npm by doing</p>
+<pre><code>npm init -y
+</code></pre>
+<p>After initialising the npm, execute the following to install wdio cli package.</p>
+<pre><code>npm install @wdio&#x2F;cli
+</code></pre>
+<p>After the installation of CLI, execute the below command to configure the wdio, which will ask you a series of questions to get started.</p>
+<pre><code>npx wdio config
+</code></pre>
+<p><img src="https://cdn-images-1.medium.com/max/5216/1*2TnwZcLTaxrKU3ag3PGyyg.png" alt="WDIO configuration helper" /></p>
+<p>In addition to this, we need to include <a href="https://gist.github.com/madhank93/62f1c12e4025b1faaf27a35591a7444a#file-tsconfig-json">tsconfig.json</a> , <a href="https://gist.github.com/madhank93/62f1c12e4025b1faaf27a35591a7444a#file-wdio-conf-ts">auto compile</a> and <a href="https://gist.github.com/madhank93/62f1c12e4025b1faaf27a35591a7444a#file-browser-config-ts">browser</a> configuration details to <a href="https://gist.github.com/madhank93/62f1c12e4025b1faaf27a35591a7444a#file-wdio-conf-ts">wdio.conf.ts</a> file.</p>
+<h3 id="workflow-walkthrough">Workflow walkthrough</h3>
+<p>Now that everything has set up let’s look into the <a href="https://gist.github.com/madhank93/7cb5439e3f9f9f248ed6fd3aca040506#file-github-actions-yml">GitHub actions yml</a> file. And go through every step.</p>
+<p><strong>Step 1:</strong> Starting the selenoid server</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">- name: Start Selenoid server
+  uses: n-ton4&#x2F;selenoid-github-action@master
+  id: start-selenoid
+  continue-on-error: false
+  with:
+    version: 1.10.1
+    args: -limit 10
+    browsers: chrome;firefox
+    last-versions: 1
+</code></pre>
+<p><strong>Step 2</strong>: Checkout the code</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">- name: Checkout the code
+  uses: actions&#x2F;checkout@v2
+</code></pre>
+<p><strong>Step 3</strong>: Setup the node env</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">- name: Setup the node env
+  uses: actions&#x2F;setup-node@v2
+  with:
+    node-version: &quot;14&quot;
+</code></pre>
+<p><strong>Step 4</strong>: Install the dependencies</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">- name: Install the dependencies
+  run: npm install
+</code></pre>
+<p><strong>Step 5</strong>: Run wdio test scripts</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">- name: Run wdio test scripts
+  run: npm run test
+</code></pre>
+<p><strong>Step 6</strong>: Get the allure history</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">- name: Get allure history
+  uses: actions&#x2F;checkout@v2
+  if: always()
+  continue-on-error: true
+  with:
+    ref: gh-pages
+    path: gh-pages
+</code></pre>
+<p><strong>Step 7</strong>: Setup allure report</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">- name: Setup allure report
+  uses: simple-elf&#x2F;allure-report-action@master
+  if: always()
+  id: allure-report
+  with:
+    allure_results: allure-results
+    allure_history: allure-history
+    keep_reports: 20
+</code></pre>
+<p><strong>Step 8</strong>: Deploy the report to the GitHub pages</p>
+<pre data-lang="yml" class="language-yml "><code class="language-yml" data-lang="yml">- name: Deploy report to Github Pages
+  if: always()
+  uses: peaceiris&#x2F;actions-gh-pages@v2
+  env:
+    PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    PUBLISH_BRANCH: gh-pages
+    PUBLISH_DIR: allure-history
+</code></pre>
+<h3 id="conclusion">Conclusion:</h3>
+<p>So whenever the code has been merged to the main branch the above workflow will be triggered and test results are published to GitHub pages. The benefits of having such CI pipelines in place helps to identify if anything was broken by the recent changes. And the main advantage of running UI tests in cross-browser environments assists in avoiding compatibility issues in the end.</p>
+<p><strong>Note</strong>: The above workflow should be triggered whenever there is a PR raised against the branch. But due to the <a href="https://www.bleepingcomputer.com/news/security/github-actions-being-actively-abused-to-mine-cryptocurrency-on-github-servers/">crypto-mining</a> attacks, I have not configured pull request flow for this repo.</p>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/testvagrant/github-actions-for-seleniod-test-scripts-df469062a08c">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/wdio-ts-github-actions">GitHub - madhank93/wdio-ts-github-actions</a></p>
+<p><a href="http://madhank93.github.io/wdio-ts-github-actions/">Report link</a></p>
+</center>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-installation" class="toc is-size-7 is-active"
+                href="https://www.madhan.app/blogs/006-github-actions-selenoid/#installation">
+                Installation
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-workflow-walkthrough" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/006-github-actions-selenoid/#workflow-walkthrough">
+                Workflow walkthrough
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-conclusion" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/006-github-actions-selenoid/#conclusion">
+                Conclusion:
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;005-selenium-travis-ci&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Selenium DevOps series: Run your scripts in Travis CI
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;007-wdio-in-containers&#x2F;">
+              Running WebdriverIO tests in containers<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  
+  
+  
+  <script defer src="https://www.madhan.app/elasticlunr.min.js"></script><script defer src="https://www.madhan.app/js/site.js"></script>
+  <script>
+    // Lazy-load search index only when search is opened
+    (function () {
+      var loaded = false;
+      function loadSearchIndex() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.madhan.app/search_index.en.js';
+        document.head.appendChild(s);
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('nav-search');
+        if (btn) btn.addEventListener('click', loadSearchIndex, { once: false });
+      });
+    })();
+  </script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>

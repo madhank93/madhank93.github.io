@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+  <meta name="description" content="A hands-on guide to implementing and testing load balancing algorithms using Golang, Nginx, and Docker">
+  <link rel="canonical" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;037-system-design-load-balancing&#x2F;">
+
+  <meta property="og:site_name" content="Madhan Kumaravelu">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="System Design 101: Load Balancing | Madhan Kumaravelu">
+  <meta property="og:description" content="A hands-on guide to implementing and testing load balancing algorithms using Golang, Nginx, and Docker">
+  <meta property="og:url" content="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;037-system-design-load-balancing&#x2F;">
+  <meta property="og:image" content="&#x2F;images&#x2F;avatar.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="System Design 101: Load Balancing | Madhan Kumaravelu">
+  <meta name="twitter:description" content="A hands-on guide to implementing and testing load balancing algorithms using Golang, Nginx, and Docker">
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href="https://www.madhan.app/deep-thought.css" rel="stylesheet" />
+  <link href="https://www.madhan.app/css/style.min.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan Kumaravelu | System Design 101: Load Balancing
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4L4HQ9T2Q"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-H4L4HQ9T2Q");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;www.madhan.app">Madhan Kumaravelu</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;uses">
+            Uses
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;tags">
+            Tags
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;homelab.madhan.app">
+            Homelab
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            System Design 101: Load Balancing
+          </h1>
+          <p class="subtitle">A hands-on guide to implementing and testing load balancing algorithms using Golang, Nginx, and Docker</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2025-10-26T00:00:00+00:00"
+      >October 26, 2025</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>6 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>1097 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/system-design/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>system-design</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/golang/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>golang</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/nginx/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>nginx</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/docker/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>docker</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/load-balancing/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>load-balancing</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*O3YunufH70Qo1x7dFHn84A.png" alt="Banner" /></p>
+<p>Load balancing is the process of distributing incoming network traffic across multiple servers to improve reliability, scalability, and performance. It prevents any single server from getting overloaded and helps applications handle higher demand efficiently.</p>
+<h2 id="operating-level">Operating level</h2>
+<p>Load balancing can happen at different levels of the network stack.</p>
+<p><strong>Layer 4 (Transport level)</strong> — works at TCP/UDP level, routing traffic based on IP and port. e.g Round Robin, and Least Connections.</p>
+<p><strong>Layer 7 (Application level)</strong> — looks into HTTP headers, cookies, or request data to make routing decisions. e.g Geo Routing, and Consistent Hashing.</p>
+<p>Let's look at how this works in practical by building a simple Restful API server in Go and Nginx load balancer to test algorithms of Round Robin, Least Connections, Geo-based, and Consistent Hashing approaches.</p>
+<h2 id="application-code">Application code</h2>
+<h3 id="restful-api">Restful API</h3>
+<pre data-lang="go" class="language-go "><code class="language-go" data-lang="go">package main
+
+import (
+ &quot;fmt&quot;
+ &quot;log&quot;
+ &quot;net&#x2F;http&quot;
+ &quot;os&quot;
+)
+
+func main() {
+ id := os.Getenv(&quot;SERVER_ID&quot;)
+ region := os.Getenv(&quot;REGION&quot;)
+ if region == &quot;&quot; {
+  region = &quot;global&quot;
+ }
+
+ visits := make(map[string]int)
+
+ http.HandleFunc(&quot;&#x2F;&quot;, func(w http.ResponseWriter, r *http.Request) {
+  sessionID := &quot;anonymous&quot;
+  if cookie, err := r.Cookie(&quot;session_id&quot;); err == nil {
+   sessionID = cookie.Value
+  } else {
+   sessionID = &quot;anonymous&quot;
+  }
+
+  visits[sessionID]++
+  count := visits[sessionID]
+
+  response := fmt.Sprintf(&quot;Server %s (%s) | Session: %s | Visit: %d\n&quot;,
+   id, region, sessionID, count)
+
+  fmt.Fprint(w, response)
+  log.Printf(&quot;[INFO] Session %s → Server %s (visit #%d)&quot;, sessionID, id, count)
+ })
+
+ log.Printf(&quot;Server %s (%s) started on :8080&quot;, id, region)
+ if err := http.ListenAndServe(&quot;:8080&quot;, nil); err != nil {
+  log.Printf(&quot;[FATAL] Server %s failed: %v&quot;, id, err)
+ }
+}
+</code></pre>
+<p>It is a minimal restful program that listens on port 8080 and prints which server handled each request. Each instance is configured using environment variables <code>SERVER_ID</code> and <code>REGION</code>. When a client sends a request, the server reads a session ID from the <code>X-Session-ID</code> header, tracks visit counts, and responds with its ID, region, and visit number which makes it easier to visualize how Nginx distributes requests under different load balancing algorithms.</p>
+<h3 id="dockerize-the-go-app">Dockerize the Go app</h3>
+<pre data-lang="dockerfile" class="language-dockerfile "><code class="language-dockerfile" data-lang="dockerfile">FROM golang:1.25-alpine
+WORKDIR &#x2F;app
+COPY main.go .
+RUN go mod init server &amp;&amp; go build -o server .
+CMD [&quot;.&#x2F;server&quot;]
+</code></pre>
+<h2 id="nginx-configurations">Nginx configurations</h2>
+<h3 id="1-round-robin">1. Round robin</h3>
+<p>It sends each request to the next server in sequence, giving equal distribution. Limitation — Since it doesn't consider server performance or load it can overload weaker servers.</p>
+<pre data-lang="nginx" class="language-nginx "><code class="language-nginx" data-lang="nginx">upstream backend {
+    zone backend_zone 64k;
+    server server1:8080;
+    server server2:8080;
+    server server3:8080;
+}
+
+server {
+    listen 80;
+    location &#x2F; {
+        proxy_pass http:&#x2F;&#x2F;backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+</code></pre>
+<h3 id="2-least-connections">2. Least connections</h3>
+<p>Directs new requests to the server with the fewest active connections, useful when request durations varies. Limitations — Requires tracking active sessions and doesn't take server processing capacity into account.</p>
+<pre data-lang="nginx" class="language-nginx "><code class="language-nginx" data-lang="nginx">upstream backend {
+    least_conn;
+    zone backend_zone 64k;
+    server server1:8080;
+    server server2:8080;
+    server server3:8080;
+}
+
+server {
+    listen 80;
+    location &#x2F; {
+        proxy_pass http:&#x2F;&#x2F;backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+</code></pre>
+<h3 id="3-geo-based-routing">3. Geo-based routing</h3>
+<p>Since we are running this setup locally, all requests comes from same machine and can't distinguish locations accurately. So used client headers to send users to specific regions (like US or EU servers). In realtime, client's IP is looked up in a GeoIP database (like MaxMind database).</p>
+<pre data-lang="nginx" class="language-nginx "><code class="language-nginx" data-lang="nginx">map $http_x_region $backend_upstream {
+    default global_backend;
+    us us_backend;
+    eu eu_backend;
+}
+
+upstream us_backend {
+    zone us_zone 64k;
+    server server1:8080;
+}
+
+upstream eu_backend {
+    zone eu_zone 64k;
+    server server2:8080;
+}
+
+upstream global_backend {
+    zone global_zone 64k;
+    server server3:8080;
+}
+
+server {
+    listen 80;
+    location &#x2F; {
+        proxy_pass http:&#x2F;&#x2F;$backend_upstream;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+</code></pre>
+<h3 id="4-consistent-hashing">4. Consistent hashing</h3>
+<p>This keeps sessions &quot;sticky&quot;. Each client key (like a cookie or header) always maps to the same backend. Limitations — skewed distribution.</p>
+<pre data-lang="nginx" class="language-nginx "><code class="language-nginx" data-lang="nginx">upstream backend {
+    hash $cookie_session_id consistent;
+    zone backend_zone 64k;
+    server server1:8080;
+    server server2:8080;
+    server server3:8080;
+}
+
+server {
+    listen 80;
+    location &#x2F; {
+        # Generate session cookie if missing
+        if ($cookie_session_id = &quot;&quot;) {
+            add_header Set-Cookie &quot;session_id=$request_id; Path=&#x2F;; HttpOnly&quot;;
+        }
+
+        proxy_pass http:&#x2F;&#x2F;backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Session-ID $cookie_session_id;
+        proxy_set_header Cookie $http_cookie;
+    }
+}
+</code></pre>
+<h2 id="docker-compose-setup">Docker compose setup</h2>
+<p>Below is the complete setup in docker compose to run all load balancing algorithms.</p>
+<pre data-lang="yaml" class="language-yaml "><code class="language-yaml" data-lang="yaml">services:
+  server1:
+    build: .&#x2F;server
+    environment:
+      - SERVER_ID=1
+      - REGION=us
+    networks:
+      - lbnet
+
+  server2:
+    build: .&#x2F;server
+    environment:
+      - SERVER_ID=2
+      - REGION=eu
+    networks:
+      - lbnet
+
+  server3:
+    build: .&#x2F;server
+    environment:
+      - SERVER_ID=3
+      - REGION=global
+    networks:
+      - lbnet
+
+  # Round Robin
+  nginx-round-robin:
+    build: .&#x2F;nginx
+    volumes:
+      - ${PWD}&#x2F;nginx&#x2F;round_robin.conf:&#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;default.conf:ro
+    ports:
+      - &quot;8081:80&quot;
+    depends_on: [server1, server2, server3]
+    networks:
+      - lbnet
+
+  # Least Connections
+  nginx-least-conn:
+    build: .&#x2F;nginx
+    volumes:
+      - ${PWD}&#x2F;nginx&#x2F;least_conn.conf:&#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;default.conf:ro
+    ports:
+      - &quot;8082:80&quot;
+    depends_on: [server1, server2, server3]
+    networks:
+      - lbnet
+
+  # Geo-based
+  nginx-geo-env:
+    build: .&#x2F;nginx
+    volumes:
+      - ${PWD}&#x2F;nginx&#x2F;geo_env_based.conf:&#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;default.conf:ro
+    ports:
+      - &quot;8083:80&quot;
+    depends_on: [server1, server2, server3]
+    networks:
+      - lbnet
+
+  # Consistent Hashing
+  nginx-consistent-hash:
+    build: .&#x2F;nginx
+    volumes:
+      - ${PWD}&#x2F;nginx&#x2F;consistent_hashing.conf:&#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;default.conf:ro
+    ports:
+      - &quot;8084:80&quot;
+    depends_on: [server1, server2, server3]
+    networks:
+      - lbnet
+
+networks:
+  lbnet:
+    driver: bridge
+</code></pre>
+<h2 id="testing-load-balancing">Testing load balancing</h2>
+<p>To test behavior across all algorithms, following simple script can be used.</p>
+<p><strong>1. Round Robin</strong></p>
+<pre data-lang="bash" class="language-bash "><code class="language-bash" data-lang="bash">for i in {1..6}; do curl -s localhost:8081; done
+</code></pre>
+<p><strong>2. Least Connections</strong></p>
+<pre data-lang="bash" class="language-bash "><code class="language-bash" data-lang="bash">seq 1 100 | xargs -n1 -P20 curl -s localhost:8082
+</code></pre>
+<p><strong>3. Geo Routing</strong></p>
+<pre data-lang="bash" class="language-bash "><code class="language-bash" data-lang="bash">curl -s -H &#x27;X-Region: us&#x27; localhost:8083
+curl -s -H &#x27;X-Region: eu&#x27; localhost:8083
+curl -s -H &#x27;X-Region: jp&#x27; localhost:8083
+</code></pre>
+<p><strong>4. Consistent Hashing</strong></p>
+<pre data-lang="bash" class="language-bash "><code class="language-bash" data-lang="bash">for i in {1..3}; do 
+    curl -s --cookie &quot;session_id=alice&quot; localhost:8084
+done
+</code></pre>
+<h2 id="justfile-task-runner">Justfile — task runner</h2>
+<p>To make it running, testing and tearing it down the load balancer setup easier, <a href="https://github.com/casey/just">Just</a> a lightweight command runner can be used.</p>
+<pre data-lang="makefile" class="language-makefile "><code class="language-makefile" data-lang="makefile">load_balancer_up:
+    @just compose-down {{lb_dir}}
+    @just docker-clean
+    @just compose-up {{lb_dir}}
+    @echo &quot;&quot;
+    @echo &quot;Load balancer is running&quot;
+
+load_balancer_test:
+    @echo &quot;&quot;
+    @echo &quot;Running load balancer tests...&quot;
+    @bash {{lb_dir}}&#x2F;test.sh
+
+load_balancer_down:
+    @just compose-down {{lb_dir}}
+    @just docker-clean
+    @echo &quot;&quot;
+    @echo &quot;Load balancer stopped and cleaned&quot;
+</code></pre>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/system-design-101-load-balancing-87483da7be93">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/learn-system-design/tree/main/high-level-design/02_load_balancer">learn-system-design/high-level-design/02_load_balancer at main · madhank93/learn-system-design</a></p>
+</center>
+<h2 id="references">References</h2>
+<p>[1] <a href="https://www.youtube.com/watch?v=q8OleYuqntY">https://www.youtube.com/watch?v=q8OleYuqntY</a></p>
+<p>[2] <a href="https://www.youtube.com/watch?v=K0Ta65OqQkY">https://www.youtube.com/watch?v=K0Ta65OqQkY</a></p>
+<p>[3] <a href="https://docs.nginx.com/nginx/admin-guide/security-controls/controlling-access-by-geoip">https://docs.nginx.com/nginx/admin-guide/security-controls/controlling-access-by-geoip</a></p>
+<p>[4] <a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/">https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/</a></p>
+<p>[5] <a href="https://aws.amazon.com/what-is/load-balancing/">https://aws.amazon.com/what-is/load-balancing/</a></p>
+<p>[6] <a href="https://highscalability.com/consistent-hashing-algorithm/">https://highscalability.com/consistent-hashing-algorithm/</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-operating-level" class="toc is-size-7 is-active"
+                href="https://www.madhan.app/blogs/037-system-design-load-balancing/#operating-level">
+                Operating level
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-application-code" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/037-system-design-load-balancing/#application-code">
+                Application code
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-restful-api" class="toc is-size-7" href="https://www.madhan.app/blogs/037-system-design-load-balancing/#restful-api">
+                    Restful API
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-dockerize-the-go-app" class="toc is-size-7" href="https://www.madhan.app/blogs/037-system-design-load-balancing/#dockerize-the-go-app">
+                    Dockerize the Go app
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-nginx-configurations" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/037-system-design-load-balancing/#nginx-configurations">
+                Nginx configurations
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-1-round-robin" class="toc is-size-7" href="https://www.madhan.app/blogs/037-system-design-load-balancing/#1-round-robin">
+                    1. Round robin
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-2-least-connections" class="toc is-size-7" href="https://www.madhan.app/blogs/037-system-design-load-balancing/#2-least-connections">
+                    2. Least connections
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-3-geo-based-routing" class="toc is-size-7" href="https://www.madhan.app/blogs/037-system-design-load-balancing/#3-geo-based-routing">
+                    3. Geo-based routing
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-4-consistent-hashing" class="toc is-size-7" href="https://www.madhan.app/blogs/037-system-design-load-balancing/#4-consistent-hashing">
+                    4. Consistent hashing
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              <a id="link-docker-compose-setup" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/037-system-design-load-balancing/#docker-compose-setup">
+                Docker compose setup
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-testing-load-balancing" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/037-system-design-load-balancing/#testing-load-balancing">
+                Testing load balancing
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-justfile-task-runner" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/037-system-design-load-balancing/#justfile-task-runner">
+                Justfile — task runner
+              </a>
+              
+            </li>
+            
+            <li>
+              <a id="link-references" class="toc is-size-7 "
+                href="https://www.madhan.app/blogs/037-system-design-load-balancing/#references">
+                References
+              </a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;036-packer-github-actions-vm&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Building pre-configured VM images with Packer and GitHub actions
+            </a>
+          </div>
+           
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  
+  
+  
+  <script defer src="https://www.madhan.app/elasticlunr.min.js"></script><script defer src="https://www.madhan.app/js/site.js"></script>
+  <script>
+    // Lazy-load search index only when search is opened
+    (function () {
+      var loaded = false;
+      function loadSearchIndex() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.madhan.app/search_index.en.js';
+        document.head.appendChild(s);
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('nav-search');
+        if (btn) btn.addEventListener('click', loadSearchIndex, { once: false });
+      });
+    })();
+  </script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
