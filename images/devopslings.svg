@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="DevOpsLings">
+<title>DevOpsLings</title>
+<rect width="128" height="128" rx="28" fill="#0F141C"></rect>
+<g stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M14 58 h26" stroke="#41C63F" stroke-width="7"></path>
+<path d="M40 58 l10 -12 l5 24 l10 -20 l6 20 l7 -12 h10" stroke="#E5484D" stroke-width="6"></path>
+<path d="M88 58 h26" stroke="#4E5A70" stroke-width="7"></path>
+</g>
+<g stroke="#4E5A70" stroke-width="4" stroke-linecap="round">
+<line x1="24" y1="88" x2="72" y2="88"></line>
+<line x1="24" y1="102" x2="56" y2="102"></line>
+</g>
+<circle cx="98" cy="95" r="14" fill="#41C63F"></circle>
+<path d="M92 95 L96.5 99.5 L104.5 90.5" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>

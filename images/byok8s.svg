@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="byok8s">
+  <title>byok8s</title>
+  <!-- A filled helm so the mark reads the same on a light or dark nav bar:
+       the Kubernetes heptagon, with the terminal prompt this course builds. -->
+  <path fill="#326ce5" d="M64 6 113 29.6 125 82.6 91 124H37L3 82.6 15 29.6Z" />
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42 48 62 65 42 82" />
+    <path d="M74 84h18" />
+  </g>
+</svg>

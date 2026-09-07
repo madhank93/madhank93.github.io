@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href="https://www.madhan.app/deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+    Madhan Kumaravelu
+    
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4L4HQ9T2Q"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-H4L4HQ9T2Q");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;www.madhan.app">Madhan Kumaravelu</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;uses">
+            Uses
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;tags">
+            Tags
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;homelab.madhan.app">
+            Homelab
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+
+<style>
+  .grid {
+    display: grid;
+    padding-top: 50px;
+    gap: 20px;
+    /* minmax(0, 1fr) rather than a floor, so the tracks can shrink instead of
+       pushing the page wider than the viewport. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  #box {
+    background-color: #f2f2f5;
+    border-radius: 1.25rem;
+    padding-bottom: 5px;
+  }
+
+  /* The tiles carry width="250" for layout stability while they load; without
+     this they refuse to shrink and overflow their track. */
+  #box img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .anchor {
+    font-size: 25px;
+    font-weight: bolder;
+  }
+
+  /* The site paints dark mode by inverting the whole body, so these colours
+     are chosen for light and come out right in dark on their own. */
+  .roadmap {
+    background-color: #f2f2f5;
+    border-radius: 1.25rem;
+    padding: 24px 28px 28px;
+    margin-top: 30px;
+  }
+
+  .roadmap-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .roadmap-head h2 {
+    font-size: 28px;
+    font-weight: bolder;
+    margin: 0;
+  }
+
+  .roadmap-tag {
+    background-color: #e5b800;
+    color: #1a1a1a;
+    border-radius: 999px;
+    padding: 3px 12px;
+    font-size: 14px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .roadmap-lede {
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 17px;
+  }
+
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: auto 190px auto 190px auto 190px;
+    justify-content: center;
+    align-items: stretch;
+    column-gap: 10px;
+    row-gap: 30px;
+  }
+
+  /* Holds the gutter open where the forked connector is drawn over it. */
+  .roadmap-arrow-slot {
+    width: 28px;
+  }
+
+  .roadmap-arrow {
+    align-self: center;
+    justify-self: center;
+    width: 28px;
+    height: 12px;
+    fill: none;
+    stroke: #6b6b7b;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .track-l {
+    align-self: center;
+    padding-right: 6px;
+    text-align: right;
+    font-size: 13px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b6b7b;
+  }
+
+  .roadmap-canvas {
+    position: relative;
+  }
+
+  /* KubeClientlings is the one course fed by both tracks. That crossing
+     cannot be drawn in the flow, so it is drawn over it: down out of
+     Golings, along the gap under BYOX, and up into KubeClientlings. */
+  .roadmap-link {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    fill: none;
+    stroke: #6b6b7b;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .stage-l {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b6b7b;
+    margin-bottom: 8px;
+  }
+
+  .roadmap-step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 2px solid #d6d6de;
+    border-radius: 0.9rem;
+    padding: 10px 16px;
+    min-width: 150px;
+    text-align: center;
+  }
+
+  .roadmap-step:hover {
+    border-color: #41c63f;
+  }
+
+  .roadmap-step .name {
+    display: block;
+    font-size: 19px;
+    font-weight: bolder;
+  }
+
+  .roadmap-step .what {
+    display: block;
+    font-size: 14px;
+    color: #4e5a70;
+  }
+
+  .roadmap-step .soon {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #8a6d00;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* One column: the arrows have nothing to point along, and the track label
+       becomes a heading for the boxes under it. */
+    .roadmap-grid {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 8px;
+    }
+
+    .track-l {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .roadmap-arrow {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">Projects</h1>
+    </div>
+    <div class="roadmap">
+      <div class="roadmap-head">
+        <h2>Roadmap</h2>
+        <span class="roadmap-tag">In progress</span>
+      </div>
+      <p class="roadmap-lede">
+        Three ways in, depending on what you already know.
+      </p>
+      <div class="roadmap-canvas">
+        <svg class="roadmap-link" aria-hidden="true" focusable="false"></svg>
+        <div class="roadmap-grid">
+        <span class="track-l">Go</span>
+        <a class="roadmap-step" data-link-from="golings" href="https://golings.madhan.app/" target="_blank">
+          <span class="name">Golings</span>
+          <span class="what">fix broken Go programs</span>
+        </a>
+        <span class="roadmap-arrow-slot" aria-hidden="true"></span>
+        <a class="roadmap-step" data-link-to="byox" href="https://byox.madhan.app/" target="_blank">
+          <span class="name">BYOX</span>
+          <span class="what">build Redis, Git and SQLite &amp; more</span>
+        </a>
+        <svg class="roadmap-arrow" viewBox="0 0 28 12" aria-hidden="true" focusable="false">
+          <path d="M1 6h20" />
+          <path d="M16 1.5 21.5 6 16 10.5" />
+        </svg>
+        <a class="roadmap-step" href="https://github.com/madhank93/learn-system-design" target="_blank">
+          <span class="name">System design</span>
+          <span class="what">design systems for failure</span>
+          <span class="soon">In progress</span>
+        </a>
+        <span class="track-l">Kubernetes</span>
+        <a class="roadmap-step" href="https://kubelings.madhan.app/" target="_blank">
+          <span class="name">Kubelings</span>
+          <span class="what">repair clusters with kubectl</span>
+        </a>
+        <svg class="roadmap-arrow" viewBox="0 0 28 12" aria-hidden="true" focusable="false">
+          <path d="M1 6h20" />
+          <path d="M16 1.5 21.5 6 16 10.5" />
+        </svg>
+        <a class="roadmap-step" data-link-to="kubeclientlings" href="https://kubeclientlings.madhan.app/" target="_blank">
+          <span class="name">KubeClientlings</span>
+          <span class="what">write client-go controllers</span>
+        </a>
+        <svg class="roadmap-arrow" viewBox="0 0 28 12" aria-hidden="true" focusable="false">
+          <path d="M1 6h20" />
+          <path d="M16 1.5 21.5 6 16 10.5" />
+        </svg>
+        <a class="roadmap-step" href="https://byok8s.madhan.app/" target="_blank">
+          <span class="name">byok8s</span>
+          <span class="what">write k8s controllers</span>
+          <span class="soon">In progress</span>
+        </a>
+        <span class="track-l">Ops</span>
+        <a class="roadmap-step" href="https://github.com/madhank93/devopslings" target="_blank">
+          <span class="name">DevOpsLings</span>
+          <span class="what">debug hosts, networks, CI &amp; more</span>
+          <span class="soon">In progress</span>
+        </a>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://homelab.madhan.app/" target="_blank">
+            <img src="https://img.icons8.com/external-wanicon-two-tone-wanicon/250/external-smart-home-artificial-intelligence-wanicon-two-tone-wanicon.png" alt="Homelab" width="250" height="250" loading="lazy" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://homelab.madhan.app/" target="_blank">Homelab ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://golings.madhan.app/" target="_blank">
+            <img src="https://img.icons8.com/color/250/golang.png" alt="Golings" width="250" height="250" loading="lazy" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://golings.madhan.app/" target="_blank">Golings ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://kubelings.madhan.app/" target="_blank">
+            <picture>
+              <source srcset="/images/kubelings.webp" type="image/webp">
+              <img src="/images/kubelings.png" alt="Kubelings" width="250" height="250" loading="lazy" />
+            </picture>
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://kubelings.madhan.app/" target="_blank">Kubelings ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://byox.madhan.app/" target="_blank">
+            <img src="/images/build-ladder.svg" alt="Build Your Own X" width="200" height="200" loading="lazy" style="margin: 25px 0;" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://byox.madhan.app/" target="_blank">BYOX ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://kubeclientlings.madhan.app/" target="_blank">
+            <picture>
+              <source srcset="/images/kubeclientlings.webp" type="image/webp">
+              <img src="/images/kubeclientlings.png" alt="KubeClientlings" width="167" height="250" loading="lazy" />
+            </picture>
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://kubeclientlings.madhan.app/" target="_blank">KubeClientlings ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://github.com/madhank93/learn-system-design" target="_blank">
+            <img src="https://img.icons8.com/external-parzival-1997-flat-parzival-1997/250/external-system-digital-globalization-parzival-1997-flat-parzival-1997.png" alt="System Design" width="250" height="250" loading="lazy" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://github.com/madhank93/learn-system-design" target="_blank">Learn System Design ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://byok8s.madhan.app/" target="_blank">
+            <img src="/images/byok8s.svg" alt="byok8s" width="200" height="200" loading="lazy" style="margin: 25px 0;" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://byok8s.madhan.app/" target="_blank">byok8s ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://github.com/madhank93/devopslings" target="_blank">
+            <img src="/images/devopslings.svg" alt="DevOpsLings" width="200" height="200" loading="lazy" style="margin: 25px 0;" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://github.com/madhank93/devopslings" target="_blank">DevOpsLings ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://dotfiles.madhan.app/" target="_blank">
+            <img src="https://img.icons8.com/fluency/250/settings.png" alt="Dotfiles" width="250" height="250" loading="lazy" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://dotfiles.madhan.app/" target="_blank">Dotfiles ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://github.com/madhank93/learn-k8s-ckad" target="_blank">
+            <img src="https://img.icons8.com/color/250/kubernetes.png" alt="kubernetes" width="250" height="250" loading="lazy" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://github.com/madhank93/learn-k8s-ckad" target="_blank">Learn k8s CKAD ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://github.com/madhank93/learn-docker" target="_blank">
+            <img src="https://img.icons8.com/nolan/250/docker.png" alt="Docker" width="250" height="250" loading="lazy" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://github.com/madhank93/learn-docker" target="_blank">Learn Docker ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://madhank93.github.io/js-mindmap/" target="_blank">
+            <img src="https://img.icons8.com//fluency/250/javascript.png" alt="Javascript" width="250" height="250" loading="lazy" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://madhank93.github.io/js-mindmap/" target="_blank">JS Mind map ➡️</a>
+        </div>
+      </div>
+
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://github.com/madhank93/learn-dsa" target="_blank">
+            <img src="https://img.icons8.com/external-flat-juicy-fish/250/external-algorithm-data-science-flat-flat-juicy-fish.png" alt="DSA" width="250" height="250" loading="lazy" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://github.com/madhank93/learn-dsa" target="_blank">Learn DSA ➡️</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Golings feeds two courses, so its arrow forks: one branch straight into
+  // BYOX, the other down and along into KubeClientlings. Measured rather than
+  // hard-coded, because box sizes depend on the reader's font and on how wide
+  // the track label renders.
+  (function () {
+    var canvas = document.querySelector('.roadmap-canvas');
+    if (!canvas) return;
+    var svg = canvas.querySelector('.roadmap-link');
+    var from = canvas.querySelector('[data-link-from]');
+    var straight = canvas.querySelector('[data-link-to="byox"]');
+    var below = canvas.querySelector('[data-link-to="kubeclientlings"]');
+    if (!svg || !from || !straight || !below) return;
+
+    function head(x, y, dir) {
+      // dir: 'right' or 'down'
+      return dir === 'right'
+        ? 'M' + (x - 6) + ' ' + (y - 5) + ' L' + x + ' ' + y + ' L' + (x - 6) + ' ' + (y + 5)
+        : 'M' + (x - 5) + ' ' + (y - 6) + ' L' + x + ' ' + y + ' L' + (x + 5) + ' ' + (y - 6);
+    }
+
+    function draw() {
+      var box = canvas.getBoundingClientRect();
+      var a = from.getBoundingClientRect();
+      var b = straight.getBoundingClientRect();
+      var c = below.getBoundingClientRect();
+
+      // Stacked into one column, the fork has nothing to fork across.
+      if (c.top < b.bottom + 8) { svg.innerHTML = ''; return; }
+
+      var sx = a.right - box.left;
+      var sy = a.top - box.top + a.height / 2;
+      var bx = b.left - box.left;
+      var by = b.top - box.top + b.height / 2;
+      var forkX = sx + (bx - sx) / 2;
+
+      var cx = c.left - box.left + c.width / 2;
+      var cy = c.top - box.top;
+      var midY = (b.bottom - box.top + cy) / 2;
+
+      svg.setAttribute('viewBox', '0 0 ' + box.width + ' ' + box.height);
+      svg.innerHTML =
+        // trunk out of Golings to the fork
+        '<path d="M' + sx + ' ' + sy + ' H' + forkX + '"/>' +
+        // branch one: on into BYOX
+        '<path d="M' + forkX + ' ' + sy + ' H' + (bx - 6) + '"/>' +
+        '<path d="' + head(bx - 1, by, 'right') + '"/>' +
+        // branch two: down, along under BYOX, up into KubeClientlings
+        '<path d="M' + forkX + ' ' + sy + ' V' + midY + ' H' + cx + ' V' + (cy - 6) + '"/>' +
+        '<path d="' + head(cx, cy - 1, 'down') + '"/>';
+    }
+
+    draw();
+    window.addEventListener('resize', draw);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  })();
+</script>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+  
+  
+
+  
+  
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  
+  
+  
+  <script src="https://www.madhan.app/elasticlunr.min.js"></script>
+  <script src="https://www.madhan.app/search_index.en.js"></script><script src="https://www.madhan.app/js/site.js"></script>
+
+  
+  
+
+  
+  
+</body>
+
+</html>

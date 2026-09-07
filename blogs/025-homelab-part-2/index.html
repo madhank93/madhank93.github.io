@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+  <meta name="description" content="Automating Proxmox VM Deployment using Pulumi and Go">
+  <link rel="canonical" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;025-homelab-part-2&#x2F;">
+
+  <meta property="og:site_name" content="Madhan Kumaravelu">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Building a Home Lab server — Part II | Madhan Kumaravelu">
+  <meta property="og:description" content="Automating Proxmox VM Deployment using Pulumi and Go">
+  <meta property="og:url" content="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;025-homelab-part-2&#x2F;">
+  <meta property="og:image" content="&#x2F;images&#x2F;avatar.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Building a Home Lab server — Part II | Madhan Kumaravelu">
+  <meta name="twitter:description" content="Automating Proxmox VM Deployment using Pulumi and Go">
+
+  
+  <link href='&#x2F;icons&#x2F;site.webmanifest' rel="manifest" />
+  
+  
+  <link color="#5bbad5" href='&#x2F;icons&#x2F;safari-pinned-tab.svg' rel="mask-icon" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-16x16.png' rel="icon" sizes="16x16" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;favicon-32x32.png' rel="icon" sizes="32x32" type="image/png" />
+  
+  
+  <link href='&#x2F;icons&#x2F;apple-touch-icon.png' rel="apple-touch-icon" sizes="180x180" />
+  
+
+  
+
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href="https://www.madhan.app/deep-thought.css" rel="stylesheet" />
+  <link href="https://www.madhan.app/css/style.min.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Madhan Kumaravelu | Building a Home Lab server — Part II
+
+  </title>
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4L4HQ9T2Q"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-H4L4HQ9T2Q");
+  </script>
+  
+  
+
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;www.madhan.app">Madhan Kumaravelu</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;">
+            Home
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs">
+            Blogs
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;til">
+            TIL
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;projects">
+            Projects
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;archive">
+            Archive
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;uses">
+            Uses
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;tags">
+            Tags
+          </a>
+          
+          <a class="navbar-item has-text-weight-semibold" href="https:&#x2F;&#x2F;homelab.madhan.app">
+            Homelab
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Building a Home Lab server — Part II
+          </h1>
+          <p class="subtitle">Automating Proxmox VM Deployment using Pulumi and Go</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Madhan published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span
+    ><time datetime="2024-10-20T00:00:00+00:00"
+      >October 20, 2024</time
+    ></span
+  >
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>4 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>720 words</span>
+</span>
+
+            </div>
+            <div class="column">
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags: 
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/homelab/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>homelab</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/proxmox/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>proxmox</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/self-hosting/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>self-hosting</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/servers/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>servers</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/pulumi/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>pulumi</span>
+    </span>
+  </a>
+  
+  <a
+    class="has-text-info-dark has-text-weight-semibold"
+    href="https://www.madhan.app/tags/golang/"
+  >
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>golang</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><img src="https://cdn-images-1.medium.com/max/3840/1*wUE9SYSpu4rdpe7ploKHzg.png" alt="Go, Proxmox &amp; Pulumi" /></p>
+<p>In this blog post, we will take a look at the <a href="https://go.dev/">Golang</a> based script using <a href="https://www.pulumi.com/">Pulumi</a>, an Infrastructure-as-Code (IaC) tool, to automate the process of creating a virtual machine (VM) in a <a href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">Proxmox Virtual Environment </a>(Proxmox VE).</p>
+<p>The following example uses Pulumi package available at <a href="https://github.com/muhlba91/pulumi-proxmoxve">https://github.com/muhlba91/pulumi-proxmoxve</a>, which is a Pulumi provider for Proxmox VE. The provider itself is built on top of the Terraform provider for Proxmox, found at <a href="https://github.com/bpg/terraform-provider-proxmox">https://github.com/bpg/terraform-provider-proxmox</a>.</p>
+<h2 id="code-walkthrough">Code Walkthrough</h2>
+<h3 id="1-loading-environment-variables">1. Loading Environment Variables</h3>
+<p>The script starts by loading environment variables from a <code>.env</code> file using the <a href="https://github.com/joho/godotenv">godotenv</a> package.</p>
+<p><code>.env</code> file</p>
+<pre data-lang="ini" class="language-ini "><code class="language-ini" data-lang="ini">PROXMOX_USERNAME=XXXXXXXXXXXX
+PROXMOX_PASSWORD=XXXXXXXXXXXX
+</code></pre>
+<p><code>main.go</code> file</p>
+<pre data-lang="go" class="language-go "><code class="language-go" data-lang="go">err := godotenv.Load()
+</code></pre>
+<p>It then reads the Proxmox username and password from the environment. These values are used to authenticate with the Proxmox server.</p>
+<pre data-lang="go" class="language-go "><code class="language-go" data-lang="go">proxmoxUsername := os.Getenv(&quot;PROXMOX_USERNAME&quot;)
+proxmoxPassword := os.Getenv(&quot;PROXMOX_PASSWORD&quot;)
+
+if proxmoxUsername == &quot;&quot; || proxmoxPassword == &quot;&quot; {
+    return fmt.Errorf(&quot;PROXMOX_USERNAME and PROXMOX_PASSWORD must be set in the .env file&quot;)
+}
+</code></pre>
+<h3 id="2-configuring-the-proxmox-provider">2. Configuring the Proxmox Provider</h3>
+<p>The next step is setting up the Proxmox provider, <strong>Endpoint</strong> specifies the URL for the Proxmox server, <strong>Username</strong> and <strong>Password</strong> are used for authentication, <strong>Insecure</strong>whether to skip the TLS verification step.</p>
+<pre data-lang="go" class="language-go "><code class="language-go" data-lang="go">provider, err := proxmoxve.NewProvider(ctx, &quot;proxmoxve&quot;, &amp;proxmoxve.ProviderArgs{
+    Endpoint: pulumi.String(&quot;https:&#x2F;&#x2F;192.168.1.198:8006&#x2F;&quot;),
+    Username: pulumi.String(proxmoxUsername),
+    Password: pulumi.String(proxmoxPassword),
+    Insecure: pulumi.Bool(true),
+})
+</code></pre>
+<h3 id="3-downloading-an-iso-image">3. Downloading an ISO Image</h3>
+<p>To create a VM, an ISO image is required. The following lines downloads the latest Ubuntu ISO from the official Ubuntu releases. <strong>DatastoreId</strong> and <strong>NodeName</strong> to specify where the ISO will be stored on the Proxmox node, <strong>Url</strong> pointing to the download source.</p>
+<pre data-lang="go" class="language-go "><code class="language-go" data-lang="go">iso, err := download.NewFile(ctx, &quot;latest-ubuntu22-jammy-iso&quot;, &amp;download.FileArgs{
+    ContentType: pulumi.String(&quot;iso&quot;),
+    DatastoreId: pulumi.String(&quot;local&quot;),
+    NodeName:    pulumi.String(&quot;pve&quot;),
+    Url:         pulumi.String(&quot;https:&#x2F;&#x2F;releases.ubuntu.com&#x2F;jammy&#x2F;ubuntu-22.04.5-live-server-amd64.iso&quot;),
+}, pulumi.Provider(provider))
+</code></pre>
+<h3 id="4-creating-the-virtual-machine">4. Creating the Virtual Machine</h3>
+<p>The following code defines a new VM configuration and provisions it.</p>
+<pre data-lang="go" class="language-go "><code class="language-go" data-lang="go">newVM, err := vm.NewVirtualMachine(ctx, &quot;vm&quot;, &amp;vm.VirtualMachineArgs{
+    NodeName: pulumi.String(&quot;pve&quot;),
+    Name:     pulumi.String(&quot;vm&quot;),
+    Cpu: &amp;vm.VirtualMachineCpuArgs{
+        Cores: pulumi.Int(2),
+    },
+    Memory: &amp;vm.VirtualMachineMemoryArgs{
+        Dedicated: pulumi.Int(4800),
+        Floating:  pulumi.Int(4800),
+    },
+    Disks: &amp;vm.VirtualMachineDiskArray{
+        vm.VirtualMachineDiskArgs{
+            Size:       pulumi.Int(25),
+            Interface:  pulumi.String(&quot;scsi0&quot;),
+            Iothread:   pulumi.Bool(true),
+            FileFormat: pulumi.String(&quot;raw&quot;),
+        },
+    },
+    Cdrom: vm.VirtualMachineCdromArgs{
+        Enabled:   pulumi.Bool(true),
+        FileId:    iso.ID(),
+        Interface: pulumi.String(&quot;ide3&quot;),
+    },
+    BootOrders: pulumi.StringArray{
+        pulumi.String(&quot;scsi0&quot;),
+        pulumi.String(&quot;ide3&quot;),
+        pulumi.String(&quot;net0&quot;),
+    },
+    ScsiHardware:    pulumi.String(&quot;virtio-scsi-single&quot;),
+    OperatingSystem: vm.VirtualMachineOperatingSystemArgs{Type: pulumi.String(&quot;l26&quot;)},
+    NetworkDevices: vm.VirtualMachineNetworkDeviceArray{
+        vm.VirtualMachineNetworkDeviceArgs{
+            Model:  pulumi.String(&quot;virtio&quot;),
+            Bridge: pulumi.String(&quot;vmbr0&quot;),
+        },
+    },
+    OnBoot: pulumi.Bool(true),
+}, pulumi.DependsOn([]pulumi.Resource{iso}), pulumi.Provider(provider))
+</code></pre>
+<ul>
+<li>
+<p><code>Cpu</code>: Allocates 2 CPU cores to the VM.</p>
+</li>
+<li>
+<p><code>Memory</code>: Assigns 4800 MB (4.8 GB) of memory to both dedicated and floating memory allocations.</p>
+</li>
+<li>
+<p><code>Disks</code>: Creates a 25 GB disk with the SCSI interface, using the raw file format and enabling I/O threading for better performance.</p>
+</li>
+<li>
+<p><code>Cdrom</code>: Configures a virtual CD-ROM to boot from the ISO file previously downloaded. It's attached to the ide3 interface.</p>
+</li>
+<li>
+<p><code>BootOrders</code>: Specifies the sequence in which devices are checked during the boot process—first the SCSI disk (&quot;scsi0&quot;), then the CD-ROM (&quot;ide3&quot;), followed by the network adapter (&quot;net0&quot;).</p>
+</li>
+<li>
+<p><code>ScsiHardware</code>: Sets the SCSI controller to &quot;<a href="https://forum.proxmox.com/threads/virtio-scsi-vs-virtio-scsi-single.28426/">irtio-scsi-single</a>&quot; for better I/O performance.</p>
+</li>
+<li>
+<p><code>OperatingSystem</code>: Specifies the OS type as Linux 2.6 (&quot;l26&quot;), which is appropriate for modern Linux distributions.</p>
+</li>
+<li>
+<p><code>NetworkDevices</code>: Adds a network adapter using the &quot;virtio&quot; model for optimal performance and attaches it to the &quot;vmbr0&quot; bridge.</p>
+</li>
+<li>
+<p><code>OnBoot</code>: Ensures the VM starts automatically when the Proxmox node boots.</p>
+</li>
+<li>
+<p><code>DependsOn and Provider</code>: Ensures that the VM creation depends on the ISO file download being complete and uses the specified Proxmox provider.</p>
+</li>
+</ul>
+<div align="center">* * * *</div>
+<center>
+<p>Originally published on <a href="https://medium.com/@madhankumaravelu93/building-a-home-lab-server-part-ii-45c7273332a8">Medium</a></p>
+<p>🌟 🌟 🌟 <strong>The source code for this blog post can be found here</strong> 🌟🌟🌟</p>
+<p><a href="https://github.com/madhank93/pulumi-proxmox/tree/proxmox_vm">GitHub - madhank93/pulumi-proxmox at proxmox_vm</a></p>
+</center>
+<p><strong>Reference</strong>:</p>
+<p>[1] <a href="https://pve.proxmox.com/pve-docs/chapter-qm.html">https://pve.proxmox.com/pve-docs/chapter-qm.html</a></p>
+<p>[2] <a href="https://pve.proxmox.com/pve-docs/qm.conf.5.html">https://pve.proxmox.com/pve-docs/qm.conf.5.html</a></p>
+<p>[3] <a href="https://www.pulumi.com/registry/packages/proxmoxve/">https://www.pulumi.com/registry/packages/proxmoxve/</a></p>
+<p>[4] <a href="https://github.com/bpg/terraform-provider-proxmox">https://github.com/bpg/terraform-provider-proxmox</a></p>
+
+          </div>
+        </article>
+      </div>
+      
+      <div class="column is-2 is-hidden-mobile">
+        <aside class="menu" style="position: sticky; top: 48px">
+          <p class="heading has-text-weight-bold">Contents</p>
+          <ul class="menu-list">
+            
+            <li>
+              <a id="link-code-walkthrough" class="toc is-size-7 is-active"
+                href="https://www.madhan.app/blogs/025-homelab-part-2/#code-walkthrough">
+                Code Walkthrough
+              </a>
+              
+              <ul>
+                
+                <li>
+                  <a id="link-1-loading-environment-variables" class="toc is-size-7" href="https://www.madhan.app/blogs/025-homelab-part-2/#1-loading-environment-variables">
+                    1. Loading Environment Variables
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-2-configuring-the-proxmox-provider" class="toc is-size-7" href="https://www.madhan.app/blogs/025-homelab-part-2/#2-configuring-the-proxmox-provider">
+                    2. Configuring the Proxmox Provider
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-3-downloading-an-iso-image" class="toc is-size-7" href="https://www.madhan.app/blogs/025-homelab-part-2/#3-downloading-an-iso-image">
+                    3. Downloading an ISO Image
+                  </a>
+                </li>
+                
+                <li>
+                  <a id="link-4-creating-the-virtual-machine" class="toc is-size-7" href="https://www.madhan.app/blogs/025-homelab-part-2/#4-creating-the-virtual-machine">
+                    4. Creating the Virtual Machine
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+              
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;024-homelab-part-1&#x2F;">
+              <span class="icon mr-2">
+                <i class="fas fa-arrow-circle-left"></i>
+              </span>
+              Building a Home Lab server — Part I
+            </a>
+          </div>
+           
+          <div class="level-item has-text-centered">
+            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.madhan.app&#x2F;blogs&#x2F;026-homelab-part-3&#x2F;">
+              Building a Home Lab server — Part III<span class="icon ml-2">
+                <i class="fas fa-arrow-circle-right"></i>
+              </span>
+            </a>
+          </div>
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  
+  
+  
+  <script defer src="https://www.madhan.app/elasticlunr.min.js"></script><script defer src="https://www.madhan.app/js/site.js"></script>
+  <script>
+    // Lazy-load search index only when search is opened
+    (function () {
+      var loaded = false;
+      function loadSearchIndex() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.madhan.app/search_index.en.js';
+        document.head.appendChild(s);
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('nav-search');
+        if (btn) btn.addEventListener('click', loadSearchIndex, { once: false });
+      });
+    })();
+  </script>
+
+  
+
+<script type="text/javascript">
+  const menuBarHeight = document.querySelector("nav.navbar").clientHeight;
+  const tocItems = document.querySelectorAll(".toc");
+  const navSections = new Array(tocItems.length);
+
+  tocItems.forEach((el, i) => {
+    let id = el.getAttribute("id").substring(5);
+    navSections[i] = document.getElementById(id);
+  })
+
+  function isVisible(tocIndex) {
+    const current = navSections[tocIndex];
+    const next = tocIndex < tocItems.length - 1 ? navSections[tocIndex + 1]
+      : document.querySelectorAll("section.section").item(1);
+
+    const c = current.getBoundingClientRect();
+    const n = next.getBoundingClientRect();
+    const h = (window.innerHeight || document.documentElement.clientHeight);
+
+    return (c.top <= h) && (n.top - menuBarHeight >= 0);
+  }
+
+  function activateIfVisible() {
+    for (b = true, i = 0; i < tocItems.length; i++) {
+      if (b && isVisible(i)) {
+        tocItems[i].classList.add('is-active');
+        b = false;
+      } else
+        tocItems[i].classList.remove('is-active');
+    }
+  }
+
+  var isTicking = null;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        activateIfVisible();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, false);
+</script>
+
+
+
+
+
+  
+  
+</body>
+
+</html>
