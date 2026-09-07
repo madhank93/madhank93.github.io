@@ -73,6 +73,40 @@
     font-size: 17px;
   }
 
+  .roadmap-stages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Each stage is a rung, and the arrow between rungs is drawn once rather
+     than once per course: what follows what is a property of the stages, not
+     of any pair of tiles. */
+  .roadmap-stage + .roadmap-stage::before {
+    content: "\2193";
+    display: block;
+    text-align: center;
+    color: #6b6b7b;
+    font-size: 22px;
+    font-weight: bolder;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stage-l {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b6b7b;
+    margin-bottom: 8px;
+  }
+
   .roadmap-steps {
     display: flex;
     flex-wrap: wrap;
@@ -86,12 +120,12 @@
 
   .roadmap-steps li {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: stretch;
   }
 
   .roadmap-step {
     display: block;
+    max-width: 320px;
     background-color: #ffffff;
     border: 2px solid #d6d6de;
     border-radius: 0.9rem;
@@ -104,11 +138,10 @@
     border-color: #41c63f;
   }
 
-  .roadmap-step .n {
+  .roadmap-step .dep {
     display: block;
-    font-size: 13px;
-    font-weight: bolder;
-    letter-spacing: 0.08em;
+    margin-top: 4px;
+    font-size: 12px;
     color: #6b6b7b;
   }
 
@@ -134,12 +167,6 @@
     color: #8a6d00;
   }
 
-  .roadmap-arrow {
-    color: #6b6b7b;
-    font-size: 22px;
-    font-weight: bolder;
-  }
-
   @media (max-width: 900px) {
     .grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -147,13 +174,10 @@
   }
 
   @media (max-width: 768px) {
-    .roadmap-arrow {
-      display: none;
-    }
-
     .roadmap-steps li,
     .roadmap-step {
       width: 100%;
+      max-width: none;
     }
   }
 
@@ -174,56 +198,80 @@
         <span class="roadmap-tag">In progress</span>
       </div>
       <p class="roadmap-lede">
-        The order I'd work through these in — each one assumes the one before it.
+        Not a queue — a shape. Go and Kubernetes are separate starting points,
+        and each later step only assumes the ones its arrows come from.
       </p>
-      <ol class="roadmap-steps">
-        <li>
-          <a class="roadmap-step" href="https://golings.madhan.app/" target="_blank">
-            <span class="n">01</span>
-            <span class="name">Golings</span>
-            <span class="what">Go, exercise by exercise</span>
-          </a>
+      <ol class="roadmap-stages">
+        <li class="roadmap-stage">
+          <span class="stage-l">Start at either end</span>
+          <ul class="roadmap-steps">
+            <li>
+              <a class="roadmap-step" href="https://golings.madhan.app/" target="_blank">
+                <span class="name">Golings</span>
+                <span class="what">Go, exercise by exercise</span>
+              </a>
+            </li>
+            <li>
+              <a class="roadmap-step" href="https://kubelings.madhan.app/" target="_blank">
+                <span class="name">Kubelings</span>
+                <span class="what">Kubernetes, hands on</span>
+                <span class="dep">no Go needed — kubectl and YAML</span>
+              </a>
+            </li>
+          </ul>
         </li>
-        <li>
-          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
-          <a class="roadmap-step" href="https://kubelings.madhan.app/" target="_blank">
-            <span class="n">02</span>
-            <span class="name">Kubelings</span>
-            <span class="what">Kubernetes, hands on</span>
-          </a>
+        <li class="roadmap-stage">
+          <span class="stage-l">Then build with it</span>
+          <ul class="roadmap-steps">
+            <li>
+              <a class="roadmap-step" href="https://byox.madhan.app/" target="_blank">
+                <span class="name">BYOX</span>
+                <span class="what">build Redis, Git, a shell</span>
+                <span class="dep">after Golings</span>
+              </a>
+            </li>
+            <li>
+              <a class="roadmap-step" href="https://kubeclientlings.madhan.app/" target="_blank">
+                <span class="name">KubeClientlings</span>
+                <span class="what">client-go and controllers</span>
+                <span class="dep">after Golings + Kubelings</span>
+              </a>
+            </li>
+          </ul>
         </li>
-        <li>
-          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
-          <a class="roadmap-step" href="https://kubeclientlings.madhan.app/" target="_blank">
-            <span class="n">03</span>
-            <span class="name">KubeClientlings</span>
-            <span class="what">client-go and controllers</span>
-          </a>
+        <li class="roadmap-stage">
+          <span class="stage-l">Then go deeper</span>
+          <ul class="roadmap-steps">
+            <li>
+              <a class="roadmap-step" href="https://github.com/madhank93/learn-system-design" target="_blank">
+                <span class="name">System design</span>
+                <span class="what">caching, consistency, partitioning</span>
+                <span class="dep">after BYOX — you have built the thing being scaled</span>
+                <span class="soon">In progress</span>
+              </a>
+            </li>
+            <li>
+              <a class="roadmap-step" href="https://byok8s.madhan.app/" target="_blank">
+                <span class="name">byok8s</span>
+                <span class="what">build kubectl and the control plane</span>
+                <span class="dep">after KubeClientlings</span>
+                <span class="soon">In progress</span>
+              </a>
+            </li>
+          </ul>
         </li>
-        <li>
-          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
-          <a class="roadmap-step" href="https://byox.madhan.app/" target="_blank">
-            <span class="n">04</span>
-            <span class="name">BYOX</span>
-            <span class="what">build Redis, Git, a shell</span>
-          </a>
-        </li>
-        <li>
-          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
-          <a class="roadmap-step" href="https://byok8s.madhan.app/" target="_blank">
-            <span class="n">05</span>
-            <span class="name">byok8s</span>
-            <span class="what">build kubectl and the control plane</span>
-          </a>
-        </li>
-        <li>
-          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
-          <a class="roadmap-step" href="https://github.com/madhank93/devopslings" target="_blank">
-            <span class="n">06</span>
-            <span class="name">DevOpsLings</span>
-            <span class="what">debug what is already broken</span>
-            <span class="soon">In progress</span>
-          </a>
+        <li class="roadmap-stage">
+          <span class="stage-l">Then break it and fix it</span>
+          <ul class="roadmap-steps">
+            <li>
+              <a class="roadmap-step" href="https://github.com/madhank93/devopslings" target="_blank">
+                <span class="name">DevOpsLings</span>
+                <span class="what">debug what is already broken</span>
+                <span class="dep">after Kubelings — sharper with the rest</span>
+                <span class="soon">In progress</span>
+              </a>
+            </li>
+          </ul>
         </li>
       </ol>
     </div>
@@ -263,6 +311,16 @@
       </div>
       <div align="center" id="box">
         <div align="center">
+          <a href="https://byox.madhan.app/" target="_blank">
+            <img src="/images/build-ladder.svg" alt="Build Your Own X" width="200" height="200" loading="lazy" style="margin: 25px 0;" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://byox.madhan.app/" target="_blank">BYOX ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
           <a href="https://kubeclientlings.madhan.app/" target="_blank">
             <picture>
               <source srcset="/images/kubeclientlings.webp" type="image/webp">
@@ -276,12 +334,12 @@
       </div>
       <div align="center" id="box">
         <div align="center">
-          <a href="https://byox.madhan.app/" target="_blank">
-            <img src="/images/build-ladder.svg" alt="Build Your Own X" width="200" height="200" loading="lazy" style="margin: 25px 0;" />
+          <a href="https://github.com/madhank93/learn-system-design" target="_blank">
+            <img src="https://img.icons8.com/external-parzival-1997-flat-parzival-1997/250/external-system-digital-globalization-parzival-1997-flat-parzival-1997.png" alt="System Design" width="250" height="250" loading="lazy" />
           </a>
         </div>
         <div align="center">
-          <a class="anchor" href="https://byox.madhan.app/" target="_blank">BYOX ➡️</a>
+          <a class="anchor" href="https://github.com/madhank93/learn-system-design" target="_blank">Learn System Design ➡️</a>
         </div>
       </div>
       <div align="center" id="box">
@@ -336,16 +394,6 @@
       </div>
       <div align="center" id="box">
         <div align="center">
-          <a href="https://github.com/madhank93/learn-system-design" target="_blank">
-            <img src="https://img.icons8.com/external-parzival-1997-flat-parzival-1997/250/external-system-digital-globalization-parzival-1997-flat-parzival-1997.png" alt="System Design" width="250" height="250" loading="lazy" />
-          </a>
-        </div>
-        <div align="center">
-          <a class="anchor" href="https://github.com/madhank93/learn-system-design" target="_blank">Learn System Design ➡️</a>
-        </div>
-      </div>
-      <div align="center" id="box">
-        <div align="center">
           <a href="https://madhank93.github.io/js-mindmap/" target="_blank">
             <img src="https://img.icons8.com//fluency/250/javascript.png" alt="Javascript" width="250" height="250" loading="lazy" />
           </a>
@@ -354,6 +402,7 @@
           <a class="anchor" href="https://madhank93.github.io/js-mindmap/" target="_blank">JS Mind map ➡️</a>
         </div>
       </div>
+
       <div align="center" id="box">
         <div align="center">
           <a href="https://github.com/madhank93/learn-dsa" target="_blank">
