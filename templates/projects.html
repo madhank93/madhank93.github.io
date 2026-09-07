@@ -22,11 +22,189 @@
     font-size: 25px;
     font-weight: bolder;
   }
+
+  /* The site paints dark mode by inverting the whole body, so these colours
+     are chosen for light and come out right in dark on their own. */
+  .roadmap {
+    background-color: #f2f2f5;
+    border-radius: 1.25rem;
+    padding: 24px 28px 28px;
+    margin-top: 30px;
+  }
+
+  .roadmap-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .roadmap-head h2 {
+    font-size: 28px;
+    font-weight: bolder;
+    margin: 0;
+  }
+
+  .roadmap-tag {
+    background-color: #e5b800;
+    color: #1a1a1a;
+    border-radius: 999px;
+    padding: 3px 12px;
+    font-size: 14px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .roadmap-lede {
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 17px;
+  }
+
+  .roadmap-steps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .roadmap-steps li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .roadmap-step {
+    display: block;
+    background-color: #ffffff;
+    border: 2px solid #d6d6de;
+    border-radius: 0.9rem;
+    padding: 10px 16px;
+    min-width: 150px;
+    text-align: center;
+  }
+
+  .roadmap-step:hover {
+    border-color: #41c63f;
+  }
+
+  .roadmap-step .n {
+    display: block;
+    font-size: 13px;
+    font-weight: bolder;
+    letter-spacing: 0.08em;
+    color: #6b6b7b;
+  }
+
+  .roadmap-step .name {
+    display: block;
+    font-size: 19px;
+    font-weight: bolder;
+  }
+
+  .roadmap-step .what {
+    display: block;
+    font-size: 14px;
+    color: #4e5a70;
+  }
+
+  .roadmap-step .soon {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #8a6d00;
+  }
+
+  .roadmap-arrow {
+    color: #6b6b7b;
+    font-size: 22px;
+    font-weight: bolder;
+  }
+
+  @media (max-width: 768px) {
+    .roadmap-arrow {
+      display: none;
+    }
+
+    .roadmap-steps li,
+    .roadmap-step {
+      width: 100%;
+    }
+  }
 </style>
 <section class="section">
   <div class="container">
     <div class="has-text-centered">
       <h1 class="title is-2">{{ section.title }}</h1>
+    </div>
+    <div class="roadmap">
+      <div class="roadmap-head">
+        <h2>Roadmap</h2>
+        <span class="roadmap-tag">In progress</span>
+      </div>
+      <p class="roadmap-lede">
+        The order I'd work through these in — each one assumes the one before it.
+      </p>
+      <ol class="roadmap-steps">
+        <li>
+          <a class="roadmap-step" href="https://golings.madhan.app/" target="_blank">
+            <span class="n">01</span>
+            <span class="name">Golings</span>
+            <span class="what">Go, exercise by exercise</span>
+          </a>
+        </li>
+        <li>
+          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
+          <a class="roadmap-step" href="https://kubelings.madhan.app/" target="_blank">
+            <span class="n">02</span>
+            <span class="name">Kubelings</span>
+            <span class="what">Kubernetes, hands on</span>
+          </a>
+        </li>
+        <li>
+          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
+          <a class="roadmap-step" href="https://kubeclientlings.madhan.app/" target="_blank">
+            <span class="n">03</span>
+            <span class="name">KubeClientlings</span>
+            <span class="what">client-go and controllers</span>
+          </a>
+        </li>
+        <li>
+          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
+          <a class="roadmap-step" href="https://byox.madhan.app/" target="_blank">
+            <span class="n">04</span>
+            <span class="name">BYOX</span>
+            <span class="what">build Redis, Git, a shell</span>
+          </a>
+        </li>
+        <li>
+          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
+          <a class="roadmap-step" href="https://byok8s.madhan.app/" target="_blank">
+            <span class="n">05</span>
+            <span class="name">byok8s</span>
+            <span class="what">build kubectl and the control plane</span>
+          </a>
+        </li>
+        <li>
+          <span aria-hidden="true" class="roadmap-arrow">➡️</span>
+          <a class="roadmap-step" href="https://github.com/madhank93/devopslings" target="_blank">
+            <span class="n">06</span>
+            <span class="name">DevOpsLings</span>
+            <span class="what">debug what is already broken</span>
+            <span class="soon">In progress</span>
+          </a>
+        </li>
+      </ol>
     </div>
     <div class="grid">
       <div align="center" id="box">
@@ -83,6 +261,26 @@
         </div>
         <div align="center">
           <a class="anchor" href="https://byox.madhan.app/" target="_blank">BYOX ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://byok8s.madhan.app/" target="_blank">
+            <img src="/images/byok8s.svg" alt="byok8s" width="200" height="200" loading="lazy" style="margin: 25px 0;" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://byok8s.madhan.app/" target="_blank">byok8s ➡️</a>
+        </div>
+      </div>
+      <div align="center" id="box">
+        <div align="center">
+          <a href="https://github.com/madhank93/devopslings" target="_blank">
+            <img src="/images/devopslings.svg" alt="DevOpsLings" width="200" height="200" loading="lazy" style="margin: 25px 0;" />
+          </a>
+        </div>
+        <div align="center">
+          <a class="anchor" href="https://github.com/madhank93/devopslings" target="_blank">DevOpsLings ➡️</a>
         </div>
       </div>
       <div align="center" id="box">
