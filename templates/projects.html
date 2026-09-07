@@ -5,7 +5,9 @@
     display: grid;
     padding-top: 50px;
     gap: 20px;
-    grid-template-columns: repeat(3, minmax(50px, 1fr));
+    /* minmax(0, 1fr) rather than a floor, so the tracks can shrink instead of
+       pushing the page wider than the viewport. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .container {
@@ -16,6 +18,13 @@
     background-color: #f2f2f5;
     border-radius: 1.25rem;
     padding-bottom: 5px;
+  }
+
+  /* The tiles carry width="250" for layout stability while they load; without
+     this they refuse to shrink and overflow their track. */
+  #box img {
+    max-width: 100%;
+    height: auto;
   }
 
   .anchor {
@@ -131,6 +140,12 @@
     font-weight: bolder;
   }
 
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
   @media (max-width: 768px) {
     .roadmap-arrow {
       display: none;
@@ -139,6 +154,12 @@
     .roadmap-steps li,
     .roadmap-step {
       width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>
