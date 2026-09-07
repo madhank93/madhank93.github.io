@@ -73,27 +73,62 @@
     font-size: 17px;
   }
 
-  .roadmap-stages {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: auto 190px auto 190px auto 190px;
+    justify-content: center;
+    align-items: stretch;
+    column-gap: 10px;
+    row-gap: 30px;
   }
 
-  /* Each stage is a rung, and the arrow between rungs is drawn once rather
-     than once per course: what follows what is a property of the stages, not
-     of any pair of tiles. */
-  .roadmap-stage + .roadmap-stage::before {
-    content: "\2193";
-    display: block;
-    text-align: center;
-    color: #6b6b7b;
-    font-size: 22px;
+  /* Holds the gutter open where the forked connector is drawn over it. */
+  .roadmap-arrow-slot {
+    width: 28px;
+  }
+
+  .roadmap-arrow {
+    align-self: center;
+    justify-self: center;
+    width: 28px;
+    height: 12px;
+    fill: none;
+    stroke: #6b6b7b;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .track-l {
+    align-self: center;
+    padding-right: 6px;
+    text-align: right;
+    font-size: 13px;
     font-weight: bolder;
-    line-height: 1;
-    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b6b7b;
+  }
+
+  .roadmap-canvas {
+    position: relative;
+  }
+
+  /* KubeClientlings is the one course fed by both tracks. That crossing
+     cannot be drawn in the flow, so it is drawn over it: down out of
+     Golings, along the gap under BYOX, and up into KubeClientlings. */
+  .roadmap-link {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    fill: none;
+    stroke: #6b6b7b;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .stage-l {
@@ -107,25 +142,10 @@
     margin-bottom: 8px;
   }
 
-  .roadmap-steps {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: center;
-    gap: 10px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .roadmap-steps li {
-    display: flex;
-    align-items: stretch;
-  }
-
   .roadmap-step {
-    display: block;
-    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: #ffffff;
     border: 2px solid #d6d6de;
     border-radius: 0.9rem;
@@ -136,13 +156,6 @@
 
   .roadmap-step:hover {
     border-color: #41c63f;
-  }
-
-  .roadmap-step .dep {
-    display: block;
-    margin-top: 4px;
-    font-size: 12px;
-    color: #6b6b7b;
   }
 
   .roadmap-step .name {
@@ -174,10 +187,20 @@
   }
 
   @media (max-width: 768px) {
-    .roadmap-steps li,
-    .roadmap-step {
-      width: 100%;
-      max-width: none;
+    /* One column: the arrows have nothing to point along, and the track label
+       becomes a heading for the boxes under it. */
+    .roadmap-grid {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 8px;
+    }
+
+    .track-l {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .roadmap-arrow {
+      display: none;
     }
   }
 
@@ -198,82 +221,60 @@
         <span class="roadmap-tag">In progress</span>
       </div>
       <p class="roadmap-lede">
-        Not a queue — a shape. Go and Kubernetes are separate starting points,
-        and each later step only assumes the ones its arrows come from.
+        Three ways in, depending on what you already know.
       </p>
-      <ol class="roadmap-stages">
-        <li class="roadmap-stage">
-          <span class="stage-l">Start at either end</span>
-          <ul class="roadmap-steps">
-            <li>
-              <a class="roadmap-step" href="https://golings.madhan.app/" target="_blank">
-                <span class="name">Golings</span>
-                <span class="what">Go, exercise by exercise</span>
-              </a>
-            </li>
-            <li>
-              <a class="roadmap-step" href="https://kubelings.madhan.app/" target="_blank">
-                <span class="name">Kubelings</span>
-                <span class="what">Kubernetes, hands on</span>
-                <span class="dep">no Go needed — kubectl and YAML</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="roadmap-stage">
-          <span class="stage-l">Then build with it</span>
-          <ul class="roadmap-steps">
-            <li>
-              <a class="roadmap-step" href="https://byox.madhan.app/" target="_blank">
-                <span class="name">BYOX</span>
-                <span class="what">build Redis, Git, a shell</span>
-                <span class="dep">after Golings</span>
-              </a>
-            </li>
-            <li>
-              <a class="roadmap-step" href="https://kubeclientlings.madhan.app/" target="_blank">
-                <span class="name">KubeClientlings</span>
-                <span class="what">client-go and controllers</span>
-                <span class="dep">after Golings + Kubelings</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="roadmap-stage">
-          <span class="stage-l">Then go deeper</span>
-          <ul class="roadmap-steps">
-            <li>
-              <a class="roadmap-step" href="https://github.com/madhank93/learn-system-design" target="_blank">
-                <span class="name">System design</span>
-                <span class="what">caching, consistency, partitioning</span>
-                <span class="dep">after BYOX — you have built the thing being scaled</span>
-                <span class="soon">In progress</span>
-              </a>
-            </li>
-            <li>
-              <a class="roadmap-step" href="https://byok8s.madhan.app/" target="_blank">
-                <span class="name">byok8s</span>
-                <span class="what">build kubectl and the control plane</span>
-                <span class="dep">after KubeClientlings</span>
-                <span class="soon">In progress</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="roadmap-stage">
-          <span class="stage-l">Then break it and fix it</span>
-          <ul class="roadmap-steps">
-            <li>
-              <a class="roadmap-step" href="https://github.com/madhank93/devopslings" target="_blank">
-                <span class="name">DevOpsLings</span>
-                <span class="what">debug what is already broken</span>
-                <span class="dep">after Kubelings — sharper with the rest</span>
-                <span class="soon">In progress</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ol>
+      <div class="roadmap-canvas">
+        <svg class="roadmap-link" aria-hidden="true" focusable="false"></svg>
+        <div class="roadmap-grid">
+        <span class="track-l">Go</span>
+        <a class="roadmap-step" data-link-from="golings" href="https://golings.madhan.app/" target="_blank">
+          <span class="name">Golings</span>
+          <span class="what">fix broken Go programs</span>
+        </a>
+        <span class="roadmap-arrow-slot" aria-hidden="true"></span>
+        <a class="roadmap-step" data-link-to="byox" href="https://byox.madhan.app/" target="_blank">
+          <span class="name">BYOX</span>
+          <span class="what">build Redis, Git and SQLite &amp; more</span>
+        </a>
+        <svg class="roadmap-arrow" viewBox="0 0 28 12" aria-hidden="true" focusable="false">
+          <path d="M1 6h20" />
+          <path d="M16 1.5 21.5 6 16 10.5" />
+        </svg>
+        <a class="roadmap-step" href="https://github.com/madhank93/learn-system-design" target="_blank">
+          <span class="name">System design</span>
+          <span class="what">design systems for failure</span>
+          <span class="soon">In progress</span>
+        </a>
+        <span class="track-l">Kubernetes</span>
+        <a class="roadmap-step" href="https://kubelings.madhan.app/" target="_blank">
+          <span class="name">Kubelings</span>
+          <span class="what">repair clusters with kubectl</span>
+        </a>
+        <svg class="roadmap-arrow" viewBox="0 0 28 12" aria-hidden="true" focusable="false">
+          <path d="M1 6h20" />
+          <path d="M16 1.5 21.5 6 16 10.5" />
+        </svg>
+        <a class="roadmap-step" data-link-to="kubeclientlings" href="https://kubeclientlings.madhan.app/" target="_blank">
+          <span class="name">KubeClientlings</span>
+          <span class="what">write client-go controllers</span>
+        </a>
+        <svg class="roadmap-arrow" viewBox="0 0 28 12" aria-hidden="true" focusable="false">
+          <path d="M1 6h20" />
+          <path d="M16 1.5 21.5 6 16 10.5" />
+        </svg>
+        <a class="roadmap-step" href="https://byok8s.madhan.app/" target="_blank">
+          <span class="name">byok8s</span>
+          <span class="what">write k8s controllers</span>
+          <span class="soon">In progress</span>
+        </a>
+        <span class="track-l">Ops</span>
+        <a class="roadmap-step" href="https://github.com/madhank93/devopslings" target="_blank">
+          <span class="name">DevOpsLings</span>
+          <span class="what">debug hosts, networks, CI &amp; more</span>
+          <span class="soon">In progress</span>
+        </a>
+        </div>
+      </div>
     </div>
     <div class="grid">
       <div align="center" id="box">
@@ -415,5 +416,63 @@
       </div>
     </div>
   </div>
+
+<script>
+  // Golings feeds two courses, so its arrow forks: one branch straight into
+  // BYOX, the other down and along into KubeClientlings. Measured rather than
+  // hard-coded, because box sizes depend on the reader's font and on how wide
+  // the track label renders.
+  (function () {
+    var canvas = document.querySelector('.roadmap-canvas');
+    if (!canvas) return;
+    var svg = canvas.querySelector('.roadmap-link');
+    var from = canvas.querySelector('[data-link-from]');
+    var straight = canvas.querySelector('[data-link-to="byox"]');
+    var below = canvas.querySelector('[data-link-to="kubeclientlings"]');
+    if (!svg || !from || !straight || !below) return;
+
+    function head(x, y, dir) {
+      // dir: 'right' or 'down'
+      return dir === 'right'
+        ? 'M' + (x - 6) + ' ' + (y - 5) + ' L' + x + ' ' + y + ' L' + (x - 6) + ' ' + (y + 5)
+        : 'M' + (x - 5) + ' ' + (y - 6) + ' L' + x + ' ' + y + ' L' + (x + 5) + ' ' + (y - 6);
+    }
+
+    function draw() {
+      var box = canvas.getBoundingClientRect();
+      var a = from.getBoundingClientRect();
+      var b = straight.getBoundingClientRect();
+      var c = below.getBoundingClientRect();
+
+      // Stacked into one column, the fork has nothing to fork across.
+      if (c.top < b.bottom + 8) { svg.innerHTML = ''; return; }
+
+      var sx = a.right - box.left;
+      var sy = a.top - box.top + a.height / 2;
+      var bx = b.left - box.left;
+      var by = b.top - box.top + b.height / 2;
+      var forkX = sx + (bx - sx) / 2;
+
+      var cx = c.left - box.left + c.width / 2;
+      var cy = c.top - box.top;
+      var midY = (b.bottom - box.top + cy) / 2;
+
+      svg.setAttribute('viewBox', '0 0 ' + box.width + ' ' + box.height);
+      svg.innerHTML =
+        // trunk out of Golings to the fork
+        '<path d="M' + sx + ' ' + sy + ' H' + forkX + '"/>' +
+        // branch one: on into BYOX
+        '<path d="M' + forkX + ' ' + sy + ' H' + (bx - 6) + '"/>' +
+        '<path d="' + head(bx - 1, by, 'right') + '"/>' +
+        // branch two: down, along under BYOX, up into KubeClientlings
+        '<path d="M' + forkX + ' ' + sy + ' V' + midY + ' H' + cx + ' V' + (cy - 6) + '"/>' +
+        '<path d="' + head(cx, cy - 1, 'down') + '"/>';
+    }
+
+    draw();
+    window.addEventListener('resize', draw);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  })();
+</script>
 </section>
 {% endblock %}
